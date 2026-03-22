@@ -1,0 +1,15 @@
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. prog-1.
+
+       DATA DIVISION.
+       WORKING-STORAGE SECTION.
+       01  blah PIC x.
+
+       PROCEDURE DIVISION.
+
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. prog-2.
+       PROCEDURE DIVISION.
+       END PROGRAM prog-2.
+
+       END PROGRAM prog-1.

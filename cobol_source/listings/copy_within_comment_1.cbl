@@ -1,0 +1,7 @@
+  IDENTIFICATION   DIVISION.
+  PROGRAM-ID.      prog2.
+  DATA             DIVISION.
+  WORKING-STORAGE  SECTION.
+  *> COPY "copy.inc".
+  PROCEDURE        DIVISION.
+  STOP RUN.

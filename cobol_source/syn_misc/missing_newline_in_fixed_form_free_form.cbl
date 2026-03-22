@@ -1,0 +1,6 @@
+       IDENTIFICATION   DIVISION.
+       PROGRAM-ID.      prog.
+       ENVIRONMENT DIVISION.
+       CONFIGURATION SECTION.
+       PROCEDURE        DIVISION.
+           CONTINUE

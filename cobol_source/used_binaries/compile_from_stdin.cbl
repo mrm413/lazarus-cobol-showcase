@@ -1,0 +1,4 @@
+       IDENTIFICATION   DIVISION.
+       PROGRAM-ID.      a.
+       PROCEDURE        DIVISION.
+           STOP RUN WITH NORMAL STATUS.

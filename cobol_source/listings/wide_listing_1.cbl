@@ -1,0 +1,9 @@
+  IDENTIFICATION   DIVISION.
+  PROGRAM-ID.      prog2.
+  DATA             DIVISION.
+  WORKING-STORAGE  SECTION.
+  >> PAGE  page  feed  comment
+  PROCEDURE        DIVISION.
+ DISPLAY
+ '3456&'.
+  STOP RUN.

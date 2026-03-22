@@ -1,0 +1,23 @@
+       IDENTIFICATION  DIVISION.
+       PROGRAM-ID.     prog3.
+       ENVIRONMENT DIVISION.
+       CONFIGURATION SECTION.
+       SPECIAL-NAMES.
+           CALL-CONVENTION 0 IS EXTERN.
+
+       PROCEDURE     DIVISION
+           EXTERN
+           WITH C LINKAGE.
+           CONTINUE
+       ENTRY 'ANOTHERSTATEMENT'.
+           CONTINUE
+       ENTRY EXTERN 'ANOTHERSTATEMENT2'.
+           CONTINUE
+       ENTRY 'ANOTHERSTATEMENT3' WITH C LINKAGE.
+           CONTINUE
+       ENTRY
+           EXTERN
+           'ANOTHERSTATEMENT4'
+           WITH C LINKAGE.
+           CONTINUE
+           .
