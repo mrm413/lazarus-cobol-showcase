@@ -301,11 +301,20 @@ g++ -std=c++17 -Wall -Wextra -Wpedantic -Werror -O2 -o output source.cpp
 
 ---
 
+## Also Available: CMS Medicare Pricers
+
+Lazarus also transpiles **real production COBOL** — all 55 CMS Medicare payment system programs (92,535 lines) to hardened C++17 with 100% compile success:
+
+- **[CMS Medicare — Lazarus C++17](https://github.com/mrm413/cms-medicare-lazarus-showcase)** — 55 programs, 97,924 lines of hardened C++17
+- **[CMS Medicare — Ironclad Rust](https://github.com/mrm413/cms-medicare-ironclad-showcase)** — 55 programs, 169,475 lines of Rust
+
+---
+
 ## Built By
 
 **Torsova LLC** — [lazarus-systems.com](https://lazarus-systems.com)
 
-Lazarus is part of a suite of legacy modernization tools including transpilers for COBOL, VB6, Stored Procedures, Crystal Reports, SAS, and Microsoft Access.
+Lazarus is part of a suite of legacy modernization tools including transpilers for COBOL (C++17 and Rust), VB6, Stored Procedures, Crystal Reports, SAS, and Microsoft Access.
 
 ---
 
