@@ -310,6 +310,14 @@ Lazarus also transpiles **real production COBOL** — all 55 CMS Medicare paymen
 
 ---
 
+## Related Showcases
+
+- [CMS Medicare — Lazarus C++17](https://github.com/mrm413/cms-medicare-lazarus-showcase) -- 55 CMS Medicare pricer programs transpiled to hardened C++17 (100%)
+- [CMS Medicare — Ironclad Rust](https://github.com/mrm413/cms-medicare-ironclad-showcase) -- 55 CMS Medicare pricer programs transpiled to Rust (100%)
+- [Lazarus CardDemo Showcase](https://github.com/mrm413/lazarus-carddemo-showcase) -- 44 AWS CardDemo CICS/COBOL programs transpiled to C++17 (100%)
+
+---
+
 ## Built By
 
 **Torsova LLC** — [lazarus-systems.com](https://lazarus-systems.com)
