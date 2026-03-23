@@ -328,4 +328,8 @@ Lazarus is part of a suite of legacy modernization tools including transpilers f
 
 ## License
 
-The transpiled C++17 output in this repository is provided for demonstration purposes. The original COBOL test programs are from the [GnuCOBOL](https://gnucobol.sourceforge.io/) project (GPL). The Lazarus transpilation engine is proprietary software owned by Torsova LLC.
+Licensed under the [Apache License, Version 2.0](LICENSE).
+
+The original GnuCOBOL test programs are from the [GnuCOBOL project](https://gnucobol.sourceforge.io/).
+
+All modifications and additions -- including the C++17 transpiled programs, security hardening, build system, and test harness -- are Copyright 2025 Michael R. Mull / Lazarus Systems. See [NOTICE](NOTICE) for details.

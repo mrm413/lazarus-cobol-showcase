@@ -1,0 +1,33 @@
+Lazarus COBOL Showcase
+Copyright 2025 Michael R. Mull / Lazarus Systems
+
+This product includes software developed by Lazarus Systems (https://lazarus-systems.com).
+
+================================================================================
+
+Original Work:
+  GnuCOBOL Test Suite
+  https://gnucobol.sourceforge.io/
+  Licensed under the GNU General Public License (GPL)
+
+  Note: The original COBOL test programs are from the GnuCOBOL project.
+  The transpiled C++17 output constitutes a Derivative Work.
+
+================================================================================
+
+Modifications and Derivative Works by Michael R. Mull / Lazarus Systems:
+
+  The following components are original works created by Lazarus Systems and
+  constitute Derivative Works under the Apache License 2.0:
+
+  1. COBOL-to-C++17 Transpilation
+     - All transpiled C++17 files are the output of the Lazarus transpiler
+       applied to the GnuCOBOL test suite COBOL source code
+     - Includes security hardening: FixedString<N>, SafeInt<T>, Decimal,
+       bounds checking, input validation, and RAII memory safety
+
+  2. Build System and Test Harness
+     - Build configuration, test runner, and validation framework
+
+All modifications and additions listed above are Copyright 2025 Michael R. Mull /
+Lazarus Systems, licensed under the Apache License, Version 2.0.
