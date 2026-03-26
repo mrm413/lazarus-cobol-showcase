@@ -51,7 +51,14 @@ std::string XML_TEXT;
 std::string Y;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    std::cout << MSG_HELLO << "!" << std::endl;
+    if (false /* TODO: module->next */) {}
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

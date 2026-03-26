@@ -846,6 +846,8 @@ inline void ABEND(const std::string& abcode = "LZRS") {
 
 } // namespace lazarus
 
+std::string c_1; // Auto-declared by LAZARUS healer
+
 // ---------------------------------------------------------------------------
 // GLOBAL ALIASES FOR COMPATIBILITY
 // ---------------------------------------------------------------------------
@@ -957,10 +959,21 @@ FixedString<50> e;
 FixedString<50> out;
 
 // Forward declarations
+void p_main();
+
+void p_main() {
+    // UNHANDLED: cob_json_generate_new (&f_25, &mt_1, nullptr, 46);
+    if (to_int(out) != to_int(c_1)) {
+        std::cout << "Failed 2: " << out << std::endl;
+    }
+    if (false /* TODO: module->module_active */) {
+    }
+}
 
 int main() {
     try {
 
+    p_main();
     return RETURN_CODE;
 
         return 0;
@@ -991,7 +1004,7 @@ int main() {
 // Hardening Statistics:
 //   - Types hardened: 9
 //   - Bounds checks added: 0
-//   - Names converted: 6
+//   - Names converted: 7
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1

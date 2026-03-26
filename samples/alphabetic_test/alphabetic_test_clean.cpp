@@ -48,7 +48,21 @@ std::string XML_NTEXT;
 std::string XML_TEXT;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    X[0] = static_cast<char>(13);
+    if (false /* TODO: cob_is_alpha (X) */) {
+        std::cout << "Fail - Alphabetic" << std::endl;
+    }
+    X[0] = 'A';
+    if (false /* TODO: !cob_is_alpha (X) */) {
+        std::cout << "Fail - Not Alphabetic" << std::endl;
+    }
+    return;
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

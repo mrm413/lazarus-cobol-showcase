@@ -848,6 +848,10 @@ inline void ABEND(const std::string& abcode = "LZRS") {
 
 int RETURN_CODE = 0; // Auto-declared by LAZARUS healer
 
+std::string c_10; // Auto-declared by LAZARUS healer
+
+std::string c_6; // Auto-declared by LAZARUS healer
+
 // ---------------------------------------------------------------------------
 // GLOBAL ALIASES FOR COMPATIBILITY
 // ---------------------------------------------------------------------------
@@ -950,10 +954,24 @@ using std::to_string;
 FixedString<50> Z;
 
 // Forward declarations
+void p_main();
+
+void p_main() {
+    // UNHANDLED: cob_move (cob_intr_variance (5, (cob_field *)&c_1, (cob_field *)&c_2, (cob_field *)&c_3, (cob_field *)&c_4, (cob_field *)&c_5), &f_1);
+    if (to_int(Z) != to_int(c_6)) {
+        std::cout << "EXP 54.16 GOT " << Z << std::endl;
+    }
+    Z = to_string(to_num(0) + to_num(1));
+    if (to_int(Z) != to_int(c_10)) {
+        std::cout << "EXP 4.66666666 GOT " << Z << std::endl;
+    }
+    return;
+}
 
 int main() {
     try {
 
+    p_main();
     return RETURN_CODE;
 
         return 0;
@@ -984,7 +1002,7 @@ int main() {
 // Hardening Statistics:
 //   - Types hardened: 1
 //   - Bounds checks added: 0
-//   - Names converted: 0
+//   - Names converted: 1
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1

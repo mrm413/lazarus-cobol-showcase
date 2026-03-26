@@ -958,10 +958,33 @@ FixedString<50> x_2;
 FixedString<50> Y;
 
 // Forward declarations
+void p_main();
+
+void p_main() {
+    if (Y.substr(0, 3) != "X-1") {
+        std::cout << "Test 1 " << std::endl;
+    }
+    if (Y.substr(0, 3) != "X-2") {
+        std::cout << "Test 2 " << std::endl;
+    }
+    ptr_1 = std::string(4, '\0');
+    if (false /* TODO: ((*(unsigned char **) (ptr_1)) - (cob_u8_ptr)nullptr) != 0 */) {
+        std::cout << "NG 1" << std::endl;
+    }
+    if (false /* TODO: ((*(unsigned char **) (ptr_1)) - (Y)) != 0 */) {
+        std::cout << "NG 2" << std::endl;
+    }
+    if (false /* TODO: ((Y) - (*(unsigned char **) (ptr_1))) != 0 */) {
+        std::cout << "NG 3" << std::endl;
+    }
+    if (false /* TODO: module->module_active */) {
+    }
+}
 
 int main() {
     try {
 
+    p_main();
     return RETURN_CODE;
 
         return 0;
@@ -992,7 +1015,7 @@ int main() {
 // Hardening Statistics:
 //   - Types hardened: 10
 //   - Bounds checks added: 0
-//   - Names converted: 9
+//   - Names converted: 10
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1

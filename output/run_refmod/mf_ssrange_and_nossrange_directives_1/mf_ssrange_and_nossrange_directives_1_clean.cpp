@@ -50,7 +50,14 @@ std::string n;
 std::string y;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    std::cout << std::endl;
+    std::cout << std::endl;
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

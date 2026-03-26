@@ -49,7 +49,15 @@ std::string str1;
 std::string str2;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    std::cout << "IN" << std::endl;
+    if (false /* TODO: module->module_active */) {
+    }
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

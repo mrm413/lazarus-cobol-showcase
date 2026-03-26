@@ -955,10 +955,17 @@ FixedString<100> xml_ntext;
 FixedString<100> xml_text;
 
 // Forward declarations
+void p_main();
+
+void p_main() {
+    std::cout << var << std::endl;
+    var = to_string(to_int(var) + 1);
+}
 
 int main() {
     try {
 
+    p_main();
     return RETURN_CODE;
 
         return 0;
@@ -989,7 +996,7 @@ int main() {
 // Hardening Statistics:
 //   - Types hardened: 7
 //   - Bounds checks added: 0
-//   - Names converted: 7
+//   - Names converted: 8
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1

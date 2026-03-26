@@ -48,7 +48,20 @@ std::string XML_NTEXT;
 std::string XML_TEXT;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    // UNHANDLED: memset ((cob_u8_t *)&b_2, 0x0, 4);
+    RETURN_CODE = 0;
+    RETURN_CODE = 1;
+    // UNHANDLED: cob_set_int (&f_17, b_2);
+    if (to_int(I) != 1) {
+        std::cout << I << std::endl;
+    }
+    return;
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

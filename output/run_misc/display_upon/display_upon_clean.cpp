@@ -48,7 +48,27 @@ std::string XML_TEXT;
 std::string note;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    std::cout << "This is sent to CONSOLE " << note << std::endl;
+    std::cout << "This is sent to SYSERR  " << note << std::endl;
+    std::cout << "This is sent to PRINTER " << note << std::endl;
+    std::cout << "This is also sent to CONSOLE " << note << std::endl;
+    std::cout << "This is also sent to SYSERR  " << note << std::endl;
+    std::cout << "This is also sent to PRINTER " << note << std::endl;
+    std::cout << "This is sent to SYSPUNCH " << note << std::endl;
+    if (false /* EXCEPTION 0x0f00 */ || file_status == "EXCEPTION_0x0602") {
+        std::cout << "NO ..." << std::endl;
+    }
+    std::cout << "This is also sent to SYSPUNCH " << note << std::endl;
+    if (false /* EXCEPTION 0x0f00 */ || file_status == "EXCEPTION_0x0602") {
+        std::cout << " ... SYSPUNCH" << std::endl;
+    }
+    return;
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

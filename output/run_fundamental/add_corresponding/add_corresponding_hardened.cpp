@@ -958,10 +958,30 @@ FixedString<100> xml_ntext;
 FixedString<100> xml_text;
 
 // Forward declarations
+void p_main();
+
+void p_main() {
+    // ADD to field_a
+    // ADD to field_c
+    if (to_int(field_d) != 1) {
+        std::cout << "BAD FIELD-A " << field_a << std::endl;
+    }
+    if (false /* TODO: cob_cmp_s32 (field_d + 1, 2LL) != 0 */) {
+        std::cout << "BAD FIELD-B " << field_b << std::endl;
+    }
+    if (to_int(field_d) != 3) {
+        std::cout << "BAD FIELD-C " << field_c << std::endl;
+    }
+    if (to_int(field_d) != 0) {
+        std::cout << "BAD FIELD-D " << field_d << std::endl;
+    }
+    return;
+}
 
 int main() {
     try {
 
+    p_main();
     return RETURN_CODE;
 
         return 0;
@@ -992,7 +1012,7 @@ int main() {
 // Hardening Statistics:
 //   - Types hardened: 10
 //   - Bounds checks added: 0
-//   - Names converted: 10
+//   - Names converted: 11
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1

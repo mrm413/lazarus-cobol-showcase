@@ -49,7 +49,19 @@ std::string XML_NTEXT;
 std::string XML_TEXT;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    // UNHANDLED: cob_delete_file (h_TEST_FILE, &f_20);
+    // OPEN TEST-FILE (I_O)
+    if (file_status != "EXCEPTION_0") {
+    }
+    if (TESTSTAT.substr(0, 2) == "00") {
+        std::cout << "OPEN " << TESTSTAT << std::endl;
+    }
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

@@ -949,10 +949,16 @@ using std::to_string;
 // Working Storage variables
 
 // Forward declarations
+void p_main();
+
+void p_main() {
+    if (false /* TODO: module->next */) {}
+}
 
 int main() {
     try {
 
+    p_main();
     return RETURN_CODE;
 
         return 0;
@@ -983,7 +989,7 @@ int main() {
 // Hardening Statistics:
 //   - Types hardened: 0
 //   - Bounds checks added: 0
-//   - Names converted: 0
+//   - Names converted: 1
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1

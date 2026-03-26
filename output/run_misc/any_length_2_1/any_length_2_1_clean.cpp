@@ -41,7 +41,20 @@ int n0 = 0, n1 = 0, n2 = 0, n3 = 0, n4 = 0;  // loop counters
 std::string P1;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    if (false /* TODO: call_callee.funcvoid == NULL */ || false /* TODO: cob_glob_ptr->cob_physical_cancel == 1 */) {
+        // CALL subroutine
+    }
+    // UNHANDLED: ((int (*)(void *))call_callee.funcint) (b_1);
+    if (false /* TODO: memcmp (P1, COB_SPACES_ALPHABETIC, 2) != 0 */) {
+        std::cout << P1 << std::endl;
+    }
+    return;
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

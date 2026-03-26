@@ -956,10 +956,17 @@ FixedString<15> num;
 FixedString<50> out;
 
 // Forward declarations
+void p_main();
+
+void p_main() {
+    if (false /* TODO: module->module_active */) {
+    }
+}
 
 int main() {
     try {
 
+    p_main();
     return RETURN_CODE;
 
         return 0;
@@ -990,7 +997,7 @@ int main() {
 // Hardening Statistics:
 //   - Types hardened: 8
 //   - Bounds checks added: 0
-//   - Names converted: 6
+//   - Names converted: 7
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1

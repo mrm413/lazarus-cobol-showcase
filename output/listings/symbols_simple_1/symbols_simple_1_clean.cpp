@@ -43,7 +43,13 @@ std::string WS_THREE;
 std::string WS_TWO;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    return;
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

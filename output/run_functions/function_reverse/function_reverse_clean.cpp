@@ -42,7 +42,17 @@ std::string X;
 std::string Z;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    // UNHANDLED: cob_move (cob_intr_reverse (0, 0, &f_1), &f_2);
+    if (Z.substr(0, 10) != "$E+D%C.B#A") {
+        std::cout << Z << std::endl;
+    }
+    return;
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

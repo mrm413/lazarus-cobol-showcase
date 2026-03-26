@@ -956,10 +956,47 @@ FixedString<100> xml_text;
 FixedString<50> Z;
 
 // Forward declarations
+void p_main();
+
+void p_main() {
+    // UNHANDLED: cob_move (cob_intr_sign ((cob_field *)&c_1), &f_17);
+    if (to_int(Z) != 1) {
+        std::cout << "Sign 1 " << Z << std::endl;
+    }
+    // UNHANDLED: cob_move (cob_intr_sign ((cob_field *)&c_3), &f_17);
+    if (to_int(Z) != 0) {
+        std::cout << "Sign 2 " << Z << std::endl;
+    }
+    // UNHANDLED: cob_move (cob_intr_sign ((cob_field *)&c_5), &f_17);
+    if (to_int(Z) != 0) {
+        std::cout << "Sign 3 " << Z << std::endl;
+    }
+    // UNHANDLED: cob_move (cob_intr_sign ((cob_field *)&c_7), &f_17);
+    if (to_int(Z) != -1) {
+        std::cout << "Sign 4 " << Z << std::endl;
+    }
+    F = "312345";
+    // UNHANDLED: cob_move (cob_intr_sign (&f_18), &f_17);
+    if (to_int(Z) != 1) {
+        std::cout << "Sign 5 " << Z << std::endl;
+    }
+    F = "-00";
+    // UNHANDLED: cob_move (cob_intr_sign (&f_18), &f_17);
+    if (to_int(Z) != 0) {
+        std::cout << "Sign 6 " << Z << std::endl;
+    }
+    F = "-312345";
+    // UNHANDLED: cob_move (cob_intr_sign (&f_18), &f_17);
+    if (to_int(Z) != -1) {
+        std::cout << "Sign 7 " << Z << std::endl;
+    }
+    return;
+}
 
 int main() {
     try {
 
+    p_main();
     return RETURN_CODE;
 
         return 0;
@@ -990,7 +1027,7 @@ int main() {
 // Hardening Statistics:
 //   - Types hardened: 8
 //   - Bounds checks added: 0
-//   - Names converted: 6
+//   - Names converted: 7
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1

@@ -48,7 +48,21 @@ std::string XML_NTEXT;
 std::string XML_TEXT;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    INDVAL = "0001";
+    while (true) {
+        if (to_int(INDVAL) > 2) break;
+        INDVAL = to_string(to_int(INDVAL) + 1);
+    }
+    if (to_int(INDVAL) != 3) {
+        std::cout << INDVAL << std::endl;
+    }
+    return;
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

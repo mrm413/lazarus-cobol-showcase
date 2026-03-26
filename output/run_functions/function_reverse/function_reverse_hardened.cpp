@@ -951,10 +951,20 @@ FixedString<50> X;
 FixedString<50> Z;
 
 // Forward declarations
+void p_main();
+
+void p_main() {
+    // UNHANDLED: cob_move (cob_intr_reverse (0, 0, &f_1), &f_2);
+    if (Z.substr(0, 10) != "$E+D%C.B#A") {
+        std::cout << Z << std::endl;
+    }
+    return;
+}
 
 int main() {
     try {
 
+    p_main();
     return RETURN_CODE;
 
         return 0;
@@ -985,7 +995,7 @@ int main() {
 // Hardening Statistics:
 //   - Types hardened: 2
 //   - Bounds checks added: 0
-//   - Names converted: 0
+//   - Names converted: 1
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1

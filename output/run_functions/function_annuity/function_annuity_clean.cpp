@@ -48,7 +48,17 @@ std::string XML_TEXT;
 std::string Z;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    // UNHANDLED: cob_move (cob_intr_annuity ((cob_field *)&c_1, (cob_field *)&c_2), &f_17);
+    if (to_int(Z) != to_int(c_3)) {
+        std::cout << Z << std::endl;
+    }
+    return;
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

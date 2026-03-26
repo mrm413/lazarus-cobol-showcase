@@ -957,10 +957,24 @@ FixedString<100> xml_ntext;
 FixedString<100> xml_text;
 
 // Forward declarations
+void p_main();
+
+void p_main() {
+    LN = "000010";
+    if (to_int(LN) != 10) {
+        std::cout << "SIZE OF tst is " << LN << std::endl;
+    }
+    LN = "165000";
+    if (to_int(LN) != 165000) {
+        std::cout << "SIZE OF tst2 is " << LN << std::endl;
+    }
+    return;
+}
 
 int main() {
     try {
 
+    p_main();
     return RETURN_CODE;
 
         return 0;
@@ -991,7 +1005,7 @@ int main() {
 // Hardening Statistics:
 //   - Types hardened: 9
 //   - Bounds checks added: 0
-//   - Names converted: 8
+//   - Names converted: 9
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1

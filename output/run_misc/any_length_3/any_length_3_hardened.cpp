@@ -955,10 +955,24 @@ FixedString<100> xml_text;
 FixedString<50> str;
 
 // Forward declarations
+void p_main();
+
+void p_main() {
+    if (false /* TODO: call_subprog.funcvoid == nullptr */ || false /* TODO: cob_glob_ptr->cob_physical_cancel == 1 */) {
+        // CALL subroutine
+    }
+    // RETURN_CODE = ((int (*)(void *))call_subprog.funcint) (b_17);
+    if (false /* TODO: module->module_active */) {
+    }
+    if (false /* TODO: cob_reference_count */) {
+        // UNHANDLED: cob_reference_count--;
+    }
+}
 
 int main() {
     try {
 
+    p_main();
     return RETURN_CODE;
 
         return 0;
@@ -989,7 +1003,7 @@ int main() {
 // Hardening Statistics:
 //   - Types hardened: 7
 //   - Bounds checks added: 0
-//   - Names converted: 6
+//   - Names converted: 7
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1

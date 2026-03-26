@@ -954,10 +954,28 @@ FixedString<100> xml_ntext;
 FixedString<100> xml_text;
 
 // Forward declarations
+void p_main();
+
+void p_main() {
+    RETURN_CODE = 1;
+    if (false /* TODO: (RETURN_CODE - 1) != 0 */) {
+        std::cout << RETURN_CODE << std::endl;
+    }
+    if (false /* TODO: call_mod1.funcvoid == nullptr */ || false /* TODO: cob_glob_ptr->cob_physical_cancel == 1 */) {
+        // CALL subroutine
+    }
+    // RETURN_CODE = ((int (*)(void))call_mod1.funcint) ();
+    if (false /* TODO: (RETURN_CODE - 2) != 0 */) {
+        std::cout << RETURN_CODE << std::endl;
+    }
+    RETURN_CODE = 0;
+    return;
+}
 
 int main() {
     try {
 
+    p_main();
     return RETURN_CODE;
 
         return 0;
@@ -988,7 +1006,7 @@ int main() {
 // Hardening Statistics:
 //   - Types hardened: 6
 //   - Bounds checks added: 0
-//   - Names converted: 6
+//   - Names converted: 7
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1

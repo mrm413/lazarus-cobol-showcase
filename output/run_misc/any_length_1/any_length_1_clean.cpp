@@ -42,7 +42,20 @@ std::string P1;
 std::string P2;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    // MOVE to computed field
+    if (to_int(P2) != 6) {
+        std::cout << P2 << std::endl;
+    }
+    if (false /* cob_cmp != 0 */) {
+        std::cout << std::endl;
+    }
+    if (false /* TODO: module->next */) {}
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

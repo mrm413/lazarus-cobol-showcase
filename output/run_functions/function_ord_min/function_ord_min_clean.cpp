@@ -40,7 +40,14 @@ int n0 = 0, n1 = 0, n2 = 0, n3 = 0, n4 = 0;  // loop counters
 // Working Storage variables
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    std::cout << "3" << "-14" << "0" << "8" << "-3" << std::endl;
+    return;
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

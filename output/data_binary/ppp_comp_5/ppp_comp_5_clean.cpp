@@ -53,7 +53,53 @@ std::string X_3;
 std::string X_4;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    std::cout << "INIT X-1 : " << X_1 << " ." << std::endl;
+    std::cout << "INIT X-2 : " << X_2 << " ." << std::endl;
+    std::cout << "INIT X-4 : " << X_4 << " ." << std::endl;
+    std::cout << "INIT D-1 : " << D_1 << " ." << std::endl;
+    X_4.replace(2, 2, D_1.substr(0, 2));
+    X_4 = D_1.substr(0, 2);
+    D_1 = X_4.substr(2, 2);
+    std::cout << "MOVE X-1 : " << X_1 << " ." << std::endl;
+    std::cout << "MOVE X-2 : " << X_2 << " ." << std::endl;
+    X_4 = "0000256";
+    std::cout << "MOVE X-4 : " << X_4 << " ." << std::endl;
+    std::cout << "MOVE D-1 : " << D_1 << " ." << std::endl;
+    X_2 = D_2;
+    X_1 = D_2;
+    std::cout << "MOVE X-1 : " << X_1 << ":" << D_2 << " ." << std::endl;
+    std::cout << "MOVE X-2 : " << X_2 << ":" << D_2 << " ." << std::endl;
+    X_1 = "98000";
+    if (to_int(X_1) != 98000) {
+        std::cout << "MOVE 98000 failed: " << X_1 << std::endl;
+    }
+    D_1 = "98000";
+    if (to_int(D_1) != 98000) {
+        std::cout << "MOVE 98000 failed: " << D_1 << std::endl;
+    }
+    X_1 = to_string(to_int(X_1) + 1000);
+    if (to_int(X_1) != 99000) {
+        std::cout << "+ 1000 failed: " << X_1 << std::endl;
+    }
+    X_1 = to_string(to_int(X_1) - 4000);
+    if (to_int(X_1) != 95000) {
+        std::cout << "- 4000 failed: " << X_1 << std::endl;
+    }
+    // UNHANDLED: cob_div (&f_18, (cob_field *)&c_16, 0);
+    if (to_int(X_1) != 31000) {
+        std::cout << "/ 3 failed: " << X_1 << std::endl;
+    }
+    X_1 = to_string(to_num(0) * to_num(1));
+    if (to_int(X_1) != 62000) {
+        std::cout << "* 2 failed: " << X_1 << std::endl;
+    }
+    return;
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

@@ -48,7 +48,22 @@ std::string XML_NTEXT;
 std::string XML_TEXT;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    std::cout << "GLOBP1" << "GLOBV1" << std::endl;
+    if (false /* TODO: call_prog2.funcvoid == NULL */ || false /* TODO: cob_glob_ptr->cob_physical_cancel == 1 */) {
+        // CALL subroutine
+    }
+    // RETURN_CODE = ((int (*)(void))call_prog2.funcint) ();
+    if (false /* TODO: call_prog3.funcvoid == NULL */ || false /* TODO: cob_glob_ptr->cob_physical_cancel == 1 */) {
+        // CALL subroutine
+    }
+    // RETURN_CODE = ((int (*)(void))call_prog3.funcint) ();
+    return;
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

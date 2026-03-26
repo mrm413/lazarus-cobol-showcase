@@ -956,10 +956,72 @@ FixedString<100> xml_ntext;
 FixedString<100> xml_text;
 
 // Forward declarations
+void p_main();
+
+void p_main() {
+    if (var_x.at(0) == 'X') {
+        std::cout << "NOT OK '" << var_x << "' IS X" << std::endl;
+    }
+    var_x.at(0) = static_cast<char>(88);
+    if (var_x.at(0) == 'X') {
+        std::cout << "NOT OK '" << var_x << "' IS NOT X" << std::endl;
+    }
+    if (false /* TODO: !(((*(var_x) - 'T') >= 0) && ((*(var_x) - 'Y') <= 0)) */) {
+        std::cout << "NOT OK '" << var_x << "' IS NOT T-Y" << std::endl;
+    }
+    var_x.at(0) = static_cast<char>(84);
+    if (false /* TODO: !(((*(var_x) - 'T') >= 0) && ((*(var_x) - 'Y') <= 0)) */) {
+        std::cout << "NOT OK '" << var_x << "' IS NOT T-Y" << std::endl;
+    }
+    var_x.at(0) = 'Y';
+    if (false /* TODO: !(((*(var_x) - 'T') >= 0) && ((*(var_x) - 'Y') <= 0)) */) {
+        std::cout << "NOT OK '" << var_x << "' IS NOT T-Y" << std::endl;
+    }
+    var_x.at(0) = static_cast<char>(90);
+    if (false /* TODO: (*(var_x) - 'T') >= 0 */ && false /* TODO: (*(var_x) - 'Y') <= 0 */) {
+        std::cout << "NOT OK '" << var_x << "' IS T-Y" << std::endl;
+    }
+    var_x.at(0) = 'A';
+    if (false /* TODO: (*(var_x) - 'T') >= 0 */ && false /* TODO: (*(var_x) - 'Y') <= 0 */) {
+        std::cout << "NOT OK '" << var_x << "' IS T-Y" << std::endl;
+    }
+    if (to_int(var_9) == 9) {
+        std::cout << "NOT OK '" << var_9 << "' IS V9" << std::endl;
+    }
+    var_9.at(0) = static_cast<char>(57);
+    if (to_int(var_9) == 9) {
+        std::cout << "NOT OK '" << var_9 << "' IS NOT V9" << std::endl;
+    }
+    var_9.at(0) = static_cast<char>(50);
+    if (to_int(var_9) == 9) {
+        std::cout << "NOT OK '" << var_9 << "' IS V9" << std::endl;
+    }
+    if (to_int(var_9) >= 2) {
+        std::cout << "NOT OK '" << var_9 << "' IS NOT V2-4" << std::endl;
+    }
+    var_9.at(0) = static_cast<char>(51);
+    if (to_int(var_9) >= 2) {
+        std::cout << "NOT OK '" << var_9 << "' IS NOT V2-4" << std::endl;
+    }
+    var_9.at(0) = static_cast<char>(52);
+    if (to_int(var_9) >= 2) {
+        std::cout << "NOT OK '" << var_9 << "' IS NOT V2-4" << std::endl;
+    }
+    var_9.at(0) = static_cast<char>(53);
+    if (to_int(var_9) >= 2 && to_int(var_9) <= 4) {
+        std::cout << "NOT OK '" << var_9 << "' IS V2-4" << std::endl;
+    }
+    var_9.at(0) = '1';
+    if (to_int(var_9) >= 2 && to_int(var_9) <= 4) {
+        std::cout << "NOT OK '" << var_9 << "' IS V2-4" << std::endl;
+    }
+    return;
+}
 
 int main() {
     try {
 
+    p_main();
     return RETURN_CODE;
 
         return 0;
@@ -989,8 +1051,8 @@ int main() {
 //
 // Hardening Statistics:
 //   - Types hardened: 8
-//   - Bounds checks added: 0
-//   - Names converted: 8
+//   - Bounds checks added: 13
+//   - Names converted: 9
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1

@@ -957,10 +957,44 @@ FixedString<100> xml_text;
 FixedString<50> x_2;
 
 // Forward declarations
+void p_main();
+
+void p_main() {
+    n_4 = std::string(2, static_cast<char>(0));
+    if (false /* TODO: !cob_is_numeric (n_3) */) {
+        std::cout << "3 0000 NG" << std::endl;
+    }
+    if (false /* TODO: !cob_is_numeric (n_4) */) {
+        std::cout << "4 0000 NG" << std::endl;
+    }
+    n_4 = "\000\014";
+    if (false /* TODO: cob_is_numeric (n_3) */) {
+        std::cout << "3 000c NG" << std::endl;
+    }
+    if (false /* TODO: cob_is_numeric (n_4) */) {
+        std::cout << "4 000c NG" << std::endl;
+    }
+    n_4 = "\0224";
+    if (false /* TODO: !cob_is_numeric (n_3) */) {
+        std::cout << "3 1234 NG" << std::endl;
+    }
+    if (false /* TODO: !cob_is_numeric (n_4) */) {
+        std::cout << "4 1234 NG" << std::endl;
+    }
+    n_4 = std::string(2, static_cast<char>(255));
+    if (false /* TODO: cob_is_numeric (n_3) */) {
+        std::cout << "3 ffff NG" << std::endl;
+    }
+    if (false /* TODO: cob_is_numeric (n_4) */) {
+        std::cout << "4 ffff NG" << std::endl;
+    }
+    return;
+}
 
 int main() {
     try {
 
+    p_main();
     return RETURN_CODE;
 
         return 0;
@@ -991,7 +1025,7 @@ int main() {
 // Hardening Statistics:
 //   - Types hardened: 9
 //   - Bounds checks added: 0
-//   - Names converted: 9
+//   - Names converted: 10
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1

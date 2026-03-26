@@ -50,7 +50,27 @@ std::string XML_TEXT;
 std::string Z;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    X = Z.substr(0, 10);
+    // UNHANDLED: cob_table_sort_init (1, cob_ascii_ebcdic);
+    // UNHANDLED: cob_table_sort_init_key (&f_20, 0, 0);
+    // UNHANDLED: cob_table_sort (COB_SET_FLD (f0, 1, b_18, &a_2), 10);
+    if (to_int(G) != to_int(c_1)) {
+        std::cout << G << std::endl;
+    }
+    X = Z.substr(0, 10);
+    // UNHANDLED: cob_table_sort_init (1, cob_ascii_ebcdic);
+    // UNHANDLED: cob_table_sort_init_key (&f_20, 1, 0);
+    // UNHANDLED: cob_table_sort (COB_SET_FLD (f0, 1, b_18, &a_2), 10);
+    if (to_int(G) != to_int(c_2)) {
+        std::cout << G << std::endl;
+    }
+    return;
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

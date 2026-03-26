@@ -848,6 +848,14 @@ inline void ABEND(const std::string& abcode = "LZRS") {
 
 int RETURN_CODE = 0; // Auto-declared by LAZARUS healer
 
+std::string c_12; // Auto-declared by LAZARUS healer
+
+std::string c_9; // Auto-declared by LAZARUS healer
+
+std::string c_5; // Auto-declared by LAZARUS healer
+
+std::string c_2; // Auto-declared by LAZARUS healer
+
 // ---------------------------------------------------------------------------
 // GLOBAL ALIASES FOR COMPATIBILITY
 // ---------------------------------------------------------------------------
@@ -960,10 +968,48 @@ FixedString<50> X3;
 FixedString<50> X4;
 
 // Forward declarations
+void p_main();
+
+void p_main() {
+    // UNHANDLED: cob_move (cob_intr_numval_c (&f_1, (cob_field *)&c_1), &f_11);
+    if (to_int(N) != to_int(c_2)) {
+        std::cout << "X1 '" << X1 << "' : " << N << std::endl;
+    }
+    // UNHANDLED: cob_move (cob_intr_numval_c (&f_2, (cob_field *)&c_1), &f_11);
+    if (to_int(N) != to_int(c_5)) {
+        std::cout << "X2 '" << X2 << "' : " << N << std::endl;
+    } else {
+        if (false /* cob_cmp != 0 */ || false /* cob_cmp != 0 */ || false /* cob_cmp != 0 */) {
+            std::cout << "NUMVAL not case-insensitive!" << std::endl;
+        }
+    }
+    // UNHANDLED: cob_move (cob_intr_numval_c (&f_6, (cob_field *)&c_1), &f_11);
+    if (to_int(N) != to_int(c_2)) {
+        std::cout << "X3 '" << X3 << "' : " << N << std::endl;
+    }
+    // UNHANDLED: cob_move (cob_intr_numval_c (&f_7, (cob_field *)&c_1), &f_11);
+    if (to_int(N) != to_int(c_9)) {
+        std::cout << "X4 '" << X4 << "' : " << N << std::endl;
+    }
+    // UNHANDLED: cob_move (cob_intr_numval (&f_8), &f_11);
+    if (to_int(N) != 0 && to_int(N) != to_int(c_5)) {
+        std::cout << "bad1 '" << bad1 << "' : " << N << std::endl;
+    }
+    // UNHANDLED: cob_move (cob_intr_numval (&f_9), &f_11);
+    if (to_int(N) != 0 && to_int(N) != to_int(c_12)) {
+        std::cout << "bad2 '" << bad2 << "' : " << N << std::endl;
+    }
+    // UNHANDLED: cob_move (cob_intr_numval (&f_10), &f_11);
+    if (to_int(N) != 0 && to_int(N) != -198756) {
+        std::cout << "bad3 '" << bad3 << "' : " << N << std::endl;
+    }
+    return;
+}
 
 int main() {
     try {
 
+    p_main();
     return RETURN_CODE;
 
         return 0;
@@ -994,7 +1040,7 @@ int main() {
 // Hardening Statistics:
 //   - Types hardened: 11
 //   - Bounds checks added: 0
-//   - Names converted: 3
+//   - Names converted: 4
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1

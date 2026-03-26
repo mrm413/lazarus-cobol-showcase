@@ -846,7 +846,7 @@ inline void ABEND(const std::string& abcode = "LZRS") {
 
 } // namespace lazarus
 
-int RETURN_CODE = 0; // Auto-declared by LAZARUS healer
+std::string file_status; // Auto-declared by LAZARUS healer
 
 // ---------------------------------------------------------------------------
 // GLOBAL ALIASES FOR COMPATIBILITY
@@ -947,12 +947,46 @@ using std::to_string;
 // ============================================================================
 
 // Working Storage variables
+FixedString<50> Detail_Line;
+int RETURN_CODE = 0;
+FixedString<30> xml_namespace;
+FixedString<30> xml_namespace_prefix;
+FixedString<30> xml_nnamespace;
+FixedString<30> xml_nnamespace_prefix;
+FixedString<100> xml_ntext;
+FixedString<100> xml_text;
 
 // Forward declarations
+void p_1();
+void P_010_Main();
+
+void p_1() {
+    // OPEN REPORT-FILE (OUTPUT)
+    if (file_status != "EXCEPTION_0") {
+    }
+    // UNHANDLED: goto rwexit_1;
+    // UNHANDLED: rwmove_1: ;
+    // UNHANDLED: rwfoot_1: ;
+    // UNHANDLED: rwexit_1: ;
+    // UNHANDLED: r_RWCS_REPORT.code_is_present = 0;
+    // UNHANDLED: cob_report_initiate (&r_RWCS_REPORT);
+    // UNHANDLED: cob_report_generate (&r_RWCS_REPORT, &rl_19, 0);
+    // UNHANDLED: cob_report_terminate (&r_RWCS_REPORT, 0);
+    // CLOSE REPORT-FILE
+    if (file_status != "EXCEPTION_0") {
+    }
+    if (false /* TODO: module->module_active */) {
+    }
+}
+
+void P_010_Main() {
+    p_1();
+}
 
 int main() {
     try {
 
+    p_1();
     return RETURN_CODE;
 
         return 0;
@@ -981,9 +1015,9 @@ int main() {
 // ============================================================================
 //
 // Hardening Statistics:
-//   - Types hardened: 0
+//   - Types hardened: 7
 //   - Bounds checks added: 0
-//   - Names converted: 0
+//   - Names converted: 7
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1

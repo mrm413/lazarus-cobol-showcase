@@ -51,7 +51,19 @@ std::string XX_1;
 std::string Y2;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    if (Y2.substr(0, 4) != XX_1.substr(4, 4)) {
+        std::cout << "Test 2 '" << "'" << std::endl;
+    }
+    if (false /* TODO: ((Y2) - (*(unsigned char **) (P_XX_2))) != 0 */) {
+        std::cout << "NOK" << std::endl;
+    }
+    return;
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

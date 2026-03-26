@@ -47,7 +47,25 @@ std::string XML_NTEXT;
 std::string XML_TEXT;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    RETURN_CODE = 1;
+    if (false /* TODO: (RETURN_CODE - 1) != 0 */) {
+        std::cout << RETURN_CODE << std::endl;
+    }
+    if (false /* TODO: call_mod1.funcvoid == NULL */ || false /* TODO: cob_glob_ptr->cob_physical_cancel == 1 */) {
+        // CALL subroutine
+    }
+    // RETURN_CODE = ((int (*)(void))call_mod1.funcint) ();
+    if (false /* TODO: (RETURN_CODE - 2) != 0 */) {
+        std::cout << RETURN_CODE << std::endl;
+    }
+    RETURN_CODE = 0;
+    return;
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

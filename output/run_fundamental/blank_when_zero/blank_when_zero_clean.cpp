@@ -48,7 +48,19 @@ std::string XML_TEXT;
 std::string x;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    std::cout << x << std::endl;
+    x = "0";
+    std::cout << x << std::endl;
+    x = cob_all_zero;
+    std::cout << x << std::endl;
+    if (false /* TODO: module->module_active */) {
+    }
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

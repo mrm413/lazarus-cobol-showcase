@@ -50,7 +50,20 @@ std::string XML_NTEXT;
 std::string XML_TEXT;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    // STRING operation
+    // STRING operation
+    if (TEST_DATA[1] == '_') {
+        std::cout << "FUNCTION result too long" << std::endl;
+    } else if (TEST_DATA[0] == 'k') {
+    }
+    std::cout << TEST_DATA << std::endl;
+    return;
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

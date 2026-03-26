@@ -56,7 +56,87 @@ std::string XML_NTEXT;
 std::string XML_TEXT;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    NE = "-51277";
+    // UNHANDLED: cob_content	content_1;
+    // UNHANDLED: content_fb_1.data = content_1.data;
+    // UNHANDLED: content_1.dataint = 2560;
+    if (false /* TODO: call_CAPI.funcvoid == NULL */ || false /* TODO: cob_glob_ptr->cob_physical_cancel == 1 */) {
+        // CALL subroutine
+    }
+    // RETURN_CODE = ((int (*)(void *, cob_u32_t))call_CAPI.funcint) (content_1.data, (cob_u32_t)16);
+    if (false /* TODO: call_CAPI.funcvoid == NULL */ || false /* TODO: cob_glob_ptr->cob_physical_cancel == 1 */) {
+        // CALL subroutine
+    }
+    // RETURN_CODE = ((int (*)(void *, void *))call_CAPI.funcint) (b_17, b_23);
+    if (false /* TODO: call_CAPI.funcvoid == NULL */ || false /* TODO: cob_glob_ptr->cob_physical_cancel == 1 */) {
+        // CALL subroutine
+    }
+    // RETURN_CODE = ((int (*)(void *))call_CAPI.funcint) (b_18);
+    if (false /* TODO: call_CAPI.funcvoid == NULL */ || false /* TODO: cob_glob_ptr->cob_physical_cancel == 1 */) {
+        // CALL subroutine
+    }
+    // RETURN_CODE = ((int (*)(void *))call_CAPI.funcint) (b_19);
+    NE = "51277";
+    if (false /* TODO: call_CAPI.funcvoid == NULL */ || false /* TODO: cob_glob_ptr->cob_physical_cancel == 1 */) {
+        // CALL subroutine
+    }
+    // RETURN_CODE = ((int (*)(void *, void *))call_CAPI.funcint) (b_20, b_23);
+    if (false /* TODO: call_CAPI.funcvoid == NULL */ || false /* TODO: cob_glob_ptr->cob_physical_cancel == 1 */) {
+        // CALL subroutine
+    }
+    // RETURN_CODE = ((int (*)(void *, void *, void *, void *))call_CAPI.funcint) (b_22, b_18, b_24, b_25);
+    if (false /* TODO: call_CAPI.funcvoid == NULL */ || false /* TODO: cob_glob_ptr->cob_physical_cancel == 1 */) {
+        // CALL subroutine
+    }
+    // RETURN_CODE = ((int (*)(void *, void *, void *))call_CAPI.funcint) (b_20, b_23, b_24);
+    if (false /* TODO: call_CAPI.funcvoid == NULL */ || false /* TODO: cob_glob_ptr->cob_physical_cancel == 1 */) {
+        // CALL subroutine
+    }
+    // RETURN_CODE = ((int (*)(void *, void *))call_CAPI.funcint) (b_17, b_23);
+    CHRX = "Hello!";
+    if (false /* TODO: call_CAPI.funcvoid == NULL */ || false /* TODO: cob_glob_ptr->cob_physical_cancel == 1 */) {
+        // CALL subroutine
+    }
+    // RETURN_CODE = ((int (*)(cob_u32_t, void *))call_CAPI.funcint) ((cob_u32_t)((*(unsigned int *)(b_17))), content_2.data);
+    if (false /* TODO: call_CAPI.funcvoid == NULL */ || false /* TODO: cob_glob_ptr->cob_physical_cancel == 1 */) {
+        // CALL subroutine
+    }
+    // RETURN_CODE = ((int (*)(cob_u32_t, void *))call_CAPI.funcint) ((cob_u32_t)((*(unsigned int *)(b_17))), content_2.data);
+    // UNHANDLED: cob_content	content_1;
+    // UNHANDLED: content_fb_1.data = content_1.data;
+    // UNHANDLED: content_1.dataint = 18;
+    if (false /* TODO: call_CAPI.funcvoid == NULL */ || false /* TODO: cob_glob_ptr->cob_physical_cancel == 1 */) {
+        // CALL subroutine
+    }
+    // RETURN_CODE = ((int (*)(void *))call_CAPI.funcint) (content_1.data);
+    if (false /* TODO: call_CAPI.funcvoid == NULL */ || false /* TODO: cob_glob_ptr->cob_physical_cancel == 1 */) {
+        // CALL subroutine
+    }
+    // RETURN_CODE = ((int (*)(void *, cob_u32_t))call_CAPI.funcint) (content_1.data, (cob_u32_t)18);
+    if (false /* TODO: call_CAPI.funcvoid == NULL */ || false /* TODO: cob_glob_ptr->cob_physical_cancel == 1 */) {
+        // CALL subroutine
+    }
+    // RETURN_CODE = ((int (*)(void *, void *))call_CAPI.funcint) ((cob_u8_ptr)"Fred Fish", b_20);
+    if (false /* TODO: call_CAPI.funcvoid == NULL */ || false /* TODO: cob_glob_ptr->cob_physical_cancel == 1 */) {
+        // CALL subroutine
+    }
+    // RETURN_CODE = ((int (*)(void *))call_CAPI.funcint) (b_21);
+    if (false /* TODO: call_CAPI.funcvoid == NULL */ || false /* TODO: cob_glob_ptr->cob_physical_cancel == 1 */) {
+        // CALL subroutine
+    }
+    // RETURN_CODE = ((int (*)(void))call_CAPI.funcint) ();
+    std::cout << "COMP3    is now " << COMP3 << ";" << std::endl;
+    std::cout << "COMP4    is now " << BINFLD5 << ";" << std::endl;
+    std::cout << "BINFLD5S is now " << BINFLD5S << ";" << std::endl;
+    std::cout << "CHRX     is now " << CHRX << ";" << std::endl;
+    std::cout << "NE       is now " << NE << ";" << std::endl;
+    return;
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

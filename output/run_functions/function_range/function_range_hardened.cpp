@@ -955,10 +955,20 @@ FixedString<100> xml_text;
 FixedString<50> Z;
 
 // Forward declarations
+void p_main();
+
+void p_main() {
+    // UNHANDLED: cob_move (cob_intr_range (5, (cob_field *)&c_1, (cob_field *)&c_2, (cob_field *)&c_3, (cob_field *)&c_4, (cob_field *)&c_5), &f_17);
+    if (to_int(Z) != 22) {
+        std::cout << Z << std::endl;
+    }
+    return;
+}
 
 int main() {
     try {
 
+    p_main();
     return RETURN_CODE;
 
         return 0;
@@ -989,7 +999,7 @@ int main() {
 // Hardening Statistics:
 //   - Types hardened: 7
 //   - Bounds checks added: 0
-//   - Names converted: 6
+//   - Names converted: 7
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1

@@ -48,7 +48,18 @@ std::string XML_NTEXT;
 std::string XML_TEXT;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    // ADD to TALLY
+    if (false /* TODO: call_nested.funcvoid == NULL */ || false /* TODO: cob_glob_ptr->cob_physical_cancel == 1 */) {
+        // CALL subroutine
+    }
+    // RETURN_CODE = ((int (*)(void))call_nested.funcint) ();
+    return;
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

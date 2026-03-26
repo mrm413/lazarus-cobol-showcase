@@ -958,10 +958,22 @@ FixedString<50> xx_1;
 FixedString<50> Y2;
 
 // Forward declarations
+void p_main();
+
+void p_main() {
+    if (Y2.substr(0, 4) != xx_1.substr(4, 4)) {
+        std::cout << "Test 2 '" << "'" << std::endl;
+    }
+    if (false /* TODO: ((Y2) - (*(unsigned char **) (p_xx_2))) != 0 */) {
+        std::cout << "NOK" << std::endl;
+    }
+    return;
+}
 
 int main() {
     try {
 
+    p_main();
     return RETURN_CODE;
 
         return 0;
@@ -992,7 +1004,7 @@ int main() {
 // Hardening Statistics:
 //   - Types hardened: 10
 //   - Bounds checks added: 0
-//   - Names converted: 9
+//   - Names converted: 10
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1

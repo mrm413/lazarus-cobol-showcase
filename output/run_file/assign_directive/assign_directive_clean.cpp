@@ -50,7 +50,35 @@ std::string g_rec;
 std::string whatever;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    whatever = "out.txt";
+    // OPEN F (OUTPUT)
+    if (file_status != "EXCEPTION_0") {
+    }
+    f_rec = "hi";
+    // WRITE F
+    if (file_status != "EXCEPTION_0") {
+    }
+    // CLOSE F
+    if (file_status != "EXCEPTION_0") {
+    }
+    // OPEN G (OUTPUT)
+    if (file_status != "EXCEPTION_0") {
+    }
+    g_rec = "hi";
+    // WRITE G
+    if (file_status != "EXCEPTION_0") {
+    }
+    // CLOSE G
+    if (file_status != "EXCEPTION_0") {
+    }
+    if (false /* TODO: module->module_active */) {
+    }
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

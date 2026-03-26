@@ -957,10 +957,23 @@ FixedString<100> xml_ntext;
 FixedString<100> xml_text;
 
 // Forward declarations
+void p_main();
+
+void p_main() {
+    // STRING operation
+    // STRING operation
+    if (test_data.at(1) == '_') {
+        std::cout << "FUNCTION result too long" << std::endl;
+    } else if (test_data.at(0) == 'k') {
+    }
+    std::cout << test_data << std::endl;
+    return;
+}
 
 int main() {
     try {
 
+    p_main();
     return RETURN_CODE;
 
         return 0;
@@ -990,8 +1003,8 @@ int main() {
 //
 // Hardening Statistics:
 //   - Types hardened: 9
-//   - Bounds checks added: 0
-//   - Names converted: 8
+//   - Bounds checks added: 2
+//   - Names converted: 9
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1

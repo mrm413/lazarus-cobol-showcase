@@ -42,7 +42,37 @@ std::string X_ZZZN;
 std::string X_ZZZP;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    X_ZZZN = "-1";
+    if (X_ZZZN.substr(0, 4) != "  1-") {
+        std::cout << "(" << X_ZZZN << ")" << std::endl;
+    }
+    X_ZZZN = "0";
+    if (X_ZZZN.substr(0, 4) != "") {
+        std::cout << "(" << X_ZZZN << ")" << std::endl;
+    }
+    X_ZZZN = "+1";
+    if (X_ZZZN.substr(0, 4) != "  1") {
+        std::cout << "(" << X_ZZZN << ")" << std::endl;
+    }
+    X_ZZZP = "-1";
+    if (X_ZZZP.substr(0, 4) != "  1-") {
+        std::cout << "(" << X_ZZZP << ")" << std::endl;
+    }
+    X_ZZZP = "0";
+    if (X_ZZZP.substr(0, 4) != "") {
+        std::cout << "(" << X_ZZZP << ")" << std::endl;
+    }
+    X_ZZZP = "+1";
+    if (X_ZZZP.substr(0, 4) != "  1+") {
+        std::cout << "(" << X_ZZZP << ")" << std::endl;
+    }
+    return;
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

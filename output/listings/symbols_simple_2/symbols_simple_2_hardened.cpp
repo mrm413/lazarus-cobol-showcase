@@ -961,10 +961,16 @@ FixedString<100> xml_ntext;
 FixedString<100> xml_text;
 
 // Forward declarations
+void p_main();
+
+void p_main() {
+    return;
+}
 
 int main() {
     try {
 
+    p_main();
     return RETURN_CODE;
 
         return 0;
@@ -995,7 +1001,7 @@ int main() {
 // Hardening Statistics:
 //   - Types hardened: 13
 //   - Bounds checks added: 0
-//   - Names converted: 13
+//   - Names converted: 14
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1

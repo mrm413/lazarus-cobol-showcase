@@ -950,10 +950,20 @@ using std::to_string;
 FixedString<50> Y;
 
 // Forward declarations
+void p_main();
+
+void p_main() {
+    // UNHANDLED: cob_move (cob_intr_random (0), &f_1);
+    if (to_int(Y) < 0) {
+        std::cout << Y << std::endl;
+    }
+    return;
+}
 
 int main() {
     try {
 
+    p_main();
     return RETURN_CODE;
 
         return 0;
@@ -984,7 +994,7 @@ int main() {
 // Hardening Statistics:
 //   - Types hardened: 1
 //   - Bounds checks added: 0
-//   - Names converted: 0
+//   - Names converted: 1
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1

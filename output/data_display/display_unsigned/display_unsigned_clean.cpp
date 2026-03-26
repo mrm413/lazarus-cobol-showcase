@@ -54,7 +54,36 @@ std::string X_UI;
 std::string X_US;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    X_BCU = "127";
+    std::cout << X_BCU << std::endl;
+    // UNHANDLED: (*(cob_u8_ptr) (b_17)) = ((*(cob_u8_ptr) (b_17)) + 1);
+    std::cout << X_BCU << std::endl;
+    X_BSU = "32767";
+    std::cout << X_BSU << std::endl;
+    std::cout << X_BSU << std::endl;
+    X_BIU = "2147483647";
+    std::cout << X_BIU << std::endl;
+    std::cout << X_BIU << std::endl;
+    X_BLU = "2147483647";
+    std::cout << X_BLU << std::endl;
+    std::cout << X_BLU << std::endl;
+    X_BDU = "9223372036854775807";
+    std::cout << X_BDU << std::endl;
+    // UNHANDLED: (*(cob_u64_ptr)(b_21)) = ((*(cob_u64_ptr)(b_21)) + 1);
+    std::cout << X_BDU << std::endl;
+    X_US = "32767";
+    std::cout << X_US << std::endl;
+    std::cout << X_US << std::endl;
+    X_UI = "2147483647";
+    std::cout << X_UI << std::endl;
+    std::cout << X_UI << std::endl;
+    return;
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

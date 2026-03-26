@@ -954,10 +954,22 @@ FixedString<100> xml_ntext;
 FixedString<100> xml_text;
 
 // Forward declarations
+void p_main();
+
+void p_main() {
+    for (int n0 = 2; n0 > 0; n0--) {
+        std::cout << "X" << std::endl;
+        for (int n1 = 2; n1 > 0; n1--) {
+            std::cout << "Y" << std::endl;
+        }
+    }
+    return;
+}
 
 int main() {
     try {
 
+    p_main();
     return RETURN_CODE;
 
         return 0;
@@ -988,7 +1000,7 @@ int main() {
 // Hardening Statistics:
 //   - Types hardened: 6
 //   - Bounds checks added: 0
-//   - Names converted: 6
+//   - Names converted: 7
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1

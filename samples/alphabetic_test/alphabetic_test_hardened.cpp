@@ -955,10 +955,24 @@ FixedString<100> xml_ntext;
 FixedString<100> xml_text;
 
 // Forward declarations
+void p_main();
+
+void p_main() {
+    X.at(0) = static_cast<char>(13);
+    if (false /* TODO: cob_is_alpha (X) */) {
+        std::cout << "Fail - Alphabetic" << std::endl;
+    }
+    X.at(0) = 'A';
+    if (false /* TODO: !cob_is_alpha (X) */) {
+        std::cout << "Fail - Not Alphabetic" << std::endl;
+    }
+    return;
+}
 
 int main() {
     try {
 
+    p_main();
     return RETURN_CODE;
 
         return 0;
@@ -988,8 +1002,8 @@ int main() {
 //
 // Hardening Statistics:
 //   - Types hardened: 7
-//   - Bounds checks added: 0
-//   - Names converted: 6
+//   - Bounds checks added: 2
+//   - Names converted: 7
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1

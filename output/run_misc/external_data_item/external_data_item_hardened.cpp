@@ -950,10 +950,20 @@ using std::to_string;
 FixedString<50> ext_var;
 
 // Forward declarations
+void p_main();
+
+void p_main() {
+    if (ext_var.substr(0, 5) != "Hello") {
+        std::cout << std::endl;
+    }
+    ext_var = "World";
+    if (false /* TODO: module->next */) {}
+}
 
 int main() {
     try {
 
+    p_main();
     return RETURN_CODE;
 
         return 0;
@@ -984,7 +994,7 @@ int main() {
 // Hardening Statistics:
 //   - Types hardened: 1
 //   - Bounds checks added: 0
-//   - Names converted: 1
+//   - Names converted: 2
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1

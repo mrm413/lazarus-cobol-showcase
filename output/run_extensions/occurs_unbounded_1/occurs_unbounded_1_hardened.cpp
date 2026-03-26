@@ -959,10 +959,36 @@ FixedString<100> xml_ntext;
 FixedString<100> xml_text;
 
 // Forward declarations
+void p_main();
+
+void p_main() {
+    if (false /* TODO: cob_cmp_llint (cob_intr_length (COB_SET_FLD (f0, 3 * (*(unsigned short *)(N)), wcol1, &a_1)), 369LL) != 0 */) {
+        std::cout << "WRONG WS LENGTH: " << std::endl;
+    }
+    if (false /* TODO: cob_cmp_llint (cob_intr_length (COB_SET_FLD (f0, 3 * (*(unsigned short *)(N)), a_table, &a_1)), 369LL) != 0 */) {
+        std::cout << "WRONG LS LENGTH: " << std::endl;
+    }
+    // UNHANDLED: cob_allocate (nullptr, &f_18, cob_intr_length (COB_SET_FLD (f0, 3 * (*(unsigned short *)(b_17)), b_24, &a_1)), (cob_field *)&c_3);
+    if (a_table.substr(1, 2) != "BC") {
+        std::cout << "col2(1) wrong: " << std::endl;
+    }
+    if (false /* TODO: memcmp (a_table + 3LL * 1LL, (cob_u8_ptr)"DEA", 3) != 0 */) {
+        std::cout << "rows(2) wrong: " << std::endl;
+    }
+    // i_len = (*(int *) (b_29));
+    wcol1.at(0) = '0';
+    wcol1.replace(1, 2, std::string(2, ' '));
+    // UNHANDLED: cob_init_table (b_20, 3, (*(unsigned short *)(b_17)));
+    // MOVE to computed field
+    // UNHANDLED: cob_free_alloc (nullptr, b_18);
+    if (false /* TODO: module->module_active */) {
+    }
+}
 
 int main() {
     try {
 
+    p_main();
     return RETURN_CODE;
 
         return 0;
@@ -992,8 +1018,8 @@ int main() {
 //
 // Hardening Statistics:
 //   - Types hardened: 11
-//   - Bounds checks added: 0
-//   - Names converted: 9
+//   - Bounds checks added: 1
+//   - Names converted: 10
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1

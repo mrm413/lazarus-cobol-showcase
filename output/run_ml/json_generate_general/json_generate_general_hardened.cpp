@@ -846,6 +846,16 @@ inline void ABEND(const std::string& abcode = "LZRS") {
 
 } // namespace lazarus
 
+std::string c_9; // Auto-declared by LAZARUS healer
+
+std::string c_7; // Auto-declared by LAZARUS healer
+
+std::string c_5; // Auto-declared by LAZARUS healer
+
+std::string c_3; // Auto-declared by LAZARUS healer
+
+std::string c_1; // Auto-declared by LAZARUS healer
+
 // ---------------------------------------------------------------------------
 // GLOBAL ALIASES FOR COMPATIBILITY
 // ---------------------------------------------------------------------------
@@ -958,10 +968,38 @@ FixedString<50> d;
 FixedString<50> out;
 
 // Forward declarations
+void p_main();
+
+void p_main() {
+    // UNHANDLED: cob_json_generate_new (&f_17, &mt_1, nullptr, 46);
+    if (to_int(out) != to_int(c_1)) {
+        std::cout << "Test 1 failed: " << out << std::endl;
+    }
+    // UNHANDLED: cob_json_generate_new (&f_17, &mt_4, nullptr, 46);
+    if (to_int(out) != to_int(c_3)) {
+        std::cout << "Test 2 failed: " << out << std::endl;
+    }
+    // UNHANDLED: cob_json_generate_new (&f_17, &mt_7, nullptr, 46);
+    if (to_int(out) != to_int(c_5)) {
+        std::cout << "Test 3 failed: " << out << std::endl;
+    }
+    // UNHANDLED: cob_json_generate_new (&f_17, &mt_8, nullptr, 46);
+    if (to_int(out) != to_int(c_7)) {
+        std::cout << "Test 4 failed: " << out << std::endl;
+    }
+    d.replace(6, 3, std::string(3, static_cast<char>(34)));
+    // UNHANDLED: cob_json_generate_new (&f_17, &mt_10, nullptr, 46);
+    if (to_int(out) != to_int(c_9)) {
+        std::cout << "Test 5 failed: " << out << std::endl;
+    }
+    if (false /* TODO: module->module_active */) {
+    }
+}
 
 int main() {
     try {
 
+    p_main();
     return RETURN_CODE;
 
         return 0;
@@ -992,7 +1030,7 @@ int main() {
 // Hardening Statistics:
 //   - Types hardened: 10
 //   - Bounds checks added: 0
-//   - Names converted: 6
+//   - Names converted: 7
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1

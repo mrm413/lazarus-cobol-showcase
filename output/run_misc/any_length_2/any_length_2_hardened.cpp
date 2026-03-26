@@ -951,10 +951,21 @@ FixedString<50> P1;
 FixedString<50> P2;
 
 // Forward declarations
+void p_main();
+
+void p_main() {
+    // MOVE to computed field
+    if (P2.substr(0, 3) != "OK") {
+        std::cout << P2 << std::endl;
+    }
+    // MOVE to computed field
+    if (false /* TODO: module->next */) {}
+}
 
 int main() {
     try {
 
+    p_main();
     return RETURN_CODE;
 
         return 0;
@@ -985,7 +996,7 @@ int main() {
 // Hardening Statistics:
 //   - Types hardened: 2
 //   - Bounds checks added: 0
-//   - Names converted: 0
+//   - Names converted: 1
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1

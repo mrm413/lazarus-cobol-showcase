@@ -1,7 +1,7 @@
 /**
  * LAZARUS-Generated C++ Code (V2)
- * Source: local_storage_2_1_preprocessed.cblbl
- * Program: PROGRAM
+ * Source: local_storage_2_1_preprocessed.cbl
+ * Program: callee
  */
 
 #include <iostream>
@@ -38,9 +38,29 @@ std::string file_status = "00";
 int n0 = 0, n1 = 0, n2 = 0, n3 = 0, n4 = 0;  // loop counters
 
 // Working Storage variables
+std::string LCL_X;
+int RETURN_CODE = 0;
+std::string XML_NAMESPACE;
+std::string XML_NAMESPACE_PREFIX;
+std::string XML_NNAMESPACE;
+std::string XML_NNAMESPACE_PREFIX;
+std::string XML_NTEXT;
+std::string XML_TEXT;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    if (false /* TODO: call_callee2.funcvoid == NULL */ || false /* TODO: cob_glob_ptr->cob_physical_cancel == 1 */) {
+        // CALL subroutine
+    }
+    if (false /* TODO: call_callee2.funcvoid == NULL */ || false /* TODO: cob_glob_ptr->cob_physical_cancel == 1 */) {
+        // CALL subroutine
+    }
+    if (false /* TODO: module->next */) {}
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

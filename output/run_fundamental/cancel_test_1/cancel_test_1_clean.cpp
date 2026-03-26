@@ -47,7 +47,16 @@ std::string XML_NTEXT;
 std::string XML_TEXT;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    // UNHANDLED: cob_cancel ("notthere");
+    // UNHANDLED: cob_cancel ("prog");
+    std::cout << "NG" << std::endl;
+    return;
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

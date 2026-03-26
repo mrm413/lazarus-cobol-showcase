@@ -960,10 +960,24 @@ FixedString<15> num_3;
 FixedString<1> success_flag;
 
 // Forward declarations
+void p_main();
+
+void p_main() {
+    std::cout << "Enter \\" << "1" << std::endl;
+    std::cout << num_1 << "3" << "3" << "4" << std::endl;
+    std::cout << num_2 << "4" << "3" << four << std::endl;
+    std::cout << num_3 << "5" << "3" << "8" << std::endl;
+    std::cout << "1234" << "6" << "3" << std::endl;
+    // UNHANDLED: cob_accept_field (&f_17, 1064960, "lc", (cob_field *)&c_6, 0);
+    if (success_flag.at(0) == 'Y' || success_flag.at(0) == 'y' && to_int(cob_crt_status) == 0) {
+        RETURN_CODE = 0;
+    }
+}
 
 int main() {
     try {
 
+    p_main();
     return RETURN_CODE;
 
         return 0;
@@ -993,8 +1007,8 @@ int main() {
 //
 // Hardening Statistics:
 //   - Types hardened: 12
-//   - Bounds checks added: 0
-//   - Names converted: 7
+//   - Bounds checks added: 1
+//   - Names converted: 8
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1

@@ -41,7 +41,17 @@ int n0 = 0, n1 = 0, n2 = 0, n3 = 0, n4 = 0;  // loop counters
 std::string X;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    X.replace(0, 1, "1");
+    if (to_int(X) != 1000) {
+        std::cout << X << std::endl;
+    }
+    return;
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

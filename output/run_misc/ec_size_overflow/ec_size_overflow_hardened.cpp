@@ -956,10 +956,22 @@ FixedString<50> x;
 FixedString<50> y;
 
 // Forward declarations
+void p_main();
+
+void p_main() {
+    y = to_string(to_num(0) / to_num(1));
+    y = to_string(to_num(0) / to_num(1));
+    if (false /* cob_cmp != 0 */) {
+        std::cout << "Wrong/missing exception: " << std::endl;
+    }
+    if (false /* TODO: module->module_active */) {
+    }
+}
 
 int main() {
     try {
 
+    p_main();
     return RETURN_CODE;
 
         return 0;
@@ -990,7 +1002,7 @@ int main() {
 // Hardening Statistics:
 //   - Types hardened: 8
 //   - Bounds checks added: 0
-//   - Names converted: 6
+//   - Names converted: 7
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1

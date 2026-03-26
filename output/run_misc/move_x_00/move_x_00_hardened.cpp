@@ -950,10 +950,21 @@ using std::to_string;
 FixedString<50> X;
 
 // Forward declarations
+void p_main();
+
+void p_main() {
+    X = "\000\001\002";
+    if (false /* TODO: call_dump.funcvoid == nullptr */ || false /* TODO: cob_glob_ptr->cob_physical_cancel == 1 */) {
+        // CALL subroutine
+    }
+    // UNHANDLED: ((int (*)(void *))call_dump.funcint) (b_1);
+    return;
+}
 
 int main() {
     try {
 
+    p_main();
     return RETURN_CODE;
 
         return 0;
@@ -984,7 +995,7 @@ int main() {
 // Hardening Statistics:
 //   - Types hardened: 1
 //   - Bounds checks added: 0
-//   - Names converted: 0
+//   - Names converted: 1
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1

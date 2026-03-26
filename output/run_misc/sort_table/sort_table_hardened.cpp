@@ -953,10 +953,40 @@ FixedString<50> X;
 FixedString<50> Y;
 
 // Forward declarations
+void p_main();
+
+void p_main() {
+    // UNHANDLED: cob_table_sort_init (1, 0);
+    // UNHANDLED: cob_table_sort_init_key (&f_3, 0, 0);
+    // UNHANDLED: cob_table_sort (COB_SET_FLD (f0, 2, b_1, &a_2), 5);
+    if (Y.substr(0, 10) != "a3b2c5d4e1") {
+        std::cout << G << std::endl;
+    }
+    // UNHANDLED: cob_table_sort_init (1, 0);
+    // UNHANDLED: cob_table_sort_init_key (&f_4, 1, 1);
+    // UNHANDLED: cob_table_sort (COB_SET_FLD (f0, 2, b_1, &a_2), 5);
+    if (Y.substr(0, 10) != "c5d4a3b2e1") {
+        std::cout << G << std::endl;
+    }
+    // UNHANDLED: cob_table_sort_init (1, 0);
+    // UNHANDLED: cob_table_sort_init_key (&f_2, 0, 0);
+    // UNHANDLED: cob_table_sort (COB_SET_FLD (f0, 2, b_1, &a_2), 5);
+    if (Y.substr(0, 10) != "a3b2c5d4e1") {
+        std::cout << G << std::endl;
+    }
+    // UNHANDLED: cob_table_sort_init (1, 0);
+    // UNHANDLED: cob_table_sort_init_key (&f_2, 1, 0);
+    // UNHANDLED: cob_table_sort (COB_SET_FLD (f0, 2, b_1, &a_2), 5);
+    if (Y.substr(0, 10) != "e1d4c5b2a3") {
+        std::cout << G << std::endl;
+    }
+    return;
+}
 
 int main() {
     try {
 
+    p_main();
     return RETURN_CODE;
 
         return 0;
@@ -987,7 +1017,7 @@ int main() {
 // Hardening Statistics:
 //   - Types hardened: 4
 //   - Bounds checks added: 0
-//   - Names converted: 1
+//   - Names converted: 2
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1

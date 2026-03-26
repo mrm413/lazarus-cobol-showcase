@@ -957,10 +957,49 @@ FixedString<50> x_s9_ls;
 FixedString<50> x_s9_ts;
 
 // Forward declarations
+void p_main();
+
+void p_main() {
+    x_s9_ts = std::string(5, '0');
+    x_s9_ts = "1234";
+    std::cout << X << std::endl;
+    x_s9_ts = std::string(5, '0');
+    x_s9_ts = "1234";
+    std::cout << X << std::endl;
+    x_s9_ts = std::string(5, '0');
+    x_s9_ts = "123t";
+    std::cout << X << std::endl;
+    x_s9_ts = std::string(5, '0');
+    x_s9_ts = "1234";
+    std::cout << X << std::endl;
+    x_s9_ts = std::string(5, '0');
+    x_s9_ts = "q234";
+    std::cout << X << std::endl;
+    x_s9_ts = std::string(5, '0');
+    x_s9_ls = "1234";
+    std::cout << X << std::endl;
+    x_s9_ts = std::string(5, '0');
+    x_s9_ls = "-1234";
+    std::cout << X << std::endl;
+    x_s9_ts = std::string(5, '0');
+    x_s9_ts = "1234";
+    std::cout << X << std::endl;
+    x_s9_ts = std::string(5, '0');
+    x_s9_ts = "123t";
+    std::cout << X << std::endl;
+    x_s9_ts = std::string(5, '0');
+    x_s9_ts = "1234";
+    std::cout << X << std::endl;
+    x_s9_ts = std::string(5, '0');
+    x_s9_ts = "-1234";
+    std::cout << X << std::endl;
+    return;
+}
 
 int main() {
     try {
 
+    p_main();
     return RETURN_CODE;
 
         return 0;
@@ -991,7 +1030,7 @@ int main() {
 // Hardening Statistics:
 //   - Types hardened: 9
 //   - Bounds checks added: 0
-//   - Names converted: 8
+//   - Names converted: 9
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1

@@ -949,10 +949,24 @@ using std::to_string;
 // Working Storage variables
 
 // Forward declarations
+void p_main();
+
+void p_main() {
+    if (false /* TODO: call_hello.funcvoid == nullptr */ || false /* TODO: cob_glob_ptr->cob_physical_cancel == 1 */) {
+        // CALL subroutine
+    }
+    // UNHANDLED: ((int (*)(void *))call_hello.funcint) ((cob_u8_ptr)"COBOL");
+    if (false /* TODO: call_bye.funcvoid == nullptr */ || false /* TODO: cob_glob_ptr->cob_physical_cancel == 1 */) {
+        // CALL subroutine
+    }
+    // UNHANDLED: ((int (*)(void *))call_bye.funcint) ((cob_u8_ptr)"COBOL-ENTRY");
+    return;
+}
 
 int main() {
     try {
 
+    p_main();
     return RETURN_CODE;
 
         return 0;
@@ -983,7 +997,7 @@ int main() {
 // Hardening Statistics:
 //   - Types hardened: 0
 //   - Bounds checks added: 0
-//   - Names converted: 0
+//   - Names converted: 1
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1

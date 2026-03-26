@@ -951,10 +951,21 @@ FixedString<50> G;
 FixedString<50> I;
 
 // Forward declarations
+void p_main();
+
+void p_main() {
+    I = to_string(0);
+    // UNHANDLED: cob_set_int (COB_SET_FLD (f0, 1, b_1, &a_1), b_3);
+    if (G.at(0) != '0') {
+        std::cout << std::endl;
+    }
+    return;
+}
 
 int main() {
     try {
 
+    p_main();
     return RETURN_CODE;
 
         return 0;
@@ -984,8 +995,8 @@ int main() {
 //
 // Hardening Statistics:
 //   - Types hardened: 2
-//   - Bounds checks added: 0
-//   - Names converted: 0
+//   - Bounds checks added: 1
+//   - Names converted: 1
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1

@@ -846,6 +846,8 @@ inline void ABEND(const std::string& abcode = "LZRS") {
 
 } // namespace lazarus
 
+std::string file_status; // Auto-declared by LAZARUS healer
+
 // ---------------------------------------------------------------------------
 // GLOBAL ALIASES FOR COMPATIBILITY
 // ---------------------------------------------------------------------------
@@ -957,10 +959,70 @@ FixedString<2> f_status;
 FixedString<50> g_rec;
 
 // Forward declarations
+void p_main();
+
+void p_main() {
+    // OPEN F (OUTPUT)
+    if (file_status != "EXCEPTION_0") {
+    }
+    f_rec.at(0) = static_cast<char>(97);
+    // WRITE F
+    if (file_status != "EXCEPTION_0") {
+    }
+    // CLOSE F
+    if (file_status != "EXCEPTION_0") {
+    }
+    // UNHANDLED: cob_set_exception (0);
+    // OPEN F (INPUT)
+    if (file_status != "EXCEPTION_0") {
+    }
+    for (int n0 = 2; n0 > 0; n0--) {
+        // READ NEXT F
+        if (file_status != "EXCEPTION_0") {
+        }
+        std::cout << f_rec << std::endl;
+    }
+    std::cout << f_status << std::endl;
+    std::cout << std::endl;
+    // UNHANDLED: cob_set_exception (0);
+    // CLOSE F
+    if (file_status != "EXCEPTION_0") {
+    }
+    // OPEN F (INPUT)
+    if (file_status != "EXCEPTION_0") {
+    }
+    for (int n1 = 2; n1 > 0; n1--) {
+        // READ NEXT F
+        if (file_status != "EXCEPTION_0") {
+        }
+        std::cout << f_rec << std::endl;
+    }
+    std::cout << f_status << std::endl;
+    std::cout << std::endl;
+    // UNHANDLED: cob_set_exception (0);
+    // CLOSE F
+    if (file_status != "EXCEPTION_0") {
+    }
+    // OPEN G (INPUT)
+    if (file_status != "EXCEPTION_0") {
+    }
+    for (int n2 = 2; n2 > 0; n2--) {
+        // READ NEXT G
+        if (file_status != "EXCEPTION_0") {
+        }
+        std::cout << g_rec << std::endl;
+    }
+    // CLOSE G
+    if (file_status != "EXCEPTION_0") {
+    }
+    if (false /* TODO: module->module_active */) {
+    }
+}
 
 int main() {
     try {
 
+    p_main();
     return RETURN_CODE;
 
         return 0;
@@ -990,8 +1052,8 @@ int main() {
 //
 // Hardening Statistics:
 //   - Types hardened: 9
-//   - Bounds checks added: 0
-//   - Names converted: 6
+//   - Bounds checks added: 1
+//   - Names converted: 7
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1

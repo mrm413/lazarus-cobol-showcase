@@ -846,7 +846,7 @@ inline void ABEND(const std::string& abcode = "LZRS") {
 
 } // namespace lazarus
 
-int RETURN_CODE = 0; // Auto-declared by LAZARUS healer
+std::string file_status; // Auto-declared by LAZARUS healer
 
 // ---------------------------------------------------------------------------
 // GLOBAL ALIASES FOR COMPATIBILITY
@@ -947,12 +947,68 @@ using std::to_string;
 // ============================================================================
 
 // Working Storage variables
+FixedString<50> heading_line;
+int RETURN_CODE = 0;
+FixedString<50> rp_dtl1;
+FixedString<50> rp_dtl3;
+FixedString<50> rp_dtl4;
+FixedString<30> xml_namespace;
+FixedString<30> xml_namespace_prefix;
+FixedString<30> xml_nnamespace;
+FixedString<30> xml_nnamespace_prefix;
+FixedString<100> xml_ntext;
+FixedString<100> xml_text;
+FixedString<50> rp_dtl2;
 
 // Forward declarations
+void p_main();
+
+void p_main() {
+    // OPEN RP-FILE (OUTPUT)
+    if (file_status != "EXCEPTION_0") {
+    }
+    // UNHANDLED: goto rwexit_1;
+    // UNHANDLED: rwmove_1: ;
+    // UNHANDLED: rwfoot_1: ;
+    // UNHANDLED: rwexit_1: ;
+    // UNHANDLED: r_RP.code_is_present = 0;
+    // UNHANDLED: cob_report_initiate (&r_RP);
+    rp_dtl1 = "100";
+    // UNHANDLED: memcpy (b_24 + 3 * 1, "100", 3);
+    // UNHANDLED: memcpy (b_24 + 3 * 2, "100", 3);
+    rp_dtl1.replace(12, 4, "<1>");
+    // UNHANDLED: cob_report_generate (&r_RP, &rl_24, 0);
+    rp_dtl2 = std::string(13, static_cast<char>(42));
+    rp_dtl2 = "Tag1";
+    // UNHANDLED: memcpy (b_27 + 13 * 1, "Tag1 ", 5);
+    // UNHANDLED: memcpy (b_27 + 13 * 2, "Tag1 ", 5);
+    rp_dtl2.replace(6, 5, "Tag2");
+    // UNHANDLED: memcpy (b_27 + 19 * 1, "Tag2 ", 5);
+    // UNHANDLED: memcpy (b_27 + 19 * 2, "Tag2 ", 5);
+    // UNHANDLED: cob_report_generate (&r_RP, &rl_27, 0);
+    rp_dtl3 = "200";
+    // UNHANDLED: memcpy (b_33 + 3 * 1, "200", 3);
+    // UNHANDLED: memcpy (b_33 + 3 * 2, "200", 3);
+    // UNHANDLED: memcpy (b_33 + 3 * 3, "200", 3);
+    rp_dtl3.replace(16, 4, "<3>");
+    // UNHANDLED: cob_report_generate (&r_RP, &rl_33, 0);
+    rp_dtl4 = "400";
+    rp_dtl4.replace(11, 3, "401");
+    // UNHANDLED: memcpy (b_36 + 14 * 1, "402", 3);
+    // UNHANDLED: memcpy (b_36 + 14 * 2, "403", 3);
+    rp_dtl4.replace(23, 4, "<4>");
+    // UNHANDLED: cob_report_generate (&r_RP, &rl_36, 0);
+    // UNHANDLED: cob_report_terminate (&r_RP, 0);
+    // CLOSE RP-FILE
+    if (file_status != "EXCEPTION_0") {
+    }
+    return;
+}
 
 int main() {
     try {
 
+    p_main();
     return RETURN_CODE;
 
         return 0;
@@ -981,9 +1037,9 @@ int main() {
 // ============================================================================
 //
 // Hardening Statistics:
-//   - Types hardened: 0
+//   - Types hardened: 11
 //   - Bounds checks added: 0
-//   - Names converted: 0
+//   - Names converted: 11
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1

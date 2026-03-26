@@ -959,10 +959,24 @@ FixedString<100> xml_ntext;
 FixedString<100> xml_text;
 
 // Forward declarations
+void p_main();
+
+void p_main() {
+    std::cout << std::endl;
+    // ADD operation
+    // wrk_idx = (b_22 + 1);
+    // lcl_idx = (b_25 + 1);
+    // UNHANDLED: cob_set_int (&f_19, b_22);
+    disp_idx.at(0) = wrk_var.at(0);
+    std::cout << disp_vals << std::endl;
+    // UNHANDLED: cob_set_int (&f_19, b_25);
+    std::cout << disp_vals << std::endl;
+}
 
 int main() {
     try {
 
+    p_main();
     return RETURN_CODE;
 
         return 0;
@@ -992,8 +1006,8 @@ int main() {
 //
 // Hardening Statistics:
 //   - Types hardened: 11
-//   - Bounds checks added: 0
-//   - Names converted: 11
+//   - Bounds checks added: 1
+//   - Names converted: 12
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1

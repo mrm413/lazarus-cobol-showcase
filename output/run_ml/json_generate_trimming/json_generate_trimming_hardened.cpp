@@ -846,6 +846,26 @@ inline void ABEND(const std::string& abcode = "LZRS") {
 
 } // namespace lazarus
 
+std::string c_19; // Auto-declared by LAZARUS healer
+
+std::string c_17; // Auto-declared by LAZARUS healer
+
+std::string c_15; // Auto-declared by LAZARUS healer
+
+std::string c_13; // Auto-declared by LAZARUS healer
+
+std::string c_11; // Auto-declared by LAZARUS healer
+
+std::string c_9; // Auto-declared by LAZARUS healer
+
+std::string c_7; // Auto-declared by LAZARUS healer
+
+std::string c_5; // Auto-declared by LAZARUS healer
+
+std::string c_3; // Auto-declared by LAZARUS healer
+
+std::string c_1; // Auto-declared by LAZARUS healer
+
 // ---------------------------------------------------------------------------
 // GLOBAL ALIASES FOR COMPATIBILITY
 // ---------------------------------------------------------------------------
@@ -968,10 +988,58 @@ FixedString<15> signed_decimal_num;
 FixedString<50> str;
 
 // Forward declarations
+void p_main();
+
+void p_main() {
+    // UNHANDLED: cob_json_generate_new (&f_31, &mt_1, nullptr, 46);
+    if (to_int(out) != to_int(c_1)) {
+        std::cout << "Failed 1: " << out << std::endl;
+    }
+    // UNHANDLED: cob_json_generate_new (&f_31, &mt_2, nullptr, 46);
+    if (to_int(out) != to_int(c_3)) {
+        std::cout << "Failed 2: " << out << std::endl;
+    }
+    // UNHANDLED: cob_json_generate_new (&f_31, &mt_3, nullptr, 46);
+    if (to_int(out) != to_int(c_5)) {
+        std::cout << "Failed 3: " << out << std::endl;
+    }
+    // UNHANDLED: cob_json_generate_new (&f_31, &mt_4, nullptr, 46);
+    if (to_int(out) != to_int(c_7)) {
+        std::cout << "Failed 4: " << out << std::endl;
+    }
+    // UNHANDLED: cob_json_generate_new (&f_31, &mt_7, nullptr, 46);
+    if (to_int(out) != to_int(c_9)) {
+        std::cout << "Failed 5: " << out << std::endl;
+    }
+    // UNHANDLED: cob_json_generate_new (&f_31, &mt_8, nullptr, 46);
+    if (to_int(out) != to_int(c_11)) {
+        std::cout << "Failed 6: " << out << std::endl;
+    }
+    // UNHANDLED: cob_json_generate_new (&f_31, &mt_9, nullptr, 46);
+    if (to_int(out) != to_int(c_13)) {
+        std::cout << "Failed 7: " << out << std::endl;
+    }
+    just_item = "     blah";
+    // UNHANDLED: cob_json_generate_new (&f_31, &mt_10, nullptr, 46);
+    if (to_int(out) != to_int(c_15)) {
+        std::cout << "Failed 10: " << out << std::endl;
+    }
+    // UNHANDLED: cob_json_generate_new (&f_31, &mt_11, nullptr, 46);
+    if (to_int(out) != to_int(c_17)) {
+        std::cout << "Failed 11: " << out << std::endl;
+    }
+    // UNHANDLED: cob_json_generate_new (&f_31, &mt_12, nullptr, 46);
+    if (to_int(out) != to_int(c_19)) {
+        std::cout << "Failed 12: " << out << std::endl;
+    }
+    if (false /* TODO: module->module_active */) {
+    }
+}
 
 int main() {
     try {
 
+    p_main();
     return RETURN_CODE;
 
         return 0;
@@ -1002,7 +1070,7 @@ int main() {
 // Hardening Statistics:
 //   - Types hardened: 20
 //   - Bounds checks added: 0
-//   - Names converted: 6
+//   - Names converted: 7
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1

@@ -961,10 +961,39 @@ FixedString<50> x_ui;
 FixedString<50> x_us;
 
 // Forward declarations
+void p_main();
+
+void p_main() {
+    x_bcu = "127";
+    std::cout << x_bcu << std::endl;
+    // UNHANDLED: (*(cob_u8_ptr) (b_17)) = ((*(cob_u8_ptr) (b_17)) + 1);
+    std::cout << x_bcu << std::endl;
+    x_bsu = "32767";
+    std::cout << x_bsu << std::endl;
+    std::cout << x_bsu << std::endl;
+    x_biu = "2147483647";
+    std::cout << x_biu << std::endl;
+    std::cout << x_biu << std::endl;
+    x_blu = "2147483647";
+    std::cout << x_blu << std::endl;
+    std::cout << x_blu << std::endl;
+    x_bdu = "9223372036854775807";
+    std::cout << x_bdu << std::endl;
+    // UNHANDLED: (*(cob_u64_ptr)(b_21)) = ((*(cob_u64_ptr)(b_21)) + 1);
+    std::cout << x_bdu << std::endl;
+    x_us = "32767";
+    std::cout << x_us << std::endl;
+    std::cout << x_us << std::endl;
+    x_ui = "2147483647";
+    std::cout << x_ui << std::endl;
+    std::cout << x_ui << std::endl;
+    return;
+}
 
 int main() {
     try {
 
+    p_main();
     return RETURN_CODE;
 
         return 0;
@@ -995,7 +1024,7 @@ int main() {
 // Hardening Statistics:
 //   - Types hardened: 13
 //   - Bounds checks added: 0
-//   - Names converted: 13
+//   - Names converted: 14
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1

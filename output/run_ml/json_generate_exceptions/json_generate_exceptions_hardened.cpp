@@ -846,6 +846,8 @@ inline void ABEND(const std::string& abcode = "LZRS") {
 
 } // namespace lazarus
 
+std::string VAR_15; // Auto-declared by LAZARUS healer
+
 // ---------------------------------------------------------------------------
 // GLOBAL ALIASES FOR COMPATIBILITY
 // ---------------------------------------------------------------------------
@@ -959,10 +961,37 @@ FixedString<50> normal_str;
 FixedString<50> short_str;
 
 // Forward declarations
+void p_main();
+
+void p_main() {
+    // UNHANDLED: cob_json_generate_new (&f_21, &mt_1, &f_22, 46);
+    if (false /* TODO: memcmp (short_str, (cob_u8_ptr)"{\"val", 5) != 0 */ || to_int(json_len) != 33 || to_int(RETURN_CODE) != 1) {
+        std::cout << "Failed 1: " << short_str << " " << json_len << " " << VAR_15 << std::endl;
+    }
+    // UNHANDLED: cob_json_generate_new (&f_17, &mt_4, nullptr, 46);
+    if (false /* EXCEPTION 0x1700 */) {
+        std::cout << "Failed 2: EXCEPTION " << normal_str << " " << VAR_15 << std::endl;
+    } else {
+        if (to_int(RETURN_CODE) != 0) {
+            std::cout << "Failed 2: NOT EXCEPTION " << normal_str << " " << VAR_15 << std::endl;
+        }
+    }
+    // UNHANDLED: cob_json_generate_new (&f_21, &mt_7, nullptr, 46);
+    if (false /* EXCEPTION 0x1700 */) {
+        if (to_int(RETURN_CODE) != 1) {
+            std::cout << "Failed 3: ON EXCEPTION " << normal_str << " " << VAR_15 << std::endl;
+        }
+    } else {
+        std::cout << "Failed 3: NOT EXCEPTION " << normal_str << " " << VAR_15 << std::endl;
+    }
+    if (false /* TODO: module->module_active */) {
+    }
+}
 
 int main() {
     try {
 
+    p_main();
     return RETURN_CODE;
 
         return 0;
@@ -993,7 +1022,7 @@ int main() {
 // Hardening Statistics:
 //   - Types hardened: 11
 //   - Bounds checks added: 0
-//   - Names converted: 6
+//   - Names converted: 7
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1

@@ -51,7 +51,30 @@ std::string X_2;
 std::string Y;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    if (Y.substr(0, 3) != "X-1") {
+        std::cout << "Test 1 " << std::endl;
+    }
+    if (Y.substr(0, 3) != "X-2") {
+        std::cout << "Test 2 " << std::endl;
+    }
+    PTR_1 = std::string(4, '\0');
+    if (false /* TODO: ((*(unsigned char **) (PTR_1)) - (cob_u8_ptr)NULL) != 0 */) {
+        std::cout << "NG 1" << std::endl;
+    }
+    if (false /* TODO: ((*(unsigned char **) (PTR_1)) - (Y)) != 0 */) {
+        std::cout << "NG 2" << std::endl;
+    }
+    if (false /* TODO: ((Y) - (*(unsigned char **) (PTR_1))) != 0 */) {
+        std::cout << "NG 3" << std::endl;
+    }
+    if (false /* TODO: module->module_active */) {
+    }
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

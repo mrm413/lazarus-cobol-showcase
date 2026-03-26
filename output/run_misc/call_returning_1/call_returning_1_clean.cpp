@@ -49,7 +49,24 @@ std::string my_binary_return;
 std::string my_display_return;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    if (false /* TODO: call_callee.funcvoid == NULL */ || false /* TODO: cob_glob_ptr->cob_physical_cancel == 1 */) {
+        // CALL subroutine
+    }
+    // ret = ((int (*)(void))call_callee.funcint) ();
+    // UNHANDLED: cob_set_int (&f_17, ret);
+    if (false /* TODO: (RETURN_CODE - 0) != 0 */) {
+        std::cout << "1 - unexpected RETURN-CODE: " << RETURN_CODE << std::endl;
+    }
+    if (to_int(my_display_return) != 43) {
+        std::cout << "1- unexpected RETURNING: " << my_display_return << std::endl;
+    }
+    return;
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

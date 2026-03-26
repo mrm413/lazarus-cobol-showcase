@@ -956,10 +956,27 @@ FixedString<100> xml_ntext;
 FixedString<100> xml_text;
 
 // Forward declarations
+void p_main();
+
+void p_main() {
+    xbyte4 = "012\000";
+    if (xbyte4.at(0) == '0' && xbyte4.at(1) == '1' && xbyte4.at(2) == '2' && false /* TODO: (*(xbyte4 + 3)) == 0 */) {
+        std::cout << "OK" << std::endl;
+    } else {
+        std::cout << "X = " << std::endl;
+        if (false /* TODO: (*(xbyte4 + 3)) == 0 */) {
+            std::cout << " WITH LOW-VALUE" << std::endl;
+        } else {
+            std::cout << " WITHOUT LOW-VALUE BUT '" << xbyte4 << "'" << std::endl;
+        }
+    }
+    return;
+}
 
 int main() {
     try {
 
+    p_main();
     return RETURN_CODE;
 
         return 0;
@@ -989,8 +1006,8 @@ int main() {
 //
 // Hardening Statistics:
 //   - Types hardened: 8
-//   - Bounds checks added: 0
-//   - Names converted: 7
+//   - Bounds checks added: 1
+//   - Names converted: 8
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1

@@ -846,8 +846,6 @@ inline void ABEND(const std::string& abcode = "LZRS") {
 
 } // namespace lazarus
 
-int RETURN_CODE = 0; // Auto-declared by LAZARUS healer
-
 // ---------------------------------------------------------------------------
 // GLOBAL ALIASES FOR COMPATIBILITY
 // ---------------------------------------------------------------------------
@@ -947,12 +945,32 @@ using std::to_string;
 // ============================================================================
 
 // Working Storage variables
+FixedString<50> lcl_x;
+int RETURN_CODE = 0;
+FixedString<30> xml_namespace;
+FixedString<30> xml_namespace_prefix;
+FixedString<30> xml_nnamespace;
+FixedString<30> xml_nnamespace_prefix;
+FixedString<100> xml_ntext;
+FixedString<100> xml_text;
 
 // Forward declarations
+void p_main();
+
+void p_main() {
+    if (false /* TODO: call_callee2.funcvoid == nullptr */ || false /* TODO: cob_glob_ptr->cob_physical_cancel == 1 */) {
+        // CALL subroutine
+    }
+    if (false /* TODO: call_callee2.funcvoid == nullptr */ || false /* TODO: cob_glob_ptr->cob_physical_cancel == 1 */) {
+        // CALL subroutine
+    }
+    if (false /* TODO: module->next */) {}
+}
 
 int main() {
     try {
 
+    p_main();
     return RETURN_CODE;
 
         return 0;
@@ -981,9 +999,9 @@ int main() {
 // ============================================================================
 //
 // Hardening Statistics:
-//   - Types hardened: 0
+//   - Types hardened: 7
 //   - Bounds checks added: 0
-//   - Names converted: 0
+//   - Names converted: 8
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1

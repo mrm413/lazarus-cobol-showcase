@@ -48,7 +48,17 @@ std::string XML_TEXT;
 std::string Y;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    // UNHANDLED: cob_move (cob_intr_e (), &f_17);
+    if (to_int(Y) != to_int(c_1)) {
+        std::cout << Y << std::endl;
+    }
+    return;
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

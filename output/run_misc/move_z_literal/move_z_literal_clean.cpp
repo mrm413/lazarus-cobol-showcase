@@ -49,7 +49,24 @@ std::string XML_NTEXT;
 std::string XML_TEXT;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    XBYTE4 = "012\000";
+    if (XBYTE4[0] == '0' && XBYTE4[1] == '1' && XBYTE4[2] == '2' && false /* TODO: (*(XBYTE4 + 3)) == 0 */) {
+        std::cout << "OK" << std::endl;
+    } else {
+        std::cout << "X = " << std::endl;
+        if (false /* TODO: (*(XBYTE4 + 3)) == 0 */) {
+            std::cout << " WITH LOW-VALUE" << std::endl;
+        } else {
+            std::cout << " WITHOUT LOW-VALUE BUT '" << XBYTE4 << "'" << std::endl;
+        }
+    }
+    return;
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

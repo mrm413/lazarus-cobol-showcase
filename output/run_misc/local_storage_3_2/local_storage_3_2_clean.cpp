@@ -51,7 +51,18 @@ std::string XML_NTEXT;
 std::string XML_TEXT;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    std::cout << std::endl;
+    // ADD operation
+    // WRK_IDX = (b_22 + 1);
+    // UNHANDLED: cob_set_int (&f_19, b_22);
+    DISP_IDX[0] = WRK_VAR[0];
+    std::cout << DISP_VALS << std::endl;
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

@@ -955,10 +955,30 @@ FixedString<100> xml_ntext;
 FixedString<100> xml_text;
 
 // Forward declarations
+void p_main();
+
+void p_main() {
+    X = "26/03/2609.59.24";
+    // INSPECT operation
+    // INSPECT (TALLYING/REPLACING)
+    // INSPECT operation
+    if (X.substr(0, 20) != "99/99/9999.99.99") {
+        if (false /* TODO: call_CBL_OC_DUMP.funcvoid == nullptr */ || false /* TODO: cob_glob_ptr->cob_physical_cancel == 1 */) {
+            // CALL subroutine
+        }
+        if (false /* TODO: call_CBL_OC_DUMP.funcvoid == nullptr */) {
+            std::cout << X << std::endl;
+        } else {
+            // RETURN_CODE = ((int (*)(void *))call_CBL_OC_DUMP.funcint) (b_17);
+        }
+    }
+    return;
+}
 
 int main() {
     try {
 
+    p_main();
     return RETURN_CODE;
 
         return 0;
@@ -989,7 +1009,7 @@ int main() {
 // Hardening Statistics:
 //   - Types hardened: 7
 //   - Bounds checks added: 0
-//   - Names converted: 6
+//   - Names converted: 7
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1

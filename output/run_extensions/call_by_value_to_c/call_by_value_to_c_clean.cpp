@@ -52,7 +52,23 @@ std::string XML_NTEXT;
 std::string XML_TEXT;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    CALL_NAME = "callee32";
+    ADR_BUFFER = "12345678";
+    ADR_BUFFER = "-42";
+    if (false /* TODO: call_callee32.funcvoid == NULL */ || false /* TODO: cob_glob_ptr->cob_physical_cancel == 1 */) {
+        // CALL subroutine
+    }
+    // RETURN_CODE = ((int (*)(cob_u32_t))call_callee32.funcint) ((cob_u32_t)((*(int *)(b_18 + 33))));
+    if (false /* TODO: call_callee64.funcvoid == NULL */ || false /* TODO: cob_glob_ptr->cob_physical_cancel == 1 */) {
+        // CALL subroutine
+    }
+    // RETURN_CODE = ((int (*)(cob_u64_t))call_callee64.funcint) ((cob_u64_t)((*(cob_s64_ptr)(b_22))));
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

@@ -42,7 +42,23 @@ std::string P1;
 std::string P2;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    if (false /* TODO: call_callee.funcvoid == NULL */ || false /* TODO: cob_glob_ptr->cob_physical_cancel == 1 */) {
+        // CALL subroutine
+    }
+    // CALL return value → RETURN_CODE
+    P1[0] = static_cast<char>(66);
+    P2 = "OKOKOK";
+    if (false /* TODO: call_callee.funcvoid == NULL */ || false /* TODO: cob_glob_ptr->cob_physical_cancel == 1 */) {
+        // CALL subroutine
+    }
+    // UNHANDLED: ((int (*)(void *))call_callee.funcint) (b_1);
+    return;
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

@@ -846,6 +846,8 @@ inline void ABEND(const std::string& abcode = "LZRS") {
 
 } // namespace lazarus
 
+std::string file_status; // Auto-declared by LAZARUS healer
+
 // ---------------------------------------------------------------------------
 // GLOBAL ALIASES FOR COMPATIBILITY
 // ---------------------------------------------------------------------------
@@ -957,10 +959,38 @@ FixedString<50> g_rec;
 FixedString<50> whatever;
 
 // Forward declarations
+void p_main();
+
+void p_main() {
+    whatever = "out.txt";
+    // OPEN F (OUTPUT)
+    if (file_status != "EXCEPTION_0") {
+    }
+    f_rec = "hi";
+    // WRITE F
+    if (file_status != "EXCEPTION_0") {
+    }
+    // CLOSE F
+    if (file_status != "EXCEPTION_0") {
+    }
+    // OPEN G (OUTPUT)
+    if (file_status != "EXCEPTION_0") {
+    }
+    g_rec = "hi";
+    // WRITE G
+    if (file_status != "EXCEPTION_0") {
+    }
+    // CLOSE G
+    if (file_status != "EXCEPTION_0") {
+    }
+    if (false /* TODO: module->module_active */) {
+    }
+}
 
 int main() {
     try {
 
+    p_main();
     return RETURN_CODE;
 
         return 0;
@@ -991,7 +1021,7 @@ int main() {
 // Hardening Statistics:
 //   - Types hardened: 9
 //   - Bounds checks added: 0
-//   - Names converted: 6
+//   - Names converted: 7
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1

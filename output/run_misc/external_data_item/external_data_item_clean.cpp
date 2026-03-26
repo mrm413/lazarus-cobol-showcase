@@ -41,7 +41,17 @@ int n0 = 0, n1 = 0, n2 = 0, n3 = 0, n4 = 0;  // loop counters
 std::string EXT_VAR;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    if (EXT_VAR.substr(0, 5) != "Hello") {
+        std::cout << std::endl;
+    }
+    EXT_VAR = "World";
+    if (false /* TODO: module->next */) {}
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

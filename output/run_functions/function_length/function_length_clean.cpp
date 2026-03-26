@@ -51,7 +51,47 @@ std::string XML_NTEXT;
 std::string XML_TEXT;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    TEST_FLD = "8";
+    if (to_int(TEST_FLD) != 8) {
+        std::cout << "LENGTH \\" << TEST_FLD << std::endl;
+    }
+    TEST_FLD = "9";
+    if (to_int(TEST_FLD) != 9) {
+        std::cout << "LENGTH N(9) wrong: " << TEST_FLD << std::endl;
+    }
+    TEST_FLD = "5";
+    if (to_int(TEST_FLD) != 5) {
+        std::cout << "LENGTH \\" << TEST_FLD << std::endl;
+    }
+    TEST_FLD = "1";
+    if (to_int(TEST_FLD) != 1) {
+        std::cout << "LENGTH x\\" << TEST_FLD << std::endl;
+    }
+    TEST_FLD = "3";
+    if (to_int(TEST_FLD) != 3) {
+        std::cout << "LENGTH z\\" << TEST_FLD << std::endl;
+    }
+    TEST_FLD = "2";
+    if (to_int(TEST_FLD) != 2) {
+        std::cout << "LENGTH n\\" << TEST_FLD << std::endl;
+    }
+    T_ENTRIES = "10";
+    // MOVE to computed field
+    if (to_int(TEST_FLD) != 12) {
+        std::cout << "LENGTH TEST-TAB (10 entries): " << TEST_FLD << std::endl;
+    }
+    T_ENTRIES = "01";
+    // MOVE to computed field
+    if (to_int(TEST_FLD) != 3) {
+        std::cout << "LENGTH TEST-TAB (1 entry): " << TEST_FLD << std::endl;
+    }
+    return;
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

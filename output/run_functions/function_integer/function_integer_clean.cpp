@@ -50,7 +50,21 @@ std::string XML_TEXT;
 std::string Y;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    // UNHANDLED: cob_move (cob_intr_integer (&f_17), &f_19);
+    if (to_int(TEST_FLD) != -2) {
+        std::cout << "INTEGER ( X ) wrong: " << TEST_FLD << std::endl;
+    }
+    // UNHANDLED: cob_move (cob_intr_integer (cob_intr_binop (&f_18, '/', (cob_field *)&c_2)), &f_19);
+    if (to_int(TEST_FLD) != 8462696833) {
+        std::cout << "INTEGER ( Y / 71 ) wrong: " << TEST_FLD << std::endl;
+    }
+    return;
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

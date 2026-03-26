@@ -55,7 +55,15 @@ std::string short_str2;
 std::string xml_len;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    short_str = std::string(5, static_cast<char>(65));
+    if (false /* TODO: module->module_active */) {
+    }
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

@@ -48,7 +48,14 @@ std::string XML_TEXT;
 std::string Z;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    std::cout << Z << "OK" << std::endl;
+    return;
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

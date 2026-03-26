@@ -961,10 +961,92 @@ FixedString<50> x_921;
 FixedString<50> x_99;
 
 // Forward declarations
+void p_main();
+
+void p_main() {
+    x_99 = b_999;
+    if (to_int(x_99) != 23) {
+        std::cout << "trunk 123 -> 99: " << x_99 << std::endl;
+    }
+    if (x_921.substr(4, 3) != "���") {
+        x_921.replace(4, 3, "���");
+        std::cout << "broken FENCE-2" << std::endl;
+    }
+    if (x_921.substr(8, 3) != "���") {
+        x_921.replace(8, 3, "���");
+        std::cout << "broken FENCE-3" << std::endl;
+    }
+    x_9 = b_999;
+    if (to_int(x_9) != 3) {
+        std::cout << "trunk 123 -> 9: " << x_9 << std::endl;
+    }
+    if (x_921.substr(0, 3) != "���") {
+        x_921 = "���";
+        std::cout << "broken FENCE-1" << std::endl;
+    }
+    if (x_921.substr(4, 3) != "���") {
+        x_921.replace(4, 3, "���");
+        std::cout << "broken FENCE-2" << std::endl;
+    }
+    x_99 = b_99;
+    if (x_921.substr(4, 3) != "���") {
+        x_921.replace(4, 3, "���");
+        std::cout << "broken FENCE-2" << std::endl;
+    }
+    if (x_921.substr(8, 3) != "���") {
+        x_921.replace(8, 3, "���");
+        std::cout << "broken FENCE-3" << std::endl;
+    }
+    x_920 = b_999;
+    if (x_921.substr(8, 3) != "���") {
+        x_921.replace(8, 3, "���");
+        std::cout << "broken FENCE-3" << std::endl;
+    }
+    if (x_921.substr(21, 3) != "���") {
+        x_921.replace(21, 3, "���");
+        std::cout << "broken FENCE-4" << std::endl;
+    }
+    // UNHANDLED: cob_move_bcd (&f_22, &f_26);
+    if (x_921.substr(21, 3) != "���") {
+        x_921.replace(21, 3, "���");
+        std::cout << "broken FENCE-4" << std::endl;
+    }
+    if (x_921.substr(35, 3) != "���") {
+        x_921.replace(35, 3, "���");
+        std::cout << "broken FENCE-5" << std::endl;
+    }
+    b_99 = to_string(to_num(0) + to_num(1));
+    if (to_int(b_99) != 222) {
+        std::cout << "!222: " << b_99 << std::endl;
+    }
+    if (to_int(x_920) > 124) {
+        std::cout << "> 124 " << x_920 << std::endl;
+    }
+    if (to_int(x_921) < 98) {
+        std::cout << "< 98 " << x_921 << std::endl;
+    }
+    if (x_921.substr(0, 3) != "���") {
+        std::cout << "broken FENCE-1" << std::endl;
+    }
+    if (x_921.substr(4, 3) != "���") {
+        std::cout << "broken FENCE-2" << std::endl;
+    }
+    if (x_921.substr(8, 3) != "���") {
+        std::cout << "broken FENCE-3" << std::endl;
+    }
+    if (x_921.substr(21, 3) != "���") {
+        std::cout << "broken FENCE-4" << std::endl;
+    }
+    if (x_921.substr(35, 3) != "���") {
+        std::cout << "broken FENCE-5" << std::endl;
+    }
+    return;
+}
 
 int main() {
     try {
 
+    p_main();
     return RETURN_CODE;
 
         return 0;
@@ -995,7 +1077,7 @@ int main() {
 // Hardening Statistics:
 //   - Types hardened: 13
 //   - Bounds checks added: 0
-//   - Names converted: 13
+//   - Names converted: 14
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1

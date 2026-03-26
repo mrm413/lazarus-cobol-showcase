@@ -42,7 +42,18 @@ std::string P1;
 std::string P2;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    // MOVE to computed field
+    if (P2.substr(0, 3) != "OK") {
+        std::cout << P2 << std::endl;
+    }
+    // MOVE to computed field
+    if (false /* TODO: module->next */) {}
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

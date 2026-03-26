@@ -956,10 +956,27 @@ FixedString<100> xml_text;
 FixedString<50> x_all;
 
 // Forward declarations
+void p_main();
+
+void p_main() {
+    X.at(0) = ' ';
+    X.at(2) = ' ';
+    X.at(4) = ' ';
+    X.at(6) = ' ';
+    X.at(1) = '0';
+    X.at(3) = '0';
+    X.at(5) = '0';
+    X.at(7) = '0';
+    if (x_all.substr(0, 10) != " 0 0 0 0AA") {
+        std::cout << std::endl;
+    }
+    return;
+}
 
 int main() {
     try {
 
+    p_main();
     return RETURN_CODE;
 
         return 0;
@@ -989,8 +1006,8 @@ int main() {
 //
 // Hardening Statistics:
 //   - Types hardened: 8
-//   - Bounds checks added: 0
-//   - Names converted: 7
+//   - Bounds checks added: 8
+//   - Names converted: 8
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1

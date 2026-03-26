@@ -50,7 +50,21 @@ std::string XML_NTEXT;
 std::string XML_TEXT;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    LN = "000010";
+    if (to_int(LN) != 10) {
+        std::cout << "SIZE OF TST is " << LN << std::endl;
+    }
+    LN = "165000";
+    if (to_int(LN) != 165000) {
+        std::cout << "SIZE OF TST2 is " << LN << std::endl;
+    }
+    return;
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

@@ -50,7 +50,41 @@ std::string XML_TEXT;
 std::string X_2;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    N_4 = std::string(2, static_cast<char>(0));
+    if (false /* TODO: !cob_is_numeric (N_3) */) {
+        std::cout << "3 0000 NG" << std::endl;
+    }
+    if (false /* TODO: !cob_is_numeric (N_4) */) {
+        std::cout << "4 0000 NG" << std::endl;
+    }
+    N_4 = "\000\014";
+    if (false /* TODO: cob_is_numeric (N_3) */) {
+        std::cout << "3 000c NG" << std::endl;
+    }
+    if (false /* TODO: cob_is_numeric (N_4) */) {
+        std::cout << "4 000c NG" << std::endl;
+    }
+    N_4 = "\0224";
+    if (false /* TODO: !cob_is_numeric (N_3) */) {
+        std::cout << "3 1234 NG" << std::endl;
+    }
+    if (false /* TODO: !cob_is_numeric (N_4) */) {
+        std::cout << "4 1234 NG" << std::endl;
+    }
+    N_4 = std::string(2, static_cast<char>(255));
+    if (false /* TODO: cob_is_numeric (N_3) */) {
+        std::cout << "3 ffff NG" << std::endl;
+    }
+    if (false /* TODO: cob_is_numeric (N_4) */) {
+        std::cout << "4 ffff NG" << std::endl;
+    }
+    return;
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

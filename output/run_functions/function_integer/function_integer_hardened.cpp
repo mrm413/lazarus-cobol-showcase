@@ -957,10 +957,24 @@ FixedString<100> xml_text;
 FixedString<50> Y;
 
 // Forward declarations
+void p_main();
+
+void p_main() {
+    // UNHANDLED: cob_move (cob_intr_integer (&f_17), &f_19);
+    if (to_int(test_fld) != -2) {
+        std::cout << "INTEGER ( X ) wrong: " << test_fld << std::endl;
+    }
+    // UNHANDLED: cob_move (cob_intr_integer (cob_intr_binop (&f_18, '/', (cob_field *)&c_2)), &f_19);
+    if (to_int(test_fld) != 8462696833) {
+        std::cout << "INTEGER ( Y / 71 ) wrong: " << test_fld << std::endl;
+    }
+    return;
+}
 
 int main() {
     try {
 
+    p_main();
     return RETURN_CODE;
 
         return 0;
@@ -991,7 +1005,7 @@ int main() {
 // Hardening Statistics:
 //   - Types hardened: 9
 //   - Bounds checks added: 0
-//   - Names converted: 7
+//   - Names converted: 8
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1

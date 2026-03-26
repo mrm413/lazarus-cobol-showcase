@@ -956,10 +956,24 @@ FixedString<100> xml_text;
 FixedString<50> Y;
 
 // Forward declarations
+void p_main();
+
+void p_main() {
+    // UNHANDLED: cob_move (cob_intr_mod ((cob_field *)&c_1, (cob_field *)&c_2), &f_18);
+    if (to_int(R) != 4) {
+        std::cout << "first one wrong: " << R << std::endl;
+    }
+    // UNHANDLED: cob_move (cob_intr_mod (&f_17, (cob_field *)&c_4), &f_18);
+    if (to_int(R) != 0) {
+        std::cout << "second one wrong: " << R << std::endl;
+    }
+    return;
+}
 
 int main() {
     try {
 
+    p_main();
     return RETURN_CODE;
 
         return 0;
@@ -990,7 +1004,7 @@ int main() {
 // Hardening Statistics:
 //   - Types hardened: 8
 //   - Bounds checks added: 0
-//   - Names converted: 6
+//   - Names converted: 7
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1

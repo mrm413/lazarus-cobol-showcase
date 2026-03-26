@@ -957,10 +957,24 @@ FixedString<1> success_flag;
 FixedString<50> ws_x_20;
 
 // Forward declarations
+void p_main();
+
+void p_main() {
+    std::cout << "Enter 'y' if pressing the ALT and LEFT-ARROW keys" << "1" << "1" << std::endl;
+    std::cout << "at the first column does not exit the field." << "2" << "1" << std::endl;
+    std::cout << "But the LEFT-ARROW without ALT does exit." << "3" << "1" << std::endl;
+    ws_x_20 = "ABCD";
+    // UNHANDLED: cob_accept_field (&f_19, 1048592, "lcS", (cob_field *)&c_7, (cob_field *)&c_2, (cob_field *)&c_8);
+    // UNHANDLED: cob_accept_field (&f_17, 1048576, "lc", (cob_field *)&c_9, (cob_field *)&c_2);
+    if (success_flag.at(0) == 'Y' || success_flag.at(0) == 'y' && to_int(cob_crt_status) == 0) {
+        RETURN_CODE = 0;
+    }
+}
 
 int main() {
     try {
 
+    p_main();
     return RETURN_CODE;
 
         return 0;
@@ -990,8 +1004,8 @@ int main() {
 //
 // Hardening Statistics:
 //   - Types hardened: 9
-//   - Bounds checks added: 0
-//   - Names converted: 7
+//   - Bounds checks added: 1
+//   - Names converted: 8
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1

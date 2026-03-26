@@ -50,7 +50,18 @@ std::string e;
 std::string out;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    // UNHANDLED: cob_json_generate_new (&f_25, &mt_1, NULL, 46);
+    if (to_int(out) != to_int(c_1)) {
+        std::cout << "Failed 2: " << out << std::endl;
+    }
+    if (false /* TODO: module->module_active */) {
+    }
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

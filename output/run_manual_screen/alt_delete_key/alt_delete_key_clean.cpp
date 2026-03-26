@@ -50,7 +50,21 @@ std::string success_flag;
 std::string ws_x_20;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    std::cout << "Enter 'y' if pressing the ALT and DELETE keys" << "1" << "1" << std::endl;
+    std::cout << "deletes all characters from the cursor to the end" << "2" << "1" << std::endl;
+    std::cout << "of the field.  And the cursor does not move." << "3" << "1" << std::endl;
+    ws_x_20 = "ABCD";
+    // UNHANDLED: cob_accept_field (&f_19, 1048592, "lcS", (cob_field *)&c_7, (cob_field *)&c_2, (cob_field *)&c_8);
+    // UNHANDLED: cob_accept_field (&f_17, 1048576, "lc", (cob_field *)&c_9, (cob_field *)&c_2);
+    if (success_flag[0] == 'Y' || success_flag[0] == 'y' && to_int(COB_CRT_STATUS) == 0) {
+        RETURN_CODE = 0;
+    }
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

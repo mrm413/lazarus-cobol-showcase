@@ -42,7 +42,15 @@ std::string I;
 std::string X;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    std::cout << std::endl;
+    std::cout << std::endl;
+    return;
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

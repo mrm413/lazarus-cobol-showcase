@@ -52,7 +52,30 @@ std::string XML_NTEXT;
 std::string XML_TEXT;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    SRC_BIN = "-12345678";
+    DST_BIN = SRC_BIN;
+    if (to_int(RETURN_CODE) != 12345678) {
+        std::cout << "1: DST-BIN <" << DST_BIN << ">!= <12345678>" << std::endl;
+    }
+    SRC_EDIT = "-3";
+    DST_DISP = SRC_EDIT;
+    if (to_int(SRC_EDIT) != to_int(c_5)) {
+        std::cout << "2: SRC-EDIT <" << SRC_EDIT << "> != <      $300->" << std::endl;
+    }
+    if (to_int(DST_DISP) != 3) {
+        std::cout << "2.1: DST-DISP <" << DST_DISP << "> != <3>" << std::endl;
+    }
+    SRC_EDIT = "3";
+    DST_FIELD_1 = SRC_EDIT;
+    if (to_int(DST_FIELD_1) != to_int(c_11)) {
+        std::cout << "3: DST-FIELD-1 <" << DST_FIELD_1 << "> != <  0  0  />" << std::endl;
+    }
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

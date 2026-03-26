@@ -41,7 +41,21 @@ int n0 = 0, n1 = 0, n2 = 0, n3 = 0, n4 = 0;  // loop counters
 std::string Z;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    // UNHANDLED: cob_move (cob_intr_variance (5, (cob_field *)&c_1, (cob_field *)&c_2, (cob_field *)&c_3, (cob_field *)&c_4, (cob_field *)&c_5), &f_1);
+    if (to_int(Z) != to_int(c_6)) {
+        std::cout << "EXP 54.16 GOT " << Z << std::endl;
+    }
+    Z = to_string(to_num(0) + to_num(1));
+    if (to_int(Z) != to_int(c_10)) {
+        std::cout << "EXP 4.66666666 GOT " << Z << std::endl;
+    }
+    return;
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

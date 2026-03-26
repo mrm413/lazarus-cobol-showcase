@@ -40,7 +40,17 @@ int n0 = 0, n1 = 0, n2 = 0, n3 = 0, n4 = 0;  // loop counters
 // Working Storage variables
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    if (false /* TODO: call_callee2.funcvoid == NULL */ || false /* TODO: cob_glob_ptr->cob_physical_cancel == 1 */) {
+        // CALL subroutine
+    }
+    // UNHANDLED: ((int (*)(void))call_callee2.funcint) ();
+    return;
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

@@ -50,7 +50,22 @@ std::string success_flag;
 std::string ws_x_20;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    std::cout << "Enter 'y' if multiple presses of the INSERT key" << "1" << "1" << std::endl;
+    std::cout << "go back and forth between" << "2" << "1" << std::endl;
+    std::cout << "Insert Mode ON (characters move to the right)" << "3" << "1" << std::endl;
+    std::cout << "and Insert Mode OFF (characters type over)." << "4" << "1" << std::endl;
+    ws_x_20 = "ABCD";
+    // UNHANDLED: cob_accept_field (&f_19, 1048592, "lcS", (cob_field *)&c_9, (cob_field *)&c_2, (cob_field *)&c_10);
+    // UNHANDLED: cob_accept_field (&f_17, 1048576, "lc", (cob_field *)&c_11, (cob_field *)&c_2);
+    if (success_flag[0] == 'Y' || success_flag[0] == 'y' && to_int(COB_CRT_STATUS) == 0) {
+        RETURN_CODE = 0;
+    }
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

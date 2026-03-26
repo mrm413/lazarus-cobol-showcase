@@ -846,8 +846,6 @@ inline void ABEND(const std::string& abcode = "LZRS") {
 
 } // namespace lazarus
 
-int RETURN_CODE = 0; // Auto-declared by LAZARUS healer
-
 // ---------------------------------------------------------------------------
 // GLOBAL ALIASES FOR COMPATIBILITY
 // ---------------------------------------------------------------------------
@@ -947,12 +945,40 @@ using std::to_string;
 // ============================================================================
 
 // Working Storage variables
+FixedString<50> indval;
+int RETURN_CODE = 0;
+FixedString<30> xml_namespace;
+FixedString<30> xml_namespace_prefix;
+FixedString<30> xml_nnamespace;
+FixedString<30> xml_nnamespace_prefix;
+FixedString<100> xml_ntext;
+FixedString<100> xml_text;
 
 // Forward declarations
+void p_a01();
+void p_a02();
+
+void p_a01() {
+    indval = "0001";
+    while (true) {
+        if (to_int(indval) > 10) break;
+        if (to_int(indval) > 2) {
+        }
+        indval = to_string(to_int(indval) + 1);
+    }
+}
+
+void p_a02() {
+    if (to_int(indval) != 3) {
+        std::cout << indval << std::endl;
+    }
+    return;
+}
 
 int main() {
     try {
 
+    p_a01();
     return RETURN_CODE;
 
         return 0;
@@ -981,9 +1007,9 @@ int main() {
 // ============================================================================
 //
 // Hardening Statistics:
-//   - Types hardened: 0
+//   - Types hardened: 7
 //   - Bounds checks added: 0
-//   - Names converted: 0
+//   - Names converted: 9
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1

@@ -48,7 +48,17 @@ std::string XML_TEXT;
 std::string Z;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    // UNHANDLED: cob_move (cob_intr_range (5, (cob_field *)&c_1, (cob_field *)&c_2, (cob_field *)&c_3, (cob_field *)&c_4, (cob_field *)&c_5), &f_17);
+    if (to_int(Z) != 22) {
+        std::cout << Z << std::endl;
+    }
+    return;
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

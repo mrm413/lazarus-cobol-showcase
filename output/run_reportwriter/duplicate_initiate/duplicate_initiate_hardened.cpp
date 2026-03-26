@@ -846,7 +846,7 @@ inline void ABEND(const std::string& abcode = "LZRS") {
 
 } // namespace lazarus
 
-int RETURN_CODE = 0; // Auto-declared by LAZARUS healer
+std::string file_status; // Auto-declared by LAZARUS healer
 
 // ---------------------------------------------------------------------------
 // GLOBAL ALIASES FOR COMPATIBILITY
@@ -947,12 +947,47 @@ using std::to_string;
 // ============================================================================
 
 // Working Storage variables
+int RETURN_CODE = 0;
+FixedString<30> xml_namespace;
+FixedString<30> xml_namespace_prefix;
+FixedString<30> xml_nnamespace;
+FixedString<30> xml_nnamespace_prefix;
+FixedString<100> xml_ntext;
+FixedString<100> xml_text;
+FixedString<50> foo;
+FixedString<50> hedpos;
+FixedString<50> rp_detail;
 
 // Forward declarations
+void p_main();
+
+void p_main() {
+    // OPEN REPORT-FILE (OUTPUT)
+    if (file_status != "EXCEPTION_0") {
+    }
+    // UNHANDLED: goto rwexit_1;
+    // UNHANDLED: rwmove_1: ;
+    // UNHANDLED: rwfoot_1: ;
+    // UNHANDLED: rwexit_1: ;
+    // UNHANDLED: r_RP.code_is_present = 0;
+    // UNHANDLED: cob_report_initiate (&r_RP);
+    foo = "hello";
+    // UNHANDLED: cob_report_generate (&r_RP, &rl_21, 0);
+    // UNHANDLED: r_RP.code_is_present = 0;
+    // UNHANDLED: cob_report_initiate (&r_RP);
+    foo = "goodbye";
+    // UNHANDLED: cob_report_generate (&r_RP, &rl_21, 0);
+    // UNHANDLED: cob_report_terminate (&r_RP, 0);
+    // CLOSE REPORT-FILE
+    if (file_status != "EXCEPTION_0") {
+    }
+    return;
+}
 
 int main() {
     try {
 
+    p_main();
     return RETURN_CODE;
 
         return 0;
@@ -981,9 +1016,9 @@ int main() {
 // ============================================================================
 //
 // Hardening Statistics:
-//   - Types hardened: 0
+//   - Types hardened: 9
 //   - Bounds checks added: 0
-//   - Names converted: 0
+//   - Names converted: 7
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1

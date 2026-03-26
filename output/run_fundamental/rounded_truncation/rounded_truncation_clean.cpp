@@ -57,7 +57,24 @@ std::string XML_NTEXT;
 std::string XML_TEXT;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    M = to_string(to_num(0) + to_num(1));
+    N = to_string(to_num(0) + to_num(1));
+    O = to_string(to_num(0) + to_num(1));
+    P = to_string(to_num(0) + to_num(1));
+    Q = to_string(to_num(0) + to_num(1));
+    R = to_string(to_num(0) + to_num(1));
+    S = to_string(to_num(0) + to_num(1));
+    T = to_string(to_num(0) + to_num(1));
+    U = to_string(to_num(0) + to_num(1));
+    V = to_string(to_num(0) + to_num(1));
+    std::cout << M << " " << N << " " << O << " " << P << " " << Q << " " << R << " " << S << " " << T << " " << U << " " << V << std::endl;
+    return;
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

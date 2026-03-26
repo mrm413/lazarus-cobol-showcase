@@ -51,7 +51,35 @@ std::string d;
 std::string out;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    // UNHANDLED: cob_json_generate_new (&f_17, &mt_1, NULL, 46);
+    if (to_int(out) != to_int(c_1)) {
+        std::cout << "Test 1 failed: " << out << std::endl;
+    }
+    // UNHANDLED: cob_json_generate_new (&f_17, &mt_4, NULL, 46);
+    if (to_int(out) != to_int(c_3)) {
+        std::cout << "Test 2 failed: " << out << std::endl;
+    }
+    // UNHANDLED: cob_json_generate_new (&f_17, &mt_7, NULL, 46);
+    if (to_int(out) != to_int(c_5)) {
+        std::cout << "Test 3 failed: " << out << std::endl;
+    }
+    // UNHANDLED: cob_json_generate_new (&f_17, &mt_8, NULL, 46);
+    if (to_int(out) != to_int(c_7)) {
+        std::cout << "Test 4 failed: " << out << std::endl;
+    }
+    d.replace(6, 3, std::string(3, static_cast<char>(34)));
+    // UNHANDLED: cob_json_generate_new (&f_17, &mt_10, NULL, 46);
+    if (to_int(out) != to_int(c_9)) {
+        std::cout << "Test 5 failed: " << out << std::endl;
+    }
+    if (false /* TODO: module->module_active */) {
+    }
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

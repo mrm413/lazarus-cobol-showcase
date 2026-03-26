@@ -48,7 +48,17 @@ std::string XML_NTEXT;
 std::string XML_TEXT;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    // UNHANDLED: cob_move (cob_intr_factorial ((cob_field *)&c_1), &f_17);
+    if (to_int(TEST_FLD) != 720) {
+        std::cout << TEST_FLD << std::endl;
+    }
+    return;
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

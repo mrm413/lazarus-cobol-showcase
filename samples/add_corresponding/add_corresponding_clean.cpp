@@ -51,7 +51,27 @@ std::string XML_NTEXT;
 std::string XML_TEXT;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    // ADD to FIELD_A
+    // ADD to FIELD_C
+    if (to_int(FIELD_D) != 1) {
+        std::cout << "BAD FIELD-A " << FIELD_A << std::endl;
+    }
+    if (false /* TODO: cob_cmp_s32 (FIELD_D + 1, 2LL) != 0 */) {
+        std::cout << "BAD FIELD-B " << FIELD_B << std::endl;
+    }
+    if (to_int(FIELD_D) != 3) {
+        std::cout << "BAD FIELD-C " << FIELD_C << std::endl;
+    }
+    if (to_int(FIELD_D) != 0) {
+        std::cout << "BAD FIELD-D " << FIELD_D << std::endl;
+    }
+    return;
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

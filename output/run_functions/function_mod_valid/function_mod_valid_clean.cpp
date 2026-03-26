@@ -49,7 +49,21 @@ std::string XML_TEXT;
 std::string Y;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    // UNHANDLED: cob_move (cob_intr_mod ((cob_field *)&c_1, (cob_field *)&c_2), &f_18);
+    if (to_int(R) != 4) {
+        std::cout << "first one wrong: " << R << std::endl;
+    }
+    // UNHANDLED: cob_move (cob_intr_mod (&f_17, (cob_field *)&c_4), &f_18);
+    if (to_int(R) != 0) {
+        std::cout << "second one wrong: " << R << std::endl;
+    }
+    return;
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

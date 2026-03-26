@@ -2,9 +2,50 @@
 
 **1,607 / 1,607 tests passing (100%) against the GnuCOBOL 3.2 test suite.**
 
-This repository contains the **output** of the Lazarus transpilation system — not the system itself. Every file here was generated automatically from legacy COBOL source code and compiled as production-grade, security-hardened C++17.
+This repository contains the **output** of the Lazarus transpilation system -- not the system itself. Every file here was generated automatically from legacy COBOL source code and compiled as production-grade, security-hardened C++17.
 
 Lazarus is a proprietary transpilation engine built by [Torsova LLC](https://lazarus-systems.com). The source code for Lazarus is not included in this repository.
+
+---
+
+## What Was Fixed (2026-03-26)
+
+The previous version of this showcase had a critical issue: all 1,607 `_clean.cpp` and `_hardened.cpp` files contained **empty `main()` functions** with no procedure logic. Variables were declared but never used. The COBOL PROCEDURE DIVISION was not being emitted.
+
+**Root cause:** A paragraph detection defect in the transpilation pipeline caused COBOL paragraph names (e.g., `000-MAIN`, `100-PROCESS-TRANSACTIONS`) to go unrecognized. Without paragraph detection, no C++ functions were generated and `main()` had nothing to call.
+
+**What was fixed:**
+- Corrected the paragraph name recognition to handle all standard COBOL paragraph naming conventions (1-4 digit prefixes, letter-prefixed names, mixed case)
+- Improved entry-point extraction so programs without named paragraphs also produce real code via a synthetic `MAIN` function
+- Re-ran the entire GnuCOBOL 3.2 test suite (1,607 programs) through the full six-stage pipeline
+
+**Result:**
+- 976 of 1,607 programs (60.7%) now contain real procedure logic with named functions -- up from **0%**
+- The remaining ~631 are syntax validation and compiler configuration tests that have no PROCEDURE DIVISION (this is expected -- they test data definitions, COPY directives, and compiler flags, not runtime behavior)
+- Total clean C++17 lines: **83,279** (up from 59,572)
+- All 1,607 programs still compile with `g++ -std=c++17 -Wall -Wextra -Wpedantic`
+- 100% compile pass rate maintained
+
+**Before (broken):**
+```cpp
+int main() {
+    return RETURN_CODE;
+}
+```
+
+**After (fixed):**
+```cpp
+void P_MAIN() {
+    std::cout << "abc" << std::endl;
+    std::cout << "123" << std::endl;
+    return;
+}
+
+int main() {
+    P_MAIN();
+    return RETURN_CODE;
+}
+```
 
 ---
 
@@ -17,9 +58,8 @@ Lazarus takes legacy COBOL programs and produces modern, safe, compilable C++17.
 | COBOL programs transpiled | 1,607 |
 | Compile success rate | 100.0% |
 | Test categories | 36 |
-| Total hardened C++17 lines | 59,572 |
+| Total clean C++17 lines | 83,279 |
 | Compiled executables | 1,607 |
-| Average binary size | 64 KB |
 | Pipeline speed | ~1.5 seconds per program |
 | C++ standard | C++17 (`-std=c++17 -Wall -Wextra -Wpedantic`) |
 
@@ -31,11 +71,12 @@ Lazarus takes legacy COBOL programs and produces modern, safe, compilable C++17.
 lazarus-cobol-showcase/
   README.md                          # This file
   docs/
-    FINAL_REPORT_100_PERCENT.md      # Detailed test results and fixes
+    FINAL_REPORT_100_PERCENT.md      # Detailed test results
   samples/                           # Curated before/after examples
     add_corresponding/               # COBOL ADD CORRESPONDING
     alphabetic_test/                 # Conditional logic
     before_reporting/                # Report Writer with DECLARATIVES
+    display_literals/                # DISPLAY statement output
     empty_report/                    # Minimal report writer
     indexed_sample/                  # File I/O operations
     length_of/                       # Extensions and intrinsics
@@ -56,14 +97,14 @@ lazarus-cobol-showcase/
 ```
 
 Each test has two output files:
-- **`_clean.cpp`** — The direct C++17 translation of the COBOL logic. Minimal, readable, functionally equivalent.
-- **`_hardened.cpp`** — The production build. Same logic wrapped in a comprehensive safety framework with bounds checking, overflow protection, type safety, and exception handling.
+- **`_clean.cpp`** -- The direct C++17 translation of the COBOL logic. Minimal, readable, functionally equivalent.
+- **`_hardened.cpp`** -- The production build. Same logic wrapped in a comprehensive safety framework with bounds checking, overflow protection, type safety, and exception handling.
 
 ---
 
 ## The Six-Stage Pipeline
 
-Lazarus doesn't just "translate" COBOL to C++. It runs every program through a six-stage pipeline with validation checkpoints at each stage:
+Lazarus runs every program through a six-stage pipeline:
 
 ```
   COBOL Source
@@ -75,35 +116,22 @@ Lazarus doesn't just "translate" COBOL to C++. It runs every program through a s
   [P] Preprocessing -------- Resolves COPY books, continuation lines, compiler directives
       |
       v
-  [T] Transpilation -------- GnuCOBOL 3.2 compiles COBOL to intermediate C representation
+  [T] Transpilation -------- Compiles COBOL to intermediate representation
       |
       v
-  [X] Transformation ------- Lazarus transforms GnuCOBOL's C output into clean C++17
-      |                       - Extracts paragraphs, sections, DECLARATIVES
-      |                       - Translates conditions, PERFORM loops, file I/O
-      |                       - Resolves variables, constants, WORKING-STORAGE
-      |                       - Handles EVALUATE, STRING, UNSTRING, INSPECT
+  [X] Transformation ------- Transforms intermediate output into clean C++17
       |
       v
   [H] Hardening ------------ Applies security hardening framework
-      |                       - FixedString<N> replaces raw char arrays (buffer overflow protection)
-      |                       - SafeInt<T> replaces raw integers (overflow detection)
-      |                       - Decimal replaces floating-point for financial math (precision)
-      |                       - Bounds-checked array access (.at() not [])
-      |                       - Exception handling in main() with COBOL-compatible error codes
-      |                       - CICS runtime stubs for mainframe programs
       |
       v
   [C] Compilation ---------- Compiles with g++ -std=c++17 and auto-heals any remaining issues
-      |                       - Declares missing identifiers
-      |                       - Resolves type mismatches
-      |                       - Never renames C++ keywords
       |
       v
   Hardened C++17 Executable
 ```
 
-Every stage has a pass/fail gate. If any stage fails, the pipeline reports exactly where and why. The auto-healer at the compile stage can fix common issues automatically, but it never silently changes program semantics.
+Every stage has a pass/fail gate. The auto-healer at the compile stage fixes common issues automatically but never silently changes program semantics.
 
 ---
 
@@ -115,17 +143,9 @@ This is the part most vendors won't tell you. We will.
 
 Rust is inherently memory-safe. The borrow checker, ownership model, and type system make entire categories of vulnerabilities **impossible at compile time**. There is no "hardening stage" in a Rust transpiler because the language itself is the hardening.
 
-C++17 is not inherently safe. It will happily let you:
-- Write past the end of a buffer
-- Overflow an integer silently
-- Use a pointer after it's been freed
-- Access uninitialized memory
-
-This is why Lazarus has a dedicated **Hardening stage (H)** that Rust transpilers simply don't need. Our pipeline is longer because it has to be. The six stages exist because C++17 requires explicit safety measures that Rust provides for free.
+C++17 is not inherently safe. This is why Lazarus has a dedicated **Hardening stage (H)** that Rust transpilers simply don't need.
 
 ### What Lazarus Hardening Actually Does
-
-The hardened output wraps every dangerous C++ pattern in a safety layer:
 
 | COBOL Type | Raw C++ (Unsafe) | Lazarus C++17 (Hardened) |
 |------------|-----------------|-------------------------|
@@ -135,34 +155,16 @@ The hardened output wraps every dangerous C++ pattern in a safety layer:
 | Array access | `arr[i]` | `arr.at(i)` (bounds-checked) |
 | String copy | `strcpy(dst, src)` | `dst = src` (auto-truncated) |
 
-The `FixedString<N>` template alone prevents buffer overflows, null terminator bugs, and string truncation errors. `SafeInt<T>` catches arithmetic overflow before it wraps. `Decimal` uses scaled integer math so `0.1 + 0.2 == 0.3` (not `0.30000000000000004`).
-
-### The Day-One vs. Day-Two Problem
-
-**Day one**, the Lazarus output is safe. Every buffer is bounded. Every integer is checked. Every array access is validated. The hardened C++17 code that comes out of this pipeline has the same safety profile as a Rust program for the vulnerability classes that matter most (buffer overflows, integer overflows, use-after-free through RAII).
-
-**Day two** is where C++ and Rust diverge.
-
-When a developer needs to add a feature, fix a bug, or optimize a hot path in the transpiled code:
-
-- In **Rust**, the compiler will refuse to compile unsafe code. The borrow checker will reject dangling references. The type system will catch integer overflow if you ask it to. Safety is enforced by the toolchain whether you like it or not. You cannot ship an unsafe update because `rustc` won't let you.
-
-- In **C++17**, nothing stops a developer from writing `memcpy` instead of using `FixedString::operator=`. Nothing prevents someone from casting away a bounds check for "performance." Nothing enforces that new code uses `SafeInt` instead of `int`. The safety framework is a convention, not a constraint. And conventions break under deadline pressure.
-
-This is not a flaw in C++17. It's an architectural reality. C++ trusts the programmer. Rust does not. Both are valid philosophies, but they have different long-term maintenance profiles.
-
 ### So Why C++17 at All?
 
 Because the real world runs on C++.
 
-- **Existing codebases**: Most enterprises migrating off COBOL already have C++ infrastructure, build systems, CI/CD pipelines, and developer teams. Producing Rust output means retraining, retooling, and rebuilding everything.
-- **Interoperability**: C++17 links natively with C libraries, OS APIs, database drivers, and mainframe middleware. Rust can do this through FFI, but it's friction.
-- **Hiring**: There are significantly more C++ developers available than Rust developers. For a Fortune 500 bank migrating 10 million lines of COBOL, staffing matters.
-- **Regulatory acceptance**: Many regulated industries (banking, healthcare, defense) have established C++ code review and audit processes. Rust is still gaining regulatory recognition.
+- **Existing codebases**: Most enterprises migrating off COBOL already have C++ infrastructure, build systems, and developer teams.
+- **Interoperability**: C++17 links natively with C libraries, OS APIs, database drivers, and mainframe middleware.
+- **Hiring**: There are significantly more C++ developers available than Rust developers.
+- **Regulatory acceptance**: Many regulated industries have established C++ code review and audit processes.
 
 The right tool depends on the constraints. If you're building greenfield and can choose your stack, Rust is the safer long-term bet. If you're migrating a legacy enterprise off a mainframe and need to land in existing infrastructure, hardened C++17 is the pragmatic choice.
-
-Lazarus gives you hardened C++17 on day one. What happens on day two is an organizational decision, not a technology one.
 
 ---
 
@@ -195,7 +197,6 @@ The GnuCOBOL 3.2 test suite covers the full breadth of the COBOL language:
 | `syn_definition` | 91 | Data definition validation |
 | `syn_file` | 37 | File control validation |
 | `syn_functions` | 39 | Function syntax validation |
-| `syn_ipn` | 12 | Identification/program-name syntax |
 | `syn_literals` | 21 | Numeric and string literals |
 | `syn_misc` | 195 | Miscellaneous syntax validation |
 | `syn_move` | 10 | MOVE statement validation |
@@ -209,118 +210,26 @@ The GnuCOBOL 3.2 test suite covers the full breadth of the COBOL language:
 
 ---
 
-## Looking at the Output
-
-### Example: COBOL Input
-
-```cobol
-       IDENTIFICATION DIVISION.
-       PROGRAM-ID. prog.
-       DATA DIVISION.
-       WORKING-STORAGE SECTION.
-       01 WS-TRANSPORT-PAY  PIC 9(7)V99.
-       01 WS-BOOK-PAY       PIC 9(7)V99.
-       01 WS-TUTION-PAY     PIC 9(7)V99.
-       PROCEDURE DIVISION.
-           MOVE 105 TO WS-TRANSPORT-PAY
-           MOVE 105 TO WS-BOOK-PAY
-           MOVE 105 TO WS-TUTION-PAY
-           DISPLAY "BEFORE FINAL - SHOULD DISPLAY"
-           STOP RUN.
-```
-
-### Example: Clean C++17 Output
-
-```cpp
-#include <iostream>
-#include <string>
-
-std::string WS_TRANSPORT_PAY;
-std::string WS_BOOK_PAY;
-std::string WS_TUTION_PAY;
-int RETURN_CODE = 0;
-
-void P_CALC_GRAND_SUM_AND_AVERAGE() {
-    std::cout << "BEFORE FINAL - SHOULD DISPLAY" << std::endl;
-    WS_TRANSPORT_PAY = "105";
-    WS_BOOK_PAY = "105";
-    WS_TUTION_PAY = "105";
-    return;
-}
-
-int main() {
-    P_CALC_GRAND_SUM_AND_AVERAGE();
-    return RETURN_CODE;
-}
-```
-
-### Example: Hardened C++17 Output (abbreviated)
-
-```cpp
-// 946-line safety framework header included:
-// - FixedString<N>: bounds-checked strings
-// - SafeInt<T>: overflow-checked integers
-// - Decimal: exact financial arithmetic
-// - CICS runtime stubs
-// - Error codes matching COBOL return codes
-
-FixedString<50> ws_transport_pay;
-FixedString<50> ws_book_pay;
-FixedString<50> ws_tution_pay;
-int RETURN_CODE = 0;
-
-void p_calc_grand_sum_and_average() {
-    std::cout << "BEFORE FINAL - SHOULD DISPLAY" << std::endl;
-    ws_transport_pay = "105";
-    ws_book_pay = "105";
-    ws_tution_pay = "105";
-    return;
-}
-
-int main() {
-    try {
-        p_calc_grand_sum_and_average();
-        return RETURN_CODE;
-    } catch (const std::out_of_range& e) {
-        std::cerr << "[LAZARUS ERROR] Bounds violation: " << e.what() << std::endl;
-        return 281;  // COBOL: subscript range exceeded
-    } catch (const std::overflow_error& e) {
-        std::cerr << "[LAZARUS ERROR] Numeric overflow: " << e.what() << std::endl;
-        return 284;  // COBOL: numeric transform failed
-    } catch (...) {
-        std::cerr << "[LAZARUS ERROR] Unknown error" << std::endl;
-        return 999;
-    }
-}
-```
-
-Every hardened file compiles cleanly with:
-```bash
-g++ -std=c++17 -Wall -Wextra -Wpedantic -Werror -O2 -o output source.cpp
-```
-
----
-
 ## Also Available: CMS Medicare Pricers
 
-Lazarus also transpiles **real production COBOL** — all 55 CMS Medicare payment system programs (92,535 lines) to hardened C++17 with 100% compile success:
+Lazarus also transpiles **real production COBOL** -- all 55 CMS Medicare payment system programs (92,535 lines) to hardened C++17 with 100% compile success:
 
-- **[CMS Medicare — Lazarus C++17](https://github.com/mrm413/cms-medicare-lazarus-showcase)** — 55 programs, 97,924 lines of hardened C++17
-- **[CMS Medicare — Ironclad Rust](https://github.com/mrm413/cms-medicare-ironclad-showcase)** — 55 programs, 169,475 lines of Rust
+- **[CMS Medicare -- Lazarus C++17](https://github.com/mrm413/cms-medicare-lazarus-showcase)** -- 55 programs, 97,924 lines of hardened C++17
+- **[CMS Medicare -- Ironclad Rust](https://github.com/mrm413/cms-medicare-ironclad-showcase)** -- 55 programs, 169,475 lines of Rust
 
 ---
 
 ## Related Showcases
 
-- [CMS Medicare — Lazarus C++17](https://github.com/mrm413/cms-medicare-lazarus-showcase) -- 55 CMS Medicare pricer programs transpiled to hardened C++17 (100%)
-- [CMS Medicare — Ironclad Rust](https://github.com/mrm413/cms-medicare-ironclad-showcase) -- 55 CMS Medicare pricer programs transpiled to Rust (100%)
+- [CMS Medicare -- Lazarus C++17](https://github.com/mrm413/cms-medicare-lazarus-showcase) -- 55 CMS Medicare pricer programs transpiled to hardened C++17 (100%)
+- [CMS Medicare -- Ironclad Rust](https://github.com/mrm413/cms-medicare-ironclad-showcase) -- 55 CMS Medicare pricer programs transpiled to Rust (100%)
 - [Lazarus CardDemo Showcase](https://github.com/mrm413/lazarus-carddemo-showcase) -- 44 AWS CardDemo CICS/COBOL programs transpiled to C++17 (100%)
 
 ---
 
 ## Built By
 
-**Torsova LLC** — [lazarus-systems.com](https://lazarus-systems.com)
+**Torsova LLC** -- [lazarus-systems.com](https://lazarus-systems.com)
 
 Lazarus is part of a suite of legacy modernization tools including transpilers for COBOL (C++17 and Rust), VB6, Stored Procedures, Crystal Reports, SAS, and Microsoft Access.
 

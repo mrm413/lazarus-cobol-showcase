@@ -50,7 +50,46 @@ std::string X_S9_LS;
 std::string X_S9_TS;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    X_S9_TS = std::string(5, '0');
+    X_S9_TS = "1234";
+    std::cout << X << std::endl;
+    X_S9_TS = std::string(5, '0');
+    X_S9_TS = "1234";
+    std::cout << X << std::endl;
+    X_S9_TS = std::string(5, '0');
+    X_S9_TS = "123t";
+    std::cout << X << std::endl;
+    X_S9_TS = std::string(5, '0');
+    X_S9_TS = "1234";
+    std::cout << X << std::endl;
+    X_S9_TS = std::string(5, '0');
+    X_S9_TS = "q234";
+    std::cout << X << std::endl;
+    X_S9_TS = std::string(5, '0');
+    X_S9_LS = "1234";
+    std::cout << X << std::endl;
+    X_S9_TS = std::string(5, '0');
+    X_S9_LS = "-1234";
+    std::cout << X << std::endl;
+    X_S9_TS = std::string(5, '0');
+    X_S9_TS = "1234";
+    std::cout << X << std::endl;
+    X_S9_TS = std::string(5, '0');
+    X_S9_TS = "123t";
+    std::cout << X << std::endl;
+    X_S9_TS = std::string(5, '0');
+    X_S9_TS = "1234";
+    std::cout << X << std::endl;
+    X_S9_TS = std::string(5, '0');
+    X_S9_TS = "-1234";
+    std::cout << X << std::endl;
+    return;
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

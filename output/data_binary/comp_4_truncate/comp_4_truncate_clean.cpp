@@ -51,7 +51,41 @@ std::string XML_NTEXT;
 std::string XML_TEXT;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    RANDOM_ORIGIN_D = "012";
+    RANDOM_TARGET_D = RANDOM_ORIGIN_D;
+    RANDOM_ORIGIN_B = "012";
+    RANDOM_TARGET_B = RANDOM_ORIGIN_B;
+    if (to_int(RANDOM_ORIGIN_D) != to_int(RANDOM_ORIGIN_B)) {
+        std::cout << "ORIGIN 0.12 WRONG" << std::endl;
+        std::cout << "DISPLAY: " << RANDOM_ORIGIN_D << " !=  BINARY : " << RANDOM_ORIGIN_B << std::endl;
+    }
+    if (to_int(RANDOM_TARGET_D) != to_int(RANDOM_TARGET_B)) {
+        std::cout << "TARGET  .12 WRONG" << std::endl;
+        std::cout << "DISPLAY: " << RANDOM_TARGET_D << " !=  BINARY : " << RANDOM_TARGET_B << std::endl;
+    } else {
+        std::cout << "Ok with " << RANDOM_TARGET_D << " == " << RANDOM_TARGET_B << std::endl;
+    }
+    RANDOM_ORIGIN_D = "985";
+    RANDOM_TARGET_D = RANDOM_ORIGIN_D;
+    RANDOM_ORIGIN_B = "985";
+    RANDOM_TARGET_B = RANDOM_ORIGIN_B;
+    if (to_int(RANDOM_ORIGIN_D) != to_int(RANDOM_ORIGIN_B)) {
+        std::cout << "ORIGIN 9.85 WRONG" << std::endl;
+        std::cout << "DISPLAY: " << RANDOM_ORIGIN_D << " !=  BINARY : " << RANDOM_ORIGIN_B << std::endl;
+    }
+    if (to_int(RANDOM_TARGET_D) != to_int(RANDOM_TARGET_B)) {
+        std::cout << "TARGET  .85 WRONG" << std::endl;
+        std::cout << "DISPLAY: " << RANDOM_TARGET_D << " !=  BINARY : " << RANDOM_TARGET_B << std::endl;
+    } else {
+        std::cout << "Ok with " << RANDOM_TARGET_D << " == " << RANDOM_TARGET_B << std::endl;
+    }
+    return;
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

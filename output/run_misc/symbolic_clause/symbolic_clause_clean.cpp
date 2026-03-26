@@ -48,7 +48,21 @@ std::string XML_TEXT;
 std::string Z;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    Z = std::string(1, '0');
+    if (to_int(Z) != to_int(c_1)) {
+        std::cout << Z << std::endl;
+    }
+    Z = std::string(1, '0');
+    if (to_int(Z) != to_int(c_1)) {
+        std::cout << Z << std::endl;
+    }
+    return;
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

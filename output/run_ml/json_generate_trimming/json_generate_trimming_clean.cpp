@@ -61,7 +61,55 @@ std::string signed_decimal_num;
 std::string str;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    // UNHANDLED: cob_json_generate_new (&f_31, &mt_1, NULL, 46);
+    if (to_int(out) != to_int(c_1)) {
+        std::cout << "Failed 1: " << out << std::endl;
+    }
+    // UNHANDLED: cob_json_generate_new (&f_31, &mt_2, NULL, 46);
+    if (to_int(out) != to_int(c_3)) {
+        std::cout << "Failed 2: " << out << std::endl;
+    }
+    // UNHANDLED: cob_json_generate_new (&f_31, &mt_3, NULL, 46);
+    if (to_int(out) != to_int(c_5)) {
+        std::cout << "Failed 3: " << out << std::endl;
+    }
+    // UNHANDLED: cob_json_generate_new (&f_31, &mt_4, NULL, 46);
+    if (to_int(out) != to_int(c_7)) {
+        std::cout << "Failed 4: " << out << std::endl;
+    }
+    // UNHANDLED: cob_json_generate_new (&f_31, &mt_7, NULL, 46);
+    if (to_int(out) != to_int(c_9)) {
+        std::cout << "Failed 5: " << out << std::endl;
+    }
+    // UNHANDLED: cob_json_generate_new (&f_31, &mt_8, NULL, 46);
+    if (to_int(out) != to_int(c_11)) {
+        std::cout << "Failed 6: " << out << std::endl;
+    }
+    // UNHANDLED: cob_json_generate_new (&f_31, &mt_9, NULL, 46);
+    if (to_int(out) != to_int(c_13)) {
+        std::cout << "Failed 7: " << out << std::endl;
+    }
+    just_item = "     blah";
+    // UNHANDLED: cob_json_generate_new (&f_31, &mt_10, NULL, 46);
+    if (to_int(out) != to_int(c_15)) {
+        std::cout << "Failed 10: " << out << std::endl;
+    }
+    // UNHANDLED: cob_json_generate_new (&f_31, &mt_11, NULL, 46);
+    if (to_int(out) != to_int(c_17)) {
+        std::cout << "Failed 11: " << out << std::endl;
+    }
+    // UNHANDLED: cob_json_generate_new (&f_31, &mt_12, NULL, 46);
+    if (to_int(out) != to_int(c_19)) {
+        std::cout << "Failed 12: " << out << std::endl;
+    }
+    if (false /* TODO: module->module_active */) {
+    }
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

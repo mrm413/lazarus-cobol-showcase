@@ -48,7 +48,14 @@ std::string XML_TEXT;
 std::string amount;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    amount = "151234";
+    std::cout << "Amount is #" << amount << "#" << std::endl;
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

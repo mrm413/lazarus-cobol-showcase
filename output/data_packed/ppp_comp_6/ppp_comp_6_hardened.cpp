@@ -962,10 +962,74 @@ FixedString<50> x_2;
 FixedString<50> x_4;
 
 // Forward declarations
+void p_main();
+
+void p_main() {
+    std::cout << "INIT X-1 : " << x_1 << " ." << std::endl;
+    std::cout << "INIT X-2 : " << x_2 << " ." << std::endl;
+    std::cout << "INIT X-4 : " << x_4 << " ." << std::endl;
+    std::cout << "INIT D-1 : " << d_1 << " ." << std::endl;
+    x_4.replace(8, 2, d_1.substr(0, 2));
+    x_4.replace(3, 2, d_1.substr(0, 2));
+    d_1 = x_4.substr(8, 2);
+    std::cout << "MOVE X-1 : " << x_1 << " ." << std::endl;
+    std::cout << "MOVE X-2 : " << x_2 << " ." << std::endl;
+    x_4 = "0000256";
+    std::cout << "MOVE X-4 : " << x_4 << " ." << std::endl;
+    std::cout << "MOVE D-1 : " << d_1 << " ." << std::endl;
+    x_2 = d_2;
+    x_1 = d_2;
+    std::cout << "MOVE X-1 : " << x_1 << ":" << d_2 << " ." << std::endl;
+    std::cout << "MOVE X-2 : " << x_2 << ":" << d_2 << " ." << std::endl;
+    x_1 = "98000";
+    if (to_int(x_1) != 98000) {
+        std::cout << "MOVE 98000 failed: " << x_1 << std::endl;
+    }
+    d_1 = "98000";
+    if (to_int(d_1) != 98000) {
+        std::cout << "MOVE 98000 failed: " << d_1 << std::endl;
+    }
+    x_1 = to_string(to_int(x_1) + 1000);
+    if (to_int(x_1) != 99000) {
+        std::cout << "+ 1000 failed: " << x_1 << std::endl;
+    }
+    x_1 = to_string(to_int(x_1) - 4000);
+    if (to_int(x_1) != 95000) {
+        std::cout << "- 4000 failed: " << x_1 << std::endl;
+    }
+    // UNHANDLED: cob_div (&f_20, (cob_field *)&c_16, 0);
+    if (to_int(x_1) != 31000) {
+        std::cout << "/ 3 failed: " << x_1 << std::endl;
+    }
+    x_1 = to_string(to_num(0) * to_num(1));
+    if (to_int(x_1) != 62000) {
+        std::cout << "* 2 failed: " << x_1 << std::endl;
+    }
+    if (fence_1.substr(0, 3) != "���") {
+        std::cout << "broken FENCE-1" << std::endl;
+    }
+    if (fence_2.substr(0, 3) != "���") {
+        std::cout << "broken FENCE-2" << std::endl;
+    }
+    if (x_4.substr(0, 3) != "���") {
+        std::cout << "broken FENCE-A" << std::endl;
+    }
+    if (x_4.substr(5, 3) != "���") {
+        std::cout << "broken FENCE-B" << std::endl;
+    }
+    if (x_4.substr(10, 3) != "���") {
+        std::cout << "broken FENCE-C" << std::endl;
+    }
+    if (x_4.substr(15, 3) != "���") {
+        std::cout << "broken FENCE-D" << std::endl;
+    }
+    return;
+}
 
 int main() {
     try {
 
+    p_main();
     return RETURN_CODE;
 
         return 0;
@@ -996,7 +1060,7 @@ int main() {
 // Hardening Statistics:
 //   - Types hardened: 14
 //   - Bounds checks added: 0
-//   - Names converted: 14
+//   - Names converted: 15
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1

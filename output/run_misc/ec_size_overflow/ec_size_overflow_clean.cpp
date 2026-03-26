@@ -49,7 +49,19 @@ std::string x;
 std::string y;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    y = to_string(to_num(0) / to_num(1));
+    y = to_string(to_num(0) / to_num(1));
+    if (false /* cob_cmp != 0 */) {
+        std::cout << "Wrong/missing exception: " << std::endl;
+    }
+    if (false /* TODO: module->module_active */) {
+    }
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

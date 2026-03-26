@@ -951,10 +951,26 @@ FixedString<50> P1;
 FixedString<50> P2;
 
 // Forward declarations
+void p_main();
+
+void p_main() {
+    if (false /* TODO: call_callee.funcvoid == nullptr */ || false /* TODO: cob_glob_ptr->cob_physical_cancel == 1 */) {
+        // CALL subroutine
+    }
+    // CALL return value → RETURN_CODE
+    P1.at(0) = static_cast<char>(66);
+    P2 = "OKOKOK";
+    if (false /* TODO: call_callee.funcvoid == nullptr */ || false /* TODO: cob_glob_ptr->cob_physical_cancel == 1 */) {
+        // CALL subroutine
+    }
+    // UNHANDLED: ((int (*)(void *))call_callee.funcint) (b_1);
+    return;
+}
 
 int main() {
     try {
 
+    p_main();
     return RETURN_CODE;
 
         return 0;
@@ -984,8 +1000,8 @@ int main() {
 //
 // Hardening Statistics:
 //   - Types hardened: 2
-//   - Bounds checks added: 0
-//   - Names converted: 0
+//   - Bounds checks added: 1
+//   - Names converted: 1
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1

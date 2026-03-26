@@ -49,7 +49,24 @@ std::string XML_TEXT;
 std::string X_ALL;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    X[0] = ' ';
+    X[2] = ' ';
+    X[4] = ' ';
+    X[6] = ' ';
+    X[1] = '0';
+    X[3] = '0';
+    X[5] = '0';
+    X[7] = '0';
+    if (X_ALL.substr(0, 10) != " 0 0 0 0AA") {
+        std::cout << std::endl;
+    }
+    return;
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

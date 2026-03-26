@@ -42,7 +42,18 @@ std::string G;
 std::string I;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    I = to_string(0);
+    // UNHANDLED: cob_set_int (COB_SET_FLD (f0, 1, b_1, &a_1), b_3);
+    if (G[0] != '0') {
+        std::cout << std::endl;
+    }
+    return;
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

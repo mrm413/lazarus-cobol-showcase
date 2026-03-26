@@ -48,7 +48,21 @@ std::string XML_TEXT;
 std::string str;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    if (false /* TODO: call_subprog.funcvoid == NULL */ || false /* TODO: cob_glob_ptr->cob_physical_cancel == 1 */) {
+        // CALL subroutine
+    }
+    // RETURN_CODE = ((int (*)(void *))call_subprog.funcint) (b_17);
+    if (false /* TODO: module->module_active */) {
+    }
+    if (false /* TODO: cob_reference_count */) {
+        // UNHANDLED: cob_reference_count--;
+    }
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

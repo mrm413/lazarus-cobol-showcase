@@ -956,10 +956,60 @@ FixedString<100> xml_ntext;
 FixedString<100> xml_text;
 
 // Forward declarations
+void p_main();
+
+void p_main() {
+    w01_index = "0";
+    // INSPECT operation
+    // INSPECT (TALLYING/REPLACING)
+    // INSPECT operation
+    // INSPECT (TALLYING/REPLACING)
+    if (to_int(RETURN_CODE) != 10) {
+        std::cout << "Bad Result for Inspect Trailing Case 1" << std::endl;
+    }
+    // INSPECT operation
+    // INSPECT (TALLYING/REPLACING)
+    // INSPECT operation
+    // INSPECT (TALLYING/REPLACING)
+    if (w01_string.substr(0, 20) != "0123456789AAAAAAAAAA") {
+        std::cout << "Bad Result for Inspect Trailing Case 2" << std::endl;
+    }
+    w01_index = "0";
+    // INSPECT operation
+    // INSPECT (TALLYING/REPLACING)
+    // INSPECT operation
+    // INSPECT (TALLYING/REPLACING)
+    // INSPECT operation
+    // INSPECT (TALLYING/REPLACING)
+    // INSPECT operation
+    // INSPECT (TALLYING/REPLACING)
+    if (w01_string.substr(0, 20) != "0123456789BBBBBBBBBB") {
+        std::cout << "Bad Result for Inspect Trailing Case 3" << std::endl;
+    }
+    w01_index = "0";
+    w01_string = std::string(20, ' ');
+    // INSPECT operation
+    // INSPECT (TALLYING/REPLACING)
+    // INSPECT operation
+    // INSPECT (TALLYING/REPLACING)
+    if (to_int(RETURN_CODE) != 0) {
+        std::cout << "Bad Result for Inspect Trailing Case 4" << w01_index << std::endl;
+    }
+    w01_index = "0";
+    w01_string = std::string(20, ' ');
+    // INSPECT operation
+    // INSPECT (TALLYING/REPLACING)
+    // INSPECT operation
+    // INSPECT (TALLYING/REPLACING)
+    if (to_int(RETURN_CODE) != 20) {
+        std::cout << "Bad Result for Inspect Trailing Case 5" << w01_index << std::endl;
+    }
+}
 
 int main() {
     try {
 
+    p_main();
     return RETURN_CODE;
 
         return 0;
@@ -990,7 +1040,7 @@ int main() {
 // Hardening Statistics:
 //   - Types hardened: 8
 //   - Bounds checks added: 0
-//   - Names converted: 8
+//   - Names converted: 9
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1

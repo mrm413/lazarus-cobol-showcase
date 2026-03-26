@@ -958,10 +958,50 @@ FixedString<100> xml_ntext;
 FixedString<100> xml_text;
 
 // Forward declarations
+void p_main();
+
+void p_main() {
+    test_fld = "8";
+    if (to_int(test_fld) != 8) {
+        std::cout << "LENGTH \\" << test_fld << std::endl;
+    }
+    test_fld = "9";
+    if (to_int(test_fld) != 9) {
+        std::cout << "LENGTH N(9) wrong: " << test_fld << std::endl;
+    }
+    test_fld = "5";
+    if (to_int(test_fld) != 5) {
+        std::cout << "LENGTH \\" << test_fld << std::endl;
+    }
+    test_fld = "1";
+    if (to_int(test_fld) != 1) {
+        std::cout << "LENGTH x\\" << test_fld << std::endl;
+    }
+    test_fld = "3";
+    if (to_int(test_fld) != 3) {
+        std::cout << "LENGTH z\\" << test_fld << std::endl;
+    }
+    test_fld = "2";
+    if (to_int(test_fld) != 2) {
+        std::cout << "LENGTH n\\" << test_fld << std::endl;
+    }
+    t_entries = "10";
+    // MOVE to computed field
+    if (to_int(test_fld) != 12) {
+        std::cout << "LENGTH TEST-TAB (10 entries): " << test_fld << std::endl;
+    }
+    t_entries = "01";
+    // MOVE to computed field
+    if (to_int(test_fld) != 3) {
+        std::cout << "LENGTH TEST-TAB (1 entry): " << test_fld << std::endl;
+    }
+    return;
+}
 
 int main() {
     try {
 
+    p_main();
     return RETURN_CODE;
 
         return 0;
@@ -992,7 +1032,7 @@ int main() {
 // Hardening Statistics:
 //   - Types hardened: 10
 //   - Bounds checks added: 0
-//   - Names converted: 8
+//   - Names converted: 9
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1

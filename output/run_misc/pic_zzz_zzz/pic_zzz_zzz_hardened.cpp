@@ -951,10 +951,40 @@ FixedString<50> x_zzzn;
 FixedString<50> x_zzzp;
 
 // Forward declarations
+void p_main();
+
+void p_main() {
+    x_zzzn = "-1";
+    if (x_zzzn.substr(0, 4) != "  1-") {
+        std::cout << "(" << x_zzzn << ")" << std::endl;
+    }
+    x_zzzn = "0";
+    if (x_zzzn.substr(0, 4) != "") {
+        std::cout << "(" << x_zzzn << ")" << std::endl;
+    }
+    x_zzzn = "+1";
+    if (x_zzzn.substr(0, 4) != "  1") {
+        std::cout << "(" << x_zzzn << ")" << std::endl;
+    }
+    x_zzzp = "-1";
+    if (x_zzzp.substr(0, 4) != "  1-") {
+        std::cout << "(" << x_zzzp << ")" << std::endl;
+    }
+    x_zzzp = "0";
+    if (x_zzzp.substr(0, 4) != "") {
+        std::cout << "(" << x_zzzp << ")" << std::endl;
+    }
+    x_zzzp = "+1";
+    if (x_zzzp.substr(0, 4) != "  1+") {
+        std::cout << "(" << x_zzzp << ")" << std::endl;
+    }
+    return;
+}
 
 int main() {
     try {
 
+    p_main();
     return RETURN_CODE;
 
         return 0;
@@ -985,7 +1015,7 @@ int main() {
 // Hardening Statistics:
 //   - Types hardened: 2
 //   - Bounds checks added: 0
-//   - Names converted: 2
+//   - Names converted: 3
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1

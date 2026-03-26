@@ -846,6 +846,8 @@ inline void ABEND(const std::string& abcode = "LZRS") {
 
 } // namespace lazarus
 
+std::string VAR_17; // Auto-declared by LAZARUS healer
+
 // ---------------------------------------------------------------------------
 // GLOBAL ALIASES FOR COMPATIBILITY
 // ---------------------------------------------------------------------------
@@ -955,10 +957,22 @@ FixedString<100> xml_ntext;
 FixedString<100> xml_text;
 
 // Forward declarations
+void p_main();
+
+void p_main() {
+    if (VAR_17.at(0) == 'A') {
+    } else {
+        if (P3.substr(0, 6) != "OKOKOK") {
+            std::cout << std::endl;
+        }
+    }
+    if (false /* TODO: module->next */) {}
+}
 
 int main() {
     try {
 
+    p_main();
     return RETURN_CODE;
 
         return 0;
@@ -988,8 +1002,8 @@ int main() {
 //
 // Hardening Statistics:
 //   - Types hardened: 7
-//   - Bounds checks added: 0
-//   - Names converted: 6
+//   - Bounds checks added: 1
+//   - Names converted: 7
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1

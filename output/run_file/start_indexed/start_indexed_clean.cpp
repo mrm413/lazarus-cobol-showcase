@@ -49,7 +49,105 @@ std::string file1_key;
 std::string file1_rec;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    // OPEN FILE1 (OUTPUT)
+    if (file_status != "EXCEPTION_0") {
+    }
+    // CLOSE FILE1
+    if (file_status != "EXCEPTION_0") {
+    }
+    // OPEN FILE1 (I_O)
+    if (file_status != "EXCEPTION_0") {
+    }
+    file1_key = "010";
+    file1_key.replace(3, 3, "010");
+    // WRITE FILE1
+    if (file_status != "EXCEPTION_0") {
+    }
+    file1_key = "011";
+    file1_key.replace(3, 3, "011");
+    // WRITE FILE1
+    if (file_status != "EXCEPTION_0") {
+    }
+    file1_key = "012";
+    file1_key.replace(3, 3, "012");
+    // WRITE FILE1
+    if (file_status != "EXCEPTION_0") {
+    }
+    file1_key = "013";
+    file1_key.replace(3, 3, "013");
+    // WRITE FILE1
+    if (file_status != "EXCEPTION_0") {
+    }
+    file1_key = std::string(3, '0');
+    // UNHANDLED: cob_start (h_FILE1, 4, &f_18, NULL, NULL);
+    if (file_status != "EXCEPTION_0") {
+    }
+    // READ NEXT FILE1
+    if (file_status != "EXCEPTION_0") {
+    }
+    if (to_int(file1_key) != 10) {
+        std::cout << "FAILED: START key > 0" << std::endl;
+    }
+    file1_key = "099";
+    // UNHANDLED: cob_start (h_FILE1, 2, &f_18, NULL, NULL);
+    if (file_status != "EXCEPTION_0") {
+    }
+    // READ NEXT FILE1
+    if (file_status != "EXCEPTION_0") {
+    }
+    if (to_int(file1_key) != 13) {
+        std::cout << "FAILED: START key < 99" << std::endl;
+    }
+    file1_key = std::string(3, static_cast<char>(57));
+    // UNHANDLED: cob_start (h_FILE1, 7, &f_18, NULL, NULL);
+    if (file_status != "EXCEPTION_0") {
+    }
+    // READ NEXT FILE1
+    if (file_status != "EXCEPTION_0") {
+    }
+    if (to_int(file1_key) != 10) {
+        std::cout << "FAILED: START key FIRST" << std::endl;
+    }
+    file1_key = std::string(3, '0');
+    // UNHANDLED: cob_start (h_FILE1, 8, &f_18, NULL, NULL);
+    if (file_status != "EXCEPTION_0") {
+    }
+    // READ NEXT FILE1
+    if (file_status != "EXCEPTION_0") {
+    }
+    if (to_int(file1_key) != 13) {
+        std::cout << "FAILED: START key LAST" << std::endl;
+    }
+    file1_key = std::string(3, '0');
+    // UNHANDLED: cob_start (h_FILE1, 5, &f_18, NULL, NULL);
+    if (file_status != "EXCEPTION_0") {
+    }
+    // READ NEXT FILE1
+    if (file_status != "EXCEPTION_0") {
+    }
+    if (to_int(file1_key) != 10) {
+        std::cout << "FAILED: START key >= 0" << std::endl;
+    }
+    file1_key = "099";
+    // UNHANDLED: cob_start (h_FILE1, 3, &f_18, NULL, NULL);
+    if (file_status != "EXCEPTION_0") {
+    }
+    // READ NEXT FILE1
+    if (file_status != "EXCEPTION_0") {
+    }
+    if (to_int(file1_key) != 13) {
+        std::cout << "FAILED: START key <= 99" << std::endl;
+    }
+    // CLOSE FILE1
+    if (file_status != "EXCEPTION_0") {
+    }
+    return;
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

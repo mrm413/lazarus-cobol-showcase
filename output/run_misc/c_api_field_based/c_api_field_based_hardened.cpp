@@ -963,10 +963,90 @@ FixedString<100> xml_ntext;
 FixedString<100> xml_text;
 
 // Forward declarations
+void p_main();
+
+void p_main() {
+    NE = "-51277";
+    // UNHANDLED: cob_content	content_1;
+    // UNHANDLED: content_fb_1.data = content_1.data;
+    // UNHANDLED: content_1.dataint = 2560;
+    if (false /* TODO: call_CAPI.funcvoid == nullptr */ || false /* TODO: cob_glob_ptr->cob_physical_cancel == 1 */) {
+        // CALL subroutine
+    }
+    // RETURN_CODE = ((int (*)(void *, cob_u32_t))call_CAPI.funcint) (content_1.data, (cob_u32_t)16);
+    if (false /* TODO: call_CAPI.funcvoid == nullptr */ || false /* TODO: cob_glob_ptr->cob_physical_cancel == 1 */) {
+        // CALL subroutine
+    }
+    // RETURN_CODE = ((int (*)(void *, void *))call_CAPI.funcint) (b_17, b_23);
+    if (false /* TODO: call_CAPI.funcvoid == nullptr */ || false /* TODO: cob_glob_ptr->cob_physical_cancel == 1 */) {
+        // CALL subroutine
+    }
+    // RETURN_CODE = ((int (*)(void *))call_CAPI.funcint) (b_18);
+    if (false /* TODO: call_CAPI.funcvoid == nullptr */ || false /* TODO: cob_glob_ptr->cob_physical_cancel == 1 */) {
+        // CALL subroutine
+    }
+    // RETURN_CODE = ((int (*)(void *))call_CAPI.funcint) (b_19);
+    NE = "51277";
+    if (false /* TODO: call_CAPI.funcvoid == nullptr */ || false /* TODO: cob_glob_ptr->cob_physical_cancel == 1 */) {
+        // CALL subroutine
+    }
+    // RETURN_CODE = ((int (*)(void *, void *))call_CAPI.funcint) (b_20, b_23);
+    if (false /* TODO: call_CAPI.funcvoid == nullptr */ || false /* TODO: cob_glob_ptr->cob_physical_cancel == 1 */) {
+        // CALL subroutine
+    }
+    // RETURN_CODE = ((int (*)(void *, void *, void *, void *))call_CAPI.funcint) (b_22, b_18, b_24, b_25);
+    if (false /* TODO: call_CAPI.funcvoid == nullptr */ || false /* TODO: cob_glob_ptr->cob_physical_cancel == 1 */) {
+        // CALL subroutine
+    }
+    // RETURN_CODE = ((int (*)(void *, void *, void *))call_CAPI.funcint) (b_20, b_23, b_24);
+    if (false /* TODO: call_CAPI.funcvoid == nullptr */ || false /* TODO: cob_glob_ptr->cob_physical_cancel == 1 */) {
+        // CALL subroutine
+    }
+    // RETURN_CODE = ((int (*)(void *, void *))call_CAPI.funcint) (b_17, b_23);
+    chrx = "Hello!";
+    if (false /* TODO: call_CAPI.funcvoid == nullptr */ || false /* TODO: cob_glob_ptr->cob_physical_cancel == 1 */) {
+        // CALL subroutine
+    }
+    // RETURN_CODE = ((int (*)(cob_u32_t, void *))call_CAPI.funcint) ((cob_u32_t)((*(unsigned int *)(b_17))), content_2.data);
+    if (false /* TODO: call_CAPI.funcvoid == nullptr */ || false /* TODO: cob_glob_ptr->cob_physical_cancel == 1 */) {
+        // CALL subroutine
+    }
+    // RETURN_CODE = ((int (*)(cob_u32_t, void *))call_CAPI.funcint) ((cob_u32_t)((*(unsigned int *)(b_17))), content_2.data);
+    // UNHANDLED: cob_content	content_1;
+    // UNHANDLED: content_fb_1.data = content_1.data;
+    // UNHANDLED: content_1.dataint = 18;
+    if (false /* TODO: call_CAPI.funcvoid == nullptr */ || false /* TODO: cob_glob_ptr->cob_physical_cancel == 1 */) {
+        // CALL subroutine
+    }
+    // RETURN_CODE = ((int (*)(void *))call_CAPI.funcint) (content_1.data);
+    if (false /* TODO: call_CAPI.funcvoid == nullptr */ || false /* TODO: cob_glob_ptr->cob_physical_cancel == 1 */) {
+        // CALL subroutine
+    }
+    // RETURN_CODE = ((int (*)(void *, cob_u32_t))call_CAPI.funcint) (content_1.data, (cob_u32_t)18);
+    if (false /* TODO: call_CAPI.funcvoid == nullptr */ || false /* TODO: cob_glob_ptr->cob_physical_cancel == 1 */) {
+        // CALL subroutine
+    }
+    // RETURN_CODE = ((int (*)(void *, void *))call_CAPI.funcint) ((cob_u8_ptr)"Fred Fish", b_20);
+    if (false /* TODO: call_CAPI.funcvoid == nullptr */ || false /* TODO: cob_glob_ptr->cob_physical_cancel == 1 */) {
+        // CALL subroutine
+    }
+    // RETURN_CODE = ((int (*)(void *))call_CAPI.funcint) (b_21);
+    if (false /* TODO: call_CAPI.funcvoid == nullptr */ || false /* TODO: cob_glob_ptr->cob_physical_cancel == 1 */) {
+        // CALL subroutine
+    }
+    // RETURN_CODE = ((int (*)(void))call_CAPI.funcint) ();
+    std::cout << "comp3    is now " << comp3 << ";" << std::endl;
+    std::cout << "COMP4    is now " << binfld5 << ";" << std::endl;
+    std::cout << "binfld5s is now " << binfld5s << ";" << std::endl;
+    std::cout << "chrx     is now " << chrx << ";" << std::endl;
+    std::cout << "NE       is now " << NE << ";" << std::endl;
+    return;
+}
 
 int main() {
     try {
 
+    p_main();
     return RETURN_CODE;
 
         return 0;
@@ -997,7 +1077,7 @@ int main() {
 // Hardening Statistics:
 //   - Types hardened: 15
 //   - Bounds checks added: 0
-//   - Names converted: 14
+//   - Names converted: 15
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1

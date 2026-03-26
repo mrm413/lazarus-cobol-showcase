@@ -959,10 +959,26 @@ FixedString<100> xml_ntext;
 FixedString<100> xml_text;
 
 // Forward declarations
+void p_main();
+
+void p_main() {
+    call_name = "callee32";
+    adr_buffer = "12345678";
+    adr_buffer = "-42";
+    if (false /* TODO: call_callee32.funcvoid == nullptr */ || false /* TODO: cob_glob_ptr->cob_physical_cancel == 1 */) {
+        // CALL subroutine
+    }
+    // RETURN_CODE = ((int (*)(cob_u32_t))call_callee32.funcint) ((cob_u32_t)((*(int *)(b_18 + 33))));
+    if (false /* TODO: call_callee64.funcvoid == nullptr */ || false /* TODO: cob_glob_ptr->cob_physical_cancel == 1 */) {
+        // CALL subroutine
+    }
+    // RETURN_CODE = ((int (*)(cob_u64_t))call_callee64.funcint) ((cob_u64_t)((*(cob_s64_ptr)(b_22))));
+}
 
 int main() {
     try {
 
+    p_main();
     return RETURN_CODE;
 
         return 0;
@@ -993,7 +1009,7 @@ int main() {
 // Hardening Statistics:
 //   - Types hardened: 11
 //   - Bounds checks added: 0
-//   - Names converted: 11
+//   - Names converted: 12
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1

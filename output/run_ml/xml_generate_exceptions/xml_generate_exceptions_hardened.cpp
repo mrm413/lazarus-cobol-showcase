@@ -962,10 +962,18 @@ FixedString<50> short_str2;
 FixedString<10> xml_len;
 
 // Forward declarations
+void p_main();
+
+void p_main() {
+    short_str = std::string(5, static_cast<char>(65));
+    if (false /* TODO: module->module_active */) {
+    }
+}
 
 int main() {
     try {
 
+    p_main();
     return RETURN_CODE;
 
         return 0;
@@ -996,7 +1004,7 @@ int main() {
 // Hardening Statistics:
 //   - Types hardened: 14
 //   - Bounds checks added: 0
-//   - Names converted: 6
+//   - Names converted: 7
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1

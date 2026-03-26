@@ -958,10 +958,23 @@ FixedString<100> xml_ntext;
 FixedString<100> xml_text;
 
 // Forward declarations
+void p_main();
+
+void p_main() {
+    std::cout << var_1 << "X" << std::endl;
+    var_1 = std::string(8, static_cast<char>(88));
+    // STRING operation
+    // STRING operation
+    std::cout << "VAR-1 = " << var_1 << "VAR-2 = " << var_2 << "Y" << std::endl;
+    std::cout << "VAR-2 = " << var_2 << std::endl;
+    std::cout << "SORT-RETURN = " << sort_return << "tally = " << tally << std::endl;
+    return;
+}
 
 int main() {
     try {
 
+    p_main();
     return RETURN_CODE;
 
         return 0;
@@ -992,7 +1005,7 @@ int main() {
 // Hardening Statistics:
 //   - Types hardened: 10
 //   - Bounds checks added: 0
-//   - Names converted: 10
+//   - Names converted: 11
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1

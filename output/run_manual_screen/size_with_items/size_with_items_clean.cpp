@@ -53,7 +53,21 @@ std::string num_3;
 std::string success_flag;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    std::cout << "Enter \\" << "1" << std::endl;
+    std::cout << num_1 << "3" << "3" << "4" << std::endl;
+    std::cout << num_2 << "4" << "3" << four << std::endl;
+    std::cout << num_3 << "5" << "3" << "8" << std::endl;
+    std::cout << "1234" << "6" << "3" << std::endl;
+    // UNHANDLED: cob_accept_field (&f_17, 1064960, "lc", (cob_field *)&c_6, 0);
+    if (success_flag[0] == 'Y' || success_flag[0] == 'y' && to_int(COB_CRT_STATUS) == 0) {
+        RETURN_CODE = 0;
+    }
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

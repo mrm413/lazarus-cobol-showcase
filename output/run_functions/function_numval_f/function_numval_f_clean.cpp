@@ -51,7 +51,25 @@ std::string XML_NTEXT;
 std::string XML_TEXT;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    // UNHANDLED: cob_move (cob_intr_numval_f (&f_17), &f_20);
+    if (to_int(N) != -1234) {
+        std::cout << "X1 '" << X1 << "' : " << N << std::endl;
+    }
+    // UNHANDLED: cob_move (cob_intr_numval_f (&f_18), &f_20);
+    if (to_int(N) != to_int(c_3)) {
+        std::cout << "X2 '" << X2 << "' : " << N << std::endl;
+    }
+    // UNHANDLED: cob_move (cob_intr_numval_f (&f_19), &f_20);
+    if (to_int(N) != 0) {
+        std::cout << "BAD1 '" << BAD1 << "' : " << N << std::endl;
+    }
+    return;
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

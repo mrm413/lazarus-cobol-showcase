@@ -49,7 +49,18 @@ std::string num;
 std::string out;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    // UNHANDLED: cob_json_generate_new (&f_18, &mt_1, NULL, 44);
+    if (to_int(out) != to_int(c_1)) {
+        std::cout << "Failed: " << out << std::endl;
+    }
+    if (false /* TODO: module->module_active */) {
+    }
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

@@ -49,7 +49,21 @@ std::string XML_NTEXT;
 std::string XML_TEXT;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    TESTSTAT.replace(4, 2, std::string(2, '0'));
+    if (false /* TODO: call_prog2.funcvoid == NULL */ || false /* TODO: cob_glob_ptr->cob_physical_cancel == 1 */) {
+        // CALL subroutine
+    }
+    // RETURN_CODE = ((int (*)(void))call_prog2.funcint) ();
+    if (TESTSTAT.substr(4, 2) == "00") {
+        std::cout << "Not OK" << std::endl;
+    }
+    return;
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

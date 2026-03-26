@@ -1,7 +1,7 @@
 /**
  * LAZARUS-Generated C++ Code (V2)
- * Source: report_line_order_preprocessed.cblbl
- * Program: PROGRAM
+ * Source: report_line_order_preprocessed.cbl
+ * Program: prog
  */
 
 #include <iostream>
@@ -38,9 +38,50 @@ std::string file_status = "00";
 int n0 = 0, n1 = 0, n2 = 0, n3 = 0, n4 = 0;  // loop counters
 
 // Working Storage variables
+std::string Detail_Line;
+int RETURN_CODE = 0;
+std::string XML_NAMESPACE;
+std::string XML_NAMESPACE_PREFIX;
+std::string XML_NNAMESPACE;
+std::string XML_NNAMESPACE_PREFIX;
+std::string XML_NTEXT;
+std::string XML_TEXT;
 
 // Forward declarations
+void P_1();
+void P_010_Main();
+
+void P_1() {
+    // OPEN REPORT-FILE (OUTPUT)
+    if (file_status != "EXCEPTION_0") {
+    }
+    // UNHANDLED: goto rwexit_1;
+    // UNHANDLED: rwmove_1: ;
+    // UNHANDLED: rwfoot_1: ;
+    // UNHANDLED: rwexit_1: ;
+    // UNHANDLED: r_RWCS_REPORT.code_is_present = 0;
+    // UNHANDLED: cob_report_initiate (&r_RWCS_REPORT);
+    // UNHANDLED: cob_report_generate (&r_RWCS_REPORT, &rl_23, 0);
+    // UNHANDLED: cob_report_generate (&r_RWCS_REPORT, &rl_23, 0);
+    // UNHANDLED: cob_report_generate (&r_RWCS_REPORT, &rl_23, 0);
+    // UNHANDLED: cob_report_generate (&r_RWCS_REPORT, &rl_23, 0);
+    // UNHANDLED: cob_report_generate (&r_RWCS_REPORT, &rl_23, 0);
+    // UNHANDLED: cob_report_generate (&r_RWCS_REPORT, &rl_23, 0);
+    // UNHANDLED: cob_report_generate (&r_RWCS_REPORT, &rl_23, 0);
+    // UNHANDLED: cob_report_generate (&r_RWCS_REPORT, &rl_23, 0);
+    // UNHANDLED: cob_report_terminate (&r_RWCS_REPORT, 0);
+    // CLOSE REPORT-FILE
+    if (file_status != "EXCEPTION_0") {
+    }
+    if (false /* TODO: module->module_active */) {
+    }
+}
+
+void P_010_Main() {
+    P_1();
+}
 
 int main() {
+    P_1();
     return RETURN_CODE;
 }

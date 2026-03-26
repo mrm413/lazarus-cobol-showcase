@@ -50,7 +50,67 @@ std::string f_status;
 std::string g_rec;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    // OPEN F (OUTPUT)
+    if (file_status != "EXCEPTION_0") {
+    }
+    f_rec[0] = static_cast<char>(97);
+    // WRITE F
+    if (file_status != "EXCEPTION_0") {
+    }
+    // CLOSE F
+    if (file_status != "EXCEPTION_0") {
+    }
+    // UNHANDLED: cob_set_exception (0);
+    // OPEN F (INPUT)
+    if (file_status != "EXCEPTION_0") {
+    }
+    for (int n0 = 2; n0 > 0; n0--) {
+        // READ NEXT F
+        if (file_status != "EXCEPTION_0") {
+        }
+        std::cout << f_rec << std::endl;
+    }
+    std::cout << f_status << std::endl;
+    std::cout << std::endl;
+    // UNHANDLED: cob_set_exception (0);
+    // CLOSE F
+    if (file_status != "EXCEPTION_0") {
+    }
+    // OPEN F (INPUT)
+    if (file_status != "EXCEPTION_0") {
+    }
+    for (int n1 = 2; n1 > 0; n1--) {
+        // READ NEXT F
+        if (file_status != "EXCEPTION_0") {
+        }
+        std::cout << f_rec << std::endl;
+    }
+    std::cout << f_status << std::endl;
+    std::cout << std::endl;
+    // UNHANDLED: cob_set_exception (0);
+    // CLOSE F
+    if (file_status != "EXCEPTION_0") {
+    }
+    // OPEN G (INPUT)
+    if (file_status != "EXCEPTION_0") {
+    }
+    for (int n2 = 2; n2 > 0; n2--) {
+        // READ NEXT G
+        if (file_status != "EXCEPTION_0") {
+        }
+        std::cout << g_rec << std::endl;
+    }
+    // CLOSE G
+    if (file_status != "EXCEPTION_0") {
+    }
+    if (false /* TODO: module->module_active */) {
+    }
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

@@ -846,6 +846,8 @@ inline void ABEND(const std::string& abcode = "LZRS") {
 
 } // namespace lazarus
 
+std::string file_status; // Auto-declared by LAZARUS healer
+
 // ---------------------------------------------------------------------------
 // GLOBAL ALIASES FOR COMPATIBILITY
 // ---------------------------------------------------------------------------
@@ -955,10 +957,30 @@ FixedString<100> xml_text;
 FixedString<50> note;
 
 // Forward declarations
+void p_main();
+
+void p_main() {
+    std::cout << "This is sent to CONSOLE " << note << std::endl;
+    std::cout << "This is sent to SYSERR  " << note << std::endl;
+    std::cout << "This is sent to PRINTER " << note << std::endl;
+    std::cout << "This is also sent to CONSOLE " << note << std::endl;
+    std::cout << "This is also sent to SYSERR  " << note << std::endl;
+    std::cout << "This is also sent to PRINTER " << note << std::endl;
+    std::cout << "This is sent to SYSPUNCH " << note << std::endl;
+    if (false /* EXCEPTION 0x0f00 */ || file_status == "EXCEPTION_0x0602") {
+        std::cout << "NO ..." << std::endl;
+    }
+    std::cout << "This is also sent to SYSPUNCH " << note << std::endl;
+    if (false /* EXCEPTION 0x0f00 */ || file_status == "EXCEPTION_0x0602") {
+        std::cout << " ... SYSPUNCH" << std::endl;
+    }
+    return;
+}
 
 int main() {
     try {
 
+    p_main();
     return RETURN_CODE;
 
         return 0;
@@ -989,7 +1011,7 @@ int main() {
 // Hardening Statistics:
 //   - Types hardened: 7
 //   - Bounds checks added: 0
-//   - Names converted: 6
+//   - Names converted: 7
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1

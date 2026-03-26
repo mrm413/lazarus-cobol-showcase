@@ -50,7 +50,28 @@ std::string XML_TEXT;
 std::string Y;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    // UNHANDLED: cob_move (cob_intr_asin ((cob_field *)&c_1), &f_17);
+    if (to_int(Y) != to_int(c_2)) {
+        std::cout << "DISPLAY: " << Y << std::endl;
+    }
+    // UNHANDLED: cob_move (cob_intr_asin ((cob_field *)&c_1), &f_18);
+    if (to_int(P) != to_int(c_2)) {
+        std::cout << "PACKED:  " << P << std::endl;
+    }
+    // UNHANDLED: cob_move (cob_intr_asin ((cob_field *)&c_1), &f_19);
+    if (to_int(S) != to_int(c_5)) {
+        std::cout << "COMP-6:  " << S << std::endl;
+    }
+    if (false /* cob_cmp != 0 */) {
+        std::cout << "ASIN IS NOT ITSELF" << std::endl;
+    }
+    return;
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

@@ -846,8 +846,6 @@ inline void ABEND(const std::string& abcode = "LZRS") {
 
 } // namespace lazarus
 
-int RETURN_CODE = 0; // Auto-declared by LAZARUS healer
-
 // ---------------------------------------------------------------------------
 // GLOBAL ALIASES FOR COMPATIBILITY
 // ---------------------------------------------------------------------------
@@ -947,12 +945,40 @@ using std::to_string;
 // ============================================================================
 
 // Working Storage variables
+FixedString<50> final_footing;
+FixedString<50> fsm_1;
+FixedString<50> fsm_2;
+FixedString<50> fsm_3;
+FixedString<50> page_heading;
+FixedString<50> report_line;
+int RETURN_CODE = 0;
+FixedString<50> ws_book_pay;
+FixedString<30> ws_student_name;
+FixedString<50> ws_transport_pay;
+FixedString<50> ws_tution_pay;
+FixedString<30> xml_namespace;
+FixedString<30> xml_namespace_prefix;
+FixedString<30> xml_nnamespace;
+FixedString<30> xml_nnamespace_prefix;
+FixedString<100> xml_ntext;
+FixedString<100> xml_text;
 
 // Forward declarations
+void p_calc_grand_sum_and_average();
+void p_before_final1();
+
+void p_calc_grand_sum_and_average() {
+    std::cout << "BEFORE FINAL - SHOULD DISPLAY" << std::endl;
+}
+
+void p_before_final1() {
+    p_calc_grand_sum_and_average();
+}
 
 int main() {
     try {
 
+    p_calc_grand_sum_and_average();
     return RETURN_CODE;
 
         return 0;
@@ -981,9 +1007,9 @@ int main() {
 // ============================================================================
 //
 // Hardening Statistics:
-//   - Types hardened: 0
+//   - Types hardened: 16
 //   - Bounds checks added: 0
-//   - Names converted: 0
+//   - Names converted: 18
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1

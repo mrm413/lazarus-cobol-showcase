@@ -51,7 +51,20 @@ std::string XML_NTEXT;
 std::string XML_TEXT;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    std::cout << VAR_1 << "X" << std::endl;
+    VAR_1 = std::string(8, static_cast<char>(88));
+    // STRING operation
+    // STRING operation
+    std::cout << "VAR-1 = " << VAR_1 << "VAR-2 = " << VAR_2 << "Y" << std::endl;
+    std::cout << "VAR-2 = " << VAR_2 << std::endl;
+    std::cout << "SORT-RETURN = " << SORT_RETURN << "TALLY = " << TALLY << std::endl;
+    return;
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

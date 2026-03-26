@@ -49,7 +49,57 @@ std::string XML_NTEXT;
 std::string XML_TEXT;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    W01_INDEX = "0";
+    // INSPECT operation
+    // INSPECT (TALLYING/REPLACING)
+    // INSPECT operation
+    // INSPECT (TALLYING/REPLACING)
+    if (to_int(RETURN_CODE) != 10) {
+        std::cout << "Bad Result for Inspect Trailing Case 1" << std::endl;
+    }
+    // INSPECT operation
+    // INSPECT (TALLYING/REPLACING)
+    // INSPECT operation
+    // INSPECT (TALLYING/REPLACING)
+    if (W01_STRING.substr(0, 20) != "0123456789AAAAAAAAAA") {
+        std::cout << "Bad Result for Inspect Trailing Case 2" << std::endl;
+    }
+    W01_INDEX = "0";
+    // INSPECT operation
+    // INSPECT (TALLYING/REPLACING)
+    // INSPECT operation
+    // INSPECT (TALLYING/REPLACING)
+    // INSPECT operation
+    // INSPECT (TALLYING/REPLACING)
+    // INSPECT operation
+    // INSPECT (TALLYING/REPLACING)
+    if (W01_STRING.substr(0, 20) != "0123456789BBBBBBBBBB") {
+        std::cout << "Bad Result for Inspect Trailing Case 3" << std::endl;
+    }
+    W01_INDEX = "0";
+    W01_STRING = std::string(20, ' ');
+    // INSPECT operation
+    // INSPECT (TALLYING/REPLACING)
+    // INSPECT operation
+    // INSPECT (TALLYING/REPLACING)
+    if (to_int(RETURN_CODE) != 0) {
+        std::cout << "Bad Result for Inspect Trailing Case 4" << W01_INDEX << std::endl;
+    }
+    W01_INDEX = "0";
+    W01_STRING = std::string(20, ' ');
+    // INSPECT operation
+    // INSPECT (TALLYING/REPLACING)
+    // INSPECT operation
+    // INSPECT (TALLYING/REPLACING)
+    if (to_int(RETURN_CODE) != 20) {
+        std::cout << "Bad Result for Inspect Trailing Case 5" << W01_INDEX << std::endl;
+    }
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

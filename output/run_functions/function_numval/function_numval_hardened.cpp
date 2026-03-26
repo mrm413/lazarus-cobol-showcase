@@ -848,6 +848,16 @@ inline void ABEND(const std::string& abcode = "LZRS") {
 
 int RETURN_CODE = 0; // Auto-declared by LAZARUS healer
 
+std::string c_15; // Auto-declared by LAZARUS healer
+
+std::string c_10; // Auto-declared by LAZARUS healer
+
+std::string c_7; // Auto-declared by LAZARUS healer
+
+std::string c_4; // Auto-declared by LAZARUS healer
+
+std::string c_1; // Auto-declared by LAZARUS healer
+
 // ---------------------------------------------------------------------------
 // GLOBAL ALIASES FOR COMPATIBILITY
 // ---------------------------------------------------------------------------
@@ -963,10 +973,56 @@ FixedString<50> X4;
 FixedString<50> X5;
 
 // Forward declarations
+void p_main();
+
+void p_main() {
+    // UNHANDLED: cob_move (cob_intr_numval (&f_1), &f_15);
+    if (to_int(N) != to_int(c_1)) {
+        std::cout << "X1 '" << X1 << "' : " << N << std::endl;
+    }
+    // UNHANDLED: cob_move (cob_intr_numval (&f_2), &f_15);
+    if (to_int(N) != to_int(c_4)) {
+        std::cout << "X2 '" << X2 << "' : " << N << std::endl;
+    } else {
+        if (false /* cob_cmp != 0 */ || false /* cob_cmp != 0 */ || false /* cob_cmp != 0 */) {
+            std::cout << "NUMVAL not case-insensitive!" << std::endl;
+        }
+    }
+    // UNHANDLED: cob_move (cob_intr_numval (&f_6), &f_15);
+    if (to_int(N) != to_int(c_7)) {
+        std::cout << "X3 '" << X3 << "' : " << N << std::endl;
+    }
+    // UNHANDLED: cob_move (cob_intr_numval (&f_7), &f_15);
+    if (to_int(N) != 4232400) {
+        std::cout << "X4 '" << X4 << "' : " << N << std::endl;
+    }
+    // UNHANDLED: cob_move (cob_intr_numval (&f_8), &f_15);
+    if (to_int(N) != to_int(c_10)) {
+        std::cout << "X5 '" << X5 << "' : " << N << std::endl;
+    }
+    // UNHANDLED: cob_move (cob_intr_numval (&f_11), &f_15);
+    if (to_int(N) != 0) {
+        std::cout << "empt '" << empt << "' :  " << N << std::endl;
+    }
+    // MOVE to computed field
+    if (to_int(N) != 0) {
+        std::cout << "vsized '" << "' :  " << N << std::endl;
+    }
+    // UNHANDLED: cob_move (cob_intr_numval (&f_9), &f_15);
+    if (to_int(N) != 0 && to_int(N) != to_int(c_15)) {
+        std::cout << "bad1 '" << bad1 << "' : " << N << std::endl;
+    }
+    // UNHANDLED: cob_move (cob_intr_numval (&f_10), &f_15);
+    if (to_int(N) != 0 && to_int(N) != 10) {
+        std::cout << "bad2 '" << bad2 << "' : " << N << std::endl;
+    }
+    return;
+}
 
 int main() {
     try {
 
+    p_main();
     return RETURN_CODE;
 
         return 0;
@@ -997,7 +1053,7 @@ int main() {
 // Hardening Statistics:
 //   - Types hardened: 14
 //   - Bounds checks added: 0
-//   - Names converted: 5
+//   - Names converted: 6
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1

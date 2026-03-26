@@ -957,10 +957,16 @@ FixedString<50> ws_No_Paragraph;
 FixedString<8> ws_mysql_cid;
 
 // Forward declarations
+void p_main();
+
+void p_main() {
+    return;
+}
 
 int main() {
     try {
 
+    p_main();
     return RETURN_CODE;
 
         return 0;
@@ -991,7 +997,7 @@ int main() {
 // Hardening Statistics:
 //   - Types hardened: 9
 //   - Bounds checks added: 0
-//   - Names converted: 6
+//   - Names converted: 7
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1

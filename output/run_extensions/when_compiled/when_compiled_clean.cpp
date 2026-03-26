@@ -48,7 +48,27 @@ std::string XML_NTEXT;
 std::string XML_TEXT;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    X = "26/03/2609.59.24";
+    // INSPECT operation
+    // INSPECT (TALLYING/REPLACING)
+    // INSPECT operation
+    if (X.substr(0, 20) != "99/99/9999.99.99") {
+        if (false /* TODO: call_CBL_OC_DUMP.funcvoid == NULL */ || false /* TODO: cob_glob_ptr->cob_physical_cancel == 1 */) {
+            // CALL subroutine
+        }
+        if (false /* TODO: call_CBL_OC_DUMP.funcvoid == NULL */) {
+            std::cout << X << std::endl;
+        } else {
+            // RETURN_CODE = ((int (*)(void *))call_CBL_OC_DUMP.funcint) (b_17);
+        }
+    }
+    return;
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

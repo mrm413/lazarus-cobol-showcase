@@ -846,6 +846,10 @@ inline void ABEND(const std::string& abcode = "LZRS") {
 
 } // namespace lazarus
 
+std::string c_2; // Auto-declared by LAZARUS healer
+
+std::string c_1; // Auto-declared by LAZARUS healer
+
 // ---------------------------------------------------------------------------
 // GLOBAL ALIASES FOR COMPATIBILITY
 // ---------------------------------------------------------------------------
@@ -957,10 +961,30 @@ FixedString<100> xml_text;
 FixedString<50> Z;
 
 // Forward declarations
+void p_main();
+
+void p_main() {
+    X = Z.substr(0, 10);
+    // UNHANDLED: cob_table_sort_init (1, cob_ascii_ebcdic);
+    // UNHANDLED: cob_table_sort_init_key (&f_20, 0, 0);
+    // UNHANDLED: cob_table_sort (COB_SET_FLD (f0, 1, b_18, &a_2), 10);
+    if (to_int(G) != to_int(c_1)) {
+        std::cout << G << std::endl;
+    }
+    X = Z.substr(0, 10);
+    // UNHANDLED: cob_table_sort_init (1, cob_ascii_ebcdic);
+    // UNHANDLED: cob_table_sort_init_key (&f_20, 1, 0);
+    // UNHANDLED: cob_table_sort (COB_SET_FLD (f0, 1, b_18, &a_2), 10);
+    if (to_int(G) != to_int(c_2)) {
+        std::cout << G << std::endl;
+    }
+    return;
+}
 
 int main() {
     try {
 
+    p_main();
     return RETURN_CODE;
 
         return 0;
@@ -991,7 +1015,7 @@ int main() {
 // Hardening Statistics:
 //   - Types hardened: 9
 //   - Bounds checks added: 0
-//   - Names converted: 6
+//   - Names converted: 7
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1

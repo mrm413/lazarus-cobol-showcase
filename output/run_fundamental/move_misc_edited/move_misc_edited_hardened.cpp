@@ -846,6 +846,10 @@ inline void ABEND(const std::string& abcode = "LZRS") {
 
 } // namespace lazarus
 
+std::string c_11; // Auto-declared by LAZARUS healer
+
+std::string c_5; // Auto-declared by LAZARUS healer
+
 // ---------------------------------------------------------------------------
 // GLOBAL ALIASES FOR COMPATIBILITY
 // ---------------------------------------------------------------------------
@@ -959,10 +963,33 @@ FixedString<100> xml_ntext;
 FixedString<100> xml_text;
 
 // Forward declarations
+void p_main();
+
+void p_main() {
+    src_bin = "-12345678";
+    dst_bin = src_bin;
+    if (to_int(RETURN_CODE) != 12345678) {
+        std::cout << "1: DST-BIN <" << dst_bin << ">!= <12345678>" << std::endl;
+    }
+    src_edit = "-3";
+    dst_disp = src_edit;
+    if (to_int(src_edit) != to_int(c_5)) {
+        std::cout << "2: SRC-EDIT <" << src_edit << "> != <      $300->" << std::endl;
+    }
+    if (to_int(dst_disp) != 3) {
+        std::cout << "2.1: DST-DISP <" << dst_disp << "> != <3>" << std::endl;
+    }
+    src_edit = "3";
+    dst_field_1 = src_edit;
+    if (to_int(dst_field_1) != to_int(c_11)) {
+        std::cout << "3: DST-FIELD-1 <" << dst_field_1 << "> != <  0  0  />" << std::endl;
+    }
+}
 
 int main() {
     try {
 
+    p_main();
     return RETURN_CODE;
 
         return 0;
@@ -993,7 +1020,7 @@ int main() {
 // Hardening Statistics:
 //   - Types hardened: 11
 //   - Bounds checks added: 0
-//   - Names converted: 11
+//   - Names converted: 12
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1

@@ -50,7 +50,13 @@ std::string ws_No_Paragraph;
 std::string ws_mysql_cid;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    return;
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

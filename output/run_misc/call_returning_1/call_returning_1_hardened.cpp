@@ -956,10 +956,27 @@ FixedString<50> my_binary_return;
 FixedString<50> my_display_return;
 
 // Forward declarations
+void p_main();
+
+void p_main() {
+    if (false /* TODO: call_callee.funcvoid == nullptr */ || false /* TODO: cob_glob_ptr->cob_physical_cancel == 1 */) {
+        // CALL subroutine
+    }
+    // ret = ((int (*)(void))call_callee.funcint) ();
+    // UNHANDLED: cob_set_int (&f_17, ret);
+    if (false /* TODO: (RETURN_CODE - 0) != 0 */) {
+        std::cout << "1 - unexpected RETURN-CODE: " << RETURN_CODE << std::endl;
+    }
+    if (to_int(my_display_return) != 43) {
+        std::cout << "1- unexpected RETURNING: " << my_display_return << std::endl;
+    }
+    return;
+}
 
 int main() {
     try {
 
+    p_main();
     return RETURN_CODE;
 
         return 0;
@@ -990,7 +1007,7 @@ int main() {
 // Hardening Statistics:
 //   - Types hardened: 8
 //   - Bounds checks added: 0
-//   - Names converted: 6
+//   - Names converted: 7
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1

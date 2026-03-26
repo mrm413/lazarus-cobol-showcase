@@ -952,10 +952,16 @@ FixedString<50> ws_three;
 FixedString<50> ws_two;
 
 // Forward declarations
+void p_main();
+
+void p_main() {
+    return;
+}
 
 int main() {
     try {
 
+    p_main();
     return RETURN_CODE;
 
         return 0;
@@ -986,7 +992,7 @@ int main() {
 // Hardening Statistics:
 //   - Types hardened: 3
 //   - Bounds checks added: 0
-//   - Names converted: 3
+//   - Names converted: 4
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1

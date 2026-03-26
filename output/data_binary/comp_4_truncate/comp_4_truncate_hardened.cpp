@@ -958,10 +958,44 @@ FixedString<100> xml_ntext;
 FixedString<100> xml_text;
 
 // Forward declarations
+void p_main();
+
+void p_main() {
+    random_origin_d = "012";
+    random_target_d = random_origin_d;
+    random_origin_b = "012";
+    random_target_b = random_origin_b;
+    if (to_int(random_origin_d) != to_int(random_origin_b)) {
+        std::cout << "ORIGIN 0.12 WRONG" << std::endl;
+        std::cout << "DISPLAY: " << random_origin_d << " !=  BINARY : " << random_origin_b << std::endl;
+    }
+    if (to_int(random_target_d) != to_int(random_target_b)) {
+        std::cout << "TARGET  .12 WRONG" << std::endl;
+        std::cout << "DISPLAY: " << random_target_d << " !=  BINARY : " << random_target_b << std::endl;
+    } else {
+        std::cout << "Ok with " << random_target_d << " == " << random_target_b << std::endl;
+    }
+    random_origin_d = "985";
+    random_target_d = random_origin_d;
+    random_origin_b = "985";
+    random_target_b = random_origin_b;
+    if (to_int(random_origin_d) != to_int(random_origin_b)) {
+        std::cout << "ORIGIN 9.85 WRONG" << std::endl;
+        std::cout << "DISPLAY: " << random_origin_d << " !=  BINARY : " << random_origin_b << std::endl;
+    }
+    if (to_int(random_target_d) != to_int(random_target_b)) {
+        std::cout << "TARGET  .85 WRONG" << std::endl;
+        std::cout << "DISPLAY: " << random_target_d << " !=  BINARY : " << random_target_b << std::endl;
+    } else {
+        std::cout << "Ok with " << random_target_d << " == " << random_target_b << std::endl;
+    }
+    return;
+}
 
 int main() {
     try {
 
+    p_main();
     return RETURN_CODE;
 
         return 0;
@@ -992,7 +1026,7 @@ int main() {
 // Hardening Statistics:
 //   - Types hardened: 10
 //   - Bounds checks added: 0
-//   - Names converted: 10
+//   - Names converted: 11
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1
