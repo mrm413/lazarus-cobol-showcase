@@ -957,10 +957,17 @@ FixedString<100> xml_text;
 FixedString<50> xmyrec;
 
 // Forward declarations
+void p_main();
+
+void p_main() {
+    data_items_a.replace(30, 18, data_items_a.substr(12, 18));
+    return;
+}
 
 int main() {
     try {
 
+    p_main();
     return RETURN_CODE;
 
         return 0;
@@ -991,7 +998,7 @@ int main() {
 // Hardening Statistics:
 //   - Types hardened: 9
 //   - Bounds checks added: 0
-//   - Names converted: 9
+//   - Names converted: 10
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1

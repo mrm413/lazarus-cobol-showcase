@@ -1,7 +1,7 @@
 /**
  * LAZARUS-Generated C++ Code (V2)
- * Source: accept_with_size_preprocessed.cblbl
- * Program: PROGRAM
+ * Source: accept_with_size_preprocessed.cbl
+ * Program: prog
  */
 
 #include <iostream>
@@ -38,9 +38,35 @@ std::string file_status = "00";
 int n0 = 0, n1 = 0, n2 = 0, n3 = 0, n4 = 0;  // loop counters
 
 // Working Storage variables
+std::string COB_CRT_STATUS;
+int RETURN_CODE = 0;
+std::string X;
+std::string XML_NAMESPACE;
+std::string XML_NAMESPACE_PREFIX;
+std::string XML_NNAMESPACE;
+std::string XML_NNAMESPACE_PREFIX;
+std::string XML_NTEXT;
+std::string XML_TEXT;
+std::string Y;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    // UNHANDLED: cob_accept_field (&f_17, 0, "S", (cob_field *)&c_1);
+    // UNHANDLED: cob_accept_field (&f_17, 0, "S", (cob_field *)&c_2);
+    // UNHANDLED: cob_accept_field (&f_17, 0, "S", (cob_field *)&c_3);
+    // UNHANDLED: cob_accept_field (&f_17, 0, "S", (cob_field *)&c_4);
+    // UNHANDLED: cob_accept_field (&f_17, 0, "S", &f_18);
+    // UNHANDLED: cob_accept_field (&f_17, 0, "S", (cob_field *)&c_1);
+    // UNHANDLED: cob_accept_field (&f_17, 0, "S", (cob_field *)&c_2);
+    // UNHANDLED: cob_accept_field (&f_17, 0, "S", (cob_field *)&c_3);
+    // UNHANDLED: cob_accept_field (&f_17, 0, "S", (cob_field *)&c_4);
+    // UNHANDLED: cob_accept_field (&f_17, 0, "S", &f_18);
+    return;
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

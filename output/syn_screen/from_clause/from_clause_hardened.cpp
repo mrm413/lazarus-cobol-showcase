@@ -846,6 +846,10 @@ inline void ABEND(const std::string& abcode = "LZRS") {
 
 } // namespace lazarus
 
+std::string cob_all_space; // Auto-declared by LAZARUS healer
+
+std::string cob_all_zero; // Auto-declared by LAZARUS healer
+
 // ---------------------------------------------------------------------------
 // GLOBAL ALIASES FOR COMPATIBILITY
 // ---------------------------------------------------------------------------
@@ -962,10 +966,23 @@ FixedString<100> xml_ntext;
 FixedString<100> xml_text;
 
 // Forward declarations
+void p_main();
+
+void p_main() {
+    si4 = X;
+    si3_2 = cob_all_zero;
+    si3 = cob_all_zero;
+    si2_2 = cob_all_space;
+    si2 = cob_all_space;
+    si1 = X;
+    // UNHANDLED: cob_screen_display (&fs_18, (cob_field *)&c_1, (cob_field *)&c_1, 1);
+    return;
+}
 
 int main() {
     try {
 
+    p_main();
     return RETURN_CODE;
 
         return 0;
@@ -996,7 +1013,7 @@ int main() {
 // Hardening Statistics:
 //   - Types hardened: 14
 //   - Bounds checks added: 0
-//   - Names converted: 12
+//   - Names converted: 13
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1

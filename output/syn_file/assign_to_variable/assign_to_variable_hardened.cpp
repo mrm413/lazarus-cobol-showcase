@@ -846,6 +846,8 @@ inline void ABEND(const std::string& abcode = "LZRS") {
 
 } // namespace lazarus
 
+std::string file_status; // Auto-declared by LAZARUS healer
+
 // ---------------------------------------------------------------------------
 // GLOBAL ALIASES FOR COMPATIBILITY
 // ---------------------------------------------------------------------------
@@ -960,10 +962,53 @@ FixedString<50> var_5;
 FixedString<50> var_6;
 
 // Forward declarations
+void p_main();
+
+void p_main() {
+    // OPEN TEST-FILE-1 (INPUT)
+    if (file_status != "EXCEPTION_0") {
+    }
+    // CLOSE TEST-FILE-1
+    if (file_status != "EXCEPTION_0") {
+    }
+    // OPEN TEST-FILE-2 (INPUT)
+    if (file_status != "EXCEPTION_0") {
+    }
+    // CLOSE TEST-FILE-2
+    if (file_status != "EXCEPTION_0") {
+    }
+    // OPEN TEST-FILE-3 (INPUT)
+    if (file_status != "EXCEPTION_0") {
+    }
+    // CLOSE TEST-FILE-3
+    if (file_status != "EXCEPTION_0") {
+    }
+    // OPEN TEST-FILE-4 (INPUT)
+    if (file_status != "EXCEPTION_0") {
+    }
+    // CLOSE TEST-FILE-4
+    if (file_status != "EXCEPTION_0") {
+    }
+    // OPEN TEST-FILE-5 (INPUT)
+    if (file_status != "EXCEPTION_0") {
+    }
+    // CLOSE TEST-FILE-5
+    if (file_status != "EXCEPTION_0") {
+    }
+    // OPEN TEST-FILE-6 (INPUT)
+    if (file_status != "EXCEPTION_0") {
+    }
+    // CLOSE TEST-FILE-6
+    if (file_status != "EXCEPTION_0") {
+    }
+    if (false /* TODO: module->module_active */) {
+    }
+}
 
 int main() {
     try {
 
+    p_main();
     return RETURN_CODE;
 
         return 0;
@@ -994,7 +1039,7 @@ int main() {
 // Hardening Statistics:
 //   - Types hardened: 12
 //   - Bounds checks added: 0
-//   - Names converted: 6
+//   - Names converted: 7
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1

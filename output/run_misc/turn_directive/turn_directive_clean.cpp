@@ -42,7 +42,20 @@ std::string idx;
 std::string x;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    std::cout << std::endl;
+    std::cout << std::endl;
+    std::cout << std::endl;
+    if (false /* TODO: module->module_active */) {
+    }
+    x = "12345!";
+    idx = "06";
+    }
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

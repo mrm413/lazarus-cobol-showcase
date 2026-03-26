@@ -41,7 +41,18 @@ int n0 = 0, n1 = 0, n2 = 0, n3 = 0, n4 = 0;  // loop counters
 std::string tally;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    tally = to_string(to_int(tally) + 1);
+    std::cout << tally << std::endl;
+    if (false /* TODO: module->module_active */) {
+    }
+    tally = "001";
+    }
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

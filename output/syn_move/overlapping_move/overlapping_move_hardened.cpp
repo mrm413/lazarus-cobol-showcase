@@ -846,6 +846,8 @@ inline void ABEND(const std::string& abcode = "LZRS") {
 
 } // namespace lazarus
 
+std::string VAR_26; // Auto-declared by LAZARUS healer
+
 // ---------------------------------------------------------------------------
 // GLOBAL ALIASES FOR COMPATIBILITY
 // ---------------------------------------------------------------------------
@@ -958,10 +960,41 @@ FixedString<100> xml_ntext;
 FixedString<100> xml_text;
 
 // Forward declarations
+void p_main();
+
+void p_main() {
+    structure1 = field1_2;
+    field1_2 = field1_2.substr(5, 5);
+    field1_2 = field1_1;
+    field1_2.replace(10, 5, field1_2.substr(0, 5));
+    field1_2 = field1_2.substr(5, 10);
+    field1_2.replace(10, 5, field1_2.substr(0, 5));
+    // MOVE to computed field
+    field1_2.replace(4, 4, field1_2.substr(1, 4));
+    field1_2.replace(5, 4, field1_2.substr(1, 4));
+    // MOVE to computed field
+    // MOVE to computed field
+    // MOVE to computed field
+    field1_2.replace(2, 2, field1_2.substr(3, 2));
+    field1_2.replace(1, 4, field1_2.substr(5, 4));
+    // MOVE to computed field
+    // MOVE (complex memory operation)
+    // MOVE (complex memory operation)
+    // MOVE (complex memory operation)
+    VAR_26 = VAR_26.substr(0, 2);
+    // MOVE (complex memory operation)
+    // UNHANDLED: memcpy (b_26 + 2 * 1, b_26, 2);
+    // MOVE (complex memory operation)
+    // MOVE (complex memory operation)
+    // MOVE to computed field
+    // MOVE to computed field
+    return;
+}
 
 int main() {
     try {
 
+    p_main();
     return RETURN_CODE;
 
         return 0;
@@ -992,7 +1025,7 @@ int main() {
 // Hardening Statistics:
 //   - Types hardened: 10
 //   - Bounds checks added: 0
-//   - Names converted: 10
+//   - Names converted: 11
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1

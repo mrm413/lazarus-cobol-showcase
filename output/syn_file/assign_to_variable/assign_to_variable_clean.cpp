@@ -53,7 +53,50 @@ std::string var_5;
 std::string var_6;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    // OPEN TEST-FILE-1 (INPUT)
+    if (file_status != "EXCEPTION_0") {
+    }
+    // CLOSE TEST-FILE-1
+    if (file_status != "EXCEPTION_0") {
+    }
+    // OPEN TEST-FILE-2 (INPUT)
+    if (file_status != "EXCEPTION_0") {
+    }
+    // CLOSE TEST-FILE-2
+    if (file_status != "EXCEPTION_0") {
+    }
+    // OPEN TEST-FILE-3 (INPUT)
+    if (file_status != "EXCEPTION_0") {
+    }
+    // CLOSE TEST-FILE-3
+    if (file_status != "EXCEPTION_0") {
+    }
+    // OPEN TEST-FILE-4 (INPUT)
+    if (file_status != "EXCEPTION_0") {
+    }
+    // CLOSE TEST-FILE-4
+    if (file_status != "EXCEPTION_0") {
+    }
+    // OPEN TEST-FILE-5 (INPUT)
+    if (file_status != "EXCEPTION_0") {
+    }
+    // CLOSE TEST-FILE-5
+    if (file_status != "EXCEPTION_0") {
+    }
+    // OPEN TEST-FILE-6 (INPUT)
+    if (file_status != "EXCEPTION_0") {
+    }
+    // CLOSE TEST-FILE-6
+    if (file_status != "EXCEPTION_0") {
+    }
+    if (false /* TODO: module->module_active */) {
+    }
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

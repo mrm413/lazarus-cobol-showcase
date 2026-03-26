@@ -44,7 +44,13 @@ std::string X_ABCD;
 std::string X_SPACE;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    return;
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

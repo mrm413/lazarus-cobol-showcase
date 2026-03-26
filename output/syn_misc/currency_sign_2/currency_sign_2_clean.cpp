@@ -1,7 +1,7 @@
 /**
  * LAZARUS-Generated C++ Code (V2)
- * Source: currency_sign_2_preprocessed.cblbl
- * Program: PROGRAM
+ * Source: currency_sign_2_preprocessed.cbl
+ * Program: prog3
  */
 
 #include <iostream>
@@ -38,9 +38,25 @@ std::string file_status = "00";
 int n0 = 0, n1 = 0, n2 = 0, n3 = 0, n4 = 0;  // loop counters
 
 // Working Storage variables
+int RETURN_CODE = 0;
+std::string SOME_CASH;
+std::string XML_NAMESPACE;
+std::string XML_NAMESPACE_PREFIX;
+std::string XML_NNAMESPACE;
+std::string XML_NNAMESPACE_PREFIX;
+std::string XML_NTEXT;
+std::string XML_TEXT;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    SOME_CASH = "1234";
+    std::cout << SOME_CASH << std::endl;
+    return;
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

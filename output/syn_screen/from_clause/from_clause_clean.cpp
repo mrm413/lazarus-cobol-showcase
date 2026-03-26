@@ -55,7 +55,20 @@ std::string XML_NTEXT;
 std::string XML_TEXT;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    SI4 = X;
+    SI3_2 = cob_all_zero;
+    SI3 = cob_all_zero;
+    SI2_2 = cob_all_space;
+    SI2 = cob_all_space;
+    SI1 = X;
+    // UNHANDLED: cob_screen_display (&fs_18, (cob_field *)&c_1, (cob_field *)&c_1, 1);
+    return;
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

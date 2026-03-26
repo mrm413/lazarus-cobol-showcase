@@ -954,10 +954,16 @@ FixedString<100> xml_ntext;
 FixedString<100> xml_text;
 
 // Forward declarations
+void p_main();
+
+void p_main() {
+    // TODO: LAZARUS - Implement function body
+}
 
 int main() {
     try {
 
+    p_main();
     return RETURN_CODE;
 
         return 0;
@@ -988,10 +994,10 @@ int main() {
 // Hardening Statistics:
 //   - Types hardened: 6
 //   - Bounds checks added: 0
-//   - Names converted: 6
+//   - Names converted: 7
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
-//   - Empty functions flagged: 1
+//   - Empty functions flagged: 2
 //
 // Security Checklist:
 //   [x] Buffer overflow protection (FixedString)

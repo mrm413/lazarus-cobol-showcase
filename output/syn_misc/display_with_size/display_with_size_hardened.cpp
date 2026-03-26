@@ -956,10 +956,22 @@ FixedString<100> xml_text;
 FixedString<50> Y;
 
 // Forward declarations
+void p_main();
+
+void p_main() {
+    std::cout << X << "0101" << "5" << std::endl;
+    std::cout << X << "0101" << "6" << std::endl;
+    std::cout << X << "0101" << Y << std::endl;
+    std::cout << X << "0101" << "5" << std::endl;
+    std::cout << X << "0101" << "6" << std::endl;
+    std::cout << X << "0101" << Y << std::endl;
+    return;
+}
 
 int main() {
     try {
 
+    p_main();
     return RETURN_CODE;
 
         return 0;
@@ -990,7 +1002,7 @@ int main() {
 // Hardening Statistics:
 //   - Types hardened: 8
 //   - Bounds checks added: 0
-//   - Names converted: 6
+//   - Names converted: 7
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1

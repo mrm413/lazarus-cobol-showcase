@@ -52,7 +52,30 @@ std::string XML_NTEXT;
 std::string XML_TEXT;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    // OPEN TEST-FILE (INPUT)
+    if (file_status != "EXCEPTION_0") {
+    }
+    // CLOSE TEST-FILE
+    if (file_status != "EXCEPTION_0") {
+    }
+    // OPEN TEST-SOME (OUTPUT)
+    if (file_status != "EXCEPTION_0") {
+    }
+    TEST_P3 = TEST_P2.substr(0, 2);
+    TEST_P3.replace(2, 3, TEST_P2.substr(2, 3));
+    // WRITE TEST-SOME
+    if (file_status != "EXCEPTION_0") {
+    }
+    // CLOSE TEST-SOME
+    if (file_status != "EXCEPTION_0") {
+    }
+    return;
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

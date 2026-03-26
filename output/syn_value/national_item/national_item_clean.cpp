@@ -52,7 +52,13 @@ std::string X_123;
 std::string X_ABC;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    return;
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

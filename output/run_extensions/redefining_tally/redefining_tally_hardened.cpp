@@ -950,10 +950,21 @@ using std::to_string;
 FixedString<50> tally;
 
 // Forward declarations
+void p_main();
+
+void p_main() {
+    tally = to_string(to_int(tally) + 1);
+    std::cout << tally << std::endl;
+    if (false /* TODO: module->module_active */) {
+    }
+    tally = "001";
+    }
+}
 
 int main() {
     try {
 
+    p_main();
     return RETURN_CODE;
 
         return 0;
@@ -984,7 +995,7 @@ int main() {
 // Hardening Statistics:
 //   - Types hardened: 1
 //   - Bounds checks added: 0
-//   - Names converted: 0
+//   - Names converted: 1
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1

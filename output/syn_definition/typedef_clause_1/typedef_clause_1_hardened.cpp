@@ -963,10 +963,36 @@ FixedString<100> xml_text;
 FixedString<50> z_message_t2;
 
 // Forward declarations
+void p_main();
+
+void p_main() {
+    std::cout << std::endl;
+    std::cout << detail_no << std::endl;
+    std::cout << ausgabe_file_name << std::endl;
+    std::cout << output_name << std::endl;
+    // UNHANDLED: *(cob_u8_ptr)(b_72 + 1828 * 1) = (unsigned char)'0';
+    // UNHANDLED: *(cob_u8_ptr)(b_72 + 1829 * 1) = (unsigned char)' ';
+    // UNHANDLED: cob_u8_ptr b_ptr = b_72 + 1829 * 1;
+    // UNHANDLED: memcpy (b_ptr +      3, b_ptr,      3);	/* SOME-VALUES:     2 thru 2 */ memcpy (b_ptr +      6, b_ptr,      3);	/* SOME-VALUES:     3 thru 3 */ }
+    // UNHANDLED: *(cob_u8_ptr)(b_72 + 1824 * 2 + 10 * 1) = (unsigned char)'0';
+    while (true) {
+        if (false /* TODO: head >= tail - 1 */) {
+            break;
+        }
+        // some2_index = (head + tail) / 2;
+        if (false /* TODO: (ret = -(*(amount + 1868 + 14LL * ((cob_s64_t)(some2_index) - 1)) - 0x12)) == 0 */) {
+            break;
+        }
+        // if (ret < 0) head = b_83;
+        // tail = b_83;
+    }
+    }
+}
 
 int main() {
     try {
 
+    p_main();
     return RETURN_CODE;
 
         return 0;
@@ -997,7 +1023,7 @@ int main() {
 // Hardening Statistics:
 //   - Types hardened: 15
 //   - Bounds checks added: 0
-//   - Names converted: 14
+//   - Names converted: 15
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1

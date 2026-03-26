@@ -959,10 +959,19 @@ FixedString<100> xml_text;
 FixedString<50> z_message_t2;
 
 // Forward declarations
+void p_main();
+
+void p_main() {
+    std::cout << std::endl;
+    std::cout << detail_no << std::endl;
+    std::cout << ausgabe_file_name << std::endl;
+    std::cout << output_name << std::endl;
+}
 
 int main() {
     try {
 
+    p_main();
     return RETURN_CODE;
 
         return 0;
@@ -993,7 +1002,7 @@ int main() {
 // Hardening Statistics:
 //   - Types hardened: 11
 //   - Bounds checks added: 0
-//   - Names converted: 11
+//   - Names converted: 12
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1

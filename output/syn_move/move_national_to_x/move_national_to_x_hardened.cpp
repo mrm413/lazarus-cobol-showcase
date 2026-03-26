@@ -957,10 +957,23 @@ FixedString<50> y_n;
 FixedString<50> y_x;
 
 // Forward declarations
+void p_main();
+
+void p_main() {
+    y_a = X;
+    y_x.at(0) = X.at(0);
+    y_bx = X;
+    y_n.at(0) = X.at(0);
+    y_0n = X;
+    y_9 = X;
+    y_09 = X;
+    return;
+}
 
 int main() {
     try {
 
+    p_main();
     return RETURN_CODE;
 
         return 0;
@@ -990,8 +1003,8 @@ int main() {
 //
 // Hardening Statistics:
 //   - Types hardened: 8
-//   - Bounds checks added: 0
-//   - Names converted: 7
+//   - Bounds checks added: 2
+//   - Names converted: 8
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1

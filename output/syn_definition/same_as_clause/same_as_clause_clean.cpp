@@ -52,7 +52,16 @@ std::string XML_TEXT;
 std::string Z_MESSAGE_T2;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    std::cout << std::endl;
+    std::cout << DETAIL_NO << std::endl;
+    std::cout << AUSGABE_FILE_NAME << std::endl;
+    std::cout << OUTPUT_NAME << std::endl;
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

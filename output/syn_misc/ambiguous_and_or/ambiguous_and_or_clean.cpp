@@ -50,7 +50,16 @@ std::string XML_NTEXT;
 std::string XML_TEXT;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    if (THREE.substr(0, 1) == ONE.substr(0, 1) && THREE.substr(0, 1) == TWO.substr(0, 1) || THREE.substr(0, 1) == THREE.substr(0, 1)) {
+        std::cout << "OK" << std::endl;
+    }
+    return;
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

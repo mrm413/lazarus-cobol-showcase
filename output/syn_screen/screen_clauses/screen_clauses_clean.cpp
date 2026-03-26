@@ -50,7 +50,13 @@ std::string foo;
 std::string scr;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    return;
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

@@ -956,10 +956,21 @@ FixedString<50> var1;
 FixedString<50> var2;
 
 // Forward declarations
+void p_main();
+
+void p_main() {
+    while (true) {
+        if (false) break;
+        std::cout << "BLA" << std::endl;
+    }
+    var2 = var1;
+    var1 = var2;
+}
 
 int main() {
     try {
 
+    p_main();
     return RETURN_CODE;
 
         return 0;
@@ -990,7 +1001,7 @@ int main() {
 // Hardening Statistics:
 //   - Types hardened: 8
 //   - Bounds checks added: 0
-//   - Names converted: 6
+//   - Names converted: 7
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1

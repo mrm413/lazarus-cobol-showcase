@@ -51,7 +51,13 @@ std::string file1_key;
 std::string file2_key;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    return;
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

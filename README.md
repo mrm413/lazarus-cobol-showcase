@@ -20,8 +20,8 @@ The previous version of this showcase had a critical issue: all 1,607 `_clean.cp
 - Re-ran the entire GnuCOBOL 3.2 test suite (1,607 programs) through the full six-stage pipeline
 
 **Result:**
-- 1,563 of 1,607 programs (97.3%) now contain real procedure logic with named functions -- up from **0%**
-- The remaining 44 are SCREEN SECTION terminal I/O tests (27), literally empty test programs (3), and compiler/listing edge cases (14) that have no emittable PROCEDURE DIVISION
+- 1,576 of 1,607 programs (98.1%) now contain real procedure logic with named functions -- up from **0%**
+- The remaining 31 are SCREEN SECTION terminal I/O tests (28), literally empty test programs (2), and a compiler flag test (1) that have no emittable PROCEDURE DIVISION
 - Total clean C++17 lines: **85,724** (up from 59,572)
 - All 1,607 programs still compile with `g++ -std=c++17 -Wall -Wextra -Wpedantic`
 - 100% compile pass rate maintained

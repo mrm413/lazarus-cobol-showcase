@@ -1,7 +1,7 @@
 /**
  * LAZARUS-Generated C++ Code (V2)
  * Source: command_line_preprocessed.cbl
- * Program: THE
+ * Program: COMMAND_LINE_PREPROCESSED
  */
 
 #include <iostream>
@@ -49,7 +49,18 @@ std::string XML_NTEXT;
 std::string XML_TEXT;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    // UNHANDLED: goto exit_function;
+    // UNHANDLED: exit_function:
+    // UNHANDLED: cob_free (frame_stack);
+    // UNHANDLED: return COB_SET_DATA (f_18, b_18);
+    RETURN_CODE = 0;
+    }
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

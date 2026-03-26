@@ -47,7 +47,13 @@ std::string XML_NTEXT;
 std::string XML_TEXT;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    std::cout << std::endl;
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

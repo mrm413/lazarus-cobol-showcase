@@ -49,7 +49,17 @@ std::string comp1;
 std::string num;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    comp1 = to_string(to_num(0) / to_num(1));
+    num = comp1;
+    std::cout << num << std::endl;
+    if (false /* TODO: module->module_active */) {
+    }
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

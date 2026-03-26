@@ -962,10 +962,24 @@ FixedString<100> xml_text;
 FixedString<50> z_message_t2;
 
 // Forward declarations
+void p_main();
+
+void p_main() {
+    std::cout << std::endl;
+    std::cout << detail_no << std::endl;
+    std::cout << ausgabe_file_name << std::endl;
+    std::cout << output_name << std::endl;
+    amount = "-12345";
+    amount.replace(18, 18, amount.substr(0, 18));
+    if (false /* TODO: ((*(unsigned char **) (my_proc)) - (cob_u8_ptr)nullptr) == 0 */) {
+        // CALL subroutine
+    }
+}
 
 int main() {
     try {
 
+    p_main();
     return RETURN_CODE;
 
         return 0;
@@ -996,7 +1010,7 @@ int main() {
 // Hardening Statistics:
 //   - Types hardened: 14
 //   - Bounds checks added: 0
-//   - Names converted: 14
+//   - Names converted: 15
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1

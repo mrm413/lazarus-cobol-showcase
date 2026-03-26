@@ -953,10 +953,16 @@ FixedString<50> x_abcd;
 FixedString<50> x_space;
 
 // Forward declarations
+void p_main();
+
+void p_main() {
+    return;
+}
 
 int main() {
     try {
 
+    p_main();
     return RETURN_CODE;
 
         return 0;
@@ -987,7 +993,7 @@ int main() {
 // Hardening Statistics:
 //   - Types hardened: 4
 //   - Bounds checks added: 0
-//   - Names converted: 4
+//   - Names converted: 5
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1

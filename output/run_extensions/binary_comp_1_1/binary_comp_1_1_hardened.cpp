@@ -956,10 +956,20 @@ FixedString<50> comp1;
 FixedString<15> num;
 
 // Forward declarations
+void p_main();
+
+void p_main() {
+    comp1 = to_string(to_num(0) / to_num(1));
+    num = comp1;
+    std::cout << num << std::endl;
+    if (false /* TODO: module->module_active */) {
+    }
+}
 
 int main() {
     try {
 
+    p_main();
     return RETURN_CODE;
 
         return 0;
@@ -990,7 +1000,7 @@ int main() {
 // Hardening Statistics:
 //   - Types hardened: 8
 //   - Bounds checks added: 0
-//   - Names converted: 6
+//   - Names converted: 7
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1

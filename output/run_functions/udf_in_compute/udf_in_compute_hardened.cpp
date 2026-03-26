@@ -956,10 +956,43 @@ FixedString<15> num;
 FixedString<50> x;
 
 // Forward declarations
+void p_main();
+
+void p_main() {
+    num = "100";
+    if (false /* TODO: cob_reference_count */) {
+        // UNHANDLED: cob_reference_count--;
+    }
+    // UNHANDLED: cob_free (frame_stack);
+    // UNHANDLED: return COB_SET_DATA (f_17, b_17);
+    RETURN_CODE = 0;
+    }
+    // UNHANDLED: return prog_ (0);
+    }
+    if (false /* TODO: initialized == 0 */) {
+        // UNHANDLED: goto P_initialize;
+    }
+    // UNHANDLED: cob_reference_count++;
+    x = to_string(to_num(0) + to_num(1));
+    std::cout << x << std::endl;
+    if (false /* TODO: module->module_active */) {
+    }
+    if (false /* TODO: cob_reference_count */) {
+        // UNHANDLED: cob_reference_count--;
+    }
+    if (false /* TODO: cob_dyn_0 */) {
+        if (false /* TODO: cob_dyn_0->data */) {
+            // UNHANDLED: cob_free (cob_dyn_0->data);
+        }
+        // UNHANDLED: cob_free (cob_dyn_0);
+        // UNHANDLED: cob_dyn_0 = nullptr;
+    }
+}
 
 int main() {
     try {
 
+    p_main();
     return RETURN_CODE;
 
         return 0;
@@ -990,7 +1023,7 @@ int main() {
 // Hardening Statistics:
 //   - Types hardened: 8
 //   - Bounds checks added: 0
-//   - Names converted: 6
+//   - Names converted: 7
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1

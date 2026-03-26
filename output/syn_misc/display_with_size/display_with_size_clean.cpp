@@ -49,7 +49,19 @@ std::string XML_TEXT;
 std::string Y;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    std::cout << X << "0101" << "5" << std::endl;
+    std::cout << X << "0101" << "6" << std::endl;
+    std::cout << X << "0101" << Y << std::endl;
+    std::cout << X << "0101" << "5" << std::endl;
+    std::cout << X << "0101" << "6" << std::endl;
+    std::cout << X << "0101" << Y << std::endl;
+    return;
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

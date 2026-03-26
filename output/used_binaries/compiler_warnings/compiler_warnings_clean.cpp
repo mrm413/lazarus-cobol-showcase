@@ -49,7 +49,18 @@ std::string var1;
 std::string var2;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    while (true) {
+        if (false) break;
+        std::cout << "BLA" << std::endl;
+    }
+    var2 = var1;
+    var1 = var2;
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

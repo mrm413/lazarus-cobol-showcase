@@ -951,10 +951,23 @@ FixedString<8> idx;
 FixedString<50> x;
 
 // Forward declarations
+void p_main();
+
+void p_main() {
+    std::cout << std::endl;
+    std::cout << std::endl;
+    std::cout << std::endl;
+    if (false /* TODO: module->module_active */) {
+    }
+    x = "12345!";
+    idx = "06";
+    }
+}
 
 int main() {
     try {
 
+    p_main();
     return RETURN_CODE;
 
         return 0;
@@ -985,7 +998,7 @@ int main() {
 // Hardening Statistics:
 //   - Types hardened: 2
 //   - Bounds checks added: 0
-//   - Names converted: 0
+//   - Names converted: 1
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1

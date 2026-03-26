@@ -50,7 +50,14 @@ std::string XML_TEXT;
 std::string XMYREC;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    DATA_ITEMS_A.replace(30, 18, DATA_ITEMS_A.substr(12, 18));
+    return;
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

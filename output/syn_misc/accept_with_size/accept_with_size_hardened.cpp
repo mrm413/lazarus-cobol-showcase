@@ -846,8 +846,6 @@ inline void ABEND(const std::string& abcode = "LZRS") {
 
 } // namespace lazarus
 
-int RETURN_CODE = 0; // Auto-declared by LAZARUS healer
-
 // ---------------------------------------------------------------------------
 // GLOBAL ALIASES FOR COMPATIBILITY
 // ---------------------------------------------------------------------------
@@ -947,12 +945,38 @@ using std::to_string;
 // ============================================================================
 
 // Working Storage variables
+FixedString<2> cob_crt_status;
+int RETURN_CODE = 0;
+FixedString<50> X;
+FixedString<30> xml_namespace;
+FixedString<30> xml_namespace_prefix;
+FixedString<30> xml_nnamespace;
+FixedString<30> xml_nnamespace_prefix;
+FixedString<100> xml_ntext;
+FixedString<100> xml_text;
+FixedString<50> Y;
 
 // Forward declarations
+void p_main();
+
+void p_main() {
+    // UNHANDLED: cob_accept_field (&f_17, 0, "S", (cob_field *)&c_1);
+    // UNHANDLED: cob_accept_field (&f_17, 0, "S", (cob_field *)&c_2);
+    // UNHANDLED: cob_accept_field (&f_17, 0, "S", (cob_field *)&c_3);
+    // UNHANDLED: cob_accept_field (&f_17, 0, "S", (cob_field *)&c_4);
+    // UNHANDLED: cob_accept_field (&f_17, 0, "S", &f_18);
+    // UNHANDLED: cob_accept_field (&f_17, 0, "S", (cob_field *)&c_1);
+    // UNHANDLED: cob_accept_field (&f_17, 0, "S", (cob_field *)&c_2);
+    // UNHANDLED: cob_accept_field (&f_17, 0, "S", (cob_field *)&c_3);
+    // UNHANDLED: cob_accept_field (&f_17, 0, "S", (cob_field *)&c_4);
+    // UNHANDLED: cob_accept_field (&f_17, 0, "S", &f_18);
+    return;
+}
 
 int main() {
     try {
 
+    p_main();
     return RETURN_CODE;
 
         return 0;
@@ -981,9 +1005,9 @@ int main() {
 // ============================================================================
 //
 // Hardening Statistics:
-//   - Types hardened: 0
+//   - Types hardened: 9
 //   - Bounds checks added: 0
-//   - Names converted: 0
+//   - Names converted: 8
 //   - Error handlers: 1
 //   - Vulnerabilities fixed: 0
 //   - Empty functions flagged: 1

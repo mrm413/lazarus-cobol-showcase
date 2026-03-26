@@ -1,7 +1,7 @@
 /**
  * LAZARUS-Generated C++ Code (V2)
- * Source: perform_continue_preprocessed.cblbl
- * Program: PROGRAM
+ * Source: perform_continue_preprocessed.cbl
+ * Program: prog
  */
 
 #include <iostream>
@@ -40,7 +40,17 @@ int n0 = 0, n1 = 0, n2 = 0, n3 = 0, n4 = 0;  // loop counters
 // Working Storage variables
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    for (int n0 = 2; n0 > 0; n0--) {
+    }
+    if (false /* TODO: module->module_active */) {
+    }
+    }
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }

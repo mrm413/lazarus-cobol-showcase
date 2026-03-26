@@ -48,7 +48,20 @@ std::string Y_N;
 std::string Y_X;
 
 // Forward declarations
+void P_MAIN();
+
+void P_MAIN() {
+    Y_A = X;
+    Y_X[0] = X[0];
+    Y_BX = X;
+    Y_N[0] = X[0];
+    Y_0N = X;
+    Y_9 = X;
+    Y_09 = X;
+    return;
+}
 
 int main() {
+    P_MAIN();
     return RETURN_CODE;
 }
