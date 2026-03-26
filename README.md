@@ -20,9 +20,9 @@ The previous version of this showcase had a critical issue: all 1,607 `_clean.cp
 - Re-ran the entire GnuCOBOL 3.2 test suite (1,607 programs) through the full six-stage pipeline
 
 **Result:**
-- 976 of 1,607 programs (60.7%) now contain real procedure logic with named functions -- up from **0%**
-- The remaining ~631 are syntax validation and compiler configuration tests that have no PROCEDURE DIVISION (this is expected -- they test data definitions, COPY directives, and compiler flags, not runtime behavior)
-- Total clean C++17 lines: **83,279** (up from 59,572)
+- 1,563 of 1,607 programs (97.3%) now contain real procedure logic with named functions -- up from **0%**
+- The remaining 44 are SCREEN SECTION terminal I/O tests (27), literally empty test programs (3), and compiler/listing edge cases (14) that have no emittable PROCEDURE DIVISION
+- Total clean C++17 lines: **85,724** (up from 59,572)
 - All 1,607 programs still compile with `g++ -std=c++17 -Wall -Wextra -Wpedantic`
 - 100% compile pass rate maintained
 
@@ -58,7 +58,7 @@ Lazarus takes legacy COBOL programs and produces modern, safe, compilable C++17.
 | COBOL programs transpiled | 1,607 |
 | Compile success rate | 100.0% |
 | Test categories | 36 |
-| Total clean C++17 lines | 83,279 |
+| Total clean C++17 lines | 85,724 |
 | Compiled executables | 1,607 |
 | Pipeline speed | ~1.5 seconds per program |
 | C++ standard | C++17 (`-std=c++17 -Wall -Wextra -Wpedantic`) |
