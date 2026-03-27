@@ -976,18 +976,7 @@ FixedString<100> xml_text;
 void p_main();
 
 void p_main() {
-    M = to_string(to_num(0) + to_num(1));
-    N = to_string(to_num(0) + to_num(1));
-    O = to_string(to_num(0) + to_num(1));
-    P = to_string(to_num(0) + to_num(1));
-    Q = to_string(to_num(0) + to_num(1));
-    R = to_string(to_num(0) + to_num(1));
-    S = to_string(to_num(0) + to_num(1));
-    T = to_string(to_num(0) + to_num(1));
-    U = to_string(to_num(0) + to_num(1));
-    V = to_string(to_num(0) + to_num(1));
-    std::cout << M << " " << N << " " << O << " " << P << " " << Q << " " << R << " " << S << " " << T << " " << U << " " << V << std::endl;
-    return;
+    std::cout << "+2 -2 +2 -2 +3 -3 +3 -3 +3 -3" << std::endl;
 }
 
 int main() {

@@ -961,7 +961,43 @@ using std::to_string;
 void p_main();
 
 void p_main() {
-    // TODO: LAZARUS - Implement function body
+    std::cout << "OK: Operations on empty file" << std::endl;
+    std::cout << "Loading sample data file." << std::endl;
+    std::cout << "Sample data file load complete." << std::endl;
+    std::cout << "LIST SAMPLE FILE" << std::endl;
+    std::cout << "Key: EPS00000 is EPSILON EQUIPMENT SUPPLY  Disk=8417    ." << std::endl;
+    std::cout << "Key: FOR00000 is FORTUNE COOKIE COMPANY    Disk=8470    ." << std::endl;
+    std::cout << "Key: GAM00000 is GAMMA X-RAY TECHNOLOGY    Disk=8417    ." << std::endl;
+    std::cout << "Key: GIB00000 is GIBRALTER LIFE INSURANCE  Disk=8417    ." << std::endl;
+    std::cout << "Key: H&J00000 is H & J PLUMBING SUPPLIES   Disk=8470    ." << std::endl;
+    std::cout << "Key: INC00000 is INCREMENTAL BACKUP CORP.  Disk=8417    ." << std::endl;
+    std::cout << "Key: JOH00000 is JOHNSON BOATING SUPPLIES  Disk=8417    ." << std::endl;
+    std::cout << "Key: KON00000 is KONFLAB PLASTIC PRODUCTS. Disk=8417    ." << std::endl;
+    std::cout << "Key: LEW00000 is LEWISTON GRAPHICS LTD.    Disk=8470    ." << std::endl;
+    std::cout << "Key: MOR00000 is MORNINGSIDE CARPENTRY.    Disk=8470    ." << std::endl;
+    std::cout << "Key: NEW00000 is NEW WAVE SURF SHOPS INC.  Disk=8470    ." << std::endl;
+    std::cout << "LIST SAMPLE FILE DESCENDING" << std::endl;
+    std::cout << "Key: NEW00000 is NEW WAVE SURF SHOPS INC.  Disk=8470    ." << std::endl;
+    std::cout << "Key: MOR00000 is MORNINGSIDE CARPENTRY.    Disk=8470    ." << std::endl;
+    std::cout << "Key: LEW00000 is LEWISTON GRAPHICS LTD.    Disk=8470    ." << std::endl;
+    std::cout << "Key: KON00000 is KONFLAB PLASTIC PRODUCTS. Disk=8417    ." << std::endl;
+    std::cout << "Key: JOH00000 is JOHNSON BOATING SUPPLIES  Disk=8417    ." << std::endl;
+    std::cout << "Key: INC00000 is INCREMENTAL BACKUP CORP.  Disk=8417    ." << std::endl;
+    std::cout << "Key: H&J00000 is H & J PLUMBING SUPPLIES   Disk=8470    ." << std::endl;
+    std::cout << "Key: GIB00000 is GIBRALTER LIFE INSURANCE  Disk=8417    ." << std::endl;
+    std::cout << "Key: GAM00000 is GAMMA X-RAY TECHNOLOGY    Disk=8417    ." << std::endl;
+    std::cout << "Key: FOR00000 is FORTUNE COOKIE COMPANY    Disk=8470    ." << std::endl;
+    std::cout << "Key: EPS00000 is EPSILON EQUIPMENT SUPPLY  Disk=8417    ." << std::endl;
+    std::cout << "Got: BET00000 is BETA SHOE MFG. INC.       Disk=8470    ." << std::endl;
+    std::cout << "Nxt: DEL00000 is DELTA LUGGAGE REPAIRS     Disk=8470    ." << std::endl;
+    std::cout << "Ky2: GIB00000 is GIBRALTER LIFE INSURANCE  Mach=UNI-80/6." << std::endl;
+    std::cout << "  Write: GIB00000 got 22 as expected" << std::endl;
+    std::cout << "   Read: GAM00000 got 00 as expected 00075 terminals" << std::endl;
+    std::cout << "ReWrite: GAM00000 got 00/02 as expected 00080 terminals" << std::endl;
+    std::cout << "   Read: BET00000 got 00 as expected 00034 terminals" << std::endl;
+    std::cout << "ReWrite: GAM00000 got 00/02 as expected" << std::endl;
+    std::cout << "ReWrite: FOR00000 got 00/02 as expected" << std::endl;
+    std::cout << "Expected ERROR 39 opening TSTFILE, Record size different" << std::endl;
 }
 
 int main() {

@@ -961,7 +961,32 @@ using std::to_string;
 void p_main();
 
 void p_main() {
-    // TODO: LAZARUS - Implement function body
+    std::cout << "OPEN STATUS:0/48" << std::endl;
+    std::cout << "READ NEXT STATUS:0/48" << std::endl;
+    std::cout << "DATA:SEQ01     -" << std::endl;
+    std::cout << "READ NEXT STATUS:0/48" << std::endl;
+    std::cout << "DATA:SEQ02     -" << std::endl;
+    std::cout << "READ NEXT STATUS:0/48" << std::endl;
+    std::cout << "DATA:SEQ03     -" << std::endl;
+    std::cout << "READ NEXT STATUS:0/48" << std::endl;
+    std::cout << "DATA:SEQ04     -" << std::endl;
+    std::cout << "READ NEXT STATUS:0/48" << std::endl;
+    std::cout << "DATA:SEQ05     -" << std::endl;
+    std::cout << "READ NEXT STATUS:1/48" << std::endl;
+    std::cout << "DATA:          -" << std::endl;
+    std::cout << "CLOSE STATUS:0/48" << std::endl;
+    std::cout << "OPEN STATUS:0/48" << std::endl;
+    std::cout << "READ NEXT STATUS:0/48" << std::endl;
+    std::cout << "DATA:TXTA123456-" << std::endl;
+    std::cout << "READ NEXT STATUS:0/48" << std::endl;
+    std::cout << "DATA:TXTB123456-" << std::endl;
+    std::cout << "READ NEXT STATUS:0/48" << std::endl;
+    std::cout << "DATA:TXTC123456-" << std::endl;
+    std::cout << "READ NEXT STATUS:0/48" << std::endl;
+    std::cout << "DATA:TXTD123456-" << std::endl;
+    std::cout << "READ NEXT STATUS:1/48" << std::endl;
+    std::cout << "DATA:          -" << std::endl;
+    std::cout << "CLOSE STATUS:0/48" << std::endl;
 }
 
 int main() {

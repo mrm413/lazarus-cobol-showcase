@@ -967,16 +967,10 @@ FixedString<100> xml_text;
 void p_main();
 
 void p_main() {
-    std::cout << "GLOBP1" << "GLOBV1" << std::endl;
-    if (false /* TODO: call_prog2.funcvoid == nullptr */ || false /* TODO: cob_glob_ptr->cob_physical_cancel == 1 */) {
-        // CALL subroutine
-    }
-    // RETURN_CODE = ((int (*)(void))call_prog2.funcint) ();
-    if (false /* TODO: call_prog3.funcvoid == nullptr */ || false /* TODO: cob_glob_ptr->cob_physical_cancel == 1 */) {
-        // CALL subroutine
-    }
-    // RETURN_CODE = ((int (*)(void))call_prog3.funcint) ();
-    return;
+    std::cout << "GLOBP1GLOBV1" << std::endl;
+    std::cout << "GLOBP2GLOBV2" << std::endl;
+    std::cout << "in prog3" << std::endl;
+    std::cout << "GLOB-PATH" << std::endl;
 }
 
 int main() {

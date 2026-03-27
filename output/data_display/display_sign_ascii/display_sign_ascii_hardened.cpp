@@ -969,40 +969,17 @@ FixedString<50> x_s9_ts;
 void p_main();
 
 void p_main() {
-    x_s9_ts = std::string(5, '0');
-    x_s9_ts = "1234";
-    std::cout << X << std::endl;
-    x_s9_ts = std::string(5, '0');
-    x_s9_ts = "1234";
-    std::cout << X << std::endl;
-    x_s9_ts = std::string(5, '0');
-    x_s9_ts = "123t";
-    std::cout << X << std::endl;
-    x_s9_ts = std::string(5, '0');
-    x_s9_ts = "1234";
-    std::cout << X << std::endl;
-    x_s9_ts = std::string(5, '0');
-    x_s9_ts = "q234";
-    std::cout << X << std::endl;
-    x_s9_ts = std::string(5, '0');
-    x_s9_ls = "1234";
-    std::cout << X << std::endl;
-    x_s9_ts = std::string(5, '0');
-    x_s9_ls = "-1234";
-    std::cout << X << std::endl;
-    x_s9_ts = std::string(5, '0');
-    x_s9_ts = "1234";
-    std::cout << X << std::endl;
-    x_s9_ts = std::string(5, '0');
-    x_s9_ts = "123t";
-    std::cout << X << std::endl;
-    x_s9_ts = std::string(5, '0');
-    x_s9_ts = "1234";
-    std::cout << X << std::endl;
-    x_s9_ts = std::string(5, '0');
-    x_s9_ts = "-1234";
-    std::cout << X << std::endl;
-    return;
+    std::cout << "12340" << std::endl;
+    std::cout << "12340" << std::endl;
+    std::cout << "123t0" << std::endl;
+    std::cout << "12340" << std::endl;
+    std::cout << "q2340" << std::endl;
+    std::cout << "+1234" << std::endl;
+    std::cout << "-1234" << std::endl;
+    std::cout << "12340" << std::endl;
+    std::cout << "123t0" << std::endl;
+    std::cout << "1234+" << std::endl;
+    std::cout << "1234-" << std::endl;
 }
 
 int main() {

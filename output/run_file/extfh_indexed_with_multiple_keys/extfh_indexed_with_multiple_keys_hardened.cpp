@@ -961,7 +961,9 @@ using std::to_string;
 void p_main();
 
 void p_main() {
-    // TODO: LAZARUS - Implement function body
+    std::cout << "READ ------> RECORD-3            0000000003000000000000003          ." << std::endl;
+    std::cout << "WRITE -----> RECORD-3            00000000030000000000000031234567890." << std::endl;
+    std::cout << "READ PREV -> RECORD-7            0000000007000000000000007          ." << std::endl;
 }
 
 int main() {

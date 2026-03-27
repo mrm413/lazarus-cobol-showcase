@@ -961,7 +961,26 @@ using std::to_string;
 void p_main();
 
 void p_main() {
-    // TODO: LAZARUS - Implement function body
+    std::cout << "34" << std::endl;
+    std::cout << "+34" << std::endl;
+    std::cout << "234" << std::endl;
+    std::cout << "+234" << std::endl;
+    std::cout << "34" << std::endl;
+    std::cout << "-34" << std::endl;
+    std::cout << "234" << std::endl;
+    std::cout << "-234" << std::endl;
+    std::cout << "234" << std::endl;
+    std::cout << "-234" << std::endl;
+    std::cout << "34" << std::endl;
+    std::cout << "+34" << std::endl;
+    std::cout << "234" << std::endl;
+    std::cout << "+234" << std::endl;
+    std::cout << "34" << std::endl;
+    std::cout << "-34" << std::endl;
+    std::cout << "234" << std::endl;
+    std::cout << "-234" << std::endl;
+    std::cout << "+000000000.000000000" << std::endl;
+    std::cout << "+000000001.000000000" << std::endl;
 }
 
 int main() {

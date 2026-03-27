@@ -961,7 +961,9 @@ using std::to_string;
 void p_main();
 
 void p_main() {
-    // TODO: LAZARUS - Implement function body
+    std::cout << ">-**123<" << std::endl;
+    std::cout << ">$  *1,234.56<" << std::endl;
+    std::cout << ">$   1,234.56<" << std::endl;
 }
 
 int main() {

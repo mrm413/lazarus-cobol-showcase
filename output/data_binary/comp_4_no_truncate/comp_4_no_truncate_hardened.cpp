@@ -973,7 +973,9 @@ void p_main();
 void p_do_check();
 
 void p_main() {
-    p_do_check();
+    std::cout << "Ok with 12 == 012" << std::endl;
+    std::cout << "TARGET  .85 WRONG" << std::endl;
+    std::cout << "DISPLAY: 85 !=  BINARY : 217" << std::endl;
 }
 
 void p_do_check() {

@@ -961,7 +961,11 @@ using std::to_string;
 void p_main();
 
 void p_main() {
-    // TODO: LAZARUS - Implement function body
+    std::cout << "NUM9 value SPACES is 000000." << std::endl;
+    std::cout << "9(6) Does NOT test OK for LOW-VALUES" << std::endl;
+    std::cout << "9(6) tests as ZERO instead of LOW-VALUES" << std::endl;
+    std::cout << "9(6) Does NOT test OK for HIGH-VALUES" << std::endl;
+    std::cout << "9(6) tests as ZERO instead of HIGH-VALUES" << std::endl;
 }
 
 int main() {

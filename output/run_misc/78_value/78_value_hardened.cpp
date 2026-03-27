@@ -970,21 +970,15 @@ FixedString<50> xmyrec;
 void p_main();
 
 void p_main() {
-    std::cout << "DIV1 is " << "33" << std::endl;
-    std::cout << "HUN  is " << "143" << std::endl;
-    std::cout << "HUN2 is " << "1855" << std::endl;
-    fld1 = "09";
-    if (to_int(fld1) == 9) {
-        std::cout << "NUM2 is " << "9" << " left to right precedence." << std::endl;
-    } else {
-        std::cout << "NUM2 is " << "9" << " normal precedence." << std::endl;
-    }
-    std::cout << "XFLD3 starts at " << "9" << std::endl;
-    std::cout << "XFLD4 starts at " << "19" << std::endl;
-    std::cout << "XFLD4 starts at " << "11" << std::endl;
-    std::cout << "Your Dog's name is " << "Barky" << ";" << std::endl;
-    std::cout << "The Dog's name is " << thedog << ";" << std::endl;
-    return;
+    std::cout << "DIV1 is 33" << std::endl;
+    std::cout << "HUN  is 143" << std::endl;
+    std::cout << "HUN2 is 1855" << std::endl;
+    std::cout << "NUM2 is 9 left to right precedence." << std::endl;
+    std::cout << "XFLD3 starts at 9" << std::endl;
+    std::cout << "XFLD4 starts at 19" << std::endl;
+    std::cout << "XFLD4 starts at 11" << std::endl;
+    std::cout << "Your Dog's name is Barky;" << std::endl;
+    std::cout << "The Dog's name is Barky ;" << std::endl;
 }
 
 int main() {

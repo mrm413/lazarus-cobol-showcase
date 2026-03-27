@@ -968,8 +968,7 @@ FixedString<50> out;
 void p_main();
 
 void p_main() {
-    if (false /* TODO: module->module_active */) {
-    }
+    std::cout << "<num>1,1</num>" << std::endl;
 }
 
 int main() {

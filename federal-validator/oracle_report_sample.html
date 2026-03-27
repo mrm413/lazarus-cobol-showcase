@@ -1,0 +1,2133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lazarus C++17 — Oracle Parity Report</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Segoe UI', system-ui, sans-serif; background: #0a0e17; color: #e0e0e0; }
+.header { background: linear-gradient(135deg, #1a1f2e 0%, #0d1117 100%);
+  padding: 40px; text-align: center; border-bottom: 2px solid #30363d; }
+.header h1 { font-size: 2em; color: #58a6ff; margin-bottom: 8px; }
+.header .subtitle { color: #8b949e; font-size: 1.1em; }
+.header .vendor { color: #6e7681; margin-top: 4px; }
+.stats { display: flex; justify-content: center; gap: 24px; padding: 32px; flex-wrap: wrap; }
+.stat-card { background: #161b22; border: 1px solid #30363d; border-radius: 12px;
+  padding: 24px 32px; text-align: center; min-width: 140px; }
+.stat-card .number { font-size: 2.4em; font-weight: 700; }
+.stat-card .label { color: #8b949e; margin-top: 4px; font-size: 0.9em; }
+.match .number { color: #3fb950; }
+.differ .number { color: #d29922; }
+.fail .number { color: #f85149; }
+.total .number { color: #58a6ff; }
+.rate .number { color: #3fb950; font-size: 3em; }
+.controls { padding: 16px 40px; display: flex; gap: 12px; align-items: center; }
+.controls input { background: #161b22; border: 1px solid #30363d; color: #e0e0e0;
+  padding: 8px 16px; border-radius: 6px; font-size: 0.95em; width: 300px; }
+.controls select { background: #161b22; border: 1px solid #30363d; color: #e0e0e0;
+  padding: 8px 12px; border-radius: 6px; }
+table { width: 100%; border-collapse: collapse; margin: 0 auto; }
+th { background: #161b22; color: #58a6ff; padding: 12px 16px; text-align: left;
+  position: sticky; top: 0; border-bottom: 2px solid #30363d; font-size: 0.9em; }
+td { padding: 10px 16px; border-bottom: 1px solid #21262d; vertical-align: top; }
+td:first-child { font-family: monospace; font-size: 0.85em; white-space: nowrap; }
+td:nth-child(2) { font-weight: 600; text-align: center; min-width: 90px; }
+td pre { font-size: 0.8em; max-height: 120px; overflow-y: auto; white-space: pre-wrap;
+  word-break: break-all; background: #0d1117; padding: 8px; border-radius: 4px;
+  border: 1px solid #21262d; }
+tr.match td:nth-child(2) { color: #3fb950; }
+tr.known td:nth-child(2) { color: #58a6ff; }
+tr.mismatch td:nth-child(2) { color: #d29922; }
+tr.cpp-fail td:nth-child(2) { color: #f85149; }
+tr:hover { background: #161b22; }
+.footer { text-align: center; padding: 24px; color: #6e7681; font-size: 0.85em;
+  border-top: 1px solid #21262d; }
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>GnuCOBOL 3.2 Oracle Parity Report</h1>
+  <div class="subtitle">C++17 Output vs Authoritative Expected Output from GnuCOBOL Test Suite</div>
+  <div class="vendor">Torsova LLC — lazarus-systems.com</div>
+</div>
+<div class="stats">
+  <div class="stat-card rate"><div class="number">1000%</div><div class="label">Verification Rate (x10)</div></div>
+  <div class="stat-card match"><div class="number">266</div><div class="label">Exact Match</div></div>
+  <div class="stat-card" style="border-color:#58a6ff"><div class="number" style="color:#58a6ff">0</div><div class="label">Known Edge Cases</div></div>
+  <div class="stat-card total"><div class="number">266</div><div class="label">Verified Total</div></div>
+  <div class="stat-card" style="border-color:#3fb950"><div class="number" style="color:#3fb950">0</div><div class="label">C++17 Compile Fail</div></div>
+</div>
+<div style="text-align:center;padding:0 40px 24px;color:#8b949e;font-size:0.9em;max-width:800px;margin:0 auto;">
+  <strong>Oracle source:</strong> GnuCOBOL 3.2 test suite <code>.at</code> files — the authoritative
+  expected output for each test program. <strong>"Exact Match"</strong> = C++17 output is identical
+  to the GnuCOBOL expected output. <strong>"Known Edge Cases"</strong> = documented transpiler
+  limitations or partial transpilations.
+</div>
+<div class="controls">
+  <input type="text" id="search" placeholder="Search programs..." oninput="filterTable()">
+  <select id="filter" onchange="filterTable()">
+    <option value="all">All Results</option>
+    <option value="match">Match Only</option>
+    <option value="known">Known Edge Cases</option>
+    <option value="fail">Compile Failures</option>
+  </select>
+</div>
+<table id="results">
+<thead><tr><th>Program</th><th>Status</th><th>Expected Output (Oracle)</th><th>C++17 Actual Output</th></tr></thead>
+<tbody>
+<tr class="match"><td>data_binary/binary_64bit_unsigned_arithmetic_notrunc</td><td>MATCH</td><td><pre>18446744073709551615
+09223372036854775807</pre></td><td><pre>18446744073709551615
+09223372036854775807</pre></td></tr>
+<tr class="match"><td>data_binary/binary_64bit_signed_negative_constant_range</td><td>MATCH</td><td><pre>-09223372036854775808</pre></td><td><pre>-09223372036854775808</pre></td></tr>
+<tr class="match"><td>data_binary/comp_4_truncate</td><td>MATCH</td><td><pre>Ok with .12 == .12
+Ok with .85 == .85</pre></td><td><pre>Ok with .12 == .12
+Ok with .85 == .85</pre></td></tr>
+<tr class="match"><td>data_binary/comp_4_no_truncate</td><td>MATCH</td><td><pre>Ok with 12 == 012
+TARGET  .85 WRONG
+DISPLAY: 85 !=  BINARY : 217</pre></td><td><pre>Ok with 12 == 012
+TARGET  .85 WRONG
+DISPLAY: 85 !=  BINARY : 217</pre></td></tr>
+<tr class="match"><td>data_binary/ppp_comp_5</td><td>MATCH</td><td><pre>INIT X-1 : 00091 .
+INIT X-2 : 00092 .
+INIT X-4 : 00128 .
+INIT D-1 : 00095 .
+MOVE X-1 : 00095 .
+MOVE X-2 : 00095 .
+MOVE X-4 : 00256 .
+MOVE D-1 : 00095 .
+MOVE X-1 : 00193:01930 .
+MOVE X-2 : 00193:01930 .</pre></td><td><pre>INIT X-1 : 00091 .
+INIT X-2 : 00092 .
+INIT X-4 : 00128 .
+INIT D-1 : 00095 .
+MOVE X-1 : 00095 .
+MOVE X-2 : 00095 .
+MOVE X-4 : 00256 .
+MOVE D-1 : 00095 .
+MOVE X-1 : 00193:01930 .
+MOVE X-2 : 00193:01930 .</pre></td></tr>
+<tr class="match"><td>data_display/display_sign_ascii</td><td>MATCH</td><td><pre>12340
+12340
+123t0
+12340
+q2340
++1234
+-1234
+12340
+123t0
+1234+
+1234-</pre></td><td><pre>12340
+12340
+123t0
+12340
+q2340
++1234
+-1234
+12340
+123t0
+1234+
+1234-</pre></td></tr>
+<tr class="match"><td>data_display/display_sign_ascii_2</td><td>MATCH</td><td><pre>0123456789pqrstuvwxy</pre></td><td><pre>0123456789pqrstuvwxy</pre></td></tr>
+<tr class="match"><td>data_display/display_sign_ebcdic</td><td>MATCH</td><td><pre>{ABCDEFGHI}JKLMNOPQR</pre></td><td><pre>{ABCDEFGHI}JKLMNOPQR</pre></td></tr>
+<tr class="match"><td>data_display/display_unsigned</td><td>MATCH</td><td><pre>127
+128
+32767
+32768
+2147483647
+2147483648
+2147483647
+2147483648
+09223372036854775807
+09223372036854775808
+32767
+32768
+2147483647
+2147483648</pre></td><td><pre>127
+128
+32767
+32768
+2147483647
+2147483648
+2147483647
+2147483648
+09223372036854775807
+09223372036854775808
+32767
+32768
+2147483647
+2147483648</pre></td></tr>
+<tr class="match"><td>data_display/ppp_display</td><td>MATCH</td><td><pre>INIT X-1 : 091000 .
+INIT X-2 : 092000 .
+INIT X-4 : .000128 .
+INIT D-1 : 095000 .
+MOVE X-1 : 095000 .
+MOVE X-2 : 095000 .
+MOVE X-4 : .000256 .
+MOVE D-1 : 095000 .
+MOVE X-1 : 193000:193000 .
+MOVE X-2 : 193000:193000 .</pre></td><td><pre>INIT X-1 : 091000 .
+INIT X-2 : 092000 .
+INIT X-4 : .000128 .
+INIT D-1 : 095000 .
+MOVE X-1 : 095000 .
+MOVE X-2 : 095000 .
+MOVE X-4 : .000256 .
+MOVE D-1 : 095000 .
+MOVE X-1 : 193000:193000 .
+MOVE X-2 : 193000:193000 .</pre></td></tr>
+<tr class="match"><td>data_packed/packed_decimal_used_with_display</td><td>MATCH</td><td><pre>00
+99
++00
+-01
+000
+123
++000
+-123
++234
+-234
+234</pre></td><td><pre>00
+99
++00
+-01
+000
+123
++000
+-123
++234
+-234
+234</pre></td></tr>
+<tr class="match"><td>data_packed/packed_decimal_used_with_move</td><td>MATCH</td><td><pre>34
++34
+234
++234
+34
+-34
+234
+-234
+234
+-234
+34
++34
+234
++234
+34
+-34
+234
+-234
++000000000.000000000
++000000001.000000000</pre></td><td><pre>34
++34
+234
++234
+34
+-34
+234
+-234
+234
+-234
+34
++34
+234
++234
+34
+-34
+234
+-234
++000000000.000000000
++000000001.000000000</pre></td></tr>
+<tr class="match"><td>data_packed/packed_decimal_used_with_initialize</td><td>MATCH</td><td><pre>00
++00
+000
++000</pre></td><td><pre>00
++00
+000
++000</pre></td></tr>
+<tr class="match"><td>data_packed/comp_6_used_with_display</td><td>MATCH</td><td><pre>00
+99
+000
+123</pre></td><td><pre>00
+99
+000
+123</pre></td></tr>
+<tr class="match"><td>data_packed/ppp_comp_3</td><td>MATCH</td><td><pre>MOVE 1P17: -100000000000000000 : 2.
+MOVE A-E : 1 000/000/000/000/000 00.
+INIT X-1 : 091000 .
+INIT X-2 : 092000 .
+INIT X-4 : .000128 .
+INIT D-1 : 095000 .
+MOVE X-1 : 095000 .
+MOVE X-2 : 095000 .
+MOVE X-4 : .000256 .
+MOVE D-1 : 095000 .
+MOVE X-1 : 193000:193000 .
+MOVE X-2 : 193000:193000 .</pre></td><td><pre>MOVE 1P17: -100000000000000000 : 2.
+MOVE A-E : 1 000/000/000/000/000 00.
+INIT X-1 : 091000 .
+INIT X-2 : 092000 .
+INIT X-4 : .000128 .
+INIT D-1 : 095000 .
+MOVE X-1 : 095000 .
+MOVE X-2 : 095000 .
+MOVE X-4 : .000256 .
+MOVE D-1 : 095000 .
+MOVE X-1 : 193000:193000 .
+MOVE X-2 : 193000:193000 .</pre></td></tr>
+<tr class="match"><td>data_packed/ppp_comp_6</td><td>MATCH</td><td><pre>INIT X-1 : 091000 .
+INIT X-2 : 092000 .
+INIT X-4 : .000128 .
+INIT D-1 : 095000 .
+MOVE X-1 : 095000 .
+MOVE X-2 : 095000 .
+MOVE X-4 : .000256 .
+MOVE D-1 : 095000 .
+MOVE X-1 : 193000:193000 .
+MOVE X-2 : 193000:193000 .</pre></td><td><pre>INIT X-1 : 091000 .
+INIT X-2 : 092000 .
+INIT X-4 : .000128 .
+INIT D-1 : 095000 .
+MOVE X-1 : 095000 .
+MOVE X-2 : 095000 .
+MOVE X-4 : .000256 .
+MOVE D-1 : 095000 .
+MOVE X-1 : 193000:193000 .
+MOVE X-2 : 193000:193000 .</pre></td></tr>
+<tr class="match"><td>data_pointer/pointer_display</td><td>MATCH</td><td><pre>0x0000000000000000
+0x0000000000000001
+0x0000000000000000</pre></td><td><pre>0x0000000000000000
+0x0000000000000001
+0x0000000000000000</pre></td></tr>
+<tr class="match"><td>run_extensions/call_by_content_binary_and_literal</td><td>MATCH</td><td><pre>00001234
+00004660</pre></td><td><pre>00001234
+00004660</pre></td></tr>
+<tr class="match"><td>run_extensions/numeric_boolean_literals</td><td>MATCH</td><td><pre>21
+18446744073709551615</pre></td><td><pre>21
+18446744073709551615</pre></td></tr>
+<tr class="match"><td>run_extensions/acucobol_literals</td><td>MATCH</td><td><pre>5
+2147483647
+4294967295
+4294967295</pre></td><td><pre>5
+2147483647
+4294967295
+4294967295</pre></td></tr>
+<tr class="match"><td>run_extensions/hp_cobol_octal_literals</td><td>MATCH</td><td><pre>XY</pre></td><td><pre>XY</pre></td></tr>
+<tr class="match"><td>run_extensions/hexadecimal_numeric_literals</td><td>MATCH</td><td><pre>00074565
+16777215</pre></td><td><pre>00074565
+16777215</pre></td></tr>
+<tr class="match"><td>run_extensions/semi_parenthesized_condition</td><td>MATCH</td><td><pre>OK</pre></td><td><pre>OK</pre></td></tr>
+<tr class="match"><td>run_extensions/length_of</td><td>MATCH</td><td><pre>165000</pre></td><td><pre>165000</pre></td></tr>
+<tr class="match"><td>run_extensions/complex_occurs_depending_on_1</td><td>MATCH</td><td><pre>123456:34:56</pre></td><td><pre>123456:34:56</pre></td></tr>
+<tr class="match"><td>run_extensions/complex_occurs_depending_on_2</td><td>MATCH</td><td><pre>18181    22        333
+1818  3    22      111</pre></td><td><pre>18181    22        333
+1818  3    22      111</pre></td></tr>
+<tr class="match"><td>run_extensions/complex_occurs_depending_on_3</td><td>MATCH</td><td><pre>0606122333
+1010  3  22111</pre></td><td><pre>0606122333
+1010  3  22111</pre></td></tr>
+<tr class="match"><td>run_extensions/complex_occurs_depending_on_4</td><td>MATCH</td><td><pre>33331    22        333            444
+3333  3    22      111            000</pre></td><td><pre>33331    22        333            444
+3333  3    22      111            000</pre></td></tr>
+<tr class="match"><td>run_extensions/complex_occurs_depending_on_5</td><td>MATCH</td><td><pre>0909122333444
+1313  3  22111000</pre></td><td><pre>0909122333444
+1313  3  22111000</pre></td></tr>
+<tr class="match"><td>run_extensions/initialize_occurs_odoslide</td><td>MATCH</td><td><pre>GRP-1:***ABCDE***
+GRP-2:***ABCD ABCD ABCD ABCD ABCD ABCD ABCD ABCD AB***
+GRP-3:***ABC00XXABC00XXABC00XX***
+GRP-4:***AB12YZAB12YZAB12YZAB12YZAB12YZAB12YZAB12YZAB12YZAB12YZAB12YZAB12YZ***
+GRP-5:***Mon49eyMon49eyMon49eyMon49eyMon49eyMon49eyMon49ey***</pre></td><td><pre>GRP-1:***ABCDE***
+GRP-2:***ABCD ABCD ABCD ABCD ABCD ABCD ABCD ABCD AB***
+GRP-3:***ABC00XXABC00XXABC00XX***
+GRP-4:***AB12YZAB12YZAB12YZAB12YZAB12YZAB12YZAB12YZAB12YZAB12YZAB12YZAB12YZ***
+GRP-5:***Mon49eyMon49eyMon49eyMon49eyMon49eyMon49eyMon49ey***</pre></td></tr>
+<tr class="match"><td>run_extensions/depending_on_with_odoslide</td><td>MATCH</td><td><pre>'123-TRAILER             '
+Write SEQ 01, DEP-X = 02 &amp; DEP-Y = 05, TSTREC len:053
+Group1: ' 1 2&lt;&gt;  ' len:008
+  Data: ' 1 2&lt;&gt;  01***Abcde. 344502***Abcde. 4556&lt;&gt;'
+Group2: ' 1 2&lt;&gt; ' len:007
+Write SEQ 02, DEP-X = 01 &amp; DEP-Y = 02, TSTREC len:029
+Group1: ' 1&lt;&gt;  ' len:006
+  Data: ' 1&lt;&gt;  01***Ab. 3&lt;&gt;'
+Group2: ' 1&lt;&gt; ' len:005
+Write SEQ 03, DEP-X = 03 &amp; DEP-Y = 03, TSTREC len:080
+Group1: ' 1 2 3&lt;&gt;  ' len:010
+  Data: ' 1 2 3&lt;&gt;  01***Abc. 34545656702***Abc. 45656767803***Abc. 567678789&lt;&gt;'
+Group2: ' 1 2 3&lt;&gt; ' len:009
+Write SEQ 04, DEP-X = 03 &amp; DEP-Y = 10, TSTREC len:101
+Group1: ' 1 2 3&lt;&gt;  ' len:010
+  Data: ' 1 2 3&lt;&gt;  01***Abcdefghij. 34545656702***Abcdefghij. 45656767803***Abcdefghij. 567678789&lt;&gt;'
+Group2: ' 1 2 3&lt;&gt; ' len:009
+Read SEQ 01, DEP-X = 02 &amp; DEP-Y = 05, TSTREC len:053
+  Data: ' 1 2&lt;&gt;  01***Abcde. 344502***Abcde. 4556&lt;&gt;'
+Read SEQ 02, DEP-X = 01 &amp; DEP-Y = 02, TSTREC len:029</pre></td><td><pre>'123-TRAILER             '
+Write SEQ 01, DEP-X = 02 &amp; DEP-Y = 05, TSTREC len:053
+Group1: ' 1 2&lt;&gt;  ' len:008
+  Data: ' 1 2&lt;&gt;  01***Abcde. 344502***Abcde. 4556&lt;&gt;'
+Group2: ' 1 2&lt;&gt; ' len:007
+Write SEQ 02, DEP-X = 01 &amp; DEP-Y = 02, TSTREC len:029
+Group1: ' 1&lt;&gt;  ' len:006
+  Data: ' 1&lt;&gt;  01***Ab. 3&lt;&gt;'
+Group2: ' 1&lt;&gt; ' len:005
+Write SEQ 03, DEP-X = 03 &amp; DEP-Y = 03, TSTREC len:080
+Group1: ' 1 2 3&lt;&gt;  ' len:010
+  Data: ' 1 2 3&lt;&gt;  01***Abc. 34545656702***Abc. 45656767803***Abc. 567678789&lt;&gt;'
+Group2: ' 1 2 3&lt;&gt; ' len:009
+Write SEQ 04, DEP-X = 03 &amp; DEP-Y = 10, TSTREC len:101
+Group1: ' 1 2 3&lt;&gt;  ' len:010
+  Data: ' 1 2 3&lt;&gt;  01***Abcdefghij. 34545656702***Abcdefghij. 45656767803***Abcdefghij. 567678789&lt;&gt;'
+Group2: ' 1 2 3&lt;&gt; ' len:009
+Read SEQ 01, DEP-X = 02 &amp; DEP-Y = 05, TSTREC len:053
+  Data: ' 1 2&lt;&gt;  01***Abcde. 344502***Abcde. 4556&lt;&gt;'
+Read SEQ 02, DEP-X = 01 &amp; DEP-Y = 02, TSTREC len:029</pre></td></tr>
+<tr class="match"><td>run_extensions/depending_on_with_odoslide_for_ibm</td><td>MATCH</td><td><pre>Length is +0000000222 with 03, 04, 00, 06, 01
+"01234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567.901234567890123456789012345+++901234567890123456789--2345678901234567890123456789012345678901234567890123456789012345678901"
+Length is +0000000134 with 02, 03, 01, 04, 00
+"012345678901234567890123456789012345678901234567890123456789012345678901234567.901+++567--01234567890123456789012345678901234567890123"</pre></td><td><pre>Length is +0000000222 with 03, 04, 00, 06, 01
+"01234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567.901234567890123456789012345+++901234567890123456789--2345678901234567890123456789012345678901234567890123456789012345678901"
+Length is +0000000134 with 02, 03, 01, 04, 00
+"012345678901234567890123456789012345678901234567890123456789012345678901234567.901+++567--01234567890123456789012345678901234567890123"</pre></td></tr>
+<tr class="match"><td>run_extensions/move_of_non_integer_to_alphanumeric</td><td>MATCH</td><td><pre>12891289128912891289128912891289</pre></td><td><pre>12891289128912891289128912891289</pre></td></tr>
+<tr class="match"><td>run_extensions/call_goback_with_local_storage</td><td>MATCH</td><td><pre>entered prog_b
+exiting prog_b
+back in prog_a</pre></td><td><pre>entered prog_b
+exiting prog_b
+back in prog_a</pre></td></tr>
+<tr class="match"><td>run_extensions/call_by_value_numeric_literal_with_size_is</td><td>MATCH</td><td><pre>4: +0000000001
+1: +002
+2: +00003
+4: +0000000004
+8: +00000000000000000005
+4: +0000000006
+4: +0000000007
+1: +002
+2: +00003
+4: +0000000004
+8: +00000000000000000005
+4: +0000000006</pre></td><td><pre>4: +0000000001
+1: +002
+2: +00003
+4: +0000000004
+8: +00000000000000000005
+4: +0000000006
+4: +0000000007
+1: +002
+2: +00003
+4: +0000000004
+8: +00000000000000000005
+4: +0000000006</pre></td></tr>
+<tr class="match"><td>run_extensions/tally_register</td><td>MATCH</td><td><pre>00001</pre></td><td><pre>00001</pre></td></tr>
+<tr class="match"><td>run_extensions/redefining_tally</td><td>MATCH</td><td><pre>002</pre></td><td><pre>002</pre></td></tr>
+<tr class="match"><td>run_extensions/procedure_division_chaining</td><td>MATCH</td><td><pre>-a    7-</pre></td><td><pre>-a    7-</pre></td></tr>
+<tr class="match"><td>run_extensions/78_level_1</td><td>MATCH</td><td><pre>OK</pre></td><td><pre>OK</pre></td></tr>
+<tr class="match"><td>run_extensions/78_level_2</td><td>MATCH</td><td><pre>OKOKOK</pre></td><td><pre>OKOKOK</pre></td></tr>
+<tr class="match"><td>run_extensions/78_level_3</td><td>MATCH</td><td><pre>OKOK</pre></td><td><pre>OKOK</pre></td></tr>
+<tr class="match"><td>run_extensions/obsolete_2002_keywords_with_cobol2014</td><td>MATCH</td><td><pre>OKOK</pre></td><td><pre>OKOK</pre></td></tr>
+<tr class="match"><td>run_extensions/system_routine_cbl_gc_fork</td><td>MATCH</td><td><pre>Hello, I am the parent
+Hello, I am the child
+Parent again</pre></td><td><pre>Hello, I am the parent
+Hello, I am the child
+Parent again</pre></td></tr>
+<tr class="match"><td>run_extensions/system_routine_cbl_gc_waitpid</td><td>MATCH</td><td><pre>Hello, I am the parent
+Hello, I am the child
+Child ended status +000000002</pre></td><td><pre>Hello, I am the parent
+Hello, I am the child
+Child ended status +000000002</pre></td></tr>
+<tr class="match"><td>run_extensions/system_routine_cbl_exit_proc</td><td>MATCH</td><td><pre>Program is starting
+Program is stopping
+Exit procedure from DemoExtProc
+Exit procedure from ExtProc</pre></td><td><pre>Program is starting
+Program is stopping
+Exit procedure from DemoExtProc
+Exit procedure from ExtProc</pre></td></tr>
+<tr class="match"><td>run_extensions/system_routine_cbl_error_proc_1</td><td>MATCH</td><td><pre>Program is starting
+Error (internal): DemoErrProc; ; 0-
+                                                 -
+                  EC-PROGRAM-NOT-FOUND           -
+Error-Message:    module 'Tilt' not found
+-*- Returning to Next Error Routine -*-
+Error: DemoErrProc; ; 0-
+                                      -
+       EC-PROGRAM-NOT-FOUND           -
+-*- Returning to Standard Error Routine -*-</pre></td><td><pre>Program is starting
+Error (internal): DemoErrProc; ; 0-
+                                                 -
+                  EC-PROGRAM-NOT-FOUND           -
+Error-Message:    module 'Tilt' not found
+-*- Returning to Next Error Routine -*-
+Error: DemoErrProc; ; 0-
+                                      -
+       EC-PROGRAM-NOT-FOUND           -
+-*- Returning to Standard Error Routine -*-</pre></td></tr>
+<tr class="match"><td>run_extensions/system_routine_cbl_error_proc_2</td><td>MATCH</td><td><pre>Program is starting
+Error (interal): DemoErrProc; S1; 20-
+                 CALL                           -
+                 EC-PROGRAM-NOT-FOUND           -
+Error-Message:   prog.cob:20: module 'Tilt' not found
+-*- Stop error routines here -*-</pre></td><td><pre>Program is starting
+Error (interal): DemoErrProc; S1; 20-
+                 CALL                           -
+                 EC-PROGRAM-NOT-FOUND           -
+Error-Message:   prog.cob:20: module 'Tilt' not found
+-*- Stop error routines here -*-</pre></td></tr>
+<tr class="match"><td>run_extensions/conditional_define_directives_1</td><td>MATCH</td><td><pre>OK</pre></td><td><pre>OK</pre></td></tr>
+<tr class="match"><td>run_extensions/conditional_define_directives_2</td><td>MATCH</td><td><pre>OK</pre></td><td><pre>OK</pre></td></tr>
+<tr class="match"><td>run_extensions/conditional_define_directives_3</td><td>MATCH</td><td><pre>OK</pre></td><td><pre>OK</pre></td></tr>
+<tr class="match"><td>run_extensions/variable_format</td><td>MATCH</td><td><pre>Hello!</pre></td><td><pre>Hello!</pre></td></tr>
+<tr class="match"><td>run_extensions/cobolx_format</td><td>MATCH</td><td><pre>Hello!
+Hi!
+Hey!
+Bye!
+        20        30        40        50        60        70        80        90       100       110       120       130       140       150       160       170       180       190       200       210       220       230       240       250</pre></td><td><pre>Hello!
+Hi!
+Hey!
+Bye!
+        20        30        40        50        60        70        80        90       100       110       120       130       140       150       160       170       180       190       200       210       220       230       240       250</pre></td></tr>
+<tr class="match"><td>run_extensions/x_open_free_form_format</td><td>MATCH</td><td><pre>OKKO</pre></td><td><pre>OKKO</pre></td></tr>
+<tr class="match"><td>run_extensions/terminal_format</td><td>MATCH</td><td><pre>OKKO</pre></td><td><pre>OKKO</pre></td></tr>
+<tr class="match"><td>run_extensions/mf_free_format_x_open</td><td>MATCH</td><td><pre>42</pre></td><td><pre>42</pre></td></tr>
+<tr class="match"><td>run_extensions/binary_comp_1_1</td><td>MATCH</td><td><pre>3.5</pre></td><td><pre>3.5</pre></td></tr>
+<tr class="match"><td>run_extensions/binary_comp_1_2</td><td>MATCH</td><td><pre>3.5</pre></td><td><pre>3.5</pre></td></tr>
+<tr class="match"><td>run_extensions/exhibit_statement</td><td>MATCH</td><td><pre>         X
+VAR-1 = 123XXXXX VAR-2 = 000 Y
+VAR-2 = 000
+SORT-RETURN = +000000000 TALLY = 00000</pre></td><td><pre>         X
+VAR-1 = 123XXXXX VAR-2 = 000 Y
+VAR-2 = 000
+SORT-RETURN = +000000000 TALLY = 00000</pre></td></tr>
+<tr class="match"><td>run_extensions/bit_operations</td><td>MATCH</td><td><pre>Test using PIC XX COMP-X
+00002 B-OR  00004 is 00006
+00002 B-XOR 00003 is 00001
+00003 B-AND 00001 = 00001 TRUE
+(00003 B-XOR 00003) + 1 is 00001
+00003 B-XOR (00003 + 1) is 00007
+00014 B-AND 00009 is 00008
+x#05 B-OR x#22 is 00039
+B-NOT 00014 is 65521
+B-NOT x#22 is 65501
+  -----
+Test using PIC X COMP-X
+002 B-OR  004 is 006
+002 B-XOR 003 is 001
+003 B-AND 001 = 001 TRUE
+(003 B-XOR 003) + 1 is 001
+003 B-XOR (003 + 1) is 007
+014 B-AND 009 is 008
+B-NOT 014 is 241
+B-NOT x#22 is 221</pre></td><td><pre>Test using PIC XX COMP-X
+00002 B-OR  00004 is 00006
+00002 B-XOR 00003 is 00001
+00003 B-AND 00001 = 00001 TRUE
+(00003 B-XOR 00003) + 1 is 00001
+00003 B-XOR (00003 + 1) is 00007
+00014 B-AND 00009 is 00008
+x#05 B-OR x#22 is 00039
+B-NOT 00014 is 65521
+B-NOT x#22 is 65501
+  -----
+Test using PIC X COMP-X
+002 B-OR  004 is 006
+002 B-XOR 003 is 001
+003 B-AND 001 = 001 TRUE
+(003 B-XOR 003) + 1 is 001
+003 B-XOR (003 + 1) is 007
+014 B-AND 009 is 008
+B-NOT 014 is 241
+B-NOT x#22 is 221</pre></td></tr>
+<tr class="match"><td>run_extensions/bit_shift_operations</td><td>MATCH</td><td><pre>Using PIC XX COMP-X
+ x#22 B-LEFT  x#05   is 01088
+ x#22 B-RIGHT x#02   is 00008
+ x#22 B-SHIFT-L x#05 is 01088
+ x#22 B-SHIFT-R x#02 is 00008
+00010 B-LEFT  x#05   is 00320
+00010 B-RIGHT x#02   is 00002
+30067 B-SHIFT-LC 4   is 22327
+30067 B-SHIFT-RC 4   is 14167
+Using PIC 9(4) COMP-5
+ x#22 B-LEFT  x#05   is 01088
+ x#22 B-RIGHT x#02   is 00008
+ x#22 B-SHIFT-L x#05 is 01088
+ x#22 B-SHIFT-R x#02 is 00008
+00010 B-LEFT  x#05   is 00320
+00010 B-RIGHT x#02   is 00002</pre></td><td><pre>Using PIC XX COMP-X
+ x#22 B-LEFT  x#05   is 01088
+ x#22 B-RIGHT x#02   is 00008
+ x#22 B-SHIFT-L x#05 is 01088
+ x#22 B-SHIFT-R x#02 is 00008
+00010 B-LEFT  x#05   is 00320
+00010 B-RIGHT x#02   is 00002
+30067 B-SHIFT-LC 4   is 22327
+30067 B-SHIFT-RC 4   is 14167
+Using PIC 9(4) COMP-5
+ x#22 B-LEFT  x#05   is 01088
+ x#22 B-RIGHT x#02   is 00008
+ x#22 B-SHIFT-L x#05 is 01088
+ x#22 B-SHIFT-R x#02 is 00008
+00010 B-LEFT  x#05   is 00320
+00010 B-RIGHT x#02   is 00002</pre></td></tr>
+<tr class="match"><td>run_extensions/gcos_floating_point_usages</td><td>MATCH</td><td><pre>-42
+0
+9.899999999998999E+304
+9.888888888888887E+304</pre></td><td><pre>-42
+0
+9.899999999998999E+304
+9.888888888888887E+304</pre></td></tr>
+<tr class="match"><td>run_file/assign_filename_mapping</td><td>MATCH</td><td><pre>STATUS OPENI 00
+STATUS OPENO 00</pre></td><td><pre>STATUS OPENI 00
+STATUS OPENO 00</pre></td></tr>
+<tr class="match"><td>run_file/indexed_file_key_name</td><td>MATCH</td><td><pre>FINE</pre></td><td><pre>FINE</pre></td></tr>
+<tr class="match"><td>run_file/indexed_file_sparse_split_keys</td><td>MATCH</td><td><pre>Loading sample data file.
+Sample data file load complete.
+LIST SAMPLE FILE
+Key: ALP00000 is ALPHA ELECTRICAL CO. LTD. Disk=8417    :
+Key: BET00000 is BETA SHOE MFG. INC.       Disk=8470    :
+Key: DEL00000 is DELTA LUGGAGE REPAIRS     Disk=********:
+Key: EPS00000 is EPSILON EQUIPMENT SUPPLY  Disk=********:
+Key: FOR00000 is FORTUNE COOKIE COMPANY    Disk=8470    :
+Key: GAM00000 is GAMMA X-RAY TECHNOLOGY    Disk=8417    :
+Key: GIB00000 is GIBRALTER LIFE INSURANCE  Disk=8417    :
+Key: H&amp;J00000 is H &amp; J PLUMBING SUPPLIES   Disk=********:
+Key: INC00000 is INCREMENTAL BACKUP CORP.  Disk=8417    :
+Key: JOH00000 is JOHNSON BOATING SUPPLIES  Disk=8417    :
+Key: KON00000 is KONFLAB PLASTIC PRODUCTS. Disk=8417    :
+LIST SAMPLE FILE DESCENDING
+Key: KON00000 is KONFLAB PLASTIC PRODUCTS. Disk=8417    :
+Key: JOH00000 is JOHNSON BOATING SUPPLIES  Disk=8417    :
+Key: INC00000 is INCREMENTAL BACKUP CORP.  Disk=8417    :
+Key: H&amp;J00000 is H &amp; J PLUMBING SUPPLIES   Disk=********:
+Key: GIB00000 is GIBRALTER LIFE INSURANCE  Disk=8417    :</pre></td><td><pre>Loading sample data file.
+Sample data file load complete.
+LIST SAMPLE FILE
+Key: ALP00000 is ALPHA ELECTRICAL CO. LTD. Disk=8417    :
+Key: BET00000 is BETA SHOE MFG. INC.       Disk=8470    :
+Key: DEL00000 is DELTA LUGGAGE REPAIRS     Disk=********:
+Key: EPS00000 is EPSILON EQUIPMENT SUPPLY  Disk=********:
+Key: FOR00000 is FORTUNE COOKIE COMPANY    Disk=8470    :
+Key: GAM00000 is GAMMA X-RAY TECHNOLOGY    Disk=8417    :
+Key: GIB00000 is GIBRALTER LIFE INSURANCE  Disk=8417    :
+Key: H&amp;J00000 is H &amp; J PLUMBING SUPPLIES   Disk=********:
+Key: INC00000 is INCREMENTAL BACKUP CORP.  Disk=8417    :
+Key: JOH00000 is JOHNSON BOATING SUPPLIES  Disk=8417    :
+Key: KON00000 is KONFLAB PLASTIC PRODUCTS. Disk=8417    :
+LIST SAMPLE FILE DESCENDING
+Key: KON00000 is KONFLAB PLASTIC PRODUCTS. Disk=8417    :
+Key: JOH00000 is JOHNSON BOATING SUPPLIES  Disk=8417    :
+Key: INC00000 is INCREMENTAL BACKUP CORP.  Disk=8417    :
+Key: H&amp;J00000 is H &amp; J PLUMBING SUPPLIES   Disk=********:
+Key: GIB00000 is GIBRALTER LIFE INSURANCE  Disk=8417    :</pre></td></tr>
+<tr class="match"><td>run_file/indexed_file_variable_length_record</td><td>MATCH</td><td><pre>delete file
+delete file done
+open
+open done
+start &gt; tbw-key
+start &gt; tbw-key inv
+read next
+read next 46
+write
+write done
+start &gt;= tbw-alt
+start &gt;= tbw-alt done
+start &gt; tbw-key
+start &gt; tbw-key done
+read next
+read next done
+read next
+read next end
+close
+close done</pre></td><td><pre>delete file
+delete file done
+open
+open done
+start &gt; tbw-key
+start &gt; tbw-key inv
+read next
+read next 46
+write
+write done
+start &gt;= tbw-alt
+start &gt;= tbw-alt done
+start &gt; tbw-key
+start &gt; tbw-key done
+read next
+read next done
+read next
+read next end
+close
+close done</pre></td></tr>
+<tr class="match"><td>run_file/indexed_sample</td><td>MATCH</td><td><pre>Read all 00b02 keys sequentially
+Reading: 00b02
+    12345679  00 b 02, some 12345679 data
+    97654321  00 b 02, some 97654321 data
+    12349765  00 b 02, some 12349765 data
+    97651234  00 b 02, some 97651234 data
+-----------------------------------------
+Read all alternate keys greater than 00a02
+Seeking &gt;= 00a02
+    12345679  00 b 02, some 12345679 data
+    97654321  00 b 02, some 97654321 data
+    12349765  00 b 02, some 12349765 data
+    97651234  00 b 02, some 97651234 data
+    12345689  00 c 13, some 12345689 data
+    98654321  00 c 13, some 98654321 data
+    12349865  00 c 13, some 12349865 data
+    98651234  00 c 13, some 98651234 data
+-----------------------------------------
+Read all primary keys less than 87654321
+Prime &lt; 87654321</pre></td><td><pre>Read all 00b02 keys sequentially
+Reading: 00b02
+    12345679  00 b 02, some 12345679 data
+    97654321  00 b 02, some 97654321 data
+    12349765  00 b 02, some 12349765 data
+    97651234  00 b 02, some 97651234 data
+-----------------------------------------
+Read all alternate keys greater than 00a02
+Seeking &gt;= 00a02
+    12345679  00 b 02, some 12345679 data
+    97654321  00 b 02, some 97654321 data
+    12349765  00 b 02, some 12349765 data
+    97651234  00 b 02, some 97651234 data
+    12345689  00 c 13, some 12345689 data
+    98654321  00 c 13, some 98654321 data
+    12349865  00 c 13, some 12349865 data
+    98651234  00 c 13, some 98651234 data
+-----------------------------------------
+Read all primary keys less than 87654321
+Prime &lt; 87654321</pre></td></tr>
+<tr class="match"><td>run_file/write_rewrite_file_name</td><td>MATCH</td><td><pre>Loading sample program data file.
+Sample program data file load complete.
+Read    BET00000 Sts:00 Trms:0013
+REWROTE BET00000 Sts:00 Trms:0014</pre></td><td><pre>Loading sample program data file.
+Sample program data file load complete.
+Read    BET00000 Sts:00 Trms:0013
+REWROTE BET00000 Sts:00 Trms:0014</pre></td></tr>
+<tr class="match"><td>run_file/read_on_optional_missing_relative_sequential</td><td>MATCH</td><td><pre>R: OPEN INPUT on missing optional file = 05 OK
+S: OPEN INPUT on missing optional file = 05 OK
+R: 1st READ on missing optional file = 10 OK
+S: 1st READ on missing optional file = 10 OK
+R: 2nd READ on missing optional file = 46 OK
+S: 2nd READ on missing optional file = 46 OK
+R: 3rd READ on missing optional file = 46 OK
+S: 3rd READ on missing optional file = 46 OK</pre></td><td><pre>R: OPEN INPUT on missing optional file = 05 OK
+S: OPEN INPUT on missing optional file = 05 OK
+R: 1st READ on missing optional file = 10 OK
+S: 1st READ on missing optional file = 10 OK
+R: 2nd READ on missing optional file = 46 OK
+S: 2nd READ on missing optional file = 46 OK
+R: 3rd READ on missing optional file = 46 OK
+S: 3rd READ on missing optional file = 46 OK</pre></td></tr>
+<tr class="match"><td>run_file/line_sequential_record_truncation_1</td><td>MATCH</td><td><pre>(a   ) 00
+(ab  ) 00
+(abc ) 00
+(abcd) 00
+(abcd) 06
+(e   ) 00
+(abcd) 06
+(ef  ) 00
+(ef  ) 10</pre></td><td><pre>(a   ) 00
+(ab  ) 00
+(abc ) 00
+(abcd) 00
+(abcd) 06
+(e   ) 00
+(abcd) 06
+(ef  ) 00
+(ef  ) 10</pre></td></tr>
+<tr class="match"><td>run_file/extfh_linage_and_linage_counter_sample</td><td>MATCH</td><td><pre>Normal termination, ending status: 10</pre></td><td><pre>Normal termination, ending status: 10</pre></td></tr>
+<tr class="match"><td>run_file/sequential_file_i_o_with_variable_records</td><td>MATCH</td><td><pre>20: &gt;+12345678++12345678+&lt;
+19: &gt;+12345678++12345678&lt;
+18: &gt;+12345678++1234567&lt;
+17: &gt;+12345678++123456&lt;
+16: &gt;+12345678++12345&lt;
+15: &gt;+12345678++1234&lt;
+14: &gt;+12345678++123&lt;
+13: &gt;+12345678++12&lt;
+12: &gt;+12345678++1&lt;
+11: &gt;+12345678++&lt;
+10: &gt;+12345678+&lt;</pre></td><td><pre>20: &gt;+12345678++12345678+&lt;
+19: &gt;+12345678++12345678&lt;
+18: &gt;+12345678++1234567&lt;
+17: &gt;+12345678++123456&lt;
+16: &gt;+12345678++12345&lt;
+15: &gt;+12345678++1234&lt;
+14: &gt;+12345678++123&lt;
+13: &gt;+12345678++12&lt;
+12: &gt;+12345678++1&lt;
+11: &gt;+12345678++&lt;
+10: &gt;+12345678+&lt;</pre></td></tr>
+<tr class="match"><td>run_file/line_sequential_file_i_o_with_variable_records</td><td>MATCH</td><td><pre>20: &gt;+12345678++12345678+&lt;
+19: &gt;+12345678++12345678&lt;
+18: &gt;+12345678++1234567&lt;
+17: &gt;+12345678++123456&lt;
+16: &gt;+12345678++12345&lt;
+15: &gt;+12345678++1234&lt;
+14: &gt;+12345678++123&lt;
+13: &gt;+12345678++12&lt;
+12: &gt;+12345678++1&lt;
+11: &gt;+12345678++&lt;
+10: &gt;+12345678+&lt;</pre></td><td><pre>20: &gt;+12345678++12345678+&lt;
+19: &gt;+12345678++12345678&lt;
+18: &gt;+12345678++1234567&lt;
+17: &gt;+12345678++123456&lt;
+16: &gt;+12345678++12345&lt;
+15: &gt;+12345678++1234&lt;
+14: &gt;+12345678++123&lt;
+13: &gt;+12345678++12&lt;
+12: &gt;+12345678++1&lt;
+11: &gt;+12345678++&lt;
+10: &gt;+12345678+&lt;</pre></td></tr>
+<tr class="match"><td>run_file/relative_sequential_with_variable_records</td><td>MATCH</td><td><pre>20: &gt;+12345678++12345678+&lt;
+19: &gt;+12345678++12345678&lt;
+18: &gt;+12345678++1234567&lt;
+17: &gt;+12345678++123456&lt;
+16: &gt;+12345678++12345&lt;
+15: &gt;+12345678++1234&lt;
+14: &gt;+12345678++123&lt;
+13: &gt;+12345678++12&lt;
+12: &gt;+12345678++1&lt;
+11: &gt;+12345678++&lt;
+10: &gt;+12345678+&lt;</pre></td><td><pre>20: &gt;+12345678++12345678+&lt;
+19: &gt;+12345678++12345678&lt;
+18: &gt;+12345678++1234567&lt;
+17: &gt;+12345678++123456&lt;
+16: &gt;+12345678++12345&lt;
+15: &gt;+12345678++1234&lt;
+14: &gt;+12345678++123&lt;
+13: &gt;+12345678++12&lt;
+12: &gt;+12345678++1&lt;
+11: &gt;+12345678++&lt;
+10: &gt;+12345678+&lt;</pre></td></tr>
+<tr class="match"><td>run_file/indexed_sequential_with_variable_records</td><td>MATCH</td><td><pre>22: &gt;+12345678++12345678+&lt;
+21: &gt;+12345678++12345678&lt;
+20: &gt;+12345678++1234567&lt;
+19: &gt;+12345678++123456&lt;
+18: &gt;+12345678++12345&lt;
+17: &gt;+12345678++1234&lt;
+16: &gt;+12345678++123&lt;
+15: &gt;+12345678++12&lt;
+14: &gt;+12345678++1&lt;
+13: &gt;+12345678++&lt;
+12: &gt;+12345678+&lt;</pre></td><td><pre>22: &gt;+12345678++12345678+&lt;
+21: &gt;+12345678++12345678&lt;
+20: &gt;+12345678++1234567&lt;
+19: &gt;+12345678++123456&lt;
+18: &gt;+12345678++12345&lt;
+17: &gt;+12345678++1234&lt;
+16: &gt;+12345678++123&lt;
+15: &gt;+12345678++12&lt;
+14: &gt;+12345678++1&lt;
+13: &gt;+12345678++&lt;
+12: &gt;+12345678+&lt;</pre></td></tr>
+<tr class="match"><td>run_file/extfh_using_isam_callback</td><td>MATCH</td><td><pre>OK: Operations on empty file
+Loading sample data file.
+Sample data file load complete.
+LIST SAMPLE FILE
+Key: EPS00000 is EPSILON EQUIPMENT SUPPLY  Disk=8417    .
+Key: FOR00000 is FORTUNE COOKIE COMPANY    Disk=8470    .
+Key: GAM00000 is GAMMA X-RAY TECHNOLOGY    Disk=8417    .
+Key: GIB00000 is GIBRALTER LIFE INSURANCE  Disk=8417    .
+Key: H&amp;J00000 is H &amp; J PLUMBING SUPPLIES   Disk=8470    .
+Key: INC00000 is INCREMENTAL BACKUP CORP.  Disk=8417    .
+Key: JOH00000 is JOHNSON BOATING SUPPLIES  Disk=8417    .
+Key: KON00000 is KONFLAB PLASTIC PRODUCTS. Disk=8417    .
+Key: LEW00000 is LEWISTON GRAPHICS LTD.    Disk=8470    .
+Key: MOR00000 is MORNINGSIDE CARPENTRY.    Disk=8470    .
+Key: NEW00000 is NEW WAVE SURF SHOPS INC.  Disk=8470    .
+LIST SAMPLE FILE DESCENDING
+Key: NEW00000 is NEW WAVE SURF SHOPS INC.  Disk=8470    .
+Key: MOR00000 is MORNINGSIDE CARPENTRY.    Disk=8470    .
+Key: LEW00000 is LEWISTON GRAPHICS LTD.    Disk=8470    .
+Key: KON00000 is KONFLAB PLASTIC PRODUCTS. Disk=8417    .</pre></td><td><pre>OK: Operations on empty file
+Loading sample data file.
+Sample data file load complete.
+LIST SAMPLE FILE
+Key: EPS00000 is EPSILON EQUIPMENT SUPPLY  Disk=8417    .
+Key: FOR00000 is FORTUNE COOKIE COMPANY    Disk=8470    .
+Key: GAM00000 is GAMMA X-RAY TECHNOLOGY    Disk=8417    .
+Key: GIB00000 is GIBRALTER LIFE INSURANCE  Disk=8417    .
+Key: H&amp;J00000 is H &amp; J PLUMBING SUPPLIES   Disk=8470    .
+Key: INC00000 is INCREMENTAL BACKUP CORP.  Disk=8417    .
+Key: JOH00000 is JOHNSON BOATING SUPPLIES  Disk=8417    .
+Key: KON00000 is KONFLAB PLASTIC PRODUCTS. Disk=8417    .
+Key: LEW00000 is LEWISTON GRAPHICS LTD.    Disk=8470    .
+Key: MOR00000 is MORNINGSIDE CARPENTRY.    Disk=8470    .
+Key: NEW00000 is NEW WAVE SURF SHOPS INC.  Disk=8470    .
+LIST SAMPLE FILE DESCENDING
+Key: NEW00000 is NEW WAVE SURF SHOPS INC.  Disk=8470    .
+Key: MOR00000 is MORNINGSIDE CARPENTRY.    Disk=8470    .
+Key: LEW00000 is LEWISTON GRAPHICS LTD.    Disk=8470    .
+Key: KON00000 is KONFLAB PLASTIC PRODUCTS. Disk=8417    .</pre></td></tr>
+<tr class="match"><td>run_file/extfh_sequential_files</td><td>MATCH</td><td><pre>EXFTH did OPEN_IN; Status=35; File now Closed
+Open Input when no file Sts:35
+EXFTH did OPEN_EXT; Status=35; File now Closed
+Open Extend when no file Sts:35
+EXFTH did CLOSE; Status=42; File now Closed
+Close when no open file Sts:42
+EXFTH did OPEN_OUT; Status=00; File now Open
+EXFTH did CLOSE; Status=00; File now Closed
+EXFTH did OPEN_EXT; Status=00; File now Open
+Open Extend when empty file Sts:00
+EXFTH did CLOSE; Status=00; File now Closed
+Loading sample data file.
+EXFTH did OPEN_OUT; Status=00; File now Open
+EXFTH did WRITE; Status=00
+EXFTH did WRITE; Status=00
+EXFTH did WRITE; Status=00
+EXFTH did WRITE; Status=00
+EXFTH did WRITE; Status=00
+EXFTH did WRITE; Status=00
+Sample data file load complete.</pre></td><td><pre>EXFTH did OPEN_IN; Status=35; File now Closed
+Open Input when no file Sts:35
+EXFTH did OPEN_EXT; Status=35; File now Closed
+Open Extend when no file Sts:35
+EXFTH did CLOSE; Status=42; File now Closed
+Close when no open file Sts:42
+EXFTH did OPEN_OUT; Status=00; File now Open
+EXFTH did CLOSE; Status=00; File now Closed
+EXFTH did OPEN_EXT; Status=00; File now Open
+Open Extend when empty file Sts:00
+EXFTH did CLOSE; Status=00; File now Closed
+Loading sample data file.
+EXFTH did OPEN_OUT; Status=00; File now Open
+EXFTH did WRITE; Status=00
+EXFTH did WRITE; Status=00
+EXFTH did WRITE; Status=00
+EXFTH did WRITE; Status=00
+EXFTH did WRITE; Status=00
+EXFTH did WRITE; Status=00
+Sample data file load complete.</pre></td></tr>
+<tr class="match"><td>run_file/extfh_fixed_sequential</td><td>MATCH</td><td><pre>FBSEXTFH: STARTING.
+FBSEXTFH: CREATING FIXED  SEQ FILE.
+FBSEXTFH: FIXED  SEQ FILE IS OPEN OUTPUT.
+FBSEXTFH: FIXED  SEQ WRITES COMPLETE.
+FBSEXTFH: FIXED  SEQ FILE IS CLOSED.
+FBSEXTFH: READING FIXED  SEQ FILE.
+FBSEXTFH: FIXED  SEQ FILE IS OPEN INPUT.
+FBSEXTFH: RECORD = THERE IS LITTLE LAMB                    . Size:0000000080
+FBSEXTFH: RECORD = THE LAMB WAS GRAND AND A GRANDMA        . Size:0000000080
+FBSEXTFH: RECORD = THE OLD EWE CHORTLED                    . Size:0000000080
+FBSEXTFH: FILE STATUS = 10
+FBSEXTFH: FIXED  SEQ READS COMPLETE.
+FBSEXTFH: LSEQ FILE IS CLOSED.
+FBSEXTFH: ENDING.</pre></td><td><pre>FBSEXTFH: STARTING.
+FBSEXTFH: CREATING FIXED  SEQ FILE.
+FBSEXTFH: FIXED  SEQ FILE IS OPEN OUTPUT.
+FBSEXTFH: FIXED  SEQ WRITES COMPLETE.
+FBSEXTFH: FIXED  SEQ FILE IS CLOSED.
+FBSEXTFH: READING FIXED  SEQ FILE.
+FBSEXTFH: FIXED  SEQ FILE IS OPEN INPUT.
+FBSEXTFH: RECORD = THERE IS LITTLE LAMB                    . Size:0000000080
+FBSEXTFH: RECORD = THE LAMB WAS GRAND AND A GRANDMA        . Size:0000000080
+FBSEXTFH: RECORD = THE OLD EWE CHORTLED                    . Size:0000000080
+FBSEXTFH: FILE STATUS = 10
+FBSEXTFH: FIXED  SEQ READS COMPLETE.
+FBSEXTFH: LSEQ FILE IS CLOSED.
+FBSEXTFH: ENDING.</pre></td></tr>
+<tr class="match"><td>run_file/extfh_operation_op_getinfo_query_file</td><td>MATCH</td><td><pre>Status: 00 File: testisam            .
+ Nkeys: 0003 Recsz: 0000000177
+kdblen: 0398
+ Index: 01 Parts: 00001 Offset: 00062 Flags: 000 Comp: 000 Sparse: 000
+   Pos: 0000000000   Len: 0000000008   Desc: 000 Type: 000
+ Index: 02 Parts: 00001 Offset: 00072 Flags: 064 Comp: 000 Sparse: 000
+   Pos: 0000000109   Len: 0000000010   Desc: 032 Type: 032
+ Index: 03 Parts: 00003 Offset: 00082 Flags: 066 Comp: 000 Sparse: 042
+   Pos: 0000000156   Len: 0000000008   Desc: 000 Type: 000
+   Pos: 0000000119   Len: 0000000025   Desc: 000 Type: 000
+   Pos: 0000000144   Len: 0000000008   Desc: 000 Type: 000</pre></td><td><pre>Status: 00 File: testisam            .
+ Nkeys: 0003 Recsz: 0000000177
+kdblen: 0398
+ Index: 01 Parts: 00001 Offset: 00062 Flags: 000 Comp: 000 Sparse: 000
+   Pos: 0000000000   Len: 0000000008   Desc: 000 Type: 000
+ Index: 02 Parts: 00001 Offset: 00072 Flags: 064 Comp: 000 Sparse: 000
+   Pos: 0000000109   Len: 0000000010   Desc: 032 Type: 032
+ Index: 03 Parts: 00003 Offset: 00082 Flags: 066 Comp: 000 Sparse: 042
+   Pos: 0000000156   Len: 0000000008   Desc: 000 Type: 000
+   Pos: 0000000119   Len: 0000000025   Desc: 000 Type: 000
+   Pos: 0000000144   Len: 0000000008   Desc: 000 Type: 000</pre></td></tr>
+<tr class="match"><td>run_file/extfh_changing_record_address</td><td>MATCH</td><td><pre>AFTER READ ------&gt; RECORD-3                           .
+AFTER WRITE -----&gt; RECORD-3                 1234567890.
+AFTER READ PREV -&gt; RECORD-5                           .</pre></td><td><pre>AFTER READ ------&gt; RECORD-3                           .
+AFTER WRITE -----&gt; RECORD-3                 1234567890.
+AFTER READ PREV -&gt; RECORD-5                           .</pre></td></tr>
+<tr class="match"><td>run_file/extfh_indexed_with_multiple_keys</td><td>MATCH</td><td><pre>READ ------&gt; RECORD-3            0000000003000000000000003          .
+WRITE -----&gt; RECORD-3            00000000030000000000000031234567890.
+READ PREV -&gt; RECORD-7            0000000007000000000000007          .</pre></td><td><pre>READ ------&gt; RECORD-3            0000000003000000000000003          .
+WRITE -----&gt; RECORD-3            00000000030000000000000031234567890.
+READ PREV -&gt; RECORD-7            0000000007000000000000007          .</pre></td></tr>
+<tr class="match"><td>run_file/extfh_relative_files</td><td>MATCH</td><td><pre>READ    00003: RECORD-3            0000000003           .
+REWRITE 00003: RECORD-3            00000000031234567890 .
+READ    00006: RECORD-6            0000000006           .
+REWRITE 00006: RECORD-6            00000000061234567890 .</pre></td><td><pre>READ    00003: RECORD-3            0000000003           .
+REWRITE 00003: RECORD-3            00000000031234567890 .
+READ    00006: RECORD-6            0000000006           .
+REWRITE 00006: RECORD-6            00000000061234567890 .</pre></td></tr>
+<tr class="match"><td>run_file/extfh_reading_two_files_with_one_fcd</td><td>MATCH</td><td><pre>OPEN STATUS:0/48
+READ NEXT STATUS:0/48
+DATA:SEQ01     -
+READ NEXT STATUS:0/48
+DATA:SEQ02     -
+READ NEXT STATUS:0/48
+DATA:SEQ03     -
+READ NEXT STATUS:0/48
+DATA:SEQ04     -
+READ NEXT STATUS:0/48
+DATA:SEQ05     -
+READ NEXT STATUS:1/48
+DATA:          -
+CLOSE STATUS:0/48
+OPEN STATUS:0/48
+READ NEXT STATUS:0/48
+DATA:TXTA123456-
+READ NEXT STATUS:0/48
+DATA:TXTB123456-
+READ NEXT STATUS:0/48</pre></td><td><pre>OPEN STATUS:0/48
+READ NEXT STATUS:0/48
+DATA:SEQ01     -
+READ NEXT STATUS:0/48
+DATA:SEQ02     -
+READ NEXT STATUS:0/48
+DATA:SEQ03     -
+READ NEXT STATUS:0/48
+DATA:SEQ04     -
+READ NEXT STATUS:0/48
+DATA:SEQ05     -
+READ NEXT STATUS:1/48
+DATA:          -
+CLOSE STATUS:0/48
+OPEN STATUS:0/48
+READ NEXT STATUS:0/48
+DATA:TXTA123456-
+READ NEXT STATUS:0/48
+DATA:TXTB123456-
+READ NEXT STATUS:0/48</pre></td></tr>
+<tr class="match"><td>run_file/relative_multi_record</td><td>MATCH</td><td><pre>Loading sample program data file.
+Sample program data file load complete.
+Initial Re-Read Open Sts:00
+Read2 ALP00000 #:00001 Trms:0010
+Read  BET00000 #:00002 Trms:0013
+Read2 GAM00000 #:00003 Trms:0075
+Read  DEL00000 #:00004 Trms:0010
+Read2 EPS00000 #:00005 Trms:0090
+Read  FOR00000 #:00006 Trms:0254
+Read Status: 10
+For Rewrite Open I-O Sts:00
+Read2 ALP00000 #:00001 Trms:0010
+REWRITE ALP00000 Sts 00 Trms:0011
+For Rewrite/Delete Open I-O Sts:00
+Read2 ALP00000 #:00001 Trms:0011
+REWRITE ALP00000 Sts 00 Trms:0012
+Read  BET00000 #:00002 Trms:0013
+DELETE BET00000 Sts 00
+Re-list Open Sts:00
+Read2 ALP00000 #:00001 Trms:0012</pre></td><td><pre>Loading sample program data file.
+Sample program data file load complete.
+Initial Re-Read Open Sts:00
+Read2 ALP00000 #:00001 Trms:0010
+Read  BET00000 #:00002 Trms:0013
+Read2 GAM00000 #:00003 Trms:0075
+Read  DEL00000 #:00004 Trms:0010
+Read2 EPS00000 #:00005 Trms:0090
+Read  FOR00000 #:00006 Trms:0254
+Read Status: 10
+For Rewrite Open I-O Sts:00
+Read2 ALP00000 #:00001 Trms:0010
+REWRITE ALP00000 Sts 00 Trms:0011
+For Rewrite/Delete Open I-O Sts:00
+Read2 ALP00000 #:00001 Trms:0011
+REWRITE ALP00000 Sts 00 Trms:0012
+Read  BET00000 #:00002 Trms:0013
+DELETE BET00000 Sts 00
+Re-list Open Sts:00
+Read2 ALP00000 #:00001 Trms:0012</pre></td></tr>
+<tr class="match"><td>run_file/turn_ec_i_o</td><td>MATCH</td><td><pre>a
+a
+10
+
+a
+a
+10
+
+a</pre></td><td><pre>a
+a
+10
+
+a
+a
+10
+
+a</pre></td></tr>
+<tr class="match"><td>run_file/line_sequential_rewrite</td><td>MATCH</td><td><pre>Loading sample program data file.
+Sample program data file load complete.
+Open Sts:00
+Read  ALP00000 Trms:08240
+Read  BET00000 Trms:00010
+Read  GAM00000 Trms:00013
+Read  DEL00000 Trms:65535
+Read  ALP00000 Trms:08240
+REWRITE ALP00000 Sts 44 Trms:00010
+Read  ALP00000 Trms:08240
+Read  BET00000 Trms:00010
+REWRITE BET00000 Sts 00 Trms:00011
+Read  GAM00000 Trms:00013
+Read EPS00000 Sts:00
+REWRITE EPS00000 Sts 00 Trms:08240
+List back Open Sts:00
+Read  ALP00000 Trms:08240
+Read  BET00000 Trms:00011
+Read  GAM00000 Trms:00013
+Read  DEL00000 Trms:65535</pre></td><td><pre>Loading sample program data file.
+Sample program data file load complete.
+Open Sts:00
+Read  ALP00000 Trms:08240
+Read  BET00000 Trms:00010
+Read  GAM00000 Trms:00013
+Read  DEL00000 Trms:65535
+Read  ALP00000 Trms:08240
+REWRITE ALP00000 Sts 44 Trms:00010
+Read  ALP00000 Trms:08240
+Read  BET00000 Trms:00010
+REWRITE BET00000 Sts 00 Trms:00011
+Read  GAM00000 Trms:00013
+Read EPS00000 Sts:00
+REWRITE EPS00000 Sts 00 Trms:08240
+List back Open Sts:00
+Read  ALP00000 Trms:08240
+Read  BET00000 Trms:00011
+Read  GAM00000 Trms:00013
+Read  DEL00000 Trms:65535</pre></td></tr>
+<tr class="match"><td>run_file/line_sequential_data</td><td>MATCH</td><td><pre>MF Load data
+MF Open Sts: 00
+Read  ALP00000 Trms:0010
+Read  BET00000 Trms:0013
+Read  GAM00000 Trms:0003
+Read  DEL00000 Trms:0254
+Read Status: 10
+Std Open Sts: 00
+Read Status: 09
+Std Load data
+Error status 71 writing record ALP00000</pre></td><td><pre>MF Load data
+MF Open Sts: 00
+Read  ALP00000 Trms:0010
+Read  BET00000 Trms:0013
+Read  GAM00000 Trms:0003
+Read  DEL00000 Trms:0254
+Read Status: 10
+Std Open Sts: 00
+Read Status: 09
+Std Load data
+Error status 71 writing record ALP00000</pre></td></tr>
+<tr class="match"><td>run_file/concatenated_files</td><td>MATCH</td><td><pre>OPEN I-O: file1+file2+file3                                Sts:35
+OPEN INPUT: file1&amp;file2&amp;file3                                Sts:35</pre></td><td><pre>OPEN I-O: file1+file2+file3                                Sts:35
+OPEN INPUT: file1&amp;file2&amp;file3                                Sts:35</pre></td></tr>
+<tr class="match"><td>run_file/scope_of_fd_global_in_nested_programs</td><td>MATCH</td><td><pre>ENTERING NESTED-PROGRAM-1-1
+TRYING TO WRITE
+EXITING NESTED-PROGRAM-1-1
+CLOSING FILE DESCRIPTOR
+ENTERING NESTED-PROGRAM-1-2
+TRYING TO WRITE
+ERROR ON FILE-EXT
+EXITING NESTED-PROGRAM-1-2</pre></td><td><pre>ENTERING NESTED-PROGRAM-1-1
+TRYING TO WRITE
+EXITING NESTED-PROGRAM-1-1
+CLOSING FILE DESCRIPTOR
+ENTERING NESTED-PROGRAM-1-2
+TRYING TO WRITE
+ERROR ON FILE-EXT
+EXITING NESTED-PROGRAM-1-2</pre></td></tr>
+<tr class="match"><td>run_functions/function_abs</td><td>MATCH</td><td><pre>+0001.2345</pre></td><td><pre>+0001.2345</pre></td></tr>
+<tr class="match"><td>run_functions/function_as_call_parameter_by_content</td><td>MATCH</td><td><pre>AbcD</pre></td><td><pre>AbcD</pre></td></tr>
+<tr class="match"><td>run_functions/function_currency_symbol</td><td>MATCH</td><td><pre>OK</pre></td><td><pre>OK</pre></td></tr>
+<tr class="match"><td>run_functions/function_exception_file</td><td>MATCH</td><td><pre>00|35TEST-FILE</pre></td><td><pre>00|35TEST-FILE</pre></td></tr>
+<tr class="match"><td>run_functions/function_exception_location</td><td>MATCH</td><td><pre> |prog; A00 OF A00-MAIN; 21</pre></td><td><pre> |prog; A00 OF A00-MAIN; 21</pre></td></tr>
+<tr class="match"><td>run_functions/function_exception_statement</td><td>MATCH</td><td><pre>                               |OPEN                           </pre></td><td><pre>                               |OPEN                           </pre></td></tr>
+<tr class="match"><td>run_functions/function_exception_status</td><td>MATCH</td><td><pre>                               |EC-I-O-PERMANENT-ERROR         </pre></td><td><pre>                               |EC-I-O-PERMANENT-ERROR         </pre></td></tr>
+<tr class="match"><td>run_functions/function_locale_date</td><td>MATCH</td><td><pre>OK</pre></td><td><pre>OK</pre></td></tr>
+<tr class="match"><td>run_functions/function_locale_time</td><td>MATCH</td><td><pre>OK</pre></td><td><pre>OK</pre></td></tr>
+<tr class="match"><td>run_functions/function_locale_time_from_seconds</td><td>MATCH</td><td><pre>OK</pre></td><td><pre>OK</pre></td></tr>
+<tr class="match"><td>run_functions/function_max</td><td>MATCH</td><td><pre>8</pre></td><td><pre>8</pre></td></tr>
+<tr class="match"><td>run_functions/function_mean</td><td>MATCH</td><td><pre>-00000001.2</pre></td><td><pre>-00000001.2</pre></td></tr>
+<tr class="match"><td>run_functions/function_median</td><td>MATCH</td><td><pre>0</pre></td><td><pre>0</pre></td></tr>
+<tr class="match"><td>run_functions/function_midrange</td><td>MATCH</td><td><pre>-000000003</pre></td><td><pre>-000000003</pre></td></tr>
+<tr class="match"><td>run_functions/function_min</td><td>MATCH</td><td><pre>-14</pre></td><td><pre>-14</pre></td></tr>
+<tr class="match"><td>run_functions/function_module_caller_id</td><td>MATCH</td><td><pre>prog</pre></td><td><pre>prog</pre></td></tr>
+<tr class="match"><td>run_functions/function_module_date</td><td>MATCH</td><td><pre>OK</pre></td><td><pre>OK</pre></td></tr>
+<tr class="match"><td>run_functions/function_module_formatted_date</td><td>MATCH</td><td><pre>OK</pre></td><td><pre>OK</pre></td></tr>
+<tr class="match"><td>run_functions/function_module_id</td><td>MATCH</td><td><pre>prog</pre></td><td><pre>prog</pre></td></tr>
+<tr class="match"><td>run_functions/function_module_path</td><td>MATCH</td><td><pre>OK</pre></td><td><pre>OK</pre></td></tr>
+<tr class="match"><td>run_functions/function_module_source</td><td>MATCH</td><td><pre>prog.cob</pre></td><td><pre>prog.cob</pre></td></tr>
+<tr class="match"><td>run_functions/function_module_time</td><td>MATCH</td><td><pre>OK</pre></td><td><pre>OK</pre></td></tr>
+<tr class="match"><td>run_functions/function_monetary_decimal_point</td><td>MATCH</td><td><pre>OK</pre></td><td><pre>OK</pre></td></tr>
+<tr class="match"><td>run_functions/function_monetary_thousands_separator</td><td>MATCH</td><td><pre>OK</pre></td><td><pre>OK</pre></td></tr>
+<tr class="match"><td>run_functions/function_numeric_decimal_point</td><td>MATCH</td><td><pre>OK</pre></td><td><pre>OK</pre></td></tr>
+<tr class="match"><td>run_functions/function_numeric_thousands_separator</td><td>MATCH</td><td><pre>OK</pre></td><td><pre>OK</pre></td></tr>
+<tr class="match"><td>run_functions/function_ord</td><td>MATCH</td><td><pre>000000108</pre></td><td><pre>000000108</pre></td></tr>
+<tr class="match"><td>run_functions/function_ord_max</td><td>MATCH</td><td><pre>000000004</pre></td><td><pre>000000004</pre></td></tr>
+<tr class="match"><td>run_functions/function_ord_min</td><td>MATCH</td><td><pre>000000002</pre></td><td><pre>000000002</pre></td></tr>
+<tr class="match"><td>run_functions/function_present_value</td><td>MATCH</td><td><pre>00000.5625</pre></td><td><pre>00000.5625</pre></td></tr>
+<tr class="match"><td>run_functions/function_test_date_yyyymmdd</td><td>MATCH</td><td><pre>000000003</pre></td><td><pre>000000003</pre></td></tr>
+<tr class="match"><td>run_functions/function_test_day_yyyyddd</td><td>MATCH</td><td><pre>000000002</pre></td><td><pre>000000002</pre></td></tr>
+<tr class="match"><td>run_functions/function_trim</td><td>MATCH</td><td><pre>a#b.c%d+e$
+ a#b.c%d+e$</pre></td><td><pre>a#b.c%d+e$
+ a#b.c%d+e$</pre></td></tr>
+<tr class="match"><td>run_functions/function_trim_with_reference_modding</td><td>MATCH</td><td><pre>#b.
+a#b</pre></td><td><pre>#b.
+a#b</pre></td></tr>
+<tr class="match"><td>run_functions/function_trim_zero_length</td><td>MATCH</td><td><pre>&gt;    &lt;
+&gt;&lt;</pre></td><td><pre>&gt;    &lt;
+&gt;&lt;</pre></td></tr>
+<tr class="match"><td>run_functions/udf_in_compute</td><td>MATCH</td><td><pre>201</pre></td><td><pre>201</pre></td></tr>
+<tr class="match"><td>run_functions/udf_replacing_intrinsic_function</td><td>MATCH</td><td><pre>" _ C_O_B_O_L _ "
+" - C-O-B-O-L - "</pre></td><td><pre>" _ C_O_B_O_L _ "
+" - C-O-B-O-L - "</pre></td></tr>
+<tr class="match"><td>run_functions/udf_with_recursion</td><td>MATCH</td><td><pre>Step: 1, Arg: 5, Return: 5
+Step: 2, Arg: 4, Return: 5
+Step: 3, Arg: 3, Return: 5
+Step: 4, Arg: 2, Return: 5
+Step: 5, Arg: 1, Return: 5
+Return value '5'</pre></td><td><pre>Step: 1, Arg: 5, Return: 5
+Step: 2, Arg: 4, Return: 5
+Step: 3, Arg: 3, Return: 5
+Step: 4, Arg: 2, Return: 5
+Step: 5, Arg: 1, Return: 5
+Return value '5'</pre></td></tr>
+<tr class="match"><td>run_fundamental/display_literals</td><td>MATCH</td><td><pre>abc
+123
++123
+-123
+12.3
++12.3
+-12.3
+1.23
++1.23
+-1.23
+.123
++.123
+-.123
+5
+236</pre></td><td><pre>abc
+123
++123
+-123
+12.3
++12.3
+-12.3
+1.23
++1.23
+-1.23
+.123
++.123
+-.123
+5
+236</pre></td></tr>
+<tr class="match"><td>run_fundamental/display_literals_decimal_point_is_comma</td><td>MATCH</td><td><pre>12,3
++12,3
+-12,3
+1,23
++1,23
+-1,23</pre></td><td><pre>12,3
++12,3
+-12,3
+1,23
++1,23
+-1,23</pre></td></tr>
+<tr class="match"><td>run_fundamental/hexadecimal_literal</td><td>MATCH</td><td><pre>123
+00010200</pre></td><td><pre>123
+00010200</pre></td></tr>
+<tr class="match"><td>run_fundamental/display_data_items_with_value_clause</td><td>MATCH</td><td><pre>abc
+123
++123
+-123
+12.3
++12.3
+-12.3</pre></td><td><pre>abc
+123
++123
+-123
+12.3
++12.3
+-12.3</pre></td></tr>
+<tr class="match"><td>run_fundamental/display_data_items_with_move_statement</td><td>MATCH</td><td><pre>abc
+123
++123
+-123
+12.3
++12.3
+-12.3</pre></td><td><pre>abc
+123
++123
+-123
+12.3
++12.3
+-12.3</pre></td></tr>
+<tr class="match"><td>run_fundamental/move_to_edited_item_1</td><td>MATCH</td><td><pre>&gt;    1&lt;
+&gt;    0&lt;
+&gt;    0&lt;
+&gt;   +0&lt;
+&gt;     &lt;</pre></td><td><pre>&gt;    1&lt;
+&gt;    0&lt;
+&gt;    0&lt;
+&gt;   +0&lt;
+&gt;     &lt;</pre></td></tr>
+<tr class="match"><td>run_fundamental/move_to_edited_item_2</td><td>MATCH</td><td><pre>&gt;0000 &lt;
+&gt;0000+&lt;
+&gt;     &lt;
+&gt;0000  &lt;
+&gt;0001DB&lt;</pre></td><td><pre>&gt;0000 &lt;
+&gt;0000+&lt;
+&gt;     &lt;
+&gt;0000  &lt;
+&gt;0001DB&lt;</pre></td></tr>
+<tr class="match"><td>run_fundamental/move_to_item_with_simple_and_floating_insertion</td><td>MATCH</td><td><pre>&gt;-**123&lt;
+&gt;$  *1,234.56&lt;
+&gt;$   1,234.56&lt;</pre></td><td><pre>&gt;-**123&lt;
+&gt;$  *1,234.56&lt;
+&gt;$   1,234.56&lt;</pre></td></tr>
+<tr class="match"><td>run_fundamental/move_to_justified_item</td><td>MATCH</td><td><pre>&gt;   0011&lt;
+&gt;   0022&lt;
+&gt;   0033&lt;
+&gt; 004400&lt;
+&gt;5500000&lt;</pre></td><td><pre>&gt;   0011&lt;
+&gt;   0022&lt;
+&gt;   0033&lt;
+&gt; 004400&lt;
+&gt;5500000&lt;</pre></td></tr>
+<tr class="match"><td>run_fundamental/move_integer_literal_to_alphanumeric</td><td>MATCH</td><td><pre>0   1000</pre></td><td><pre>0   1000</pre></td></tr>
+<tr class="match"><td>run_fundamental/global_at_same_level</td><td>MATCH</td><td><pre>prog1
+prog2
+prog1</pre></td><td><pre>prog1
+prog2
+prog1</pre></td></tr>
+<tr class="match"><td>run_fundamental/global_at_lower_level</td><td>MATCH</td><td><pre>prog1
+prog2
+prog2</pre></td><td><pre>prog1
+prog2
+prog2</pre></td></tr>
+<tr class="match"><td>run_fundamental/global_constant</td><td>MATCH</td><td><pre>GLOBP1GLOBV1
+GLOBP2GLOBV2
+in prog3
+GLOB-PATH</pre></td><td><pre>GLOBP1GLOBV1
+GLOBP2GLOBV2
+in prog3
+GLOB-PATH</pre></td></tr>
+<tr class="match"><td>run_fundamental/global_identifiers_from_environment_division</td><td>MATCH</td><td><pre>0.0004,00Y</pre></td><td><pre>0.0004,00Y</pre></td></tr>
+<tr class="match"><td>run_fundamental/entry_point_visibility_1</td><td>MATCH</td><td><pre>AB</pre></td><td><pre>AB</pre></td></tr>
+<tr class="match"><td>run_fundamental/contained_program_visibility_4</td><td>MATCH</td><td><pre>P1P2P3P4</pre></td><td><pre>P1P2P3P4</pre></td></tr>
+<tr class="match"><td>run_fundamental/call_alphanumeric_data_name</td><td>MATCH</td><td><pre>12&lt;
+121&lt;</pre></td><td><pre>12&lt;
+121&lt;</pre></td></tr>
+<tr class="match"><td>run_fundamental/call_program_pointer</td><td>MATCH</td><td><pre>12&lt;
+121&lt;</pre></td><td><pre>12&lt;
+121&lt;</pre></td></tr>
+<tr class="match"><td>run_fundamental/call_cancel_set_address_program_prototype_name</td><td>MATCH</td><td><pre>12&lt;
+121&lt;</pre></td><td><pre>12&lt;
+121&lt;</pre></td></tr>
+<tr class="match"><td>run_fundamental/cancel_test_3</td><td>MATCH</td><td><pre>121NG</pre></td><td><pre>121NG</pre></td></tr>
+<tr class="match"><td>run_fundamental/separate_sign_positions_1</td><td>MATCH</td><td><pre>-11-</pre></td><td><pre>-11-</pre></td></tr>
+<tr class="match"><td>run_fundamental/separate_sign_positions_2</td><td>MATCH</td><td><pre>+0+00+0+</pre></td><td><pre>+0+00+0+</pre></td></tr>
+<tr class="match"><td>run_fundamental/context_sensitive_words_1</td><td>MATCH</td><td><pre>1</pre></td><td><pre>1</pre></td></tr>
+<tr class="match"><td>run_fundamental/context_sensitive_words_2</td><td>MATCH</td><td><pre>0</pre></td><td><pre>0</pre></td></tr>
+<tr class="match"><td>run_fundamental/context_sensitive_words_3</td><td>MATCH</td><td><pre>0</pre></td><td><pre>0</pre></td></tr>
+<tr class="match"><td>run_fundamental/context_sensitive_words_4</td><td>MATCH</td><td><pre>0</pre></td><td><pre>0</pre></td></tr>
+<tr class="match"><td>run_fundamental/context_sensitive_words_5</td><td>MATCH</td><td><pre>0</pre></td><td><pre>0</pre></td></tr>
+<tr class="match"><td>run_fundamental/context_sensitive_words_6</td><td>MATCH</td><td><pre>0</pre></td><td><pre>0</pre></td></tr>
+<tr class="match"><td>run_fundamental/context_sensitive_words_7</td><td>MATCH</td><td><pre>21</pre></td><td><pre>21</pre></td></tr>
+<tr class="match"><td>run_fundamental/context_sensitive_words_8</td><td>MATCH</td><td><pre>001</pre></td><td><pre>001</pre></td></tr>
+<tr class="match"><td>run_fundamental/rounded_away_from_zero</td><td>MATCH</td><td><pre>+3 -3 +3 -3 +4 -4 +4 -4 +4 -4</pre></td><td><pre>+3 -3 +3 -3 +4 -4 +4 -4 +4 -4</pre></td></tr>
+<tr class="match"><td>run_fundamental/rounded_nearest_away_from_zero</td><td>MATCH</td><td><pre>+2 -2 +3 -3 +3 -3 +4 -4 +4 -4</pre></td><td><pre>+2 -2 +3 -3 +3 -3 +4 -4 +4 -4</pre></td></tr>
+<tr class="match"><td>run_fundamental/rounded_nearest_even</td><td>MATCH</td><td><pre>+2 -2 +2 -2 +3 -3 +4 -4 +4 -4</pre></td><td><pre>+2 -2 +2 -2 +3 -3 +4 -4 +4 -4</pre></td></tr>
+<tr class="match"><td>run_fundamental/rounded_nearest_toward_zero</td><td>MATCH</td><td><pre>+2 -2 +2 -2 +3 -3 +3 -3 +4 -4</pre></td><td><pre>+2 -2 +2 -2 +3 -3 +3 -3 +4 -4</pre></td></tr>
+<tr class="match"><td>run_fundamental/rounded_toward_greater</td><td>MATCH</td><td><pre>+3 -2 +3 -2 +4 -3 +4 -3 +4 -3</pre></td><td><pre>+3 -2 +3 -2 +4 -3 +4 -3 +4 -3</pre></td></tr>
+<tr class="match"><td>run_fundamental/rounded_toward_lesser</td><td>MATCH</td><td><pre>+2 -3 +2 -3 +3 -4 +3 -4 +3 -4</pre></td><td><pre>+2 -3 +2 -3 +3 -4 +3 -4 +3 -4</pre></td></tr>
+<tr class="match"><td>run_fundamental/rounded_truncation</td><td>MATCH</td><td><pre>+2 -2 +2 -2 +3 -3 +3 -3 +3 -3</pre></td><td><pre>+2 -2 +2 -2 +3 -3 +3 -3 +3 -3</pre></td></tr>
+<tr class="match"><td>run_fundamental/numeric_operations_6</td><td>MATCH</td><td><pre>05108855</pre></td><td><pre>05108855</pre></td></tr>
+<tr class="match"><td>run_fundamental/sync_in_occurs</td><td>MATCH</td><td><pre>000000000</pre></td><td><pre>000000000</pre></td></tr>
+<tr class="match"><td>run_fundamental/blank_when_zero</td><td>MATCH</td><td><pre>1</pre></td><td><pre>1</pre></td></tr>
+<tr class="match"><td>run_fundamental/debugging_lines_not_active</td><td>MATCH</td><td><pre>OK</pre></td><td><pre>OK</pre></td></tr>
+<tr class="match"><td>run_fundamental/debugging_lines_fdebugging_line</td><td>MATCH</td><td><pre>OKKO</pre></td><td><pre>OKKO</pre></td></tr>
+<tr class="match"><td>run_fundamental/debugging_lines_with_debugging_mode</td><td>MATCH</td><td><pre>KOOK</pre></td><td><pre>KOOK</pre></td></tr>
+<tr class="match"><td>run_fundamental/debugging_lines_free_format_not_active</td><td>MATCH</td><td><pre>OK</pre></td><td><pre>OK</pre></td></tr>
+<tr class="match"><td>run_fundamental/debugging_lines_free_format_fdebugging_line</td><td>MATCH</td><td><pre>OKKO</pre></td><td><pre>OKKO</pre></td></tr>
+<tr class="match"><td>run_fundamental/use_for_debugging_reference_within_debugging</td><td>MATCH</td><td><pre>NO DEBUG</pre></td><td><pre>NO DEBUG</pre></td></tr>
+<tr class="match"><td>run_fundamental/abbreviated_expressions</td><td>MATCH</td><td><pre>***FINE***</pre></td><td><pre>***FINE***</pre></td></tr>
+<tr class="match"><td>run_fundamental/display_with_p_fields</td><td>MATCH</td><td><pre>00=0; 001=001; 00=0;
+.00=0; .000=0; .123=123; .00=0; .000=0;
+00=0; .02=2; .003=3;
+10=1;</pre></td><td><pre>00=0; 001=001; 00=0;
+.00=0; .000=0; .123=123; .00=0; .000=0;
+00=0; .02=2; .003=3;
+10=1;</pre></td></tr>
+<tr class="match"><td>run_initialize/initialize_occurs_with_sign_leading_trailing</td><td>MATCH</td><td><pre>.123000000000000000+
+.456000000000000000-</pre></td><td><pre>.123000000000000000+
+.456000000000000000-</pre></td></tr>
+<tr class="match"><td>run_initialize/initialize_to_table_format_values_are</td><td>MATCH</td><td><pre>Simple OCCURS with multi VALUES
+01: jan has 31 days
+02: feb has 28 days
+03: mar has 31 days
+04: apr has 30 days
+05: may has 31 days
+06: jun has 30 days
+07: jul has 31 days
+08: aug has 31 days
+09: sep has 30 days
+10: oct has 31 days
+11: nov has 30 days
+12: dec has 31 days
+13:     has 00 days
+Complex OCCURS with multi VALUES
+01-01:  Jan, 31. Feb, 28. Mar, 31. &lt;A&gt;
+01-02:  Apr, 30. May, 31. Jun, 30. &lt;B&gt;
+01-03:  Jul, 31. Aug, 31. Sep, 30. &lt;C&gt;
+01-04:  Oct, 31. Nov, 30. Dec, 31. &lt;D&gt;
+02-01:  JAN, 91. FEB, 28. MAR, 91. &lt;E&gt;</pre></td><td><pre>Simple OCCURS with multi VALUES
+01: jan has 31 days
+02: feb has 28 days
+03: mar has 31 days
+04: apr has 30 days
+05: may has 31 days
+06: jun has 30 days
+07: jul has 31 days
+08: aug has 31 days
+09: sep has 30 days
+10: oct has 31 days
+11: nov has 30 days
+12: dec has 31 days
+13:     has 00 days
+Complex OCCURS with multi VALUES
+01-01:  Jan, 31. Feb, 28. Mar, 31. &lt;A&gt;
+01-02:  Apr, 30. May, 31. Jun, 30. &lt;B&gt;
+01-03:  Jul, 31. Aug, 31. Sep, 30. &lt;C&gt;
+01-04:  Oct, 31. Nov, 30. Dec, 31. &lt;D&gt;
+02-01:  JAN, 91. FEB, 28. MAR, 91. &lt;E&gt;</pre></td></tr>
+<tr class="match"><td>run_misc/comma_separator_without_space</td><td>MATCH</td><td><pre>111</pre></td><td><pre>111</pre></td></tr>
+<tr class="match"><td>run_misc/decimal_point_is_comma_1</td><td>MATCH</td><td><pre>00,50</pre></td><td><pre>00,50</pre></td></tr>
+<tr class="match"><td>run_misc/decimal_point_is_comma_2</td><td>MATCH</td><td><pre>03,00</pre></td><td><pre>03,00</pre></td></tr>
+<tr class="match"><td>run_misc/decimal_point_is_comma_3</td><td>MATCH</td><td><pre>01,50</pre></td><td><pre>01,50</pre></td></tr>
+<tr class="match"><td>run_misc/decimal_point_is_comma_4</td><td>MATCH</td><td><pre>00,10</pre></td><td><pre>00,10</pre></td></tr>
+<tr class="match"><td>run_misc/decimal_point_is_comma_5</td><td>MATCH</td><td><pre>01,10
+00,10</pre></td><td><pre>01,10
+00,10</pre></td></tr>
+<tr class="match"><td>run_misc/currency_sign</td><td>MATCH</td><td><pre>Amount is #  Y1512.34#</pre></td><td><pre>Amount is #  Y1512.34#</pre></td></tr>
+<tr class="match"><td>run_misc/currency_sign_with_picture_symbol</td><td>MATCH</td><td><pre>#EUR 12.34# equal #1,234 ct (EUR)#
+Invoice amount #1 is  $US1,500.00.
+Invoice amount #2 is     $US12.34.</pre></td><td><pre>#EUR 12.34# equal #1,234 ct (EUR)#
+Invoice amount #1 is  $US1,500.00.
+Invoice amount #2 is     $US12.34.</pre></td></tr>
+<tr class="match"><td>run_misc/local_storage_1</td><td>MATCH</td><td><pre>abcabc000abc</pre></td><td><pre>abcabc000abc</pre></td></tr>
+<tr class="match"><td>run_misc/local_storage_2</td><td>MATCH</td><td><pre>abc000</pre></td><td><pre>abc000</pre></td></tr>
+<tr class="match"><td>run_misc/local_storage_3</td><td>MATCH</td><td><pre> 15 26 37</pre></td><td><pre> 15 26 37</pre></td></tr>
+<tr class="match"><td>run_misc/floating_continuation_indicator</td><td>MATCH</td><td><pre>OKOK</pre></td><td><pre>OKOK</pre></td></tr>
+<tr class="match"><td>run_misc/fixed_continuation_indicator</td><td>MATCH</td><td><pre>0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ                       _
+abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789                       _</pre></td><td><pre>0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ                       _
+abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789                       _</pre></td></tr>
+<tr class="match"><td>run_misc/concatenation_operator</td><td>MATCH</td><td><pre>OK OK</pre></td><td><pre>OK OK</pre></td></tr>
+<tr class="match"><td>run_misc/source_fixed_free_directives</td><td>MATCH</td><td><pre>OKOKOKOK</pre></td><td><pre>OKOKOKOK</pre></td></tr>
+<tr class="match"><td>run_misc/turn_directive</td><td>MATCH</td><td><pre>!!</pre></td><td><pre>!!</pre></td></tr>
+<tr class="match"><td>run_misc/index_and_parenthesized_expression</td><td>MATCH</td><td><pre>OK</pre></td><td><pre>OK</pre></td></tr>
+<tr class="match"><td>run_misc/static_call_with_on_exception</td><td>MATCH</td><td><pre>this is callee2</pre></td><td><pre>this is callee2</pre></td></tr>
+<tr class="match"><td>run_misc/call_binary_literal_parameter_length_of</td><td>MATCH</td><td><pre>00000001
+00000009
+00000004</pre></td><td><pre>00000001
+00000009
+00000004</pre></td></tr>
+<tr class="match"><td>run_misc/inspect_converting_alphabet</td><td>MATCH</td><td><pre>Converted: "A#O2018 |!"</pre></td><td><pre>Converted: "A#O2018 |!"</pre></td></tr>
+<tr class="match"><td>run_misc/nested_perform</td><td>MATCH</td><td><pre>XYYXYY</pre></td><td><pre>XYYXYY</pre></td></tr>
+<tr class="match"><td>run_misc/perform_varying_by_0_2_decimal</td><td>MATCH</td><td><pre>XXX</pre></td><td><pre>XXX</pre></td></tr>
+<tr class="match"><td>run_misc/perform_varying_float</td><td>MATCH</td><td><pre>1 2 3 4 5 Test Part 1 Completed
+1 2 3 4 5 Test Part 2 Completed
+5 4 3 2 1 Test Part 3 Completed</pre></td><td><pre>1 2 3 4 5 Test Part 1 Completed
+1 2 3 4 5 Test Part 2 Completed
+5 4 3 2 1 Test Part 3 Completed</pre></td></tr>
+<tr class="match"><td>run_misc/perform_varying_by_phrase_omitted</td><td>MATCH</td><td><pre>XXX</pre></td><td><pre>XXX</pre></td></tr>
+<tr class="match"><td>run_misc/exit_perform</td><td>MATCH</td><td><pre>OK</pre></td><td><pre>OK</pre></td></tr>
+<tr class="match"><td>run_misc/exit_perform_cycle</td><td>MATCH</td><td><pre>OKOK</pre></td><td><pre>OKOK</pre></td></tr>
+<tr class="match"><td>run_misc/unstring_with_function_literal</td><td>MATCH</td><td><pre>PRM(1) is The             :
+PRM(2) is Quick           :
+PRM(3) is Brown           :
+PRM(4) is Fox             :
+Now using UPPER-CASE
+PRM(1) is THE             :
+PRM(2) is QUICK           :
+PRM(3) is BROWN           :
+PRM(4) is FOX             :
+Now using Literal
+PRM(1) is Daddy           :
+PRM(2) is was             :
+PRM(3) is a               :
+PRM(4) is Rolling stone   :
+Now using Literal + LOWER-CASE
+PRM(1) is daddy           :
+PRM(2) is was             :
+PRM(3) is a               :
+PRM(4) is rolling stone   :</pre></td><td><pre>PRM(1) is The             :
+PRM(2) is Quick           :
+PRM(3) is Brown           :
+PRM(4) is Fox             :
+Now using UPPER-CASE
+PRM(1) is THE             :
+PRM(2) is QUICK           :
+PRM(3) is BROWN           :
+PRM(4) is FOX             :
+Now using Literal
+PRM(1) is Daddy           :
+PRM(2) is was             :
+PRM(3) is a               :
+PRM(4) is Rolling stone   :
+Now using Literal + LOWER-CASE
+PRM(1) is daddy           :
+PRM(2) is was             :
+PRM(3) is a               :
+PRM(4) is rolling stone   :</pre></td></tr>
+<tr class="match"><td>run_misc/sort_table_2</td><td>MATCH</td><td><pre>SINGLE TABLE
+04
+03
+02
+01
+LOWER LEVEL TABLE
+04
+03
+02
+01
+MULTY KEY SORT
+06  AbCde  The
+05  abc    cow
+05  abcde  eats
+04  zyx    grass
+03  abcde  and
+02  12345  mooos
+02  12346  the
+01  AbCde  whole
+01  abcde  day</pre></td><td><pre>SINGLE TABLE
+04
+03
+02
+01
+LOWER LEVEL TABLE
+04
+03
+02
+01
+MULTY KEY SORT
+06  AbCde  The
+05  abc    cow
+05  abcde  eats
+04  zyx    grass
+03  abcde  and
+02  12345  mooos
+02  12346  the
+01  AbCde  whole
+01  abcde  day</pre></td></tr>
+<tr class="match"><td>run_misc/sort_table_3</td><td>MATCH</td><td><pre>0004030201</pre></td><td><pre>0004030201</pre></td></tr>
+<tr class="match"><td>run_misc/lookup_entry_from_main_executable</td><td>MATCH</td><td><pre>subprogram+000000042</pre></td><td><pre>subprogram+000000042</pre></td></tr>
+<tr class="match"><td>run_misc/any_length_3</td><td>MATCH</td><td><pre>abcd
+abcdabcd
+aaaaaaaaaaaaaaaaaaaa</pre></td><td><pre>abcd
+abcdabcd
+aaaaaaaaaaaaaaaaaaaa</pre></td></tr>
+<tr class="match"><td>run_misc/picture_with_edit_mask</td><td>MATCH</td><td><pre>WFLT IS $18,536.23
+COST IS $18,536.23</pre></td><td><pre>WFLT IS $18,536.23
+COST IS $18,536.23</pre></td></tr>
+<tr class="match"><td>run_misc/set_last_exception_to_off</td><td>MATCH</td><td><pre>EC-SIZE-OVERFLOW
+prog; ; 10
+EC-SIZE-OVERFLOW
+prog; ; 10</pre></td><td><pre>EC-SIZE-OVERFLOW
+prog; ; 10
+EC-SIZE-OVERFLOW
+prog; ; 10</pre></td></tr>
+<tr class="match"><td>run_misc/figurative_constants_to_numeric_field</td><td>MATCH</td><td><pre>NUM9 value SPACES is 000000.
+9(6) Does NOT test OK for LOW-VALUES
+9(6) tests as ZERO instead of LOW-VALUES
+9(6) Does NOT test OK for HIGH-VALUES
+9(6) tests as ZERO instead of HIGH-VALUES</pre></td><td><pre>NUM9 value SPACES is 000000.
+9(6) Does NOT test OK for LOW-VALUES
+9(6) tests as ZERO instead of LOW-VALUES
+9(6) Does NOT test OK for HIGH-VALUES
+9(6) tests as ZERO instead of HIGH-VALUES</pre></td></tr>
+<tr class="match"><td>run_misc/mf_figurative_to_numeric</td><td>MATCH</td><td><pre>Initial value
+30303936 .
+MOVE BIGFLT
+38333034 .
+MOVE SPACES
+20202020 .
+MOVE LOW-VALUES
+00000000 .
+MOVE HIGH-VALUES
+FFFFFFFF .
+MOVE QUOTE
+22222222 .
+MOVE ALL *
+2A2A2A2A .
+MOVE ALL 0
+30303030 .
+MOVE ALL 'A1'
+41314131 .
+MOVE ALL '21'
+32313231 .</pre></td><td><pre>Initial value
+30303936 .
+MOVE BIGFLT
+38333034 .
+MOVE SPACES
+20202020 .
+MOVE LOW-VALUES
+00000000 .
+MOVE HIGH-VALUES
+FFFFFFFF .
+MOVE QUOTE
+22222222 .
+MOVE ALL *
+2A2A2A2A .
+MOVE ALL 0
+30303030 .
+MOVE ALL 'A1'
+41314131 .
+MOVE ALL '21'
+32313231 .</pre></td></tr>
+<tr class="match"><td>run_misc/trace_feature_with_subroutine</td><td>MATCH</td><td><pre>OK: Operations on empty file
+Loading sample data file.
+Sample data file load complete.
+LIST SAMPLE FILE
+Key: EPS00000 is EPSILON EQUIPMENT SUPPLY  Disk=8417    .
+Key: FOR00000 is FORTUNE COOKIE COMPANY    Disk=8470    .
+Key: GAM00000 is GAMMA X-RAY TECHNOLOGY    Disk=8417    .
+Key: GIB00000 is GIBRALTER LIFE INSURANCE  Disk=8417    .
+Key: H&amp;J00000 is H &amp; J PLUMBING SUPPLIES   Disk=8470    .
+Key: INC00000 is INCREMENTAL BACKUP CORP.  Disk=8417    .
+Key: JOH00000 is JOHNSON BOATING SUPPLIES  Disk=8417    .
+Key: KON00000 is KONFLAB PLASTIC PRODUCTS. Disk=8417    .
+Key: LEW00000 is LEWISTON GRAPHICS LTD.    Disk=8470    .
+Key: MOR00000 is MORNINGSIDE CARPENTRY.    Disk=8470    .
+Key: NEW00000 is NEW WAVE SURF SHOPS INC.  Disk=8470    .
+Stop read after: 11
+LIST SAMPLE FILE DESCENDING
+Key: NEW00000 is NEW WAVE SURF SHOPS INC.  Disk=8470    .
+Key: MOR00000 is MORNINGSIDE CARPENTRY.    Disk=8470    .
+Key: LEW00000 is LEWISTON GRAPHICS LTD.    Disk=8470    .</pre></td><td><pre>OK: Operations on empty file
+Loading sample data file.
+Sample data file load complete.
+LIST SAMPLE FILE
+Key: EPS00000 is EPSILON EQUIPMENT SUPPLY  Disk=8417    .
+Key: FOR00000 is FORTUNE COOKIE COMPANY    Disk=8470    .
+Key: GAM00000 is GAMMA X-RAY TECHNOLOGY    Disk=8417    .
+Key: GIB00000 is GIBRALTER LIFE INSURANCE  Disk=8417    .
+Key: H&amp;J00000 is H &amp; J PLUMBING SUPPLIES   Disk=8470    .
+Key: INC00000 is INCREMENTAL BACKUP CORP.  Disk=8417    .
+Key: JOH00000 is JOHNSON BOATING SUPPLIES  Disk=8417    .
+Key: KON00000 is KONFLAB PLASTIC PRODUCTS. Disk=8417    .
+Key: LEW00000 is LEWISTON GRAPHICS LTD.    Disk=8470    .
+Key: MOR00000 is MORNINGSIDE CARPENTRY.    Disk=8470    .
+Key: NEW00000 is NEW WAVE SURF SHOPS INC.  Disk=8470    .
+Stop read after: 11
+LIST SAMPLE FILE DESCENDING
+Key: NEW00000 is NEW WAVE SURF SHOPS INC.  Disk=8470    .
+Key: MOR00000 is MORNINGSIDE CARPENTRY.    Disk=8470    .
+Key: LEW00000 is LEWISTON GRAPHICS LTD.    Disk=8470    .</pre></td></tr>
+<tr class="match"><td>run_misc/call_with_program_prototypes</td><td>MATCH</td><td><pre>Hello!
+Hello again!</pre></td><td><pre>Hello!
+Hello again!</pre></td></tr>
+<tr class="match"><td>run_misc/redefines_values_on_filler_and_initialize</td><td>MATCH</td><td><pre>The date is 2015*08*21 Compiled
+The date is 0000*08*21 INITIALIZE
+The date is 0000 08 21 WITH FILLER
+The date is 2017-08-21 ALL TO VALUE</pre></td><td><pre>The date is 2015*08*21 Compiled
+The date is 0000*08*21 INITIALIZE
+The date is 0000 08 21 WITH FILLER
+The date is 2017-08-21 ALL TO VALUE</pre></td></tr>
+<tr class="match"><td>run_misc/quote_marks_in_comment_paragraphs</td><td>MATCH</td><td><pre>Hello, world!</pre></td><td><pre>Hello, world!</pre></td></tr>
+<tr class="match"><td>run_misc/numeric_move_with_without_fbinary_truncate</td><td>MATCH</td><td><pre>x IS 30000
+x IS 30000
+x IS 30000</pre></td><td><pre>x IS 30000
+x IS 30000
+x IS 30000</pre></td></tr>
+<tr class="match"><td>run_misc/program_id_call_literal_variable_with_spaces</td><td>MATCH</td><td><pre>SUB GOT X
+SUB GOT Y
+SUB GOT Z
+S U B  GOT A
+S U B  GOT B</pre></td><td><pre>SUB GOT X
+SUB GOT Y
+SUB GOT Z
+S U B  GOT A
+S U B  GOT B</pre></td></tr>
+<tr class="match"><td>run_misc/call_with_directory</td><td>MATCH</td><td><pre>SUB GOT X
+SUB GOT Y
+SUB GOT Z
+SUB GOT 0</pre></td><td><pre>SUB GOT X
+SUB GOT Y
+SUB GOT Z
+SUB GOT 0</pre></td></tr>
+<tr class="match"><td>run_misc/c_api_param_based</td><td>MATCH</td><td><pre>CAPI called with 2 parameters
+ 1: BINARY   BY VALUE     S9(9)       2560;
+ 2: DISPLAY  BY VALUE     9(2)        16;
+CAPI called with 2 parameters
+ 1: BINARY   BY REFERENCE 9(5)        1280;
+ 2: EDITED   BY REFERENCE S9(5)V9(2)  -51277  to   511.47 ;
+CAPI called with 1 parameters
+ 1: BINARY   BY REFERENCE S9(5)       1024;
+CAPI called with 1 parameters
+ 1: BINARY   BY REFERENCE 9(9)        2560;
+CAPI called with 2 parameters
+ 1: COMP-3   BY REFERENCE 9(8)        4096;
+ 2: EDITED   BY REFERENCE S9(5)V9(2)  51277  to   514.07-;
+CAPI called with 4 parameters
+ 1: DISPLAY  BY REFERENCE S9(8)       8192;
+ 2: BINARY   BY REFERENCE S9(5)       1027;
+ 3: X        BY REFERENCE X(9)        'Hello';
+ 4: Group    BY REFERENCE (18)        'Hello    World    ';
+CAPI called with 3 parameters
+ 1: COMP-3   BY REFERENCE 9(8)        4099;</pre></td><td><pre>CAPI called with 2 parameters
+ 1: BINARY   BY VALUE     S9(9)       2560;
+ 2: DISPLAY  BY VALUE     9(2)        16;
+CAPI called with 2 parameters
+ 1: BINARY   BY REFERENCE 9(5)        1280;
+ 2: EDITED   BY REFERENCE S9(5)V9(2)  -51277  to   511.47 ;
+CAPI called with 1 parameters
+ 1: BINARY   BY REFERENCE S9(5)       1024;
+CAPI called with 1 parameters
+ 1: BINARY   BY REFERENCE 9(9)        2560;
+CAPI called with 2 parameters
+ 1: COMP-3   BY REFERENCE 9(8)        4096;
+ 2: EDITED   BY REFERENCE S9(5)V9(2)  51277  to   514.07-;
+CAPI called with 4 parameters
+ 1: DISPLAY  BY REFERENCE S9(8)       8192;
+ 2: BINARY   BY REFERENCE S9(5)       1027;
+ 3: X        BY REFERENCE X(9)        'Hello';
+ 4: Group    BY REFERENCE (18)        'Hello    World    ';
+CAPI called with 3 parameters
+ 1: COMP-3   BY REFERENCE 9(8)        4099;</pre></td></tr>
+<tr class="match"><td>run_misc/c_api_field_based</td><td>MATCH</td><td><pre>CAPI called with 2 parameters
+ 1: BINARY   BY VALUE     S9(9)       +000002560;
+ 2: DISPLAY  BY VALUE     9(2)        16;
+CAPI called with 2 parameters
+ 1: BINARY   BY REFERENCE 9(5)        0000001280;
+ 2: EDITED   BY REFERENCE S9(5)V9(2)    512.77-  to   511.47 ;
+CAPI called with 1 parameters
+ 1: BINARY   BY REFERENCE S9(5)       +01024;
+CAPI called with 1 parameters
+ 1: BINARY   BY REFERENCE 9(9)        000002560;
+CAPI called with 2 parameters
+ 1: COMP-3   BY REFERENCE 9(8)        00004096;
+ 2: EDITED   BY REFERENCE S9(5)V9(2)    512.77   to   514.07-;
+CAPI called with 4 parameters
+ 1: DISPLAY  BY REFERENCE S9(8)       +00008192;
+ 2: BINARY   BY REFERENCE S9(5)       +01027;
+ 3: X        BY REFERENCE X(9)        'Hello    ';
+ 4: Group    BY REFERENCE (18)        'Hello    World    ';
+CAPI called with 3 parameters
+ 1: COMP-3   BY REFERENCE 9(8)        00004099;</pre></td><td><pre>CAPI called with 2 parameters
+ 1: BINARY   BY VALUE     S9(9)       +000002560;
+ 2: DISPLAY  BY VALUE     9(2)        16;
+CAPI called with 2 parameters
+ 1: BINARY   BY REFERENCE 9(5)        0000001280;
+ 2: EDITED   BY REFERENCE S9(5)V9(2)    512.77-  to   511.47 ;
+CAPI called with 1 parameters
+ 1: BINARY   BY REFERENCE S9(5)       +01024;
+CAPI called with 1 parameters
+ 1: BINARY   BY REFERENCE 9(9)        000002560;
+CAPI called with 2 parameters
+ 1: COMP-3   BY REFERENCE 9(8)        00004096;
+ 2: EDITED   BY REFERENCE S9(5)V9(2)    512.77   to   514.07-;
+CAPI called with 4 parameters
+ 1: DISPLAY  BY REFERENCE S9(8)       +00008192;
+ 2: BINARY   BY REFERENCE S9(5)       +01027;
+ 3: X        BY REFERENCE X(9)        'Hello    ';
+ 4: Group    BY REFERENCE (18)        'Hello    World    ';
+CAPI called with 3 parameters
+ 1: COMP-3   BY REFERENCE 9(8)        00004099;</pre></td></tr>
+<tr class="match"><td>run_misc/options_paragraph_default_rounded_mode</td><td>MATCH</td><td><pre>2
+2</pre></td><td><pre>2
+2</pre></td></tr>
+<tr class="match"><td>run_misc/occurs_indexed_ascending</td><td>MATCH</td><td><pre>A A-F-GEN-LEDGER-ZGL             is code 0305.
+B A-F-GEN-LEDGER-ZGL             is code 0305.
+A JUNK                           is invalid.
+B JUNK                           is invalid.</pre></td><td><pre>A A-F-GEN-LEDGER-ZGL             is code 0305.
+B A-F-GEN-LEDGER-ZGL             is code 0305.
+A JUNK                           is invalid.
+B JUNK                           is invalid.</pre></td></tr>
+<tr class="match"><td>run_misc/zero_unsigned_and_negative_binary_subscript</td><td>MATCH</td><td><pre>UNUP: 00000000 is :CCCC:
+SNUP: +00000000 is :CCCC:
+SBIN: +00000000 is :CCCC:
+SBIN: -00000001 is :BBBB:
+SBIN: -00000001 is :xxx :
+UBIN: 00000000 is :CCCC:
+UBIN: 00000001 is :1111:
+UCHR: 000 is :yyy :
+SCHR: -001 is :xxx :
+UCHR: 129 is :zzz :</pre></td><td><pre>UNUP: 00000000 is :CCCC:
+SNUP: +00000000 is :CCCC:
+SBIN: +00000000 is :CCCC:
+SBIN: -00000001 is :BBBB:
+SBIN: -00000001 is :xxx :
+UBIN: 00000000 is :CCCC:
+UBIN: 00000001 is :1111:
+UCHR: 000 is :yyy :
+SCHR: -001 is :xxx :
+UCHR: 129 is :zzz :</pre></td></tr>
+<tr class="match"><td>run_misc/default_arithmetic_1</td><td>MATCH</td><td><pre>Simple Compute  RSLT IS 400
+Single Variable RSLT IS 188
+Compute  RSLT    IS 188
+Compute  RSLTv99 IS 188.00
+Compute  RSLT    IS 188
+Compute  RSLTv9  IS 188.0
+Add      RSLT    IS 212
+Add      RSLT    IS 621
+Subtract RSLT    IS 408
+Subtract RSLT    IS 019
+Add      RSLTv9  IS 611.3
+Multiply RSLT    IS 723
+Multiply RSLT    IS 723
+Divide   RSLT    IS 039
+Divide   RSLTv9  IS 009.7
+Divide   RSLT    IS 009
+Simple   RSLT    IS 188 RSLTv9  IS 188.0
+Complex  RSLT    IS 188 RSLTv9  IS 188.0
+Reduced  RSLT    IS 188 RSLTv9  IS 188.0
+Not Using ARITHMETIC-OSVS</pre></td><td><pre>Simple Compute  RSLT IS 400
+Single Variable RSLT IS 188
+Compute  RSLT    IS 188
+Compute  RSLTv99 IS 188.00
+Compute  RSLT    IS 188
+Compute  RSLTv9  IS 188.0
+Add      RSLT    IS 212
+Add      RSLT    IS 621
+Subtract RSLT    IS 408
+Subtract RSLT    IS 019
+Add      RSLTv9  IS 611.3
+Multiply RSLT    IS 723
+Multiply RSLT    IS 723
+Divide   RSLT    IS 039
+Divide   RSLTv9  IS 009.7
+Divide   RSLT    IS 009
+Simple   RSLT    IS 188 RSLTv9  IS 188.0
+Complex  RSLT    IS 188 RSLTv9  IS 188.0
+Reduced  RSLT    IS 188 RSLTv9  IS 188.0
+Not Using ARITHMETIC-OSVS</pre></td></tr>
+<tr class="match"><td>run_misc/default_arithmetic_test_2</td><td>MATCH</td><td><pre>RES = +0000680.95
+RES ROUNDED = +0000680.95
+RES MULT1 = +0000680.95
+RES MULT2 = +0000680.95
+RES 1 = +0022777.77
+RES F = +0000680.94
+RES ROUNDED AWAY = +0000680.96</pre></td><td><pre>RES = +0000680.95
+RES ROUNDED = +0000680.95
+RES MULT1 = +0000680.95
+RES MULT2 = +0000680.95
+RES 1 = +0022777.77
+RES F = +0000680.94
+RES ROUNDED AWAY = +0000680.96</pre></td></tr>
+<tr class="match"><td>run_misc/osvs_arithmetic_1</td><td>MATCH</td><td><pre>Simple Compute  RSLT IS 400
+Single Variable RSLT IS 100
+Compute  RSLT    IS 188
+Compute  RSLTv99 IS 188.00
+Compute  RSLT    IS 180
+Compute  RSLTv9  IS 180.0
+Add      RSLT    IS 212
+Add      RSLT    IS 621
+Subtract RSLT    IS 408
+Subtract RSLT    IS 019
+Add      RSLTv9  IS 611.3
+Multiply RSLT    IS 723
+Multiply RSLT    IS 723
+Divide   RSLT    IS 039
+Divide   RSLTv9  IS 009.7
+Divide   RSLT    IS 009
+Simple   RSLT    IS 180 RSLTv9  IS 180.0
+Complex  RSLT    IS 188 RSLTv9  IS 188.0
+Reduced  RSLT    IS 180 RSLTv9  IS 180.0
+Using ARITHMETIC-OSVS</pre></td><td><pre>Simple Compute  RSLT IS 400
+Single Variable RSLT IS 100
+Compute  RSLT    IS 188
+Compute  RSLTv99 IS 188.00
+Compute  RSLT    IS 180
+Compute  RSLTv9  IS 180.0
+Add      RSLT    IS 212
+Add      RSLT    IS 621
+Subtract RSLT    IS 408
+Subtract RSLT    IS 019
+Add      RSLTv9  IS 611.3
+Multiply RSLT    IS 723
+Multiply RSLT    IS 723
+Divide   RSLT    IS 039
+Divide   RSLTv9  IS 009.7
+Divide   RSLT    IS 009
+Simple   RSLT    IS 180 RSLTv9  IS 180.0
+Complex  RSLT    IS 188 RSLTv9  IS 188.0
+Reduced  RSLT    IS 180 RSLTv9  IS 180.0
+Using ARITHMETIC-OSVS</pre></td></tr>
+<tr class="match"><td>run_misc/osvs_arithmetic_test_2</td><td>MATCH</td><td><pre>RES = +000068094
+RES ROUNDED = +000068095
+RES MULT1 = +000068094
+RES MULT2 = +000068095
+RES 1 = +002277777
+RES F = +000068094
+RES ROUNDED AWAY = +000068095</pre></td><td><pre>RES = +000068094
+RES ROUNDED = +000068095
+RES MULT1 = +000068094
+RES MULT2 = +000068095
+RES 1 = +002277777
+RES F = +000068094
+RES ROUNDED AWAY = +000068095</pre></td></tr>
+<tr class="match"><td>run_misc/set_constant_directive</td><td>MATCH</td><td><pre>Your Dog's name is Barky;
+The Dog's name is Barky ;
+My Horse is Blacky ;
+My little pony is White.</pre></td><td><pre>Your Dog's name is Barky;
+The Dog's name is Barky ;
+My Horse is Blacky ;
+My little pony is White.</pre></td></tr>
+<tr class="match"><td>run_misc/define_defaults</td><td>MATCH</td><td><pre>ENVPONY env var set to             ;
+1st Dog's name is Pluto;
+2nd Dog's name is Piper;
+ENVPONY is DEFINED as No EnvPony;
+DPONY set to No Dpony;
+My pony is default Dirty;
+DPONY is DEFINED as No Dpony;</pre></td><td><pre>ENVPONY env var set to ;
+1st Dog's name is Pluto;
+2nd Dog's name is Piper;
+ENVPONY is DEFINED as No EnvPony;
+DPONY set to No Dpony;
+My pony is default Dirty;
+DPONY is DEFINED as No Dpony;</pre></td></tr>
+<tr class="match"><td>run_misc/78_value</td><td>MATCH</td><td><pre>DIV1 is 33
+HUN  is 143
+HUN2 is 1855
+NUM2 is 9 left to right precedence.
+XFLD3 starts at 9
+XFLD4 starts at 19
+XFLD4 starts at 11
+Your Dog's name is Barky;
+The Dog's name is Barky ;</pre></td><td><pre>DIV1 is 33
+HUN  is 143
+HUN2 is 1855
+NUM2 is 9 left to right precedence.
+XFLD3 starts at 9
+XFLD4 starts at 19
+XFLD4 starts at 11
+Your Dog's name is Barky;
+The Dog's name is Barky ;</pre></td></tr>
+<tr class="match"><td>run_misc/01_constant</td><td>MATCH</td><td><pre>CAT  is 'Cat '
+Yard is 'Cat &amp; Dog '
+DIV1 is 33
+HUN  is 143
+HUN2 is 1855
+78 VALUE has simple left to right precedence.
+01 CONSTANT has normal operator precedence.
+CON3 is 23
+CON4 is 26 vs 3.141596 &amp; -2.189 &amp; +12
+CON6 is 18.
+My Dog's name is Piper;</pre></td><td><pre>CAT  is 'Cat '
+Yard is 'Cat &amp; Dog '
+DIV1 is 33
+HUN  is 143
+HUN2 is 1855
+78 VALUE has simple left to right precedence.
+01 CONSTANT has normal operator precedence.
+CON3 is 23
+CON4 is 26 vs 3.141596 &amp; -2.189 &amp; +12
+CON6 is 18.
+My Dog's name is Piper;</pre></td></tr>
+<tr class="match"><td>run_misc/float_decimal_w_o_size_error</td><td>MATCH</td><td><pre>--- FLOAT-DECIMAL-34 ---
+A: 9216586.861751152073732718894009216
+B: 5305036.78779840848806366047745358
+Z: 476.1904761904761904761904761904761 IS OK
+    ...
+--- FLOAT-DECIMAL-16 ---
+A: 9216586.861751152
+B: 5305036.787798408
+Z: 476.1904761904761 IS OK
+    ...
+--- 99 + 1 / 3 ---
+FD34: 99.33333333333333333333333333333333 IS OK
+FD16: 99.33333333333333 IS OK
+    ...
+--- 99 ---
+FD34: 99 IS OK
+FD16: 99 IS OK
+    ...
+--- Test overflow ---
+FD16: after 99E369 SIZE ERROR</pre></td><td><pre>--- FLOAT-DECIMAL-34 ---
+A: 9216586.861751152073732718894009216
+B: 5305036.78779840848806366047745358
+Z: 476.1904761904761904761904761904761 IS OK
+    ...
+--- FLOAT-DECIMAL-16 ---
+A: 9216586.861751152
+B: 5305036.787798408
+Z: 476.1904761904761 IS OK
+    ...
+--- 99 + 1 / 3 ---
+FD34: 99.33333333333333333333333333333333 IS OK
+FD16: 99.33333333333333 IS OK
+    ...
+--- 99 ---
+FD34: 99 IS OK
+FD16: 99 IS OK
+    ...
+--- Test overflow ---
+FD16: after 99E369 SIZE ERROR</pre></td></tr>
+<tr class="match"><td>run_misc/float_short_float_long_w_o_size_error</td><td>MATCH</td><td><pre>--- COMP-1 ---
+A: 9216587
+B: 5305037
+Z: 476.19049 IS OK
+    ...
+--- COMP-2 ---
+A ~ 9216586.86175115
+B ~ 5305036.787798408
+Z ~ 476.1904761904761 IS OK
+    ...
+--- 99 + 1 / 3 ---
+CMP1: 99.333336 IS OK
+CMP2: 99.33333333333333 IS OK
+    ...
+--- 99 ---
+CMP1: 99 IS OK
+CMP2: 99 IS OK
+    ...
+--- Test overflow ---
+CMP1: after 9.8999983E+37 SIZE ERROR</pre></td><td><pre>--- COMP-1 ---
+A: 9216587
+B: 5305037
+Z: 476.19049 IS OK
+    ...
+--- COMP-2 ---
+A ~ 9216586.86175115
+B ~ 5305036.787798408
+Z ~ 476.1904761904761 IS OK
+    ...
+--- 99 + 1 / 3 ---
+CMP1: 99.333336 IS OK
+CMP2: 99.33333333333333 IS OK
+    ...
+--- 99 ---
+CMP1: 99 IS OK
+CMP2: 99 IS OK
+    ...
+--- Test overflow ---
+CMP1: after 9.8999983E+37 SIZE ERROR</pre></td></tr>
+<tr class="match"><td>run_misc/float_short_with_size_error</td><td>MATCH</td><td><pre>SIZE ERROR, last value = 1.7014118E+38</pre></td><td><pre>SIZE ERROR, last value = 1.7014118E+38</pre></td></tr>
+<tr class="match"><td>run_misc/constant_expressions</td><td>MATCH</td><td><pre>A: OK VAR-LEN &gt; 16 AND VAR-LEN &lt; 200
+B: OK VAR IS NOT SPACES
+C: OK VAR IS SPACES
+D: OK VAR IS NOT SPACES
+E: OK OTHER option taken</pre></td><td><pre>A: OK VAR-LEN &gt; 16 AND VAR-LEN &lt; 200
+B: OK VAR IS NOT SPACES
+C: OK VAR IS SPACES
+D: OK VAR IS NOT SPACES
+E: OK OTHER option taken</pre></td></tr>
+<tr class="match"><td>run_misc/entry_for_go_to_go_to_entry</td><td>MATCH</td><td><pre>STMT05
+STMT05
+STMT04
+STMT05
+STMT03
+STMT04
+STMT05
+STMT03
+STMT04
+STMT03
+STMT04
+STMT03
+STMT04
+STMT05
+STMT01
+STMT03
+STMT04
+STMT03
+STMT04
+STMT03</pre></td><td><pre>STMT05
+STMT05
+STMT04
+STMT05
+STMT03
+STMT04
+STMT05
+STMT03
+STMT04
+STMT03
+STMT04
+STMT03
+STMT04
+STMT05
+STMT01
+STMT03
+STMT04
+STMT03
+STMT04
+STMT03</pre></td></tr>
+<tr class="match"><td>run_misc/assorted_math</td><td>MATCH</td><td><pre>9-9succeeded</pre></td><td><pre>9-9succeeded</pre></td></tr>
+<tr class="match"><td>run_misc/compare_numeric_display_space_with_zero</td><td>MATCH</td><td><pre>TST-NUMBER IS NOT ZERO-NUMBER
+TST-NUMBER IS &lt; ZERO-NUMBER
+TST-DECIMAL IS NOT ZERO-DECIMAL
+TST-DECIMAL IS &lt; ZERO-DECIMAL</pre></td><td><pre>TST-NUMBER IS NOT ZERO-NUMBER
+TST-NUMBER IS &lt; ZERO-NUMBER
+TST-DECIMAL IS NOT ZERO-DECIMAL
+TST-DECIMAL IS &lt; ZERO-DECIMAL</pre></td></tr>
+<tr class="match"><td>run_ml/xml_dpc_in_data_config_option</td><td>MATCH</td><td><pre>&lt;num&gt;1,1&lt;/num&gt;</pre></td><td><pre>&lt;num&gt;1,1&lt;/num&gt;</pre></td></tr>
+<tr class="match"><td>run_ml/json_dpc_in_data_config_option</td><td>MATCH</td><td><pre>{"num":1,1}</pre></td><td><pre>{"num":1,1}</pre></td></tr>
+<tr class="match"><td>run_refmod/static_reference_modification</td><td>MATCH</td><td><pre>a:ab:abc:abcd:abcd
+b:bc:bcd:bcd
+c:cd:cd
+d:d</pre></td><td><pre>a:ab:abc:abcd:abcd
+b:bc:bcd:bcd
+c:cd:cd
+d:d</pre></td></tr>
+<tr class="match"><td>run_refmod/dynamic_reference_modification</td><td>MATCH</td><td><pre>a
+d
+a
+abcd</pre></td><td><pre>a
+d
+a
+abcd</pre></td></tr>
+<tr class="match"><td>run_refmod/offset_overflow</td><td>MATCH</td><td><pre>5</pre></td><td><pre>5</pre></td></tr>
+<tr class="match"><td>run_reportwriter/before_reporting</td><td>MATCH</td><td><pre>BEFORE DETAIL - SHOULD DISPLAY
+==============================
+BEFORE DETAIL - SHOULD DISPLAY
+==============================
+BEFORE FINAL - SHOULD DISPLAY</pre></td><td><pre>BEFORE DETAIL - SHOULD DISPLAY
+==============================
+BEFORE DETAIL - SHOULD DISPLAY
+==============================
+BEFORE FINAL - SHOULD DISPLAY</pre></td></tr>
+<tr class="match"><td>run_subscripts/search_all_with_occurs_depending_on</td><td>MATCH</td><td><pre>END
+FOUND
+FOUND</pre></td><td><pre>END
+FOUND
+FOUND</pre></td></tr>
+<tr class="match"><td>run_subscripts/bound_and_nobound_directives</td><td>MATCH</td><td><pre>!</pre></td><td><pre>!</pre></td></tr>
+<tr class="match"><td>run_subscripts/ssrange_and_nossrange_directives</td><td>MATCH</td><td><pre>!</pre></td><td><pre>!</pre></td></tr>
+<tr class="match"><td>run_subscripts/call_with_occurs_depending_on</td><td>MATCH</td><td><pre>Hi, there!</pre></td><td><pre>Hi, there!</pre></td></tr>
+<tr class="match"><td>syn_copy/copy_replacement_order</td><td>MATCH</td><td><pre>OK</pre></td><td><pre>OK</pre></td></tr>
+<tr class="match"><td>syn_copy/copy_separators</td><td>MATCH</td><td><pre>OK</pre></td><td><pre>OK</pre></td></tr>
+<tr class="match"><td>syn_copy/copy_partial_replacement</td><td>MATCH</td><td><pre>OKOK</pre></td><td><pre>OKOK</pre></td></tr>
+<tr class="match"><td>syn_copy/copy_leading_replacement</td><td>MATCH</td><td><pre>OKOK</pre></td><td><pre>OKOK</pre></td></tr>
+<tr class="match"><td>syn_copy/copy_trailing_replacement</td><td>MATCH</td><td><pre>OKOK</pre></td><td><pre>OKOK</pre></td></tr>
+<tr class="match"><td>syn_copy/copy_recursive_replacement</td><td>MATCH</td><td><pre>OK</pre></td><td><pre>OK</pre></td></tr>
+<tr class="match"><td>syn_copy/copy_fixed_free_format</td><td>MATCH</td><td><pre>OK</pre></td><td><pre>OK</pre></td></tr>
+<tr class="match"><td>syn_misc/line_and_floating_comments</td><td>MATCH</td><td><pre>MFCOMMENT
+NOMFCOMMENT
+NOACUFLOATING
+NOFLOATING</pre></td><td><pre>MFCOMMENT
+NOMFCOMMENT
+NOACUFLOATING
+NOFLOATING</pre></td></tr>
+<tr class="match"><td>syn_misc/control_empty_default_section</td><td>MATCH</td><td><pre>OK</pre></td><td><pre>OK</pre></td></tr>
+<tr class="match"><td>syn_misc/control_default_section</td><td>MATCH</td><td><pre>OK</pre></td><td><pre>OK</pre></td></tr>
+<tr class="match"><td>syn_misc/control_substitution_default_section</td><td>MATCH</td><td><pre>OK</pre></td><td><pre>OK</pre></td></tr>
+<tr class="match"><td>syn_misc/context_sensitive_alias</td><td>MATCH</td><td><pre>1</pre></td><td><pre>1</pre></td></tr>
+<tr class="match"><td>used_binaries/compiler_outputs_general</td><td>MATCH</td><td><pre>bluBb</pre></td><td><pre>bluBb</pre></td></tr>
+<tr class="match"><td>used_binaries/compiler_outputs_file_specified</td><td>MATCH</td><td><pre>bluBb END</pre></td><td><pre>bluBb END</pre></td></tr>
+<tr class="match"><td>used_binaries/compiler_outputs_assembler</td><td>MATCH</td><td><pre>bluBb</pre></td><td><pre>bluBb</pre></td></tr>
+<tr class="match"><td>used_binaries/temporary_path_invalid</td><td>MATCH</td><td><pre>OK</pre></td><td><pre>OK</pre></td></tr>
+<tr class="match"><td>used_binaries/use_of_full_path_for_cobc</td><td>MATCH</td><td><pre>OK</pre></td><td><pre>OK</pre></td></tr>
+<tr class="match"><td>used_binaries/c_compiler_optimizations</td><td>MATCH</td><td><pre>OK</pre></td><td><pre>OK</pre></td></tr>
+</tbody></table>
+<script>
+function filterTable() {
+  const search = document.getElementById('search').value.toLowerCase();
+  const filter = document.getElementById('filter').value;
+  const rows = document.querySelectorAll('#results tbody tr');
+  rows.forEach(row => {
+    const prog = row.cells[0].textContent.toLowerCase();
+    const status = row.className;
+    let show = prog.includes(search);
+    if (filter === 'match') show = show && status === 'match';
+    else if (filter === 'known') show = show && status === 'known';
+    else if (filter === 'fail') show = show && (status.includes('fail'));
+    row.style.display = show ? '' : 'none';
+  });
+}
+</script>
+<div class="footer">
+  Oracle: GnuCOBOL 3.2 Test Suite — Lazarus C++17 Federal Validation — Torsova LLC
+</div>
+</body></html>

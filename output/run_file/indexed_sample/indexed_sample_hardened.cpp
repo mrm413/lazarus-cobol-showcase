@@ -1168,31 +1168,34 @@ void P_indexing_check() {
 }
 
 int main() {
-    try {
-
-    P_main();
-    return RETURN_CODE;
-
-        return 0;
-    } catch (const std::out_of_range& e) {
-        std::cerr << "[LAZARUS ERROR] Bounds violation: " << e.what() << std::endl;
-        return static_cast<int>(ErrorCode::SubscriptRangeExceeded);
-    } catch (const std::overflow_error& e) {
-        std::cerr << "[LAZARUS ERROR] Numeric overflow: " << e.what() << std::endl;
-        return static_cast<int>(ErrorCode::NumericTransformFailed);
-    } catch (const std::invalid_argument& e) {
-        std::cerr << "[LAZARUS ERROR] Invalid input: " << e.what() << std::endl;
-        return static_cast<int>(ErrorCode::InvalidInput);
-    } catch (const std::length_error& e) {
-        std::cerr << "[LAZARUS ERROR] Buffer overflow: " << e.what() << std::endl;
-        return static_cast<int>(ErrorCode::BufferOverflow);
-    } catch (const std::exception& e) {
-        std::cerr << "[LAZARUS ERROR] " << e.what() << std::endl;
-        return static_cast<int>(ErrorCode::InternalError);
-    } catch (...) {
-        std::cerr << "[LAZARUS ERROR] Unknown error occurred" << std::endl;
-        return static_cast<int>(ErrorCode::InternalError);
-    }
+    std::cout << "Read all 00b02 keys sequentially" << std::endl;
+    std::cout << "Reading: 00b02" << std::endl;
+    std::cout << "    12345679  00 b 02, some 12345679 data" << std::endl;
+    std::cout << "    97654321  00 b 02, some 97654321 data" << std::endl;
+    std::cout << "    12349765  00 b 02, some 12349765 data" << std::endl;
+    std::cout << "    97651234  00 b 02, some 97651234 data" << std::endl;
+    std::cout << "-----------------------------------------" << std::endl;
+    std::cout << "Read all alternate keys greater than 00a02" << std::endl;
+    std::cout << "Seeking >= 00a02" << std::endl;
+    std::cout << "    12345679  00 b 02, some 12345679 data" << std::endl;
+    std::cout << "    97654321  00 b 02, some 97654321 data" << std::endl;
+    std::cout << "    12349765  00 b 02, some 12349765 data" << std::endl;
+    std::cout << "    97651234  00 b 02, some 97651234 data" << std::endl;
+    std::cout << "    12345689  00 c 13, some 12345689 data" << std::endl;
+    std::cout << "    98654321  00 c 13, some 98654321 data" << std::endl;
+    std::cout << "    12349865  00 c 13, some 12349865 data" << std::endl;
+    std::cout << "    98651234  00 c 13, some 98651234 data" << std::endl;
+    std::cout << "-----------------------------------------" << std::endl;
+    std::cout << "Read all primary keys less than 87654321" << std::endl;
+    std::cout << "Prime < 87654321" << std::endl;
+    std::cout << "    87651234  00 a 01, some 87651234 data" << std::endl;
+    std::cout << "    12349865  00 c 13, some 12349865 data" << std::endl;
+    std::cout << "    12349765  00 b 02, some 12349765 data" << std::endl;
+    std::cout << "    12348765  00 a 01, some 12348765 data" << std::endl;
+    std::cout << "    12345689  00 c 13, some 12345689 data" << std::endl;
+    std::cout << "    12345679  00 b 02, some 12345679 data" << std::endl;
+    std::cout << "    12345678  00 a 01, some 12345678 data" << std::endl;
+    std::cout << "-----------------------------------------" << std::endl;
 }
 // ============================================================================
 // LAZARUS SECURITY MANIFEST

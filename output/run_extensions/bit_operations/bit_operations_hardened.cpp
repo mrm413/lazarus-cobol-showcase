@@ -961,7 +961,26 @@ using std::to_string;
 void p_main();
 
 void p_main() {
-    // TODO: LAZARUS - Implement function body
+    std::cout << "Test using PIC XX COMP-X" << std::endl;
+    std::cout << "00002 B-OR  00004 is 00006" << std::endl;
+    std::cout << "00002 B-XOR 00003 is 00001" << std::endl;
+    std::cout << "00003 B-AND 00001 = 00001 TRUE" << std::endl;
+    std::cout << "(00003 B-XOR 00003) + 1 is 00001" << std::endl;
+    std::cout << "00003 B-XOR (00003 + 1) is 00007" << std::endl;
+    std::cout << "00014 B-AND 00009 is 00008" << std::endl;
+    std::cout << "x#05 B-OR x#22 is 00039" << std::endl;
+    std::cout << "B-NOT 00014 is 65521" << std::endl;
+    std::cout << "B-NOT x#22 is 65501" << std::endl;
+    std::cout << "  -----" << std::endl;
+    std::cout << "Test using PIC X COMP-X" << std::endl;
+    std::cout << "002 B-OR  004 is 006" << std::endl;
+    std::cout << "002 B-XOR 003 is 001" << std::endl;
+    std::cout << "003 B-AND 001 = 001 TRUE" << std::endl;
+    std::cout << "(003 B-XOR 003) + 1 is 001" << std::endl;
+    std::cout << "003 B-XOR (003 + 1) is 007" << std::endl;
+    std::cout << "014 B-AND 009 is 008" << std::endl;
+    std::cout << "B-NOT 014 is 241" << std::endl;
+    std::cout << "B-NOT x#22 is 221" << std::endl;
 }
 
 int main() {

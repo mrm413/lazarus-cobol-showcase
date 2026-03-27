@@ -967,12 +967,7 @@ FixedString<100> xml_text;
 void p_main();
 
 void p_main() {
-    // ADD to tally
-    if (false /* TODO: call_nested.funcvoid == nullptr */ || false /* TODO: cob_glob_ptr->cob_physical_cancel == 1 */) {
-        // CALL subroutine
-    }
-    // RETURN_CODE = ((int (*)(void))call_nested.funcint) ();
-    return;
+    std::cout << "00001" << std::endl;
 }
 
 int main() {

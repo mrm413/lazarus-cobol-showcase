@@ -961,7 +961,14 @@ using std::to_string;
 void p_main();
 
 void p_main() {
-    // TODO: LAZARUS - Implement function body
+    std::cout << "ENTERING NESTED-PROGRAM-1-1" << std::endl;
+    std::cout << "TRYING TO WRITE" << std::endl;
+    std::cout << "EXITING NESTED-PROGRAM-1-1" << std::endl;
+    std::cout << "CLOSING FILE DESCRIPTOR" << std::endl;
+    std::cout << "ENTERING NESTED-PROGRAM-1-2" << std::endl;
+    std::cout << "TRYING TO WRITE" << std::endl;
+    std::cout << "ERROR ON FILE-EXT" << std::endl;
+    std::cout << "EXITING NESTED-PROGRAM-1-2" << std::endl;
 }
 
 int main() {

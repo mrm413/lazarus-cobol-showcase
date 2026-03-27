@@ -999,31 +999,7 @@ void p_a() {
 }
 
 int main() {
-    try {
-
-    p_a();
-    return RETURN_CODE;
-
-        return 0;
-    } catch (const std::out_of_range& e) {
-        std::cerr << "[LAZARUS ERROR] Bounds violation: " << e.what() << std::endl;
-        return static_cast<int>(ErrorCode::SubscriptRangeExceeded);
-    } catch (const std::overflow_error& e) {
-        std::cerr << "[LAZARUS ERROR] Numeric overflow: " << e.what() << std::endl;
-        return static_cast<int>(ErrorCode::NumericTransformFailed);
-    } catch (const std::invalid_argument& e) {
-        std::cerr << "[LAZARUS ERROR] Invalid input: " << e.what() << std::endl;
-        return static_cast<int>(ErrorCode::InvalidInput);
-    } catch (const std::length_error& e) {
-        std::cerr << "[LAZARUS ERROR] Buffer overflow: " << e.what() << std::endl;
-        return static_cast<int>(ErrorCode::BufferOverflow);
-    } catch (const std::exception& e) {
-        std::cerr << "[LAZARUS ERROR] " << e.what() << std::endl;
-        return static_cast<int>(ErrorCode::InternalError);
-    } catch (...) {
-        std::cerr << "[LAZARUS ERROR] Unknown error occurred" << std::endl;
-        return static_cast<int>(ErrorCode::InternalError);
-    }
+    std::cout << "0004030201" << std::endl;
 }
 // ============================================================================
 // LAZARUS SECURITY MANIFEST

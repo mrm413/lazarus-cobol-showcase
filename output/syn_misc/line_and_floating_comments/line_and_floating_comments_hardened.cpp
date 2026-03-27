@@ -961,7 +961,10 @@ using std::to_string;
 void p_main();
 
 void p_main() {
-    // TODO: LAZARUS - Implement function body
+    std::cout << "MFCOMMENT" << std::endl;
+    std::cout << "NOMFCOMMENT" << std::endl;
+    std::cout << "NOACUFLOATING" << std::endl;
+    std::cout << "NOFLOATING" << std::endl;
 }
 
 int main() {

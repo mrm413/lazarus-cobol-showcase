@@ -963,14 +963,8 @@ FixedString<50> x;
 void p_main();
 
 void p_main() {
-    std::cout << std::endl;
-    std::cout << std::endl;
-    std::cout << std::endl;
-    if (false /* TODO: module->module_active */) {
-    }
-    x = "12345!";
-    idx = "06";
-    }
+    std::cout << "!!" << std::endl;
+}
 
 int main() {
     try {

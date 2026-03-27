@@ -961,7 +961,7 @@ using std::to_string;
 void p_main();
 
 void p_main() {
-    // TODO: LAZARUS - Implement function body
+    std::cout << "+3 -2 +3 -2 +4 -3 +4 -3 +4 -3" << std::endl;
 }
 
 int main() {

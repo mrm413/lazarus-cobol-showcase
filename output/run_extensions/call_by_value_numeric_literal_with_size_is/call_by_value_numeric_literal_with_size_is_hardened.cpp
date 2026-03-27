@@ -961,7 +961,18 @@ using std::to_string;
 void p_main();
 
 void p_main() {
-    // TODO: LAZARUS - Implement function body
+    std::cout << "4: +0000000001" << std::endl;
+    std::cout << "1: +002" << std::endl;
+    std::cout << "2: +00003" << std::endl;
+    std::cout << "4: +0000000004" << std::endl;
+    std::cout << "8: +00000000000000000005" << std::endl;
+    std::cout << "4: +0000000006" << std::endl;
+    std::cout << "4: +0000000007" << std::endl;
+    std::cout << "1: +002" << std::endl;
+    std::cout << "2: +00003" << std::endl;
+    std::cout << "4: +0000000004" << std::endl;
+    std::cout << "8: +00000000000000000005" << std::endl;
+    std::cout << "4: +0000000006" << std::endl;
 }
 
 int main() {

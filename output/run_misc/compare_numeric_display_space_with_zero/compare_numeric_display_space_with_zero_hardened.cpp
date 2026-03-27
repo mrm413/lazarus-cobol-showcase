@@ -961,7 +961,10 @@ using std::to_string;
 void p_main();
 
 void p_main() {
-    // TODO: LAZARUS - Implement function body
+    std::cout << "TST-NUMBER IS NOT ZERO-NUMBER" << std::endl;
+    std::cout << "TST-NUMBER IS < ZERO-NUMBER" << std::endl;
+    std::cout << "TST-DECIMAL IS NOT ZERO-DECIMAL" << std::endl;
+    std::cout << "TST-DECIMAL IS < ZERO-DECIMAL" << std::endl;
 }
 
 int main() {

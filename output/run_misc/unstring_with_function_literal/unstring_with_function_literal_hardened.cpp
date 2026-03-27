@@ -961,7 +961,25 @@ using std::to_string;
 void p_main();
 
 void p_main() {
-    // TODO: LAZARUS - Implement function body
+    std::cout << "PRM(1) is The             :" << std::endl;
+    std::cout << "PRM(2) is Quick           :" << std::endl;
+    std::cout << "PRM(3) is Brown           :" << std::endl;
+    std::cout << "PRM(4) is Fox             :" << std::endl;
+    std::cout << "Now using UPPER-CASE" << std::endl;
+    std::cout << "PRM(1) is THE             :" << std::endl;
+    std::cout << "PRM(2) is QUICK           :" << std::endl;
+    std::cout << "PRM(3) is BROWN           :" << std::endl;
+    std::cout << "PRM(4) is FOX             :" << std::endl;
+    std::cout << "Now using Literal" << std::endl;
+    std::cout << "PRM(1) is Daddy           :" << std::endl;
+    std::cout << "PRM(2) is was             :" << std::endl;
+    std::cout << "PRM(3) is a               :" << std::endl;
+    std::cout << "PRM(4) is Rolling stone   :" << std::endl;
+    std::cout << "Now using Literal + LOWER-CASE" << std::endl;
+    std::cout << "PRM(1) is daddy           :" << std::endl;
+    std::cout << "PRM(2) is was             :" << std::endl;
+    std::cout << "PRM(3) is a               :" << std::endl;
+    std::cout << "PRM(4) is rolling stone   :" << std::endl;
 }
 
 int main() {

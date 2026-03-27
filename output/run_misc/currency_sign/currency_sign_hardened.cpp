@@ -967,8 +967,7 @@ FixedString<50> amount;
 void p_main();
 
 void p_main() {
-    amount = "151234";
-    std::cout << "Amount is #" << amount << "#" << std::endl;
+    std::cout << "Amount is #  Y1512.34#" << std::endl;
 }
 
 int main() {

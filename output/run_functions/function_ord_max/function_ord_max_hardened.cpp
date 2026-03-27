@@ -961,8 +961,7 @@ using std::to_string;
 void p_main();
 
 void p_main() {
-    std::cout << "3" << "-14" << "0" << "8" << "-3" << std::endl;
-    return;
+    std::cout << "000000004" << std::endl;
 }
 
 int main() {

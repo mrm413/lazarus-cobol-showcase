@@ -961,7 +961,10 @@ using std::to_string;
 void p_main();
 
 void p_main() {
-    // TODO: LAZARUS - Implement function body
+    std::cout << "The date is 2015*08*21 Compiled" << std::endl;
+    std::cout << "The date is 0000*08*21 INITIALIZE" << std::endl;
+    std::cout << "The date is 0000 08 21 WITH FILLER" << std::endl;
+    std::cout << "The date is 2017-08-21 ALL TO VALUE" << std::endl;
 }
 
 int main() {

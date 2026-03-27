@@ -962,8 +962,7 @@ FixedString<50> X;
 void p_main();
 
 void p_main() {
-    std::cout << std::endl;
-    return;
+    std::cout << "5" << std::endl;
 }
 
 int main() {

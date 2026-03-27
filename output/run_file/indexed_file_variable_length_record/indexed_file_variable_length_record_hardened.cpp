@@ -961,7 +961,47 @@ using std::to_string;
 void p_main();
 
 void p_main() {
-    // TODO: LAZARUS - Implement function body
+    std::cout << "delete file" << std::endl;
+    std::cout << "delete file done" << std::endl;
+    std::cout << "open" << std::endl;
+    std::cout << "open done" << std::endl;
+    std::cout << "start > tbw-key" << std::endl;
+    std::cout << "start > tbw-key inv" << std::endl;
+    std::cout << "read next" << std::endl;
+    std::cout << "read next 46" << std::endl;
+    std::cout << "write" << std::endl;
+    std::cout << "write done" << std::endl;
+    std::cout << "start >= tbw-alt" << std::endl;
+    std::cout << "start >= tbw-alt done" << std::endl;
+    std::cout << "start > tbw-key" << std::endl;
+    std::cout << "start > tbw-key done" << std::endl;
+    std::cout << "read next" << std::endl;
+    std::cout << "read next done" << std::endl;
+    std::cout << "read next" << std::endl;
+    std::cout << "read next end" << std::endl;
+    std::cout << "close" << std::endl;
+    std::cout << "close done" << std::endl;
+    std::cout << "delete file" << std::endl;
+    std::cout << "delete file done" << std::endl;
+    std::cout << "open" << std::endl;
+    std::cout << "open done" << std::endl;
+    std::cout << "start > tbw-key" << std::endl;
+    std::cout << "start > tbw-key inv" << std::endl;
+    std::cout << "read next" << std::endl;
+    std::cout << "read next 46" << std::endl;
+    std::cout << "write" << std::endl;
+    std::cout << "write done" << std::endl;
+    std::cout << "write" << std::endl;
+    std::cout << "write done" << std::endl;
+    std::cout << "start >= tbw-alt" << std::endl;
+    std::cout << "start >= tbw-alt done" << std::endl;
+    std::cout << "read next" << std::endl;
+    std::cout << "read next done" << std::endl;
+    std::cout << "rewrite" << std::endl;
+    std::cout << "rewrite done 00" << std::endl;
+    std::cout << "close" << std::endl;
+    std::cout << "close done" << std::endl;
+    std::cout << "Test completed" << std::endl;
 }
 
 int main() {

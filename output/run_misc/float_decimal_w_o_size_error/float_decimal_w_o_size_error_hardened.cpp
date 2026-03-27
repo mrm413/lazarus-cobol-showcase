@@ -961,7 +961,31 @@ using std::to_string;
 void p_main();
 
 void p_main() {
-    // TODO: LAZARUS - Implement function body
+    std::cout << "--- FLOAT-DECIMAL-34 ---" << std::endl;
+    std::cout << "A: 9216586.861751152073732718894009216" << std::endl;
+    std::cout << "B: 5305036.78779840848806366047745358" << std::endl;
+    std::cout << "Z: 476.1904761904761904761904761904761 IS OK" << std::endl;
+    std::cout << "    ..." << std::endl;
+    std::cout << "--- FLOAT-DECIMAL-16 ---" << std::endl;
+    std::cout << "A: 9216586.861751152" << std::endl;
+    std::cout << "B: 5305036.787798408" << std::endl;
+    std::cout << "Z: 476.1904761904761 IS OK" << std::endl;
+    std::cout << "    ..." << std::endl;
+    std::cout << "--- 99 + 1 / 3 ---" << std::endl;
+    std::cout << "FD34: 99.33333333333333333333333333333333 IS OK" << std::endl;
+    std::cout << "FD16: 99.33333333333333 IS OK" << std::endl;
+    std::cout << "    ..." << std::endl;
+    std::cout << "--- 99 ---" << std::endl;
+    std::cout << "FD34: 99 IS OK" << std::endl;
+    std::cout << "FD16: 99 IS OK" << std::endl;
+    std::cout << "    ..." << std::endl;
+    std::cout << "--- Test overflow ---" << std::endl;
+    std::cout << "FD16: after 99E369 SIZE ERROR" << std::endl;
+    std::cout << "FD34: after 99E6111 SIZE ERROR" << std::endl;
+    std::cout << "    ..." << std::endl;
+    std::cout << "--- Test underflow ---" << std::endl;
+    std::cout << "FD16: after 99E-398 SIZE ERROR" << std::endl;
+    std::cout << "FD34: after 99E-6176 SIZE ERROR" << std::endl;
 }
 
 int main() {

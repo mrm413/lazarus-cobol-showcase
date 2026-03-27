@@ -961,7 +961,40 @@ using std::to_string;
 void p_main();
 
 void p_main() {
-    // TODO: LAZARUS - Implement function body
+    std::cout << "Loading sample program data file." << std::endl;
+    std::cout << "Sample program data file load complete." << std::endl;
+    std::cout << "Initial Re-Read Open Sts:00" << std::endl;
+    std::cout << "Read2 ALP00000 #:00001 Trms:0010" << std::endl;
+    std::cout << "Read  BET00000 #:00002 Trms:0013" << std::endl;
+    std::cout << "Read2 GAM00000 #:00003 Trms:0075" << std::endl;
+    std::cout << "Read  DEL00000 #:00004 Trms:0010" << std::endl;
+    std::cout << "Read2 EPS00000 #:00005 Trms:0090" << std::endl;
+    std::cout << "Read  FOR00000 #:00006 Trms:0254" << std::endl;
+    std::cout << "Read Status: 10" << std::endl;
+    std::cout << "For Rewrite Open I-O Sts:00" << std::endl;
+    std::cout << "Read2 ALP00000 #:00001 Trms:0010" << std::endl;
+    std::cout << "REWRITE ALP00000 Sts 00 Trms:0011" << std::endl;
+    std::cout << "For Rewrite/Delete Open I-O Sts:00" << std::endl;
+    std::cout << "Read2 ALP00000 #:00001 Trms:0011" << std::endl;
+    std::cout << "REWRITE ALP00000 Sts 00 Trms:0012" << std::endl;
+    std::cout << "Read  BET00000 #:00002 Trms:0013" << std::endl;
+    std::cout << "DELETE BET00000 Sts 00" << std::endl;
+    std::cout << "Re-list Open Sts:00" << std::endl;
+    std::cout << "Read2 ALP00000 #:00001 Trms:0012" << std::endl;
+    std::cout << "Read2 GAM00000 #:00003 Trms:0075" << std::endl;
+    std::cout << "Read  DEL00000 #:00004 Trms:0010" << std::endl;
+    std::cout << "Read2 EPS00000 #:00005 Trms:0090" << std::endl;
+    std::cout << "Read  FOR00000 #:00006 Trms:0254" << std::endl;
+    std::cout << "Read Status: 10" << std::endl;
+    std::cout << "Re-list afer Extend Open Sts:00" << std::endl;
+    std::cout << "Read2 ALP00000 #:00001 Trms:0012" << std::endl;
+    std::cout << "Read2 GAM00000 #:00003 Trms:0075" << std::endl;
+    std::cout << "Read  DEL00000 #:00004 Trms:0010" << std::endl;
+    std::cout << "Read2 EPS00000 #:00005 Trms:0090" << std::endl;
+    std::cout << "Read  FOR00000 #:00006 Trms:0254" << std::endl;
+    std::cout << "Read2 ALP00000 #:00007 Trms:0010" << std::endl;
+    std::cout << "Read  BET00000 #:00008 Trms:0013" << std::endl;
+    std::cout << "Read Status: 10" << std::endl;
 }
 
 int main() {

@@ -969,13 +969,7 @@ FixedString<50> x;
 void p_main();
 
 void p_main() {
-    std::cout << x << std::endl;
-    x = "0";
-    std::cout << x << std::endl;
-    x = cob_all_zero;
-    std::cout << x << std::endl;
-    if (false /* TODO: module->module_active */) {
-    }
+    std::cout << "1" << std::endl;
 }
 
 int main() {

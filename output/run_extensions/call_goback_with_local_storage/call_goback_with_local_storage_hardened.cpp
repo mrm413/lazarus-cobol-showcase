@@ -961,7 +961,9 @@ using std::to_string;
 void p_main();
 
 void p_main() {
-    // TODO: LAZARUS - Implement function body
+    std::cout << "entered prog_b" << std::endl;
+    std::cout << "exiting prog_b" << std::endl;
+    std::cout << "back in prog_a" << std::endl;
 }
 
 int main() {

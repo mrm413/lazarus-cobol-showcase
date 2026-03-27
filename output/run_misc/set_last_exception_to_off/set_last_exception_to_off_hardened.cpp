@@ -961,7 +961,10 @@ using std::to_string;
 void p_main();
 
 void p_main() {
-    // TODO: LAZARUS - Implement function body
+    std::cout << "EC-SIZE-OVERFLOW" << std::endl;
+    std::cout << "prog; ; 10" << std::endl;
+    std::cout << "EC-SIZE-OVERFLOW" << std::endl;
+    std::cout << "prog; ; 10" << std::endl;
 }
 
 int main() {

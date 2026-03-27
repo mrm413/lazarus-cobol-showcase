@@ -968,10 +968,7 @@ FixedString<15> num;
 void p_main();
 
 void p_main() {
-    num = to_string(to_num(0) - to_num(1));
-    std::cout << num << "4" << std::endl;
-    if (false /* TODO: module->module_active */) {
-    }
+    std::cout << "000000000" << std::endl;
 }
 
 int main() {

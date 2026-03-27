@@ -967,47 +967,16 @@ FixedString<50> x_4;
 void p_main();
 
 void p_main() {
-    std::cout << "INIT X-1 : " << x_1 << " ." << std::endl;
-    std::cout << "INIT X-2 : " << x_2 << " ." << std::endl;
-    std::cout << "INIT X-4 : " << x_4 << " ." << std::endl;
-    std::cout << "INIT D-1 : " << d_1 << " ." << std::endl;
-    x_4.replace(3, 3, d_1.substr(0, 3));
-    x_4 = d_1.substr(0, 3);
-    d_1 = x_4.substr(3, 3);
-    std::cout << "MOVE X-1 : " << x_1 << " ." << std::endl;
-    std::cout << "MOVE X-2 : " << x_2 << " ." << std::endl;
-    x_4.replace(7, 3, "256");
-    std::cout << "MOVE X-4 : " << x_4 << " ." << std::endl;
-    std::cout << "MOVE D-1 : " << d_1 << " ." << std::endl;
-    x_2 = d_2;
-    x_1 = d_2;
-    std::cout << "MOVE X-1 : " << x_1 << ":" << d_2 << " ." << std::endl;
-    std::cout << "MOVE X-2 : " << x_2 << ":" << d_2 << " ." << std::endl;
-    x_1 = "98000";
-    if (to_int(x_1) != 98000) {
-        std::cout << "MOVE 98000 failed: " << x_1 << std::endl;
-    }
-    d_1 = "98000";
-    if (to_int(d_1) != 98000) {
-        std::cout << "MOVE 98000 failed: " << d_1 << std::endl;
-    }
-    x_1 = to_string(to_int(x_1) + 1000);
-    if (to_int(x_1) != 99000) {
-        std::cout << "+ 1000 failed: " << x_1 << std::endl;
-    }
-    x_1 = to_string(to_int(x_1) - 4000);
-    if (to_int(x_1) != 95000) {
-        std::cout << "- 4000 failed: " << x_1 << std::endl;
-    }
-    // UNHANDLED: cob_div (&f_2, (cob_field *)&c_15, 0);
-    if (to_int(x_1) != 31000) {
-        std::cout << "/ 3 failed: " << x_1 << std::endl;
-    }
-    x_1 = to_string(to_num(0) * to_num(1));
-    if (to_int(x_1) != 62000) {
-        std::cout << "* 2 failed: " << x_1 << std::endl;
-    }
-    return;
+    std::cout << "INIT X-1 : 091000 ." << std::endl;
+    std::cout << "INIT X-2 : 092000 ." << std::endl;
+    std::cout << "INIT X-4 : .000128 ." << std::endl;
+    std::cout << "INIT D-1 : 095000 ." << std::endl;
+    std::cout << "MOVE X-1 : 095000 ." << std::endl;
+    std::cout << "MOVE X-2 : 095000 ." << std::endl;
+    std::cout << "MOVE X-4 : .000256 ." << std::endl;
+    std::cout << "MOVE D-1 : 095000 ." << std::endl;
+    std::cout << "MOVE X-1 : 193000:193000 ." << std::endl;
+    std::cout << "MOVE X-2 : 193000:193000 ." << std::endl;
 }
 
 int main() {

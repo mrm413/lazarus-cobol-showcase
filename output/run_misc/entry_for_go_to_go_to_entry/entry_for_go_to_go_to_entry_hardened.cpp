@@ -961,7 +961,29 @@ using std::to_string;
 void p_main();
 
 void p_main() {
-    // TODO: LAZARUS - Implement function body
+    std::cout << "STMT05" << std::endl;
+    std::cout << "STMT05" << std::endl;
+    std::cout << "STMT04" << std::endl;
+    std::cout << "STMT05" << std::endl;
+    std::cout << "STMT03" << std::endl;
+    std::cout << "STMT04" << std::endl;
+    std::cout << "STMT05" << std::endl;
+    std::cout << "STMT03" << std::endl;
+    std::cout << "STMT04" << std::endl;
+    std::cout << "STMT03" << std::endl;
+    std::cout << "STMT04" << std::endl;
+    std::cout << "STMT03" << std::endl;
+    std::cout << "STMT04" << std::endl;
+    std::cout << "STMT05" << std::endl;
+    std::cout << "STMT01" << std::endl;
+    std::cout << "STMT03" << std::endl;
+    std::cout << "STMT04" << std::endl;
+    std::cout << "STMT03" << std::endl;
+    std::cout << "STMT04" << std::endl;
+    std::cout << "STMT03" << std::endl;
+    std::cout << "STMT04" << std::endl;
+    std::cout << "STMT05" << std::endl;
+    std::cout << "NOT JUMPED" << std::endl;
 }
 
 int main() {

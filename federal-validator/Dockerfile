@@ -34,7 +34,8 @@ RUN echo "=== Toolchain ===" \
 WORKDIR /validator
 
 # Copy validation infrastructure
-COPY federal-validator/run.sh federal-validator/test_runner.sh federal-validator/parity_harness.sh federal-validator/Makefile federal-validator/autofixer.py ./
+COPY federal-validator/run.sh federal-validator/test_runner.sh federal-validator/parity_harness.sh federal-validator/oracle_harness.sh federal-validator/oracle_autofixer.py federal-validator/Makefile federal-validator/autofixer.py ./
+COPY federal-validator/testsuite_oracle.json ./
 COPY federal-validator/runtime/ runtime/
 
 # Copy transpiler output: 1,607 clean + 1,607 hardened C++17 files
@@ -46,8 +47,8 @@ COPY cobol_source/ cobol_source/
 RUN ln -s cpp_output output
 
 # Fix Windows CRLF line endings for Linux
-RUN sed -i 's/\r$//' run.sh test_runner.sh parity_harness.sh autofixer.py
+RUN sed -i 's/\r$//' run.sh test_runner.sh parity_harness.sh oracle_harness.sh autofixer.py
 
-RUN chmod +x run.sh test_runner.sh parity_harness.sh
+RUN chmod +x run.sh test_runner.sh parity_harness.sh oracle_harness.sh
 
 ENTRYPOINT ["./run.sh"]

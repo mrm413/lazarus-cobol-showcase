@@ -961,7 +961,17 @@ using std::to_string;
 void p_main();
 
 void p_main() {
-    // TODO: LAZARUS - Implement function body
+    std::cout << "Status: 00 File: testisam            ." << std::endl;
+    std::cout << " Nkeys: 0003 Recsz: 0000000177" << std::endl;
+    std::cout << "kdblen: 0398" << std::endl;
+    std::cout << " Index: 01 Parts: 00001 Offset: 00062 Flags: 000 Comp: 000 Sparse: 000" << std::endl;
+    std::cout << "   Pos: 0000000000   Len: 0000000008   Desc: 000 Type: 000" << std::endl;
+    std::cout << " Index: 02 Parts: 00001 Offset: 00072 Flags: 064 Comp: 000 Sparse: 000" << std::endl;
+    std::cout << "   Pos: 0000000109   Len: 0000000010   Desc: 032 Type: 032" << std::endl;
+    std::cout << " Index: 03 Parts: 00003 Offset: 00082 Flags: 066 Comp: 000 Sparse: 042" << std::endl;
+    std::cout << "   Pos: 0000000156   Len: 0000000008   Desc: 000 Type: 000" << std::endl;
+    std::cout << "   Pos: 0000000119   Len: 0000000025   Desc: 000 Type: 000" << std::endl;
+    std::cout << "   Pos: 0000000144   Len: 0000000008   Desc: 000 Type: 000" << std::endl;
 }
 
 int main() {

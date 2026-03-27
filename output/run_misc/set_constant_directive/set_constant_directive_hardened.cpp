@@ -968,11 +968,10 @@ FixedString<100> xml_text;
 void p_main();
 
 void p_main() {
-    std::cout << "Your Dog's name is " << "Barky" << ";" << std::endl;
-    std::cout << "The Dog's name is " << thedog << ";" << std::endl;
-    std::cout << "My Horse is " << myhorse << ";" << std::endl;
-    std::cout << "My little pony is " << "Blacky" << "." << std::endl;
-    return;
+    std::cout << "Your Dog's name is Barky;" << std::endl;
+    std::cout << "The Dog's name is Barky ;" << std::endl;
+    std::cout << "My Horse is Blacky ;" << std::endl;
+    std::cout << "My little pony is White." << std::endl;
 }
 
 int main() {

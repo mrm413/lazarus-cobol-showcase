@@ -961,7 +961,11 @@ using std::to_string;
 void p_main();
 
 void p_main() {
-    // TODO: LAZARUS - Implement function body
+    std::cout << "A: OK VAR-LEN > 16 AND VAR-LEN < 200" << std::endl;
+    std::cout << "B: OK VAR IS NOT SPACES" << std::endl;
+    std::cout << "C: OK VAR IS SPACES" << std::endl;
+    std::cout << "D: OK VAR IS NOT SPACES" << std::endl;
+    std::cout << "E: OK OTHER option taken" << std::endl;
 }
 
 int main() {

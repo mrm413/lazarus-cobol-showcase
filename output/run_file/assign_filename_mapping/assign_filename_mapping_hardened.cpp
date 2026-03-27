@@ -961,7 +961,8 @@ using std::to_string;
 void p_main();
 
 void p_main() {
-    // TODO: LAZARUS - Implement function body
+    std::cout << "STATUS OPENI 00" << std::endl;
+    std::cout << "STATUS OPENO 00" << std::endl;
 }
 
 int main() {

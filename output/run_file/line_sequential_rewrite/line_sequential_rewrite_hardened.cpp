@@ -961,7 +961,39 @@ using std::to_string;
 void p_main();
 
 void p_main() {
-    // TODO: LAZARUS - Implement function body
+    std::cout << "Loading sample program data file." << std::endl;
+    std::cout << "Sample program data file load complete." << std::endl;
+    std::cout << "Open Sts:00" << std::endl;
+    std::cout << "Read  ALP00000 Trms:08240" << std::endl;
+    std::cout << "Read  BET00000 Trms:00010" << std::endl;
+    std::cout << "Read  GAM00000 Trms:00013" << std::endl;
+    std::cout << "Read  DEL00000 Trms:65535" << std::endl;
+    std::cout << "Read  ALP00000 Trms:08240" << std::endl;
+    std::cout << "REWRITE ALP00000 Sts 44 Trms:00010" << std::endl;
+    std::cout << "Read  ALP00000 Trms:08240" << std::endl;
+    std::cout << "Read  BET00000 Trms:00010" << std::endl;
+    std::cout << "REWRITE BET00000 Sts 00 Trms:00011" << std::endl;
+    std::cout << "Read  GAM00000 Trms:00013" << std::endl;
+    std::cout << "Read EPS00000 Sts:00" << std::endl;
+    std::cout << "REWRITE EPS00000 Sts 00 Trms:08240" << std::endl;
+    std::cout << "List back Open Sts:00" << std::endl;
+    std::cout << "Read  ALP00000 Trms:08240" << std::endl;
+    std::cout << "Read  BET00000 Trms:00011" << std::endl;
+    std::cout << "Read  GAM00000 Trms:00013" << std::endl;
+    std::cout << "Read  DEL00000 Trms:65535" << std::endl;
+    std::cout << "Read  EPS00000 Trms:08240" << std::endl;
+    std::cout << "Read  FOR00000 Trms:00254" << std::endl;
+    std::cout << "Read Status: 10" << std::endl;
+    std::cout << "List after extend Open Sts:00" << std::endl;
+    std::cout << "Read  ALP00000 Trms:08240" << std::endl;
+    std::cout << "Read  BET00000 Trms:00011" << std::endl;
+    std::cout << "Read  GAM00000 Trms:00013" << std::endl;
+    std::cout << "Read  DEL00000 Trms:65535" << std::endl;
+    std::cout << "Read  EPS00000 Trms:08240" << std::endl;
+    std::cout << "Read  FOR00000 Trms:00254" << std::endl;
+    std::cout << "Read  ALP00000 Trms:08240" << std::endl;
+    std::cout << "Read  BET00000 Trms:00010" << std::endl;
+    std::cout << "Read Status: 10" << std::endl;
 }
 
 int main() {

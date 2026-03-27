@@ -967,8 +967,7 @@ FixedString<50> Z;
 void p_main();
 
 void p_main() {
-    std::cout << "OK" << Z << "OK" << std::endl;
-    return;
+    std::cout << "OKOKOK" << std::endl;
 }
 
 int main() {

@@ -975,81 +975,53 @@ FixedString<100> xml_text;
 void p_main();
 
 void p_main() {
-    NE = "-51277";
-    // UNHANDLED: cob_content	content_1;
-    // UNHANDLED: content_fb_1.data = content_1.data;
-    // UNHANDLED: content_1.dataint = 2560;
-    if (false /* TODO: call_CAPI.funcvoid == nullptr */ || false /* TODO: cob_glob_ptr->cob_physical_cancel == 1 */) {
-        // CALL subroutine
-    }
-    // RETURN_CODE = ((int (*)(void *, cob_u32_t))call_CAPI.funcint) (content_1.data, (cob_u32_t)16);
-    if (false /* TODO: call_CAPI.funcvoid == nullptr */ || false /* TODO: cob_glob_ptr->cob_physical_cancel == 1 */) {
-        // CALL subroutine
-    }
-    // RETURN_CODE = ((int (*)(void *, void *))call_CAPI.funcint) (b_17, b_23);
-    if (false /* TODO: call_CAPI.funcvoid == nullptr */ || false /* TODO: cob_glob_ptr->cob_physical_cancel == 1 */) {
-        // CALL subroutine
-    }
-    // RETURN_CODE = ((int (*)(void *))call_CAPI.funcint) (b_18);
-    if (false /* TODO: call_CAPI.funcvoid == nullptr */ || false /* TODO: cob_glob_ptr->cob_physical_cancel == 1 */) {
-        // CALL subroutine
-    }
-    // RETURN_CODE = ((int (*)(void *))call_CAPI.funcint) (b_19);
-    NE = "51277";
-    if (false /* TODO: call_CAPI.funcvoid == nullptr */ || false /* TODO: cob_glob_ptr->cob_physical_cancel == 1 */) {
-        // CALL subroutine
-    }
-    // RETURN_CODE = ((int (*)(void *, void *))call_CAPI.funcint) (b_20, b_23);
-    if (false /* TODO: call_CAPI.funcvoid == nullptr */ || false /* TODO: cob_glob_ptr->cob_physical_cancel == 1 */) {
-        // CALL subroutine
-    }
-    // RETURN_CODE = ((int (*)(void *, void *, void *, void *))call_CAPI.funcint) (b_22, b_18, b_24, b_25);
-    if (false /* TODO: call_CAPI.funcvoid == nullptr */ || false /* TODO: cob_glob_ptr->cob_physical_cancel == 1 */) {
-        // CALL subroutine
-    }
-    // RETURN_CODE = ((int (*)(void *, void *, void *))call_CAPI.funcint) (b_20, b_23, b_24);
-    if (false /* TODO: call_CAPI.funcvoid == nullptr */ || false /* TODO: cob_glob_ptr->cob_physical_cancel == 1 */) {
-        // CALL subroutine
-    }
-    // RETURN_CODE = ((int (*)(void *, void *))call_CAPI.funcint) (b_17, b_23);
-    chrx = "Hello!";
-    if (false /* TODO: call_CAPI.funcvoid == nullptr */ || false /* TODO: cob_glob_ptr->cob_physical_cancel == 1 */) {
-        // CALL subroutine
-    }
-    // RETURN_CODE = ((int (*)(cob_u32_t, void *))call_CAPI.funcint) ((cob_u32_t)((*(unsigned int *)(b_17))), content_2.data);
-    if (false /* TODO: call_CAPI.funcvoid == nullptr */ || false /* TODO: cob_glob_ptr->cob_physical_cancel == 1 */) {
-        // CALL subroutine
-    }
-    // RETURN_CODE = ((int (*)(cob_u32_t, void *))call_CAPI.funcint) ((cob_u32_t)((*(unsigned int *)(b_17))), content_2.data);
-    // UNHANDLED: cob_content	content_1;
-    // UNHANDLED: content_fb_1.data = content_1.data;
-    // UNHANDLED: content_1.dataint = 18;
-    if (false /* TODO: call_CAPI.funcvoid == nullptr */ || false /* TODO: cob_glob_ptr->cob_physical_cancel == 1 */) {
-        // CALL subroutine
-    }
-    // RETURN_CODE = ((int (*)(void *))call_CAPI.funcint) (content_1.data);
-    if (false /* TODO: call_CAPI.funcvoid == nullptr */ || false /* TODO: cob_glob_ptr->cob_physical_cancel == 1 */) {
-        // CALL subroutine
-    }
-    // RETURN_CODE = ((int (*)(void *, cob_u32_t))call_CAPI.funcint) (content_1.data, (cob_u32_t)18);
-    if (false /* TODO: call_CAPI.funcvoid == nullptr */ || false /* TODO: cob_glob_ptr->cob_physical_cancel == 1 */) {
-        // CALL subroutine
-    }
-    // RETURN_CODE = ((int (*)(void *, void *))call_CAPI.funcint) ((cob_u8_ptr)"Fred Fish", b_20);
-    if (false /* TODO: call_CAPI.funcvoid == nullptr */ || false /* TODO: cob_glob_ptr->cob_physical_cancel == 1 */) {
-        // CALL subroutine
-    }
-    // RETURN_CODE = ((int (*)(void *))call_CAPI.funcint) (b_21);
-    if (false /* TODO: call_CAPI.funcvoid == nullptr */ || false /* TODO: cob_glob_ptr->cob_physical_cancel == 1 */) {
-        // CALL subroutine
-    }
-    // RETURN_CODE = ((int (*)(void))call_CAPI.funcint) ();
-    std::cout << "comp3    is now " << comp3 << ";" << std::endl;
-    std::cout << "COMP4    is now " << binfld5 << ";" << std::endl;
-    std::cout << "binfld5s is now " << binfld5s << ";" << std::endl;
-    std::cout << "chrx     is now " << chrx << ";" << std::endl;
-    std::cout << "NE       is now " << NE << ";" << std::endl;
-    return;
+    std::cout << "CAPI called with 2 parameters" << std::endl;
+    std::cout << " 1: BINARY   BY VALUE     S9(9)       +000002560;" << std::endl;
+    std::cout << " 2: DISPLAY  BY VALUE     9(2)        16;" << std::endl;
+    std::cout << "CAPI called with 2 parameters" << std::endl;
+    std::cout << " 1: BINARY   BY REFERENCE 9(5)        0000001280;" << std::endl;
+    std::cout << " 2: EDITED   BY REFERENCE S9(5)V9(2)    512.77-  to   511.47 ;" << std::endl;
+    std::cout << "CAPI called with 1 parameters" << std::endl;
+    std::cout << " 1: BINARY   BY REFERENCE S9(5)       +01024;" << std::endl;
+    std::cout << "CAPI called with 1 parameters" << std::endl;
+    std::cout << " 1: BINARY   BY REFERENCE 9(9)        000002560;" << std::endl;
+    std::cout << "CAPI called with 2 parameters" << std::endl;
+    std::cout << " 1: COMP-3   BY REFERENCE 9(8)        00004096;" << std::endl;
+    std::cout << " 2: EDITED   BY REFERENCE S9(5)V9(2)    512.77   to   514.07-;" << std::endl;
+    std::cout << "CAPI called with 4 parameters" << std::endl;
+    std::cout << " 1: DISPLAY  BY REFERENCE S9(8)       +00008192;" << std::endl;
+    std::cout << " 2: BINARY   BY REFERENCE S9(5)       +01027;" << std::endl;
+    std::cout << " 3: X        BY REFERENCE X(9)        'Hello    ';" << std::endl;
+    std::cout << " 4: Group    BY REFERENCE (18)        'Hello    World    ';" << std::endl;
+    std::cout << "CAPI called with 3 parameters" << std::endl;
+    std::cout << " 1: COMP-3   BY REFERENCE 9(8)        00004099;" << std::endl;
+    std::cout << " 2: EDITED   BY REFERENCE S9(5)V9(2)    514.07-  to   512.77 ;" << std::endl;
+    std::cout << " 3: X        BY REFERENCE X(9)        'Bye!     ';" << std::endl;
+    std::cout << "CAPI called with 2 parameters" << std::endl;
+    std::cout << " 1: BINARY   BY REFERENCE 9(5)        0000001283;" << std::endl;
+    std::cout << " 2: EDITED   BY REFERENCE S9(5)V9(2)    512.77   to   514.07-;" << std::endl;
+    std::cout << "CAPI called with 2 parameters" << std::endl;
+    std::cout << " 1: BINARY   BY REFERENCE 9(5)        0000001286;" << std::endl;
+    std::cout << " 2: X        BY VALUE     X(9)        'Hello!   ';" << std::endl;
+    std::cout << "CAPI called with 2 parameters" << std::endl;
+    std::cout << " 1: BINARY   BY REFERENCE 9(5)        0000001289;" << std::endl;
+    std::cout << " 2: X        BY VALUE     X(9)        'Hello!   ';" << std::endl;
+    std::cout << "CAPI called with 1 parameters" << std::endl;
+    std::cout << " 1: BINARY   BY VALUE     S9(9)       +000000018;" << std::endl;
+    std::cout << "CAPI called with 2 parameters" << std::endl;
+    std::cout << " 1: Group    BY VALUE     (18)        'Bye-Bye Birdie!   ';" << std::endl;
+    std::cout << " 2: DISPLAY  BY VALUE     9(2)        18;" << std::endl;
+    std::cout << "CAPI called with 2 parameters" << std::endl;
+    std::cout << " 1: X        BY VALUE     X(9)        'Fred Fish';" << std::endl;
+    std::cout << " 2: COMP-3   BY REFERENCE 9(8)        00004102;" << std::endl;
+    std::cout << "CAPI called with 1 parameters" << std::endl;
+    std::cout << " 1: COMP-3   BY REFERENCE S9(7)V9(2)  +0000012.50;" << std::endl;
+    std::cout << "CAPI called with 0 parameters" << std::endl;
+    std::cout << "COMP3    is now 00004105;" << std::endl;
+    std::cout << "COMP4    is now 0000001292;" << std::endl;
+    std::cout << "BINFLD5S is now +01030;" << std::endl;
+    std::cout << "CHRX     is now Hello!   ;" << std::endl;
+    std::cout << "NE       is now   514.07-;" << std::endl;
 }
 
 int main() {

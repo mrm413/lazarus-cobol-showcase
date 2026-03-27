@@ -969,7 +969,7 @@ FixedString<100> xml_text;
 void p_main();
 
 void p_main() {
-    std::cout << "ENVPONY" << std::endl;
+    // Removed: ACCEPT incorrectly transpiled as DISPLAY
     // UNHANDLED: cob_accept_environment (&f_23);
     std::cout << "ENVPONY env var set to " << myponyenv << ";" << std::endl;
     std::cout << "1st Dog's name is " << "Pluto" << ";" << std::endl;

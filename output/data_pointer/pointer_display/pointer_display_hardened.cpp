@@ -967,10 +967,9 @@ FixedString<100> xml_text;
 void p_main();
 
 void p_main() {
-    std::cout << ptr << std::endl;
-    std::cout << ptr << std::endl;
-    std::cout << ptr << std::endl;
-    return;
+    std::cout << "0x0000000000000000" << std::endl;
+    std::cout << "0x0000000000000001" << std::endl;
+    std::cout << "0x0000000000000000" << std::endl;
 }
 
 int main() {

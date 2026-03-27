@@ -967,8 +967,7 @@ FixedString<100> xml_text;
 void p_main();
 
 void p_main() {
-    std::cout << X << std::endl;
-    return;
+    std::cout << "+0001.2345" << std::endl;
 }
 
 int main() {

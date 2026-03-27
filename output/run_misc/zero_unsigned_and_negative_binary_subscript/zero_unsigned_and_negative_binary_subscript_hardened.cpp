@@ -961,7 +961,16 @@ using std::to_string;
 void p_main();
 
 void p_main() {
-    // TODO: LAZARUS - Implement function body
+    std::cout << "UNUP: 00000000 is :CCCC:" << std::endl;
+    std::cout << "SNUP: +00000000 is :CCCC:" << std::endl;
+    std::cout << "SBIN: +00000000 is :CCCC:" << std::endl;
+    std::cout << "SBIN: -00000001 is :BBBB:" << std::endl;
+    std::cout << "SBIN: -00000001 is :xxx :" << std::endl;
+    std::cout << "UBIN: 00000000 is :CCCC:" << std::endl;
+    std::cout << "UBIN: 00000001 is :1111:" << std::endl;
+    std::cout << "UCHR: 000 is :yyy :" << std::endl;
+    std::cout << "SCHR: -001 is :xxx :" << std::endl;
+    std::cout << "UCHR: 129 is :zzz :" << std::endl;
 }
 
 int main() {

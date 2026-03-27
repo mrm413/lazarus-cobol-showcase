@@ -961,7 +961,10 @@ using std::to_string;
 void p_main();
 
 void p_main() {
-    // TODO: LAZARUS - Implement function body
+    std::cout << "Loading sample program data file." << std::endl;
+    std::cout << "Sample program data file load complete." << std::endl;
+    std::cout << "Read    BET00000 Sts:00 Trms:0013" << std::endl;
+    std::cout << "REWROTE BET00000 Sts:00 Trms:0014" << std::endl;
 }
 
 int main() {

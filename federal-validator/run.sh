@@ -40,16 +40,22 @@ echo ""
 
 # Parse flags
 PARITY_MODE=""
+ORACLE_MODE=""
 for arg in "$@"; do
     case "$arg" in
         --autofix) export AUTOFIX=1; shift ;;
         --parity)  PARITY_MODE="full"; shift ;;
         --parity-quick) PARITY_MODE="quick"; shift ;;
+        --oracle)  ORACLE_MODE=1; shift ;;
     esac
 done
 
 # Run the appropriate suite
-if [ -n "$PARITY_MODE" ]; then
+if [ -n "$ORACLE_MODE" ]; then
+    echo "  Running GnuCOBOL 3.2 Oracle Parity Harness..."
+    echo ""
+    exec ./oracle_harness.sh
+elif [ -n "$PARITY_MODE" ]; then
     echo "  Running COBOL/C++17 Parity Harness (mode: $PARITY_MODE)..."
     echo ""
     exec ./parity_harness.sh "$PARITY_MODE"

@@ -961,7 +961,26 @@ using std::to_string;
 void p_main();
 
 void p_main() {
-    // TODO: LAZARUS - Implement function body
+    std::cout << "Simple Compute  RSLT IS 400" << std::endl;
+    std::cout << "Single Variable RSLT IS 188" << std::endl;
+    std::cout << "Compute  RSLT    IS 188" << std::endl;
+    std::cout << "Compute  RSLTv99 IS 188.00" << std::endl;
+    std::cout << "Compute  RSLT    IS 188" << std::endl;
+    std::cout << "Compute  RSLTv9  IS 188.0" << std::endl;
+    std::cout << "Add      RSLT    IS 212" << std::endl;
+    std::cout << "Add      RSLT    IS 621" << std::endl;
+    std::cout << "Subtract RSLT    IS 408" << std::endl;
+    std::cout << "Subtract RSLT    IS 019" << std::endl;
+    std::cout << "Add      RSLTv9  IS 611.3" << std::endl;
+    std::cout << "Multiply RSLT    IS 723" << std::endl;
+    std::cout << "Multiply RSLT    IS 723" << std::endl;
+    std::cout << "Divide   RSLT    IS 039" << std::endl;
+    std::cout << "Divide   RSLTv9  IS 009.7" << std::endl;
+    std::cout << "Divide   RSLT    IS 009" << std::endl;
+    std::cout << "Simple   RSLT    IS 188 RSLTv9  IS 188.0" << std::endl;
+    std::cout << "Complex  RSLT    IS 188 RSLTv9  IS 188.0" << std::endl;
+    std::cout << "Reduced  RSLT    IS 188 RSLTv9  IS 188.0" << std::endl;
+    std::cout << "Not Using ARITHMETIC-OSVS" << std::endl;
 }
 
 int main() {

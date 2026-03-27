@@ -961,7 +961,10 @@ using std::to_string;
 void p_main();
 
 void p_main() {
-    // TODO: LAZARUS - Implement function body
+    std::cout << "Program is starting" << std::endl;
+    std::cout << "Program is stopping" << std::endl;
+    std::cout << "Exit procedure from DemoExtProc" << std::endl;
+    std::cout << "Exit procedure from ExtProc" << std::endl;
 }
 
 int main() {

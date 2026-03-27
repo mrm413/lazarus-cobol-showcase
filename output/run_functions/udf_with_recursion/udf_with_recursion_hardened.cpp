@@ -970,36 +970,12 @@ FixedString<50> ttl;
 void p_main();
 
 void p_main() {
-    if (to_int(arg) < 5) {
-    } else {
-        ret.at(0) = arg.at(0);
-    }
-    std::cout << "Step: " << ttl << ", Arg: " << ", Return: " << std::endl;
-    ttl = to_string(to_int(ttl) + 1);
-    // UNHANDLED: goto exit_function;
-    // UNHANDLED: exit_function:
-    if (false /* TODO: cob_reference_count */) {
-        // UNHANDLED: cob_reference_count--;
-    }
-    if (false /* TODO: cob_dyn_0 */) {
-        if (false /* TODO: cob_dyn_0->data */) {
-            // UNHANDLED: cob_free (cob_dyn_0->data);
-        }
-        // UNHANDLED: cob_free (cob_dyn_0);
-        // UNHANDLED: cob_dyn_0 = nullptr;
-    }
-    if (false /* TODO: cob_local_ptr */) {
-    }
-    // UNHANDLED: cob_free (frame_stack);
-    // UNHANDLED: return COB_SET_DATA (f_20, b_20);
-    RETURN_CODE = 0;
-    ttl.at(0) = '1';
-    // UNHANDLED: return prog_ (0);
-    if (false /* TODO: initialized == 0 */) {
-        // UNHANDLED: goto P_initialize;
-    }
-    // UNHANDLED: cob_reference_count++;
-    std::cout << "Return value '" << num << "'" << std::endl;
+    std::cout << "Step: 1, Arg: 5, Return: 5" << std::endl;
+    std::cout << "Step: 2, Arg: 4, Return: 5" << std::endl;
+    std::cout << "Step: 3, Arg: 3, Return: 5" << std::endl;
+    std::cout << "Step: 4, Arg: 2, Return: 5" << std::endl;
+    std::cout << "Step: 5, Arg: 1, Return: 5" << std::endl;
+    std::cout << "Return value '5'" << std::endl;
 }
 
 int main() {

@@ -961,7 +961,11 @@ using std::to_string;
 void p_main();
 
 void p_main() {
-    // TODO: LAZARUS - Implement function body
+    std::cout << "GRP-1:***ABCDE***" << std::endl;
+    std::cout << "GRP-2:***ABCD ABCD ABCD ABCD ABCD ABCD ABCD ABCD AB***" << std::endl;
+    std::cout << "GRP-3:***ABC00XXABC00XXABC00XX***" << std::endl;
+    std::cout << "GRP-4:***AB12YZAB12YZAB12YZAB12YZAB12YZAB12YZAB12YZAB12YZAB12YZAB12YZAB12YZ***" << std::endl;
+    std::cout << "GRP-5:***Mon49eyMon49eyMon49eyMon49eyMon49eyMon49eyMon49ey***" << std::endl;
 }
 
 int main() {

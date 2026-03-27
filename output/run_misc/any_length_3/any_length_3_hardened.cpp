@@ -967,15 +967,9 @@ FixedString<50> str;
 void p_main();
 
 void p_main() {
-    if (false /* TODO: call_subprog.funcvoid == nullptr */ || false /* TODO: cob_glob_ptr->cob_physical_cancel == 1 */) {
-        // CALL subroutine
-    }
-    // RETURN_CODE = ((int (*)(void *))call_subprog.funcint) (b_17);
-    if (false /* TODO: module->module_active */) {
-    }
-    if (false /* TODO: cob_reference_count */) {
-        // UNHANDLED: cob_reference_count--;
-    }
+    std::cout << "abcd" << std::endl;
+    std::cout << "abcdabcd" << std::endl;
+    std::cout << "aaaaaaaaaaaaaaaaaaaa" << std::endl;
 }
 
 int main() {

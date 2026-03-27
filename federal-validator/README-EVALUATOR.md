@@ -130,6 +130,26 @@ docker rm parity
 Opens in any browser — interactive HTML dashboard with search, filter, and side-by-side
 COBOL vs C++17 output for every program.
 
+## GnuCOBOL 3.2 Oracle Parity
+
+The oracle harness compares C++17 output against the **authoritative expected output**
+extracted directly from the GnuCOBOL 3.2 test suite `.at` files. No GnuCOBOL compiler
+needed — the oracle is the test suite definition itself.
+
+```bash
+# Run oracle parity (~1 minute)
+docker run --rm lazarus-cpp17-validator --oracle
+
+# Extract the HTML dashboard
+docker run --name oracle lazarus-cpp17-validator --oracle
+docker cp oracle:/validator/results/oracle_report.html ./oracle_report.html
+docker rm oracle
+```
+
+**Pipeline:** 36 `.at` files → `parse_testsuite.py` → `testsuite_oracle.json` (1,346 tests,
+277 with expected output) → `oracle_harness.sh` → compile C++ → run → compare vs oracle →
+interactive HTML report.
+
 ## Output Files
 
 After a run, results are in the container at `/validator/results/`:
@@ -141,6 +161,8 @@ After a run, results are in the container at `/validator/results/`:
 | `safety_audit.log` | Files flagged for raw memory operations |
 | `parity_report.html` | Interactive COBOL vs C++17 output dashboard (parity mode) |
 | `parity_results.csv` | Machine-readable parity results (parity mode) |
+| `oracle_report.html` | Interactive Oracle vs C++17 output dashboard (oracle mode) |
+| `oracle/oracle_summary.log` | Machine-readable oracle results (oracle mode) |
 
 To extract results:
 

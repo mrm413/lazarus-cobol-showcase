@@ -961,7 +961,10 @@ using std::to_string;
 void p_main();
 
 void p_main() {
-    // TODO: LAZARUS - Implement function body
+    std::cout << "READ    00003: RECORD-3            0000000003           ." << std::endl;
+    std::cout << "REWRITE 00003: RECORD-3            00000000031234567890 ." << std::endl;
+    std::cout << "READ    00006: RECORD-6            0000000006           ." << std::endl;
+    std::cout << "REWRITE 00006: RECORD-6            00000000061234567890 ." << std::endl;
 }
 
 int main() {

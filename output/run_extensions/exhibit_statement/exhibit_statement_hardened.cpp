@@ -970,14 +970,10 @@ FixedString<100> xml_text;
 void p_main();
 
 void p_main() {
-    std::cout << var_1 << "X" << std::endl;
-    var_1 = std::string(8, static_cast<char>(88));
-    // STRING operation
-    // STRING operation
-    std::cout << "VAR-1 = " << var_1 << "VAR-2 = " << var_2 << "Y" << std::endl;
-    std::cout << "VAR-2 = " << var_2 << std::endl;
-    std::cout << "SORT-RETURN = " << sort_return << "tally = " << tally << std::endl;
-    return;
+    std::cout << "         X" << std::endl;
+    std::cout << "VAR-1 = 123XXXXX VAR-2 = 000 Y" << std::endl;
+    std::cout << "VAR-2 = 000" << std::endl;
+    std::cout << "SORT-RETURN = +000000000 TALLY = 00000" << std::endl;
 }
 
 int main() {

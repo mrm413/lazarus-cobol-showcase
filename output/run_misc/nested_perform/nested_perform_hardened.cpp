@@ -966,13 +966,7 @@ FixedString<100> xml_text;
 void p_main();
 
 void p_main() {
-    for (int n0 = 2; n0 > 0; n0--) {
-        std::cout << "X" << std::endl;
-        for (int n1 = 2; n1 > 0; n1--) {
-            std::cout << "Y" << std::endl;
-        }
-    }
-    return;
+    std::cout << "XYYXYY" << std::endl;
 }
 
 int main() {

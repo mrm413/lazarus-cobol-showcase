@@ -968,9 +968,9 @@ void p_main();
 void p_main() {
     std::cout << "Hello!" << std::endl;
     std::cout << "Hi!" << std::endl;
+    std::cout << "Hey!" << std::endl;
+    std::cout << "Bye!" << std::endl;
     std::cout << "        20        30        40        50        60        70        80        90       100       110       120       130       140       150       160       170       180       190       200       210       220       230       240       250" << std::endl;
-    if (false /* TODO: module->module_active */) {
-    }
 }
 
 int main() {

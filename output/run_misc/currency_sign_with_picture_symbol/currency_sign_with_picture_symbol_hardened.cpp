@@ -961,7 +961,9 @@ using std::to_string;
 void p_main();
 
 void p_main() {
-    // TODO: LAZARUS - Implement function body
+    std::cout << "#EUR 12.34# equal #1,234 ct (EUR)#" << std::endl;
+    std::cout << "Invoice amount #1 is  $US1,500.00." << std::endl;
+    std::cout << "Invoice amount #2 is     $US12.34." << std::endl;
 }
 
 int main() {

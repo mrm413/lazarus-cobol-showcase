@@ -961,7 +961,7 @@ using std::to_string;
 void p_main();
 
 void p_main() {
-    // TODO: LAZARUS - Implement function body
+    std::cout << " |prog; A00 OF A00-MAIN; 21" << std::endl;
 }
 
 int main() {

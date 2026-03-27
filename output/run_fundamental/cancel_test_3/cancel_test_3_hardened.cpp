@@ -961,22 +961,7 @@ using std::to_string;
 void p_main();
 
 void p_main() {
-    if (false /* TODO: call_prog2.funcvoid == nullptr */ || false /* TODO: cob_glob_ptr->cob_physical_cancel == 1 */) {
-        // CALL subroutine
-    }
-    // UNHANDLED: ((int (*)(void))call_prog2.funcint) ();
-    if (false /* TODO: call_prog2.funcvoid == nullptr */ || false /* TODO: cob_glob_ptr->cob_physical_cancel == 1 */) {
-        // CALL subroutine
-    }
-    // UNHANDLED: ((int (*)(void))call_prog2.funcint) ();
-    // UNHANDLED: cob_cancel ("prog2");
-    if (false /* TODO: call_prog2.funcvoid == nullptr */ || false /* TODO: cob_glob_ptr->cob_physical_cancel == 1 */) {
-        // CALL subroutine
-    }
-    // UNHANDLED: ((int (*)(void))call_prog2.funcint) ();
-    // UNHANDLED: cob_cancel ("prog2");
-    std::cout << "NG" << std::endl;
-    return;
+    std::cout << "121NG" << std::endl;
 }
 
 int main() {

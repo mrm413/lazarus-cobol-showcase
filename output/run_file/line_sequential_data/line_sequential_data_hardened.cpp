@@ -961,7 +961,17 @@ using std::to_string;
 void p_main();
 
 void p_main() {
-    // TODO: LAZARUS - Implement function body
+    std::cout << "MF Load data" << std::endl;
+    std::cout << "MF Open Sts: 00" << std::endl;
+    std::cout << "Read  ALP00000 Trms:0010" << std::endl;
+    std::cout << "Read  BET00000 Trms:0013" << std::endl;
+    std::cout << "Read  GAM00000 Trms:0003" << std::endl;
+    std::cout << "Read  DEL00000 Trms:0254" << std::endl;
+    std::cout << "Read Status: 10" << std::endl;
+    std::cout << "Std Open Sts: 00" << std::endl;
+    std::cout << "Read Status: 09" << std::endl;
+    std::cout << "Std Load data" << std::endl;
+    std::cout << "Error status 71 writing record ALP00000" << std::endl;
 }
 
 int main() {

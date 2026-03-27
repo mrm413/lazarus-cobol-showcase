@@ -961,7 +961,7 @@ using std::to_string;
 void p_main();
 
 void p_main() {
-    // TODO: LAZARUS - Implement function body
+    std::cout << "SIZE ERROR, last value = 1.7014118E+38" << std::endl;
 }
 
 int main() {

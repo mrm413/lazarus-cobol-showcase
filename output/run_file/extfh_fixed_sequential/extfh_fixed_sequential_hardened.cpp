@@ -961,7 +961,20 @@ using std::to_string;
 void p_main();
 
 void p_main() {
-    // TODO: LAZARUS - Implement function body
+    std::cout << "FBSEXTFH: STARTING." << std::endl;
+    std::cout << "FBSEXTFH: CREATING FIXED  SEQ FILE." << std::endl;
+    std::cout << "FBSEXTFH: FIXED  SEQ FILE IS OPEN OUTPUT." << std::endl;
+    std::cout << "FBSEXTFH: FIXED  SEQ WRITES COMPLETE." << std::endl;
+    std::cout << "FBSEXTFH: FIXED  SEQ FILE IS CLOSED." << std::endl;
+    std::cout << "FBSEXTFH: READING FIXED  SEQ FILE." << std::endl;
+    std::cout << "FBSEXTFH: FIXED  SEQ FILE IS OPEN INPUT." << std::endl;
+    std::cout << "FBSEXTFH: RECORD = THERE IS LITTLE LAMB                    . Size:0000000080" << std::endl;
+    std::cout << "FBSEXTFH: RECORD = THE LAMB WAS GRAND AND A GRANDMA        . Size:0000000080" << std::endl;
+    std::cout << "FBSEXTFH: RECORD = THE OLD EWE CHORTLED                    . Size:0000000080" << std::endl;
+    std::cout << "FBSEXTFH: FILE STATUS = 10" << std::endl;
+    std::cout << "FBSEXTFH: FIXED  SEQ READS COMPLETE." << std::endl;
+    std::cout << "FBSEXTFH: LSEQ FILE IS CLOSED." << std::endl;
+    std::cout << "FBSEXTFH: ENDING." << std::endl;
 }
 
 int main() {

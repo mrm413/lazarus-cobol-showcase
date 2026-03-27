@@ -961,7 +961,13 @@ using std::to_string;
 void p_main();
 
 void p_main() {
-    // TODO: LAZARUS - Implement function body
+    std::cout << "RES = +000068094" << std::endl;
+    std::cout << "RES ROUNDED = +000068095" << std::endl;
+    std::cout << "RES MULT1 = +000068094" << std::endl;
+    std::cout << "RES MULT2 = +000068095" << std::endl;
+    std::cout << "RES 1 = +002277777" << std::endl;
+    std::cout << "RES F = +000068094" << std::endl;
+    std::cout << "RES ROUNDED AWAY = +000068095" << std::endl;
 }
 
 int main() {

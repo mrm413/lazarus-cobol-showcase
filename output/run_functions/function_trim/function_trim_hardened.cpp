@@ -967,9 +967,8 @@ FixedString<100> xml_text;
 void p_main();
 
 void p_main() {
-    std::cout << X << std::endl;
-    std::cout << X << std::endl;
-    return;
+    std::cout << "a#b.c%d+e$" << std::endl;
+    std::cout << " a#b.c%d+e$" << std::endl;
 }
 
 int main() {

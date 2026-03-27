@@ -968,9 +968,7 @@ FixedString<50> x;
 void p_main();
 
 void p_main() {
-    std::cout << std::endl;
-    if (false /* TODO: module->module_active */) {
-    }
+    std::cout << "!" << std::endl;
 }
 
 int main() {

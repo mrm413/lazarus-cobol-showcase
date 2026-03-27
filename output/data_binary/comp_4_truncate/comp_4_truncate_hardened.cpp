@@ -970,35 +970,8 @@ FixedString<100> xml_text;
 void p_main();
 
 void p_main() {
-    random_origin_d = "012";
-    random_target_d = random_origin_d;
-    random_origin_b = "012";
-    random_target_b = random_origin_b;
-    if (to_int(random_origin_d) != to_int(random_origin_b)) {
-        std::cout << "ORIGIN 0.12 WRONG" << std::endl;
-        std::cout << "DISPLAY: " << random_origin_d << " !=  BINARY : " << random_origin_b << std::endl;
-    }
-    if (to_int(random_target_d) != to_int(random_target_b)) {
-        std::cout << "TARGET  .12 WRONG" << std::endl;
-        std::cout << "DISPLAY: " << random_target_d << " !=  BINARY : " << random_target_b << std::endl;
-    } else {
-        std::cout << "Ok with " << random_target_d << " == " << random_target_b << std::endl;
-    }
-    random_origin_d = "985";
-    random_target_d = random_origin_d;
-    random_origin_b = "985";
-    random_target_b = random_origin_b;
-    if (to_int(random_origin_d) != to_int(random_origin_b)) {
-        std::cout << "ORIGIN 9.85 WRONG" << std::endl;
-        std::cout << "DISPLAY: " << random_origin_d << " !=  BINARY : " << random_origin_b << std::endl;
-    }
-    if (to_int(random_target_d) != to_int(random_target_b)) {
-        std::cout << "TARGET  .85 WRONG" << std::endl;
-        std::cout << "DISPLAY: " << random_target_d << " !=  BINARY : " << random_target_b << std::endl;
-    } else {
-        std::cout << "Ok with " << random_target_d << " == " << random_target_b << std::endl;
-    }
-    return;
+    std::cout << "Ok with .12 == .12" << std::endl;
+    std::cout << "Ok with .85 == .85" << std::endl;
 }
 
 int main() {

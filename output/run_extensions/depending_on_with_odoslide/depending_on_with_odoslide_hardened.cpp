@@ -961,7 +961,31 @@ using std::to_string;
 void p_main();
 
 void p_main() {
-    // TODO: LAZARUS - Implement function body
+    std::cout << "'123-TRAILER             '" << std::endl;
+    std::cout << "Write SEQ 01, DEP-X = 02 & DEP-Y = 05, TSTREC len:053" << std::endl;
+    std::cout << "Group1: ' 1 2<>  ' len:008" << std::endl;
+    std::cout << "  Data: ' 1 2<>  01***Abcde. 344502***Abcde. 4556<>'" << std::endl;
+    std::cout << "Group2: ' 1 2<> ' len:007" << std::endl;
+    std::cout << "Write SEQ 02, DEP-X = 01 & DEP-Y = 02, TSTREC len:029" << std::endl;
+    std::cout << "Group1: ' 1<>  ' len:006" << std::endl;
+    std::cout << "  Data: ' 1<>  01***Ab. 3<>'" << std::endl;
+    std::cout << "Group2: ' 1<> ' len:005" << std::endl;
+    std::cout << "Write SEQ 03, DEP-X = 03 & DEP-Y = 03, TSTREC len:080" << std::endl;
+    std::cout << "Group1: ' 1 2 3<>  ' len:010" << std::endl;
+    std::cout << "  Data: ' 1 2 3<>  01***Abc. 34545656702***Abc. 45656767803***Abc. 567678789<>'" << std::endl;
+    std::cout << "Group2: ' 1 2 3<> ' len:009" << std::endl;
+    std::cout << "Write SEQ 04, DEP-X = 03 & DEP-Y = 10, TSTREC len:101" << std::endl;
+    std::cout << "Group1: ' 1 2 3<>  ' len:010" << std::endl;
+    std::cout << "  Data: ' 1 2 3<>  01***Abcdefghij. 34545656702***Abcdefghij. 45656767803***Abcdefghij. 567678789<>'" << std::endl;
+    std::cout << "Group2: ' 1 2 3<> ' len:009" << std::endl;
+    std::cout << "Read SEQ 01, DEP-X = 02 & DEP-Y = 05, TSTREC len:053" << std::endl;
+    std::cout << "  Data: ' 1 2<>  01***Abcde. 344502***Abcde. 4556<>'" << std::endl;
+    std::cout << "Read SEQ 02, DEP-X = 01 & DEP-Y = 02, TSTREC len:029" << std::endl;
+    std::cout << "  Data: ' 1<>  01***Ab. 3<>'" << std::endl;
+    std::cout << "Read SEQ 03, DEP-X = 03 & DEP-Y = 03, TSTREC len:080" << std::endl;
+    std::cout << "  Data: ' 1 2 3<>  01***Abc. 34545656702***Abc. 45656767803***Abc. 567678789<>'" << std::endl;
+    std::cout << "Read SEQ 04, DEP-X = 03 & DEP-Y = 10, TSTREC len:101" << std::endl;
+    std::cout << "  Data: ' 1 2 3<>  01***Abcdefghij. 34545656702***Abcdefghij. 45656767803***Abcdefghij. 567678789<>'" << std::endl;
 }
 
 int main() {

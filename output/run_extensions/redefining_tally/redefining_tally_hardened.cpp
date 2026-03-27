@@ -962,12 +962,8 @@ FixedString<50> tally;
 void p_main();
 
 void p_main() {
-    tally = to_string(to_int(tally) + 1);
-    std::cout << tally << std::endl;
-    if (false /* TODO: module->module_active */) {
-    }
-    tally = "001";
-    }
+    std::cout << "002" << std::endl;
+}
 
 int main() {
     try {

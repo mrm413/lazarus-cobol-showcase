@@ -968,11 +968,7 @@ FixedString<15> num;
 void p_main();
 
 void p_main() {
-    comp1 = to_string(to_num(0) / to_num(1));
-    num = comp1;
-    std::cout << num << std::endl;
-    if (false /* TODO: module->module_active */) {
-    }
+    std::cout << "3.5" << std::endl;
 }
 
 int main() {

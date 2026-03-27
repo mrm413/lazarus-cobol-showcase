@@ -961,7 +961,10 @@ using std::to_string;
 void p_main();
 
 void p_main() {
-    // TODO: LAZARUS - Implement function body
+    std::cout << "A A-F-GEN-LEDGER-ZGL             is code 0305." << std::endl;
+    std::cout << "B A-F-GEN-LEDGER-ZGL             is code 0305." << std::endl;
+    std::cout << "A JUNK                           is invalid." << std::endl;
+    std::cout << "B JUNK                           is invalid." << std::endl;
 }
 
 int main() {

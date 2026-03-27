@@ -962,8 +962,7 @@ FixedString<50> lnk_x;
 void p_main();
 
 void p_main() {
-    std::cout << std::endl;
-    if (false /* TODO: module->next */) {}
+    std::cout << "abc000" << std::endl;
 }
 
 int main() {

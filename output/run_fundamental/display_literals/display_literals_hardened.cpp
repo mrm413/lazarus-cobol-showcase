@@ -970,18 +970,17 @@ void p_main() {
     std::cout << "123" << std::endl;
     std::cout << "+123" << std::endl;
     std::cout << "-123" << std::endl;
-    std::cout << "123" << std::endl;
-    std::cout << "+123" << std::endl;
-    std::cout << "-123" << std::endl;
-    std::cout << "123" << std::endl;
-    std::cout << "+123" << std::endl;
-    std::cout << "-123" << std::endl;
-    std::cout << "123" << std::endl;
-    std::cout << "+123" << std::endl;
-    std::cout << "-123" << std::endl;
+    std::cout << "12.3" << std::endl;
+    std::cout << "+12.3" << std::endl;
+    std::cout << "-12.3" << std::endl;
+    std::cout << "1.23" << std::endl;
+    std::cout << "+1.23" << std::endl;
+    std::cout << "-1.23" << std::endl;
+    std::cout << ".123" << std::endl;
+    std::cout << "+.123" << std::endl;
+    std::cout << "-.123" << std::endl;
     std::cout << "5" << std::endl;
     std::cout << "236" << std::endl;
-    return;
 }
 
 int main() {

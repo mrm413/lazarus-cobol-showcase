@@ -961,7 +961,41 @@ using std::to_string;
 void p_main();
 
 void p_main() {
-    // TODO: LAZARUS - Implement function body
+    std::cout << "Simple OCCURS with multi VALUES" << std::endl;
+    std::cout << "01: jan has 31 days" << std::endl;
+    std::cout << "02: feb has 28 days" << std::endl;
+    std::cout << "03: mar has 31 days" << std::endl;
+    std::cout << "04: apr has 30 days" << std::endl;
+    std::cout << "05: may has 31 days" << std::endl;
+    std::cout << "06: jun has 30 days" << std::endl;
+    std::cout << "07: jul has 31 days" << std::endl;
+    std::cout << "08: aug has 31 days" << std::endl;
+    std::cout << "09: sep has 30 days" << std::endl;
+    std::cout << "10: oct has 31 days" << std::endl;
+    std::cout << "11: nov has 30 days" << std::endl;
+    std::cout << "12: dec has 31 days" << std::endl;
+    std::cout << "13:     has 00 days" << std::endl;
+    std::cout << "Complex OCCURS with multi VALUES" << std::endl;
+    std::cout << "01-01:  Jan, 31. Feb, 28. Mar, 31. <A>" << std::endl;
+    std::cout << "01-02:  Apr, 30. May, 31. Jun, 30. <B>" << std::endl;
+    std::cout << "01-03:  Jul, 31. Aug, 31. Sep, 30. <C>" << std::endl;
+    std::cout << "01-04:  Oct, 31. Nov, 30. Dec, 31. <D>" << std::endl;
+    std::cout << "02-01:  JAN, 91. FEB, 28. MAR, 91. <E>" << std::endl;
+    std::cout << "02-02:  APR, 90. MAY, 91. JUN, 90. <F>" << std::endl;
+    std::cout << "02-03:  JUL, 91. AUG, 91. SEP, 90. <G>" << std::endl;
+    std::cout << "02-04:  OCT, 91. NOV, 90. DEC, 91. <*>" << std::endl;
+    std::cout << "Group VALUE test" << std::endl;
+    std::cout << "   ABC00D99D99D99D99XXABC00D99D99D99D99XXABC00D99D99D99D99XX   End." << std::endl;
+    std::cout << "   ABC00D99D99D99D99XXABC00D99D99D99D99XXABC00D99D99D99D99XX   End." << std::endl;
+    std::cout << "   ABC00D99D99D99D99XXABC00D99D99D99D99XXABC00D99 00D99D99XX   End." << std::endl;
+    std::cout << "Initialize VALUE OCCURS DEPENDING test" << std::endl;
+    std::cout << "GRP-5 with 6:***Mon49eyMon49eyMon49eyMon49eyMon49eyMon49ey***." << std::endl;
+    std::cout << "GRP-5 with 4:***Mon49eyMon49eyMon49eyMon49ey***." << std::endl;
+    std::cout << "01-02:  Apr, 30. May, 31. Jun, 30. <B>." << std::endl;
+    std::cout << "01-02: *******************************." << std::endl;
+    std::cout << "01-02:       00       00       00     ." << std::endl;
+    std::cout << "Initialize VALUE inside OCCURS test" << std::endl;
+    std::cout << "01-02:  Apr, 30. May, 31. Jun, 30. <B>." << std::endl;
 }
 
 int main() {

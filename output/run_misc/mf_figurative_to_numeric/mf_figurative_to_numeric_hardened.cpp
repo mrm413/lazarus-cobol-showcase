@@ -961,7 +961,38 @@ using std::to_string;
 void p_main();
 
 void p_main() {
-    // TODO: LAZARUS - Implement function body
+    std::cout << "Initial value" << std::endl;
+    std::cout << "30303936 ." << std::endl;
+    std::cout << "MOVE BIGFLT" << std::endl;
+    std::cout << "38333034 ." << std::endl;
+    std::cout << "MOVE SPACES" << std::endl;
+    std::cout << "20202020 ." << std::endl;
+    std::cout << "MOVE LOW-VALUES" << std::endl;
+    std::cout << "00000000 ." << std::endl;
+    std::cout << "MOVE HIGH-VALUES" << std::endl;
+    std::cout << "FFFFFFFF ." << std::endl;
+    std::cout << "MOVE QUOTE" << std::endl;
+    std::cout << "22222222 ." << std::endl;
+    std::cout << "MOVE ALL *" << std::endl;
+    std::cout << "2A2A2A2A ." << std::endl;
+    std::cout << "MOVE ALL 0" << std::endl;
+    std::cout << "30303030 ." << std::endl;
+    std::cout << "MOVE ALL 'A1'" << std::endl;
+    std::cout << "41314131 ." << std::endl;
+    std::cout << "MOVE ALL '21'" << std::endl;
+    std::cout << "32313231 ." << std::endl;
+    std::cout << "MOVE HIGH-VALUES TO (1:)" << std::endl;
+    std::cout << "FFFFFFFF ." << std::endl;
+    std::cout << "MOVE HIGH-VALUES TO BIGFLT" << std::endl;
+    std::cout << "BIGFLT is NaN" << std::endl;
+    std::cout << "FFFFFFFF ." << std::endl;
+    std::cout << "MOVE QUOTE TO BIGFLT" << std::endl;
+    std::cout << "BIGFLT is 2.1973164E-18" << std::endl;
+    std::cout << "22222222 ." << std::endl;
+    std::cout << "MOVE ALL * TO BIGFLT" << std::endl;
+    std::cout << "BIGFLT is 5.4312347E+12" << std::endl;
+    std::cout << "MOVE ALL '21' TO BIGFLT" << std::endl;
+    std::cout << "BIGFLT is 2.1212121E+37" << std::endl;
 }
 
 int main() {

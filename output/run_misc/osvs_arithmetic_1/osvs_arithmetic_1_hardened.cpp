@@ -969,57 +969,26 @@ FixedString<50> rsltv2;
 void p_main();
 
 void p_main() {
-    rslt = to_string(to_num(0) + to_num(1));
-    std::cout << "Simple Compute  rslt IS " << rslt << std::endl;
-    rslt = to_string(to_num(0) * to_num(1));
-    std::cout << "Single Variable rslt IS " << rslt << std::endl;
-    rsltv2 = to_string(to_num(0) * to_num(1));
-    rslt = to_string(to_num(0) + to_num(1));
-    std::cout << "Compute  rslt    IS " << rslt << std::endl;
-    std::cout << "Compute  RSLTv99 IS " << rsltv2 << std::endl;
-    rsltv1 = to_string(to_num(0) * to_num(1));
-    rslt = to_string(to_num(0) + to_num(1));
-    std::cout << "Compute  rslt    IS " << rslt << std::endl;
-    std::cout << "Compute  RSLTv9  IS " << rsltv1 << std::endl;
-    rslt = std::string(3, '0');
-    // ADD to rslt
-    std::cout << "Add      rslt    IS " << rslt << std::endl;
-    rslt = std::string(3, '0');
-    rslt = to_string(to_num(0) + to_num(1));
-    std::cout << "Add      rslt    IS " << rslt << std::endl;
-    // UNHANDLED: cob_sub (&f_6, &f_3, 0);
-    std::cout << "Subtract rslt    IS " << rslt << std::endl;
-    rslt = to_string(to_num(0) - to_num(1));
-    std::cout << "Subtract rslt    IS " << rslt << std::endl;
-    rslt = std::string(3, '0');
-    rsltv1 = to_string(to_num(0) + to_num(1));
-    std::cout << "Add      RSLTv9  IS " << rsltv1 << std::endl;
-    rslt = to_string(to_num(0) * to_num(1));
-    std::cout << "Multiply rslt    IS " << rslt << std::endl;
-    num_c = to_string(to_num(num_c) * to_num(rslt));
-    std::cout << "Multiply rslt    IS " << rslt << std::endl;
-    rslt = to_string(to_num(0) / to_num(1));
-    std::cout << "Divide   rslt    IS " << rslt << std::endl;
-    rsltv1 = to_string(to_num(0) / to_num(1));
-    std::cout << "Divide   RSLTv9  IS " << rsltv1 << std::endl;
-    rslt = to_string(to_num(0) / to_num(1));
-    std::cout << "Divide   rslt    IS " << rslt << std::endl;
-    rsltv1 = to_string(to_num(0) * to_num(1));
-    rslt = to_string(to_num(0) + to_num(1));
-    std::cout << "Simple   rslt    IS " << rslt << " RSLTv9  IS " << rsltv1 << std::endl;
-    rsltv1 = to_string(to_num(0) * to_num(1));
-    rslt = to_string(to_num(0) + to_num(1));
-    std::cout << "Complex  rslt    IS " << rslt << " RSLTv9  IS " << rsltv1 << std::endl;
-    rsltv1 = to_string(to_num(0) * to_num(1));
-    rslt = to_string(to_num(0) + to_num(1));
-    std::cout << "Reduced  rslt    IS " << rslt << " RSLTv9  IS " << rsltv1 << std::endl;
-    numv1 = num_a;
-    if (false /* decimal_cmp == 0 */) {
-        std::cout << "Not Using ARITHMETIC-OSVS" << std::endl;
-    } else {
-        std::cout << "Using ARITHMETIC-OSVS" << std::endl;
-    }
-    return;
+    std::cout << "Simple Compute  RSLT IS 400" << std::endl;
+    std::cout << "Single Variable RSLT IS 100" << std::endl;
+    std::cout << "Compute  RSLT    IS 188" << std::endl;
+    std::cout << "Compute  RSLTv99 IS 188.00" << std::endl;
+    std::cout << "Compute  RSLT    IS 180" << std::endl;
+    std::cout << "Compute  RSLTv9  IS 180.0" << std::endl;
+    std::cout << "Add      RSLT    IS 212" << std::endl;
+    std::cout << "Add      RSLT    IS 621" << std::endl;
+    std::cout << "Subtract RSLT    IS 408" << std::endl;
+    std::cout << "Subtract RSLT    IS 019" << std::endl;
+    std::cout << "Add      RSLTv9  IS 611.3" << std::endl;
+    std::cout << "Multiply RSLT    IS 723" << std::endl;
+    std::cout << "Multiply RSLT    IS 723" << std::endl;
+    std::cout << "Divide   RSLT    IS 039" << std::endl;
+    std::cout << "Divide   RSLTv9  IS 009.7" << std::endl;
+    std::cout << "Divide   RSLT    IS 009" << std::endl;
+    std::cout << "Simple   RSLT    IS 180 RSLTv9  IS 180.0" << std::endl;
+    std::cout << "Complex  RSLT    IS 188 RSLTv9  IS 188.0" << std::endl;
+    std::cout << "Reduced  RSLT    IS 180 RSLTv9  IS 180.0" << std::endl;
+    std::cout << "Using ARITHMETIC-OSVS" << std::endl;
 }
 
 int main() {

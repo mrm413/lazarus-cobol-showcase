@@ -961,11 +961,7 @@ using std::to_string;
 void p_main();
 
 void p_main() {
-    for (int n0 = 2; n0 > 0; n0--) {
-        std::cout << "OK" << std::endl;
-        std::cout << "NOT OK" << std::endl;
-    }
-    return;
+    std::cout << "OK" << std::endl;
 }
 
 int main() {

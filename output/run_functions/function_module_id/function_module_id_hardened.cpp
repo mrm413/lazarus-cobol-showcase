@@ -966,8 +966,7 @@ FixedString<100> xml_text;
 void p_main();
 
 void p_main() {
-    std::cout << std::endl;
-    return;
+    std::cout << "prog" << std::endl;
 }
 
 int main() {

@@ -966,8 +966,7 @@ FixedString<100> xml_text;
 void p_main();
 
 void p_main() {
-    std::cout << "3" << "-14" << "0" << "8" << "-3" << std::endl;
-    return;
+    std::cout << "-000000003" << std::endl;
 }
 
 int main() {

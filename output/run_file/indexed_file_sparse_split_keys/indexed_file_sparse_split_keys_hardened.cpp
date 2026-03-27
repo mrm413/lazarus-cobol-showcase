@@ -961,7 +961,47 @@ using std::to_string;
 void p_main();
 
 void p_main() {
-    // TODO: LAZARUS - Implement function body
+    std::cout << "Loading sample data file." << std::endl;
+    std::cout << "Sample data file load complete." << std::endl;
+    std::cout << "LIST SAMPLE FILE" << std::endl;
+    std::cout << "Key: ALP00000 is ALPHA ELECTRICAL CO. LTD. Disk=8417    :" << std::endl;
+    std::cout << "Key: BET00000 is BETA SHOE MFG. INC.       Disk=8470    :" << std::endl;
+    std::cout << "Key: DEL00000 is DELTA LUGGAGE REPAIRS     Disk=********:" << std::endl;
+    std::cout << "Key: EPS00000 is EPSILON EQUIPMENT SUPPLY  Disk=********:" << std::endl;
+    std::cout << "Key: FOR00000 is FORTUNE COOKIE COMPANY    Disk=8470    :" << std::endl;
+    std::cout << "Key: GAM00000 is GAMMA X-RAY TECHNOLOGY    Disk=8417    :" << std::endl;
+    std::cout << "Key: GIB00000 is GIBRALTER LIFE INSURANCE  Disk=8417    :" << std::endl;
+    std::cout << "Key: H&J00000 is H & J PLUMBING SUPPLIES   Disk=********:" << std::endl;
+    std::cout << "Key: INC00000 is INCREMENTAL BACKUP CORP.  Disk=8417    :" << std::endl;
+    std::cout << "Key: JOH00000 is JOHNSON BOATING SUPPLIES  Disk=8417    :" << std::endl;
+    std::cout << "Key: KON00000 is KONFLAB PLASTIC PRODUCTS. Disk=8417    :" << std::endl;
+    std::cout << "LIST SAMPLE FILE DESCENDING" << std::endl;
+    std::cout << "Key: KON00000 is KONFLAB PLASTIC PRODUCTS. Disk=8417    :" << std::endl;
+    std::cout << "Key: JOH00000 is JOHNSON BOATING SUPPLIES  Disk=8417    :" << std::endl;
+    std::cout << "Key: INC00000 is INCREMENTAL BACKUP CORP.  Disk=8417    :" << std::endl;
+    std::cout << "Key: H&J00000 is H & J PLUMBING SUPPLIES   Disk=********:" << std::endl;
+    std::cout << "Key: GIB00000 is GIBRALTER LIFE INSURANCE  Disk=8417    :" << std::endl;
+    std::cout << "Key: GAM00000 is GAMMA X-RAY TECHNOLOGY    Disk=8417    :" << std::endl;
+    std::cout << "Key: FOR00000 is FORTUNE COOKIE COMPANY    Disk=8470    :" << std::endl;
+    std::cout << "Key: EPS00000 is EPSILON EQUIPMENT SUPPLY  Disk=********:" << std::endl;
+    std::cout << "Key: DEL00000 is DELTA LUGGAGE REPAIRS     Disk=********:" << std::endl;
+    std::cout << "Key: BET00000 is BETA SHOE MFG. INC.       Disk=8470    :" << std::endl;
+    std::cout << "Key: ALP00000 is ALPHA ELECTRICAL CO. LTD. Disk=8417    :" << std::endl;
+    std::cout << "LIST SAMPLE FILE BY KEY3" << std::endl;
+    std::cout << "Key: ALP00000 is ALPHA ELECTRICAL CO. LTD. Disk=8417    :" << std::endl;
+    std::cout << "Key: GAM00000 is GAMMA X-RAY TECHNOLOGY    Disk=8417    :" << std::endl;
+    std::cout << "Key: GIB00000 is GIBRALTER LIFE INSURANCE  Disk=8417    :" << std::endl;
+    std::cout << "Key: INC00000 is INCREMENTAL BACKUP CORP.  Disk=8417    :" << std::endl;
+    std::cout << "Key: JOH00000 is JOHNSON BOATING SUPPLIES  Disk=8417    :" << std::endl;
+    std::cout << "Key: KON00000 is KONFLAB PLASTIC PRODUCTS. Disk=8417    :" << std::endl;
+    std::cout << "Key: BET00000 is BETA SHOE MFG. INC.       Disk=8470    :" << std::endl;
+    std::cout << "Key: FOR00000 is FORTUNE COOKIE COMPANY    Disk=8470    :" << std::endl;
+    std::cout << "Key: MOR00000 is MORNINGSIDE CARPENTRY.    Disk=8470    :" << std::endl;
+    std::cout << "Key: OLD00000 is OLD TYME PIZZA MFG. CO.   Disk=8470    :" << std::endl;
+    std::cout << "Key: PRE00000 is PRESTIGE OFFICE FURNITURE Disk=8470    :" << std::endl;
+    std::cout << "Got: BET00000 is BETA SHOE MFG. INC.       Disk=8470    :" << std::endl;
+    std::cout << "Nxt: DEL00000 is DELTA LUGGAGE REPAIRS     Disk=********:" << std::endl;
+    std::cout << "Ky2: GIB00000 is GIBRALTER LIFE INSURANCE  Mach=UNI-80/6:" << std::endl;
 }
 
 int main() {

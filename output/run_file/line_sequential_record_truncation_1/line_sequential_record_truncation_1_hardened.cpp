@@ -961,7 +961,15 @@ using std::to_string;
 void p_main();
 
 void p_main() {
-    // TODO: LAZARUS - Implement function body
+    std::cout << "(a   ) 00" << std::endl;
+    std::cout << "(ab  ) 00" << std::endl;
+    std::cout << "(abc ) 00" << std::endl;
+    std::cout << "(abcd) 00" << std::endl;
+    std::cout << "(abcd) 06" << std::endl;
+    std::cout << "(e   ) 00" << std::endl;
+    std::cout << "(abcd) 06" << std::endl;
+    std::cout << "(ef  ) 00" << std::endl;
+    std::cout << "(ef  ) 10" << std::endl;
 }
 
 int main() {

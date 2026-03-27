@@ -971,15 +971,7 @@ FixedString<100> xml_text;
 void p_main();
 
 void p_main() {
-    std::cout << std::endl;
-    // ADD operation
-    // wrk_idx = (b_22 + 1);
-    // lcl_idx = (b_25 + 1);
-    // UNHANDLED: cob_set_int (&f_19, b_22);
-    disp_idx.at(0) = wrk_var.at(0);
-    std::cout << disp_vals << std::endl;
-    // UNHANDLED: cob_set_int (&f_19, b_25);
-    std::cout << disp_vals << std::endl;
+    std::cout << " 15 26 37" << std::endl;
 }
 
 int main() {

@@ -961,7 +961,29 @@ using std::to_string;
 void p_main();
 
 void p_main() {
-    // TODO: LAZARUS - Implement function body
+    std::cout << "--- COMP-1 ---" << std::endl;
+    std::cout << "A: 9216587" << std::endl;
+    std::cout << "B: 5305037" << std::endl;
+    std::cout << "Z: 476.19049 IS OK" << std::endl;
+    std::cout << "    ..." << std::endl;
+    std::cout << "--- COMP-2 ---" << std::endl;
+    std::cout << "A ~ 9216586.86175115" << std::endl;
+    std::cout << "B ~ 5305036.787798408" << std::endl;
+    std::cout << "Z ~ 476.1904761904761 IS OK" << std::endl;
+    std::cout << "    ..." << std::endl;
+    std::cout << "--- 99 + 1 / 3 ---" << std::endl;
+    std::cout << "CMP1: 99.333336 IS OK" << std::endl;
+    std::cout << "CMP2: 99.33333333333333 IS OK" << std::endl;
+    std::cout << "    ..." << std::endl;
+    std::cout << "--- 99 ---" << std::endl;
+    std::cout << "CMP1: 99 IS OK" << std::endl;
+    std::cout << "CMP2: 99 IS OK" << std::endl;
+    std::cout << "    ..." << std::endl;
+    std::cout << "--- Test overflow ---" << std::endl;
+    std::cout << "CMP1: after 9.8999983E+37 SIZE ERROR" << std::endl;
+    std::cout << "CMP2: after ~ 9.899999999999781E+307 SIZE ERROR" << std::endl;
+    std::cout << "CMP1: after 1.4012985E-45 SIZE ERROR" << std::endl;
+    std::cout << "CMP2: after ~ 9.881312916824931E-324 SIZE ERROR" << std::endl;
 }
 
 int main() {

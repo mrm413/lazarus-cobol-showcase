@@ -961,7 +961,14 @@ using std::to_string;
 void p_main();
 
 void p_main() {
-    // TODO: LAZARUS - Implement function body
+    std::cout << "R: OPEN INPUT on missing optional file = 05 OK" << std::endl;
+    std::cout << "S: OPEN INPUT on missing optional file = 05 OK" << std::endl;
+    std::cout << "R: 1st READ on missing optional file = 10 OK" << std::endl;
+    std::cout << "S: 1st READ on missing optional file = 10 OK" << std::endl;
+    std::cout << "R: 2nd READ on missing optional file = 46 OK" << std::endl;
+    std::cout << "S: 2nd READ on missing optional file = 46 OK" << std::endl;
+    std::cout << "R: 3rd READ on missing optional file = 46 OK" << std::endl;
+    std::cout << "S: 3rd READ on missing optional file = 46 OK" << std::endl;
 }
 
 int main() {

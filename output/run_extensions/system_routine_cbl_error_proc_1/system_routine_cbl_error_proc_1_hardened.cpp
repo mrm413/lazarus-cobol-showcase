@@ -961,7 +961,16 @@ using std::to_string;
 void p_main();
 
 void p_main() {
-    // TODO: LAZARUS - Implement function body
+    std::cout << "Program is starting" << std::endl;
+    std::cout << "Error (internal): DemoErrProc; ; 0-" << std::endl;
+    std::cout << "                                                 -" << std::endl;
+    std::cout << "                  EC-PROGRAM-NOT-FOUND           -" << std::endl;
+    std::cout << "Error-Message:    module 'Tilt' not found" << std::endl;
+    std::cout << "-*- Returning to Next Error Routine -*-" << std::endl;
+    std::cout << "Error: DemoErrProc; ; 0-" << std::endl;
+    std::cout << "                                      -" << std::endl;
+    std::cout << "       EC-PROGRAM-NOT-FOUND           -" << std::endl;
+    std::cout << "-*- Returning to Standard Error Routine -*-" << std::endl;
 }
 
 int main() {

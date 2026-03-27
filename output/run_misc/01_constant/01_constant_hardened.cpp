@@ -986,7 +986,7 @@ void p_main() {
         std::cout << "01 CONSTANT is " << "7" << " left to right precedence." << std::endl;
     }
     std::cout << "CON3 is " << "23" << std::endl;
-    std::cout << "CON4 is " << "26" << " vs " << "3141596" << " & " << "-2189" << " & " << "+12" << std::endl;
+    std::cout << "CON4 is " << "26" << " vs " << "3.141596" << " & " << "-2.189" << " & " << "+12" << std::endl;
     std::cout << "CON6 is " << "18" << "." << std::endl;
     std::cout << "My Dog's name is " << "Piper" << ";" << std::endl;
     return;

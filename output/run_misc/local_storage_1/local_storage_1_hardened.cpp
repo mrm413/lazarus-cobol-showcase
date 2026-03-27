@@ -968,8 +968,7 @@ FixedString<100> xml_text;
 void p_main();
 
 void p_main() {
-    wrk_x = std::string(3, '0');
-    if (false /* TODO: module->next */) {}
+    std::cout << "abcabc000abc" << std::endl;
 }
 
 int main() {

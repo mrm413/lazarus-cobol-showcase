@@ -961,7 +961,17 @@ using std::to_string;
 void p_main();
 
 void p_main() {
-    // TODO: LAZARUS - Implement function body
+    std::cout << "22: >+12345678++12345678+<" << std::endl;
+    std::cout << "21: >+12345678++12345678<" << std::endl;
+    std::cout << "20: >+12345678++1234567<" << std::endl;
+    std::cout << "19: >+12345678++123456<" << std::endl;
+    std::cout << "18: >+12345678++12345<" << std::endl;
+    std::cout << "17: >+12345678++1234<" << std::endl;
+    std::cout << "16: >+12345678++123<" << std::endl;
+    std::cout << "15: >+12345678++12<" << std::endl;
+    std::cout << "14: >+12345678++1<" << std::endl;
+    std::cout << "13: >+12345678++<" << std::endl;
+    std::cout << "12: >+12345678+<" << std::endl;
 }
 
 int main() {

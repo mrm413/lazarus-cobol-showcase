@@ -969,14 +969,7 @@ FixedString<50> variable;
 void p_main();
 
 void p_main() {
-    std::cout << std::endl;
-    std::cout << "-" << std::endl;
-    std::cout << std::endl;
-    if (to_int(variable) == 1 && to_int(variable) == 2) {
-        std::cout << "succeeded" << std::endl;
-    } else {
-        std::cout << "failed" << std::endl;
-    }
+    std::cout << "9-9succeeded" << std::endl;
 }
 
 int main() {

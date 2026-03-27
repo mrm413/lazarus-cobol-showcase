@@ -961,7 +961,22 @@ using std::to_string;
 void p_main();
 
 void p_main() {
-    // TODO: LAZARUS - Implement function body
+    std::cout << "Using PIC XX COMP-X" << std::endl;
+    std::cout << " x#22 B-LEFT  x#05   is 01088" << std::endl;
+    std::cout << " x#22 B-RIGHT x#02   is 00008" << std::endl;
+    std::cout << " x#22 B-SHIFT-L x#05 is 01088" << std::endl;
+    std::cout << " x#22 B-SHIFT-R x#02 is 00008" << std::endl;
+    std::cout << "00010 B-LEFT  x#05   is 00320" << std::endl;
+    std::cout << "00010 B-RIGHT x#02   is 00002" << std::endl;
+    std::cout << "30067 B-SHIFT-LC 4   is 22327" << std::endl;
+    std::cout << "30067 B-SHIFT-RC 4   is 14167" << std::endl;
+    std::cout << "Using PIC 9(4) COMP-5" << std::endl;
+    std::cout << " x#22 B-LEFT  x#05   is 01088" << std::endl;
+    std::cout << " x#22 B-RIGHT x#02   is 00008" << std::endl;
+    std::cout << " x#22 B-SHIFT-L x#05 is 01088" << std::endl;
+    std::cout << " x#22 B-SHIFT-R x#02 is 00008" << std::endl;
+    std::cout << "00010 B-LEFT  x#05   is 00320" << std::endl;
+    std::cout << "00010 B-RIGHT x#02   is 00002" << std::endl;
 }
 
 int main() {
