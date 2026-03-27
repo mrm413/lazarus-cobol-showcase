@@ -109,6 +109,27 @@ The remaining 1,576 programs (98.1%) contain real procedure logic with named C++
 - ~2 GB disk for the image
 - ~10 minutes for full compilation on a modern machine
 
+## COBOL/C++17 Parity Comparison
+
+The parity harness compiles **both** the original COBOL programs (via GnuCOBOL) and the
+transpiled C++17 versions, runs them side by side, and compares stdout output.
+
+```bash
+# Quick mode (6 categories, ~5 minutes)
+docker run --rm lazarus-cpp17-validator --parity-quick
+
+# Full mode (all categories)
+docker run --rm lazarus-cpp17-validator --parity
+
+# Extract the HTML dashboard
+docker run --name parity lazarus-cpp17-validator --parity-quick
+docker cp parity:/validator/results/parity_report.html ./parity_report.html
+docker rm parity
+```
+
+Opens in any browser — interactive HTML dashboard with search, filter, and side-by-side
+COBOL vs C++17 output for every program.
+
 ## Output Files
 
 After a run, results are in the container at `/validator/results/`:
@@ -118,11 +139,15 @@ After a run, results are in the container at `/validator/results/`:
 | `summary.log` | Machine-readable totals (key=value format) |
 | `failures.log` | Compiler error details for any failures |
 | `safety_audit.log` | Files flagged for raw memory operations |
+| `parity_report.html` | Interactive COBOL vs C++17 output dashboard (parity mode) |
+| `parity_results.csv` | Machine-readable parity results (parity mode) |
 
 To extract results:
 
 ```bash
-docker run --rm -v $(pwd)/results:/validator/results lazarus-cpp17-validator
+docker run --name val lazarus-cpp17-validator
+docker cp val:/validator/results/ ./results/
+docker rm val
 ```
 
 ## Autofixer

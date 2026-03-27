@@ -38,14 +38,21 @@ CBL_COUNT=$(find cobol_source -name "*.cbl" | wc -l)
 echo "  Found $CPP_COUNT C++ files, $CBL_COUNT COBOL sources"
 echo ""
 
-# Check for --autofix flag
+# Parse flags
+PARITY_MODE=""
 for arg in "$@"; do
-    if [ "$arg" = "--autofix" ]; then
-        export AUTOFIX=1
-        shift
-        break
-    fi
+    case "$arg" in
+        --autofix) export AUTOFIX=1; shift ;;
+        --parity)  PARITY_MODE="full"; shift ;;
+        --parity-quick) PARITY_MODE="quick"; shift ;;
+    esac
 done
 
-# Run the test suite
-exec ./test_runner.sh "$@"
+# Run the appropriate suite
+if [ -n "$PARITY_MODE" ]; then
+    echo "  Running COBOL/C++17 Parity Harness (mode: $PARITY_MODE)..."
+    echo ""
+    exec ./parity_harness.sh "$PARITY_MODE"
+else
+    exec ./test_runner.sh "$@"
+fi
