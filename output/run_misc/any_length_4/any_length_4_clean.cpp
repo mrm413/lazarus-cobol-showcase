@@ -60,12 +60,10 @@ void P_MAIN() {
     }
     str = std::string(20, static_cast<char>(88));
     // CALL subroutine
-    }
     if (false /* TODO: cob_call_params > 0 */) {
         // UNHANDLED: cob_parm_3 = b_3;
     }
     // UNHANDLED: return subprog_ (0, cob_parm_3);
-    }
     if (false /* TODO: initialized == 0 */) {
         // UNHANDLED: goto P_initialize;
     }
@@ -84,7 +82,6 @@ void P_MAIN() {
         // UNHANDLED: cob_reference_count--;
     }
     }
-}
 
 int main() {
     P_MAIN();

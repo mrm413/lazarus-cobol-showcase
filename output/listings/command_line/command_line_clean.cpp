@@ -58,7 +58,6 @@ void P_MAIN() {
     // UNHANDLED: return COB_SET_DATA (f_18, b_18);
     RETURN_CODE = 0;
     }
-}
 
 int main() {
     P_MAIN();

@@ -62,7 +62,7 @@ void P_MAIN() {
     cur_pos = "006002";
     // UNHANDLED: cob_accept_field (&f_20, 1048592, "lcS", (cob_field *)&c_9, (cob_field *)&c_2, (cob_field *)&c_10);
     // UNHANDLED: cob_accept_field (&f_18, 1048576, "lc", (cob_field *)&c_11, (cob_field *)&c_2);
-    if (success_flag[0] == 'Y' || success_flag[0] == 'y' && to_int(COB_CRT_STATUS) == 0) {
+    if (success_flag[0] == 'Y' || (success_flag[0] == 'y' && to_int(COB_CRT_STATUS) == 0)) {
         RETURN_CODE = 0;
     }
 }

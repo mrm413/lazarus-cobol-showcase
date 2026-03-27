@@ -50,7 +50,6 @@ void P_MAIN() {
     }
     tally = "001";
     }
-}
 
 int main() {
     P_MAIN();

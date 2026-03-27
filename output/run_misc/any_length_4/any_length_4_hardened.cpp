@@ -129,6 +129,15 @@ public:
         return *this;
     }
 
+    // Cross-size assignment (COBOL MOVE semantics: truncate or pad)
+    template<std::size_t M>
+    FixedString& operator=(const FixedString<M>& other) noexcept {
+        data_.fill(' ');
+        const std::size_t len = std::min(M, N);
+        std::copy_n(other.data(), len, data_.begin());
+        return *this;
+    }
+
     // Bounds-checked access
     [[nodiscard]] char& at(std::size_t pos) {
         if (pos >= N) {
@@ -969,12 +978,10 @@ void p_main() {
     }
     str = std::string(20, static_cast<char>(88));
     // CALL subroutine
-    }
     if (false /* TODO: cob_call_params > 0 */) {
         // UNHANDLED: cob_parm_3 = b_3;
     }
     // UNHANDLED: return subprog_ (0, cob_parm_3);
-    }
     if (false /* TODO: initialized == 0 */) {
         // UNHANDLED: goto P_initialize;
     }
@@ -993,7 +1000,6 @@ void p_main() {
         // UNHANDLED: cob_reference_count--;
     }
     }
-}
 
 int main() {
     try {

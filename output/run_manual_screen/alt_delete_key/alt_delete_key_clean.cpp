@@ -59,7 +59,7 @@ void P_MAIN() {
     ws_x_20 = "ABCD";
     // UNHANDLED: cob_accept_field (&f_19, 1048592, "lcS", (cob_field *)&c_7, (cob_field *)&c_2, (cob_field *)&c_8);
     // UNHANDLED: cob_accept_field (&f_17, 1048576, "lc", (cob_field *)&c_9, (cob_field *)&c_2);
-    if (success_flag[0] == 'Y' || success_flag[0] == 'y' && to_int(COB_CRT_STATUS) == 0) {
+    if (success_flag[0] == 'Y' || (success_flag[0] == 'y' && to_int(COB_CRT_STATUS) == 0)) {
         RETURN_CODE = 0;
     }
 }

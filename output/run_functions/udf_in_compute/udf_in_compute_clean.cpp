@@ -59,9 +59,7 @@ void P_MAIN() {
     // UNHANDLED: cob_free (frame_stack);
     // UNHANDLED: return COB_SET_DATA (f_17, b_17);
     RETURN_CODE = 0;
-    }
     // UNHANDLED: return prog_ (0);
-    }
     if (false /* TODO: initialized == 0 */) {
         // UNHANDLED: goto P_initialize;
     }

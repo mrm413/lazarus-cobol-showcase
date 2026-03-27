@@ -129,6 +129,15 @@ public:
         return *this;
     }
 
+    // Cross-size assignment (COBOL MOVE semantics: truncate or pad)
+    template<std::size_t M>
+    FixedString& operator=(const FixedString<M>& other) noexcept {
+        data_.fill(' ');
+        const std::size_t len = std::min(M, N);
+        std::copy_n(other.data(), len, data_.begin());
+        return *this;
+    }
+
     // Bounds-checked access
     [[nodiscard]] char& at(std::size_t pos) {
         if (pos >= N) {
@@ -956,7 +965,6 @@ void p_main() {
     if (false /* TODO: module->module_active */) {
     }
     }
-}
 
 int main() {
     try {

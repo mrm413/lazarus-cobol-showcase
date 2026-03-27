@@ -53,7 +53,6 @@ void P_MAIN() {
     x = "12345!";
     idx = "06";
     }
-}
 
 int main() {
     P_MAIN();

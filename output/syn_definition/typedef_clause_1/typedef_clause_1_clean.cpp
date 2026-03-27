@@ -80,7 +80,6 @@ void P_MAIN() {
         // tail = b_83;
     }
     }
-}
 
 int main() {
     P_MAIN();

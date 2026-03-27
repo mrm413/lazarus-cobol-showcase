@@ -53,7 +53,7 @@ std::string XML_TEXT;
 void P_MAIN();
 
 void P_MAIN() {
-    if (THREE.substr(0, 1) == ONE.substr(0, 1) && THREE.substr(0, 1) == TWO.substr(0, 1) || THREE.substr(0, 1) == THREE.substr(0, 1)) {
+    if ((THREE.substr(0, 1) == ONE.substr(0, 1) && THREE.substr(0, 1) == TWO.substr(0, 1)) || THREE.substr(0, 1) == THREE.substr(0, 1)) {
         std::cout << "OK" << std::endl;
     }
     return;

@@ -78,9 +78,7 @@ void P_MAIN() {
     // UNHANDLED: return COB_SET_DATA (f_20, b_20);
     RETURN_CODE = 0;
     ttl[0] = '1';
-    }
     // UNHANDLED: return prog_ (0);
-    }
     if (false /* TODO: initialized == 0 */) {
         // UNHANDLED: goto P_initialize;
     }

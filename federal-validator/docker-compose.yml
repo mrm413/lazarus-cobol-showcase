@@ -1,0 +1,9 @@
+version: "3.8"
+
+services:
+  validator:
+    build:
+      context: ..
+      dockerfile: federal-validator/Dockerfile
+    container_name: lazarus-cpp17-validator
+    entrypoint: ["./run.sh"]

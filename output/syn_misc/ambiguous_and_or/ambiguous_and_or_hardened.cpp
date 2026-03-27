@@ -129,6 +129,15 @@ public:
         return *this;
     }
 
+    // Cross-size assignment (COBOL MOVE semantics: truncate or pad)
+    template<std::size_t M>
+    FixedString& operator=(const FixedString<M>& other) noexcept {
+        data_.fill(' ');
+        const std::size_t len = std::min(M, N);
+        std::copy_n(other.data(), len, data_.begin());
+        return *this;
+    }
+
     // Bounds-checked access
     [[nodiscard]] char& at(std::size_t pos) {
         if (pos >= N) {
@@ -960,7 +969,7 @@ FixedString<100> xml_text;
 void p_main();
 
 void p_main() {
-    if (three.substr(0, 1) == one.substr(0, 1) && three.substr(0, 1) == two.substr(0, 1) || three.substr(0, 1) == three.substr(0, 1)) {
+    if ((three.substr(0, 1) == one.substr(0, 1) && three.substr(0, 1) == two.substr(0, 1)) || three.substr(0, 1) == three.substr(0, 1)) {
         std::cout << "OK" << std::endl;
     }
     return;
