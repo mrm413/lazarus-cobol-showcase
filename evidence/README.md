@@ -6,8 +6,9 @@ This folder contains the raw artifacts that back the parity claim in the top-lev
 
 | File | What it is |
 |------|------------|
-| `parity_2026-04-21.json` | Full per-test output from the runner. 1,321 entries — one per federal-suite test. Each entry has `cat`, `test`, `kind`, `status`, `duration`. The top-level summary fields (`global_pass`, `global_tested`, `global_pct`, `global_stats`) are computed from those entries. |
-| `cpp17_full_parity.py` | The actual Python script that produced the JSON. 27 KB, 699 lines. The status taxonomy, pass/fail logic, and federal-suite traversal are all visible in source. |
+| `parity_2026-04-21.json` | Full per-test output from the runtime-parity runner. 1,321 entries — one per federal-suite test. Each entry has `cat`, `test`, `kind`, `status`, `duration`. The top-level summary fields (`global_pass`, `global_tested`, `global_pct`, `global_stats`) are computed from those entries. |
+| `cpp17_full_parity.py` | The Python script that produced the parity JSON. 27 KB, 699 lines. The status taxonomy, pass/fail logic, and federal-suite traversal are all visible in source. |
+| `compile_validation_2026-05-09.log` | Full output of `federal-validator/test_runner.sh` run inside the Docker container on 2026-05-09. 1,728 lines — banner, per-test PASS/FAIL for all 1,607 tests, then the summary block (Hardened PASS: 1607/1607 = 100%; Clean PASS: 207/1607 = 12.8%; Safety audit: 17 unsafe-pattern flags in clean files). Reproducible via `docker build -t lazarus-cpp17-validator -f federal-validator/Dockerfile . && docker run --rm lazarus-cpp17-validator`. |
 
 ## How to Read the JSON
 

@@ -1,7 +1,8 @@
 # Lazarus: COBOL-to-Hardened C++17 Transpiler Output
 
-**1,192 / 1,192 runtime parity (100%)** against the GnuCOBOL 3.2 federal test suite, verified **2026-04-21**.
-**1,607 / 1,607 compile rate (100%)** — every transpiled program compiles clean under `g++ -std=c++17 -Wall -Wextra -Wpedantic`.
+**Production output (hardened C++17): 1,607 / 1,607 compile (100%)** under `g++ -std=c++17 -Wall -Werror -O2`. Validated 2026-05-09 in the `federal-validator/` Docker container.
+
+**Runtime parity (federal suite): 1,192 / 1,192 (100%)** against GnuCOBOL 3.2, verified 2026-04-21.
 
 This repository contains the **output** of the Lazarus transpilation system — not the system itself. Every `.cpp` file here was generated automatically from legacy COBOL source code and compiled as production-grade, security-hardened C++17. Lazarus is a proprietary transpilation engine built by [Torsova LLC](https://lazarus-systems.com).
 
@@ -12,16 +13,32 @@ This repository contains the **output** of the Lazarus transpilation system — 
 | Metric | Value |
 |--------|-------|
 | Runtime parity (federal suite) | **1,192 / 1,192 (100.0%)** |
-| Compile rate (full output) | **1,607 / 1,607 (100.0%)** |
+| Compile rate (hardened, production) | **1,607 / 1,607 (100.0%)** |
+| Compile rate (clean, pre-framework) | 207 / 1,607 (12.8%) — see [note below](#a-note-on-clean-vs-hardened) |
 | Test corpus size | 1,321 tests across 36 categories |
 | Programs with procedure logic | 1,576 (98.1%) |
 | Programs without procedure logic | 31 (SCREEN-only, empty stubs, compiler-flag tests) |
 | Total C++17 lines (clean output) | 85,724 |
 | Pipeline speed | ~1.5 seconds per program |
-| Last verification | 2026-04-21 11:31:30 UTC |
-| Runner | `evidence/cpp17_full_parity.py` |
-| Raw evidence | `evidence/parity_2026-04-21.json` |
-| Compiler | g++ 13.2.0 (MinGW-W64 ucrt), x86_64 |
+| Last runtime-parity verification | 2026-04-21 11:31:30 UTC |
+| Last compile-rate verification | 2026-05-09 (federal-validator Docker, 20m10s) |
+| Runtime-parity runner | `evidence/cpp17_full_parity.py` |
+| Raw runtime-parity evidence | `evidence/parity_2026-04-21.json` |
+| Raw compile-rate evidence | `evidence/compile_validation_2026-05-09.log` |
+| Compiler | g++ 13.2.0 (MinGW-W64 ucrt) host, g++ 13.3.0 (Ubuntu 24.04) container |
+
+---
+
+## A Note on Clean vs. Hardened
+
+Each transpiled program ships in two forms:
+
+- **`{name}_hardened.cpp`** — production output. Wrapped in the 947-line safety framework (`FixedString<N>`, `SafeInt<T>`, `Decimal`, `PackedDecimal`, RAII, COBOL-coded try/catch). 1,607 / 1,607 compile clean under `-std=c++17 -Wall -Werror -O2`. **This is what production uses.**
+- **`{name}_clean.cpp`** — direct translation, no framework. Useful for code review of the raw COBOL→C++ logic. 207 / 1,607 compile out-of-the-box.
+
+The 1,400 clean files that don't compile reveal known transpiler emit gaps in the clean variant — undeclared `RETURN_CODE`, occasional brace-balance edge cases, missing `FixedString<M>` cross-size operator overloads. The hardening framework provides those definitions itself, so the hardened build is unaffected. The repo also ships [`federal-validator/autofixer.py`](federal-validator/autofixer.py), a 3-rule deterministic patcher that closes those specific compile gaps in the clean variant when needed.
+
+**Important:** The autofixer fixes *compile errors only*. It does not address security. Vulnerabilities (raw memory, unbounded strings, integer overflow) are addressed by the **hardening stage** (`[H]` in the pipeline below) — a separate, mandatory pipeline step that replaces unsafe patterns. The validator's safety audit greps the *clean* variant for raw memory ops (`malloc`/`free`/`new`/`delete`) and raw pointers (`char *`/`void *`); the most recent run flagged 17 such patterns in clean files. Those patterns do not appear in the hardened files because the hardener replaces them.
 
 ---
 
